@@ -14,7 +14,9 @@ func importCourses() {
 		log.Fatal("Could not find courses.json")
 	}
 
+	// For each item in the top-level JSON array...
 	jsonparser.ArrayEach(data, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
+		// Get the campus from each item
 		campus, err := jsonparser.GetString(value, "campus")
 		if err != nil {
 			log.Fatal("Could not parse campus")
