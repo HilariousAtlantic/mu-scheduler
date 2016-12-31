@@ -49,18 +49,17 @@ func importCourses() {
 		fmt.Println("campus: "+campus, "credits: "+credits, "id: "+id,
 			" number: "+number, " section: "+section, " subject: "+subject, " title: "+title)
 
-		//below line will properly get "meets". I tried inputting
-		//[]byte(meets) instead of "data", but that didnt work either
-		//meets, err := jsonparser.GetString(value, "meets")
 
-		//should iterate through all the meets and print them. doesnt work, obviously.
-		//I think it has to do with the fact its seaching all of data for meets
-		jsonparser.ArrayEach(data, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
-
-			fmt.Println("day: ")
-			fmt.Println(jsonparser.Get(value, "day"))
-		}, "meets")
+		//can get meets as a string by not as an array?
+		fmt.Println(jsonparser.GetString(value, "meets"))
 
 	})
 
+	//this will successfully get all "meets" only, but they need to be associated with each course
+	/*
+	jsonparser.ArrayEach(data, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
+
+		fmt.Println(jsonparser.GetString(value, "meets"))
+	})
+	*/
 }
