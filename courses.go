@@ -46,8 +46,8 @@ func importCourses() {
 			log.Fatal("Could not parse title")
 		}
 
-		fmt.Println("campus: " + campus, "credits: " + credits, "id: " + id,
-			" number: "+ number, " section: " + section, " subject: " + subject, " title: " + title)
+		fmt.Println("campus: "+campus, "credits: "+credits, "id: "+id,
+			" number: "+number, " section: "+section, " subject: "+subject, " title: "+title)
 
 		//below line will properly get "meets". I tried inputting
 		//[]byte(meets) instead of "data", but that didnt work either
@@ -59,7 +59,7 @@ func importCourses() {
 
 			fmt.Println("day: ")
 			fmt.Println(jsonparser.Get(value, "day"))
-		},"meets")
+		}, "meets")
 
 	})
 
