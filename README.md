@@ -6,6 +6,10 @@ Install Go
 
     brew install go
 
+Install [Glide](https://glide.sh/), a Go dependency manager
+
+    curl https://glide.sh/get | sh
+
 Install Node
 
     brew install node
@@ -20,5 +24,5 @@ then from the root directory
 
     npm install
     npm run build
-    go get -u github.com/labstack/echo
+    glide install
     go run *.go
