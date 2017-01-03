@@ -33,12 +33,15 @@ func importCourses() {
 
 	var parsed parsedCoursesJSON
 	json.Unmarshal(data, &parsed)
-	validateCourses(&parsed)
+	printInvalidCourses(&parsed)
+
+	courses := getCoursesFromJSON(&parsed)
+	batchInsertCourses(courses)
 }
 
-func validateCourses(parsed *parsedCoursesJSON) {
-	creditsRegex, _ := regexp.Compile("\\d")
-	numberRegex, _ := regexp.Compile("\\d+")
+func printInvalidCourses(parsed *parsedCoursesJSON) {
+	creditsRegex, _ := regexp.Compile("[\\d.-]")
+	numberRegex, _ := regexp.Compile("\\d+([A-Z])?$")
 	campusRegex, _ := regexp.Compile("^[LVOHM]$")
 	sectionRegex, _ := regexp.Compile("[A-Z\\d]")
 	subjectRegex, _ := regexp.Compile("[A-Z]{3}")

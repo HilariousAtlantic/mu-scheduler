@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"net/http"
 	"os"
 
@@ -17,6 +16,10 @@ func main() {
 		switch os.Args[1] {
 		case "import":
 			importCourses()
+		case "createdb":
+			createDatabase()
+		case "rmdb":
+			deleteDatabase()
 		default:
 			runServer()
 		}
@@ -27,25 +30,13 @@ func main() {
 
 func runServer() {
 	e := echo.New()
-	e.GET("/courses", courses)
+	e.GET("/courses", coursesIndex)
 	e.File("/", "index.html")
 	e.Static("/dist", "dist")
 	e.Logger.Fatal(e.Start(":8000"))
 }
 
-func courses(c echo.Context) error {
-	// Set the content response header to JSON
-	c.Response().Header().Set(echo.HeaderContentType, echo.MIMEApplicationJSONCharsetUTF8)
-	c.Response().WriteHeader(http.StatusOK)
-
-	// Read courses.json, or throw a 500 error
-	// if the file is not found
-	data, err := ioutil.ReadFile("json/sections.json")
-	if err != nil {
-		errMessage := `{"error": "Could not load courses"}`
-		return c.String(http.StatusInternalServerError, errMessage)
-	}
-
-	// Return the JSON in the response
-	return c.String(http.StatusOK, string(data))
+func coursesIndex(c echo.Context) error {
+	courses := getCoursesFromDB()
+	return c.JSON(http.StatusOK, courses)
 }
