@@ -1,9 +1,8 @@
 {
-  "name": "client",
-  "description": "A Vue.js project",
-  "version": "1.0.0",
-  "author": "Luke <lartnak@gmail.com>",
-  "private": true,
+  "name": "schedule-buddy",
+  "description": "A site to simplify the scheduling process, specifically at Miami University.",
+  "version": "0.0.1",
+  "author": "Hilarious Atlantic",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
