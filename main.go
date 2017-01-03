@@ -26,14 +26,10 @@ func main() {
 }
 
 func runServer() {
-	// Create a new echo instance
 	e := echo.New()
-
-	// Add a /courses endpoint
 	e.GET("/courses", courses)
-
-	// Start the server and throw
-	// a fatal log if it fails
+	e.File("/", "index.html")
+	e.Static("/dist", "dist")
 	e.Logger.Fatal(e.Start(":8000"))
 }
 
