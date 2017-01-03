@@ -44,7 +44,7 @@ func courses(c echo.Context) error {
 
 	// Read courses.json, or throw a 500 error
 	// if the file is not found
-	data, err := ioutil.ReadFile("courses.json")
+	data, err := ioutil.ReadFile("json/sections.json")
 	if err != nil {
 		errMessage := `{"error": "Could not load courses"}`
 		return c.String(http.StatusInternalServerError, errMessage)
