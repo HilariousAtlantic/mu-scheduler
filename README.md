@@ -6,9 +6,9 @@ Install Go
 
     brew install go
 
-Install node, then:
+Install Node
 
-    npm install -g webpack
+    brew install node
 
 Add this to your `.bashrc`
 ```shell
@@ -19,6 +19,6 @@ export GOROOT=/usr/local/opt/go/libexec
 then from the root directory
 
     npm install
-    webpack
+    npm run build
     go get -u github.com/labstack/echo
     go run *.go
