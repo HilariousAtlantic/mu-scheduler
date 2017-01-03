@@ -1,12 +1,29 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
-
-	"github.com/buger/jsonparser"
+	"regexp"
 )
+
+type parsedCoursesJSON []struct {
+	Campus  string
+	Credits string
+	ID      string
+	Meets   []struct {
+		Date       string
+		Days       string
+		Instructor string
+		Location   string
+		Time       string
+	}
+	Number  string
+	Section string
+	Subject string
+	Title   string
+}
 
 func importCourses() {
 	data, err := ioutil.ReadFile("courses.json")
@@ -14,52 +31,59 @@ func importCourses() {
 		log.Fatal("Could not find courses.json")
 	}
 
-	// For each item in the top-level JSON array...
-	jsonparser.ArrayEach(data, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
-		// Get the campus from each item
-		campus, err := jsonparser.GetString(value, "campus")
-		if err != nil {
-			log.Fatal("Could not parse campus")
-		}
-		credits, err := jsonparser.GetString(value, "credits")
-		if err != nil {
-			log.Fatal("Could not parse credits")
-		}
-		id, err := jsonparser.GetString(value, "id")
-		if err != nil {
-			log.Fatal("Could not parse id")
-		}
-		number, err := jsonparser.GetString(value, "number")
-		if err != nil {
-			log.Fatal("Could not parse number")
-		}
-		section, err := jsonparser.GetString(value, "section")
-		if err != nil {
-			log.Fatal("Could not parse section")
-		}
-		subject, err := jsonparser.GetString(value, "subject")
-		if err != nil {
-			log.Fatal("Could not parse subject")
-		}
-		title, err := jsonparser.GetString(value, "title")
-		if err != nil {
-			log.Fatal("Could not parse title")
-		}
+	var parsed parsedCoursesJSON
+	json.Unmarshal(data, &parsed)
+	validateCourses(&parsed)
+}
 
-		fmt.Println("campus: "+campus, "credits: "+credits, "id: "+id,
-			" number: "+number, " section: "+section, " subject: "+subject, " title: "+title)
+func validateCourses(parsed *parsedCoursesJSON) {
+	creditsRegex, _ := regexp.Compile("\\d")
+	numberRegex, _ := regexp.Compile("\\d+")
+	campusRegex, _ := regexp.Compile("^[LVOHM]$")
+	sectionRegex, _ := regexp.Compile("[A-Z\\d]")
+	subjectRegex, _ := regexp.Compile("[A-Z]{3}")
+	titleRegex, _ := regexp.Compile("[A-Za-z\\s]+")
+	instructorRegex, _ := regexp.Compile("[a-zA-Z()]")
+	locationRegex, _ := regexp.Compile("[A-Za-z\\d+]")
+	dateRegex, _ := regexp.Compile("\\d+\\/\\d+-\\d+\\/\\d+")
+	daysRegex, _ := regexp.Compile("[MWTRF]+")
+	timeRegex, _ := regexp.Compile("(\\d+:\\d+ \\s?(am|pm)-\\d+:\\d+ \\s?(am|pm))")
 
-
-		//can get meets as a string by not as an array?
-		fmt.Println(jsonparser.GetString(value, "meets"))
-
-	})
-
-	//this will successfully get all "meets" only, but they need to be associated with each course
-	/*
-	jsonparser.ArrayEach(data, func(value []byte, dataType jsonparser.ValueType, offset int, err error) {
-
-		fmt.Println(jsonparser.GetString(value, "meets"))
-	})
-	*/
+	for _, data := range *parsed {
+		if !campusRegex.MatchString(data.Campus) {
+			fmt.Printf("Invalid campus: %v\n", data.Campus)
+		}
+		if !creditsRegex.MatchString(data.Credits) {
+			fmt.Printf("Invalid credits: %v\n", data.Credits)
+		}
+		if !numberRegex.MatchString(data.Number) {
+			fmt.Printf("Invalid number: %v\n", data.Number)
+		}
+		if !sectionRegex.MatchString(data.Section) {
+			fmt.Printf("Invalid section: %v\n", data.Section)
+		}
+		if !subjectRegex.MatchString(data.Subject) {
+			fmt.Printf("Invalid subject: %v\n", data.Subject)
+		}
+		if !titleRegex.MatchString(data.Subject) {
+			fmt.Printf("Invalid title: %v\n", data.Title)
+		}
+		for _, meet := range data.Meets {
+			if !dateRegex.MatchString(meet.Date) {
+				fmt.Printf("Invalid date: %v\n", meet.Date)
+			}
+			if !daysRegex.MatchString(meet.Days) {
+				fmt.Printf("Invalid days: %v\n", meet.Days)
+			}
+			if !instructorRegex.MatchString(meet.Instructor) {
+				fmt.Printf("Invalid instructor: %v\n", meet.Instructor)
+			}
+			if !locationRegex.MatchString(meet.Location) {
+				fmt.Printf("Invalid location: %v\n", meet.Location)
+			}
+			if !timeRegex.MatchString(meet.Time) {
+				fmt.Printf("Invalid time: %v\n", meet.Time)
+			}
+		}
+	}
 }
