@@ -46,8 +46,8 @@ func validateCourses(parsed *parsedCoursesJSON) {
 	instructorRegex, _ := regexp.Compile("[a-zA-Z()]")
 	locationRegex, _ := regexp.Compile("[A-Za-z\\d+]")
 	dateRegex, _ := regexp.Compile("\\d+\\/\\d+-\\d+\\/\\d+")
-	daysRegex, _ := regexp.Compile("[MWTRF]+")
-	timeRegex, _ := regexp.Compile("(\\d+:\\d+ \\s?(am|pm)-\\d+:\\d+ \\s?(am|pm))")
+	daysRegex, _ := regexp.Compile("([MWTRFSU])+")
+	timeRegex, _ := regexp.Compile("(\\d+:\\d+ \\s?(am|pm)-\\d+:\\d+ \\s?(am|pm))|TBA")
 
 	for _, data := range *parsed {
 		if !campusRegex.MatchString(data.Campus) {
@@ -72,7 +72,7 @@ func validateCourses(parsed *parsedCoursesJSON) {
 			if !dateRegex.MatchString(meet.Date) {
 				fmt.Printf("Invalid date: %v\n", meet.Date)
 			}
-			if !daysRegex.MatchString(meet.Days) {
+			if meet.Days != "" && !daysRegex.MatchString(meet.Days) {
 				fmt.Printf("Invalid days: %v\n", meet.Days)
 			}
 			if !instructorRegex.MatchString(meet.Instructor) {
@@ -81,7 +81,7 @@ func validateCourses(parsed *parsedCoursesJSON) {
 			if !locationRegex.MatchString(meet.Location) {
 				fmt.Printf("Invalid location: %v\n", meet.Location)
 			}
-			if !timeRegex.MatchString(meet.Time) {
+			if meet.Time != "" && !timeRegex.MatchString(meet.Time) {
 				fmt.Printf("Invalid time: %v\n", meet.Time)
 			}
 		}
