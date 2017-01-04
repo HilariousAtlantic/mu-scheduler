@@ -24,7 +24,7 @@
 
         <ul class="selected-courses">
           <li>Selected Courses</li>
-          <li v-for="course in selectedCourses">{{course}}</li>
+          <li v-for="course in selectedCourses" v-on:click="handleRemoveCourse">{{course}}</li>
         </ul>
 
       </div>
@@ -68,6 +68,14 @@
         if (this.selectedCourses.indexOf(course) < 0) {
           this.selectedCourses.push(course);
         }
+
+      },
+
+      handleRemoveCourse(event) {
+
+        let course = event.target.innerText;
+
+        this.selectedCourses.splice(this.selectedCourses.indexOf(course), 1);
 
       }
 
@@ -135,6 +143,7 @@
 
   .selected-courses li:first-of-type {
     background: #eee;
+    cursor: default;
   }
 
   .course-search {
