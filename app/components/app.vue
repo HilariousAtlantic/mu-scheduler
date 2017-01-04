@@ -2,15 +2,34 @@
 
   <div class="app">
 
-    <h1>Schedule Buddy</h1>
+    <h1>Welcome to Schedule Buddy</h1>
+    <h2>Select the courses you would like to take this semester</h2>
 
-    <h2>Select courses you would like to take this semester</h2>
+    <div class="course-selection">
 
-    <ul>
+      <div class="course-selection-column">
 
-      <li v-for="course in courses">{{course.subject}} {{course.number}} - {{course.name}}</li>
+        <div class="course-search">
+          <span>Spring 2017</span>
+          <input type="text" placeholder="Filter Courses" v-model="filter" />
+        </div>
 
-    </ul>
+        <ul class="course-list">
+          <li v-for="course in filteredCourses" v-on:click="handleAddCourse">{{course}}</li>
+        </ul>
+
+      </div>
+
+      <div class="course-selection-column">
+
+        <ul class="selected-courses">
+          <li>Selected Courses</li>
+          <li v-for="course in selectedCourses">{{course}}</li>
+        </ul>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -27,15 +46,43 @@
     data() {
 
       return {
-        courses: []
+        courses: [],
+        selectedCourses: [],
+        filter: ''
       }
 
     },
 
     mounted() {
 
-      axios.get('/courses')
-        .then(response => this.courses = response.data.slice(0, 30))
+      axios.get('/courses').then(response => this.courses = response.data);
+
+    },
+
+    methods: {
+
+      handleAddCourse(event) {
+
+        let course = event.target.innerText;
+
+        if (this.selectedCourses.indexOf(course) < 0) {
+          this.selectedCourses.push(course);
+        }
+
+      }
+
+
+    },
+
+    computed: {
+
+      filteredCourses() {
+
+        return this.courses
+          .map(course => course.subject + ' ' + course.number + ' - ' + course.name)
+          .filter(course => course.toLowerCase().indexOf(this.filter.toLowerCase()) > -1)
+
+      }
 
     }
 
@@ -45,12 +92,69 @@
 
 <style>
 
-  h1, h2 {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  .app {
+    font-family: sans-serif;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
     text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-    font-weight: normal;
+  }
+
+  .course-selection {
+    text-align: left;
+    display: flex;
+  }
+
+  .course-selection-column {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .course-selection ul {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+  .course-selection li {
+    list-style: none;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .course-selection li:hover {
+    background: #f5f5f5;
+  }
+
+  .course-selection li:first-of-type {
+    border: none;
+  }
+
+  .selected-courses li:first-of-type {
+    background: #eee;
+  }
+
+  .course-search {
+    display: flex;
+    align-items: center;
+    background: #eee;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+
+  .course-search span {
+    padding: 0 10px;
+  }
+
+  .course-search input {
+    flex: 1;
+    border: none;
+    font-size: 1rem;
+    padding: 10px;
+    outline: none;
   }
 
 </style>
