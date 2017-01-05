@@ -110,11 +110,11 @@
 
       filteredCourses() {
 
-        let term = this.filter.toLowerCase().replace(/\W+/g, '');
+        let trim = (term) => term.toLowerCase().replace(/\W+/g, '');
 
         return this.courses
           .map(course => course.subject + ' ' + course.number + ' - ' + course.name)
-          .filter(course => course.toLowerCase().replace(/\W+/g, '').indexOf(term) > -1)
+          .filter(course => trim(course).indexOf(trim(this.filter)) > -1)
 
       }
 
