@@ -9,16 +9,7 @@
 
       <div class="course-selection-column">
 
-        <div class="course-search">
-
-          <span @click="toggleSemesterList">{{selectedSemester}}<i class="fa fa-caret-down"></i></span>
-          <input type="text" placeholder="Filter Courses" autocomplete="off" v-model="filter" />
-
-          <ul class="semester-list" v-if="showSemesterList">
-            <li v-for="semester in semesters" @click="selectSemester(semester)">{{semester}}</li>
-          </ul>
-
-        </div>
+        <course-search :semesters="semesters" :selectedSemester="selectedSemester" @filter="setFilter" @semester="selectSemester"></course-search>
 
         <ul class="course-list">
           <li v-for="course in filteredCourses" @click="selectCourse(course)">{{course}}</li>
@@ -44,13 +35,14 @@
 
   import axios from 'axios';
 
+  import CourseSearch from './course-search.vue';
   import SelectedCourses from './selected-courses.vue';
 
   export default {
 
     name: 'app',
 
-    components: {SelectedCourses},
+    components: {CourseSearch, SelectedCourses},
 
     data() {
 
@@ -59,8 +51,7 @@
         courses: [],
         selectedCourses: [],
         selectedSemester: 'Spring 2017',
-        filter: '',
-        showSemesterList: false
+        filter: ''
       }
 
     },
@@ -94,16 +85,14 @@
       selectSemester(semester) {
 
         this.selectedSemester = semester;
-        this.showSemesterList = false;
 
       },
 
-      toggleSemesterList() {
+      setFilter(filter) {
 
-        this.showSemesterList = !this.showSemesterList;
+        this.filter = filter;
 
       }
-
 
     },
 
