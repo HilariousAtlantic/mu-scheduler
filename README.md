@@ -32,6 +32,10 @@ Delete the database
 ```
 go run *.go dropdb
 ```
+Or in one step
+```
+go run *.go resetdb
+```
 To interact with the database, run
 ```
 psql -U schedule_buddy

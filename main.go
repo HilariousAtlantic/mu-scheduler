@@ -20,6 +20,9 @@ func main() {
 			createDatabase()
 		case "dropdb":
 			deleteDatabase()
+		case "resetdb":
+			deleteDatabase()
+			createDatabase()
 		default:
 			runServer()
 		}
