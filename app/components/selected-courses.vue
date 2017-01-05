@@ -16,7 +16,7 @@
     props: ['semester', 'courses'],
 
     data() {
-      
+
     }
 
   }
@@ -24,5 +24,14 @@
 </script>
 
 <style>
+
+  .selected-courses li:first-of-type {
+    background: #eee;
+    cursor: default;
+  }
+
+  .selected-courses {
+    max-height: 545px;
+  }
 
 </style>

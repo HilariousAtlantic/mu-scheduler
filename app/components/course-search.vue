@@ -55,4 +55,45 @@
 
 <style>
 
+  .course-search {
+    display: flex;
+    position: relative;
+    background: #eee;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+
+  .course-search span {
+    width: 7.5rem;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .course-search i {
+    float: right;
+  }
+
+  .course-search input {
+    flex: 1;
+    border: none;
+    border-left: 1px solid #ddd;
+    font-size: 1rem;
+    padding: 10px;
+    outline: none;
+  }
+
+  .semester-list {
+    left: -1px;
+    top: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+  }
+
+  .semester-list li {
+    width: 7.5rem;
+    background: #fff;
+    list-style: none;
+  }
+
 </style>
