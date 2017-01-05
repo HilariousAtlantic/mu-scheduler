@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -36,6 +37,7 @@ func runServer() {
 	e.GET("/courses", coursesIndex)
 	e.File("/", "index.html")
 	e.Static("/dist", "dist")
+	fmt.Println("Starting server on http://localhost:8000")
 	e.Logger.Fatal(e.Start(":8000"))
 }
 
