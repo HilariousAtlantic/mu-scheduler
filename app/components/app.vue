@@ -11,7 +11,7 @@
 
         <div class="course-search">
           <span>{{semester}}</span>
-          <input type="text" placeholder="Filter Courses" v-model="filter" />
+          <input type="text" placeholder="Filter Courses" autocomplete="off" v-model="filter" />
         </div>
 
         <ul class="course-list">
