@@ -10,7 +10,7 @@
       <div class="course-selection-column">
 
         <div class="course-search">
-          <span>Spring 2017</span>
+          <span>{{semester}}</span>
           <input type="text" placeholder="Filter Courses" v-model="filter" />
         </div>
 
@@ -23,13 +23,15 @@
       <div class="course-selection-column">
 
         <ul class="selected-courses">
-          <li>Selected Courses</li>
+          <li>Selected Courses for {{semester}}</li>
           <li v-for="course in selectedCourses" v-on:click="handleRemoveCourse">{{course}}</li>
         </ul>
 
       </div>
 
     </div>
+
+    <button type="button">Generate Schedules</button>
 
   </div>
 
@@ -48,6 +50,7 @@
       return {
         courses: [],
         selectedCourses: [],
+        semester: 'Spring 2017',
         filter: ''
       }
 
@@ -115,14 +118,13 @@
 
   .course-selection-column {
     flex: 1;
-    padding: 20px;
+    padding: 0 20px;
   }
 
   .course-selection ul {
     padding: 0;
     margin: 0;
     border: 1px solid #ddd;
-    max-height: 500px;
     overflow-y: scroll;
   }
 
@@ -146,6 +148,14 @@
     cursor: default;
   }
 
+  .selected-courses {
+    max-height: 545px;
+  }
+
+  .course-list {
+    max-height: 500px;
+  }
+
   .course-search {
     display: flex;
     align-items: center;
@@ -161,9 +171,20 @@
   .course-search input {
     flex: 1;
     border: none;
+    border-left: 1px solid #ddd;
     font-size: 1rem;
     padding: 10px;
     outline: none;
+  }
+
+  button {
+    width: 100%;
+    max-width: 1000px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #66BB6A;
+    color: #fff;
+    margin: 20px;
   }
 
 </style>
