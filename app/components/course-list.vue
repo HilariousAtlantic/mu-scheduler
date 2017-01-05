@@ -1,7 +1,7 @@
 <template>
 
   <ul class="course-list">
-    <li v-for="course in courses" @click="$emit('select-course', course)">
+    <li v-for="course in courses" @click="selectCourse(course)">
       {{course.subject}} {{course.number}} - {{course.name}}
     </li>
   </ul>
@@ -14,7 +14,17 @@
 
     name: 'course-list',
 
-    props: ['courses']
+    props: ['courses'],
+
+    methods: {
+
+      selectCourse(course) {
+
+        this.$emit('select-course', course);
+
+      }
+
+    }
 
   }
 
