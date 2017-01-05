@@ -2,7 +2,7 @@
 A site to simplify the scheduling process, specifically at Miami University.
 
 ## Installation
-Install [Go](https://golang.org/), [Glide](https://glide.sh/) [PostgreSQL](https://www.postgresql.org) , and [Node](https://nodejs.org/en/)
+Install [Go](https://golang.org/), [Glide](https://glide.sh/), [PostgreSQL](https://www.postgresql.org), and [Node](https://nodejs.org/en/)
 ```
 brew install go glide postgres node
 ```
