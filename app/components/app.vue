@@ -10,7 +10,7 @@
       <div class="course-selection-column">
 
         <div class="course-search">
-          <span>{{semester}}</span>
+          <span>{{semester}} <i class="fa fa-caret-down"></i></span>
           <input type="text" placeholder="Filter Courses" autocomplete="off" v-model="filter" />
         </div>
 
@@ -165,7 +165,12 @@
   }
 
   .course-search span {
-    padding: 0 10px;
+    width: 7rem;
+    padding: 10px;
+  }
+
+  .course-search i {
+    float: right;
   }
 
   .course-search input {
@@ -180,7 +185,7 @@
   button {
     width: 100%;
     max-width: 1000px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
     background: #66BB6A;
     color: #fff;
