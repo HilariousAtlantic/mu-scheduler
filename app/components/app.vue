@@ -10,15 +10,18 @@
       <div class="course-selection-column">
 
         <div class="course-search">
-          <span v-on:click="toggleSemesterList">{{selectedSemester}} <i class="fa fa-caret-down"></i></span>
-          <ul class="semester-list" v-if="showSemesterList">
-            <li v-for="semester in semesters" v-on:click="handleSelectSemester">{{semester}}</li>
-          </ul>
+
+          <span @click="toggleSemesterList">{{selectedSemester}}<i class="fa fa-caret-down"></i></span>
           <input type="text" placeholder="Filter Courses" autocomplete="off" v-model="filter" />
+
+          <ul class="semester-list" v-if="showSemesterList">
+            <li v-for="semester in semesters" @click="selectSemester(semester)">{{semester}}</li>
+          </ul>
+
         </div>
 
         <ul class="course-list">
-          <li v-for="course in filteredCourses" v-on:click="handleAddCourse">{{course}}</li>
+          <li v-for="course in filteredCourses" @click="selectCourse(course)">{{course}}</li>
         </ul>
 
       </div>
@@ -27,7 +30,7 @@
 
         <ul class="selected-courses">
           <li>Selected Courses for {{selectedSemester}}</li>
-          <li v-for="course in selectedCourses" v-on:click="handleRemoveCourse">{{course}}</li>
+          <li v-for="course in selectedCourses" @click="unselectCourse(course)">{{course}}</li>
         </ul>
 
       </div>
@@ -69,27 +72,27 @@
 
     methods: {
 
-      handleAddCourse(event) {
+      selectCourse(course) {
 
-        let course = event.target.innerText;
-
-        if (this.selectedCourses.indexOf(course) < 0) {
+        if (this.selectedCourses.indexOf(course) == -1) {
           this.selectedCourses.push(course);
         }
 
       },
 
-      handleRemoveCourse(event) {
+      unselectCourse(course) {
 
-        let course = event.target.innerText;
+        let index = this.selectedCourses.indexOf(course);
 
-        this.selectedCourses.splice(this.selectedCourses.indexOf(course), 1);
+        if (index != -1) {
+          this.selectedCourses.splice(index, 1);
+        }
 
       },
 
-      handleSelectSemester(event) {
+      selectSemester(semester) {
 
-        this.selectedSemester = event.target.innerText;
+        this.selectedSemester = semester;
         this.showSemesterList = false;
 
       },
