@@ -127,6 +127,7 @@
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
+    color: #333;
   }
 
   .course-selection {
