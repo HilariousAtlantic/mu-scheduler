@@ -18,7 +18,7 @@ func main() {
 			importCourses()
 		case "createdb":
 			createDatabase()
-		case "rmdb":
+		case "dropdb":
 			deleteDatabase()
 		default:
 			runServer()

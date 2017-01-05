@@ -2,28 +2,29 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
-	"os"
+	"os/exec"
 
-	_ "github.com/mattn/go-sqlite3"
+	"github.com/lib/pq"
 )
 
 const (
-	databasePath = "./db.sqlite3"
+	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
 )
 
 const (
-	createCoursesTableStatement = `
+	createCoursesTable = `
 	CREATE TABLE courses (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		id SERIAL PRIMARY KEY,
 		name TEXT NOT NULL UNIQUE,
 		subject TEXT NOT NULL,
-		number INTEGER NOT NULL,
+		number TEXT NOT NULL,
 		credits TEXT NOT NULL
 	);
 	`
-	insertCourseStatement = `
-	INSERT INTO courses(name, subject, number, credits) values(?, ?, ?, ?)
+	insertCourse = `
+	INSERT INTO courses (name, subject, number, credits) VALUES (?, ?, ?, ?)
 	`
 
 	selectCourses = `
@@ -40,7 +41,7 @@ var dbContext = new(DB)
 func (d *DB) open() *sql.DB {
 	if d.db == nil {
 		var err error
-		d.db, err = sql.Open("sqlite3", databasePath)
+		d.db, err = sql.Open("postgres", databasePath)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -49,12 +50,22 @@ func (d *DB) open() *sql.DB {
 }
 
 func createDatabase() {
+	fmt.Println("Creating database...")
+
+	output, err := exec.Command("createdb", "schedule_buddy", "-U", "schedule_buddy").CombinedOutput()
+	if err != nil {
+		fmt.Println(string(output))
+		log.Fatal(err)
+	} else {
+		fmt.Println("Database created")
+	}
+
 	db := dbContext.open()
 	defer db.Close()
 
-	_, err := db.Exec(createCoursesTableStatement)
+	_, err = db.Exec(createCoursesTable)
 	if err != nil {
-		log.Fatalf("%q: %s\n", err, createCoursesTableStatement)
+		log.Fatalf("%q: %s\n", err, createCoursesTable)
 	}
 }
 
@@ -65,7 +76,7 @@ func batchInsertCourses(courses []*Course) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	stmt, err := tx.Prepare(insertCourseStatement)
+	stmt, err := tx.Prepare(pq.CopyIn("courses", "name", "subject", "number", "credits"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -81,7 +92,15 @@ func batchInsertCourses(courses []*Course) {
 			log.Fatal(err)
 		}
 	}
-	tx.Commit()
+	_, err = stmt.Exec()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = tx.Commit()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getCoursesFromDB() []*Course {
@@ -108,5 +127,12 @@ func getCoursesFromDB() []*Course {
 }
 
 func deleteDatabase() {
-	os.Remove(databasePath)
+	fmt.Println("Deleting database...")
+
+	output, err := exec.Command("dropdb", "schedule_buddy", "-U", "schedule_buddy").CombinedOutput()
+	if err != nil {
+		fmt.Println(err.Error(), string(output))
+	} else {
+		fmt.Println("Database deleted")
+	}
 }

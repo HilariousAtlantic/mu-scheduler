@@ -2,9 +2,9 @@
 A site to simplify the scheduling process, specifically at Miami University.
 
 ## Installation
-Install [Go](https://golang.org/), [Glide](https://glide.sh/), and [Node](https://nodejs.org/en/)
+Install [Go](https://golang.org/), [Glide](https://glide.sh/) [PostgreSQL](https://www.postgresql.org) , and [Node](https://nodejs.org/en/)
 ```
-brew install go glide node
+brew install go glide postgres node
 ```
 Add these lines to your `.bashrc`
 ```shell
@@ -16,4 +16,23 @@ Run these commands from the root directory
 ```
 npm run setup
 npm run serve
+```
+
+## Database
+Create the database
+```
+go run *.go createdb
+```
+Delete the database
+```
+go run *.go dropdb
+```
+To interact with the database, run
+```
+psql -U schedule_buddy
+```
+Then you may run queries like so:
+```
+schedule_buddy#=> SELECT * FROM courses;
+
 ```
