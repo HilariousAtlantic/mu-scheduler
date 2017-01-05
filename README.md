@@ -34,15 +34,15 @@ go run server/*.go <args>
 ## Database
 To create the database
 ```
-./schedule_buddy createdb
+./sb createdb
 ```
 To delete the database
 ```
-./schedule_buddy dropdb
+./sb dropdb
 ```
 To delete the database and create a new one
 ```
-./schedule_buddy resetdb
+./sb resetdb
 ```
 To interact with the database
 ```

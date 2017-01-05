@@ -7,3 +7,4 @@ vendor
 *.sqlite3
 *.db
 schedule_buddy
+sb
