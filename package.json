@@ -5,10 +5,9 @@
   "author": "Hilarious Atlantic",
   "scripts": {
     "database": "brew services start postgresql && createuser schedule_buddy --createdb",
-    "setup": "npm install && go get && go run *.go resetdb && go run *.go import && npm run build",
+    "setup": "go get && go run *.go resetdb && go run *.go import && npm install && webpack",
     "serve": "go run *.go",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "webpack --watch"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -18,12 +17,10 @@
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-preset-es2015": "^6.0.0",
-    "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.0",
-    "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.9"
+    "webpack": "^2.1.0-beta.25"
   }
 }
