@@ -1,28 +1,19 @@
 # Schedule-Buddy
 A site to simplify the scheduling process, specifically at Miami University.
 
-# Run
-Install Go
+## Installation
 
-    brew install go
+Install Go, Glide, and Node
 
-Install [Glide](https://glide.sh/), a Go dependency manager
+    brew install go glide node
 
-    curl https://glide.sh/get | sh
+Add these lines to your `.bashrc`
 
-Install Node
+    export PATH=$PATH:/usr/local/opt/go/libexec/bin
+    export GOPATH=$HOME/golang
+    export GOROOT=/usr/local/opt/go/libexec
 
-    brew install node
+Run these commands from the root directory
 
-Add this to your `.bashrc`
-```shell
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=$HOME/golang
-export GOROOT=/usr/local/opt/go/libexec
-```
-then from the root directory
-
-    npm install
-    npm run build
-    glide install
-    go run *.go
+    npm run setup
+    npm run serve
