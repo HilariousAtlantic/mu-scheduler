@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "author": "Hilarious Atlantic",
   "scripts": {
-    "setup": "npm install && glide install && brew services start postgresql && createuser schedule_buddy --createdb && go run *.go rmdb && go run *.go createdb && go run *.go import && npm run build",
+    "setup": "npm install && glide install && go run *.go rmdb && go run *.go createdb && go run *.go import && npm run build",
+    "setupdb": "brew services start postgresql && createuser schedule_buddy --createdb",
     "serve": "go run *.go",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"

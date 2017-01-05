@@ -6,6 +6,11 @@ Install [Go](https://golang.org/), [Glide](https://glide.sh/) [PostgreSQL](https
 ```
 brew install go glide postgres node
 ```
+Then run these commands to start postgres and create a new user
+```
+brew services start postgresql
+createuser schedule_buddy
+```
 Add these lines to your `.bashrc`
 ```shell
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
