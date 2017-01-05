@@ -26,9 +26,9 @@ type parsedCoursesJSON []struct {
 }
 
 func importCourses() {
-	data, err := ioutil.ReadFile("json/sections.json")
+	data, err := ioutil.ReadFile("import/sections.json")
 	if err != nil {
-		log.Fatal("Could not find json/sections.json")
+		log.Fatal("Could not find sections.json")
 	}
 
 	var parsed parsedCoursesJSON

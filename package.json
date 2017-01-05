@@ -5,8 +5,9 @@
   "author": "Hilarious Atlantic",
   "scripts": {
     "database": "brew services start postgresql && createuser schedule_buddy --createdb",
-    "setup": "go get && go run *.go resetdb && go run *.go import && npm install && webpack",
-    "serve": "go run *.go",
+    "setup": "cd server/ && go get && cd ../ && go build -o schedule_buddy server/*.go && ./schedule_buddy resetdb && ./schedule_buddy import && npm install && webpack",
+    "build-server": "go build -o schedule_buddy server/*.go",
+    "serve": "./schedule_buddy",
     "dev": "webpack --watch"
   },
   "dependencies": {

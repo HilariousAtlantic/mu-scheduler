@@ -20,18 +20,29 @@ npm run serve
 ```
 **Note:** `npm run database` starts PostgreSQL, and should not be ran again unless PostgreSQL is stopped.
 
+## Usage
+
+To rebuild the server
+```
+npm run build-server
+```
+Or to build and run the server directly
+```
+go run server/*.go <args>
+```
+
 ## Database
 To create the database
 ```
-go run *.go createdb
+./schedule_buddy createdb
 ```
 To delete the database
 ```
-go run *.go dropdb
+./schedule_buddy dropdb
 ```
 To delete the database and create a new one
 ```
-go run *.go resetdb
+./schedule_buddy resetdb
 ```
 To interact with the database
 ```
