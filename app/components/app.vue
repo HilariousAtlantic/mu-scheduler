@@ -3,14 +3,17 @@
   <div class="app">
 
     <h1>Welcome to Schedule Buddy</h1>
-    <h2>Select the courses you would like to take this semester</h2>
+    <h2>Select the semester and the courses you would like to take</h2>
 
     <div class="course-selection">
 
       <div class="course-selection-column">
 
         <div class="course-search">
-          <span>{{semester}} <i class="fa fa-caret-down"></i></span>
+          <span v-on:click="toggleSemesterList">{{selectedSemester}} <i class="fa fa-caret-down"></i></span>
+          <ul class="semester-list" v-if="showSemesterList">
+            <li v-for="semester in semesters" v-on:click="handleSelectSemester">{{semester}}</li>
+          </ul>
           <input type="text" placeholder="Filter Courses" autocomplete="off" v-model="filter" />
         </div>
 
@@ -23,7 +26,7 @@
       <div class="course-selection-column">
 
         <ul class="selected-courses">
-          <li>Selected Courses for {{semester}}</li>
+          <li>Selected Courses for {{selectedSemester}}</li>
           <li v-for="course in selectedCourses" v-on:click="handleRemoveCourse">{{course}}</li>
         </ul>
 
@@ -48,10 +51,12 @@
     data() {
 
       return {
+        semesters: ['Fall 2016', 'Winter 2017', 'Spring 2017', 'Summer 2017'],
         courses: [],
         selectedCourses: [],
-        semester: 'Spring 2017',
-        filter: ''
+        selectedSemester: 'Spring 2017',
+        filter: '',
+        showSemesterList: false
       }
 
     },
@@ -79,6 +84,19 @@
         let course = event.target.innerText;
 
         this.selectedCourses.splice(this.selectedCourses.indexOf(course), 1);
+
+      },
+
+      handleSelectSemester(event) {
+
+        this.selectedSemester = event.target.innerText;
+        this.showSemesterList = false;
+
+      },
+
+      toggleSemesterList() {
+
+        this.showSemesterList = !this.showSemesterList;
 
       }
 
@@ -158,15 +176,30 @@
 
   .course-search {
     display: flex;
-    align-items: center;
+    position: relative;
     background: #eee;
     border: 1px solid #ddd;
     margin-bottom: 5px;
   }
 
+  .semester-list {
+    left: -1px;
+    top: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+  }
+
+  .semester-list li {
+    width: 7.5rem;
+    background: #fff;
+    list-style: none;
+  }
+
   .course-search span {
-    width: 7rem;
+    width: 7.5rem;
     padding: 10px;
+    cursor: pointer;
   }
 
   .course-search i {
