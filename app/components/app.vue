@@ -28,10 +28,7 @@
 
       <div class="course-selection-column">
 
-        <ul class="selected-courses">
-          <li>Selected Courses for {{selectedSemester}}</li>
-          <li v-for="course in selectedCourses" @click="unselectCourse(course)">{{course}}</li>
-        </ul>
+        <selected-courses @unselect="unselectCourse" :semester="selectedSemester" :courses="selectedCourses"></selected-courses>
 
       </div>
 
@@ -47,9 +44,13 @@
 
   import axios from 'axios';
 
+  import SelectedCourses from './selected-courses.vue';
+
   export default {
 
     name: 'app',
+
+    components: {SelectedCourses},
 
     data() {
 
