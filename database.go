@@ -17,7 +17,7 @@ const (
 	createCoursesTable = `
 	CREATE TABLE courses (
 		id SERIAL PRIMARY KEY,
-		name TEXT NOT NULL UNIQUE,
+		name TEXT NOT NULL,
 		subject TEXT NOT NULL,
 		number TEXT NOT NULL,
 		credits TEXT NOT NULL
@@ -70,7 +70,7 @@ func createDatabase() {
 }
 
 func batchInsertCourses(courses []*Course) {
-	existingCourseNames := map[string]bool{}
+	existingCourses := map[Course]bool{}
 	db := dbContext.open()
 	tx, err := db.Begin()
 	if err != nil {
@@ -82,10 +82,10 @@ func batchInsertCourses(courses []*Course) {
 	}
 	defer stmt.Close()
 	for _, course := range courses {
-		if existingCourseNames[course.Name] {
+		if existingCourses[*course] {
 			continue
 		} else {
-			existingCourseNames[course.Name] = true
+			existingCourses[*course] = true
 		}
 		_, err = stmt.Exec(course.Name, course.Subject, course.Number, course.Credits)
 		if err != nil {
