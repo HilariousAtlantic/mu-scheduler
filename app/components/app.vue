@@ -11,9 +11,7 @@
 
         <course-search :semesters="semesters" :selectedSemester="selectedSemester" @filter="setFilter" @semester="selectSemester"></course-search>
 
-        <ul class="course-list">
-          <li v-for="course in filteredCourses" @click="selectCourse(course)">{{course}}</li>
-        </ul>
+        <course-list :courses="filteredCourses" @select="selectCourse"></course-list>
 
       </div>
 
@@ -36,13 +34,14 @@
   import axios from 'axios';
 
   import CourseSearch from './course-search.vue';
+  import CourseList from './course-list.vue';
   import SelectedCourses from './selected-courses.vue';
 
   export default {
 
     name: 'app',
 
-    components: {CourseSearch, SelectedCourses},
+    components: {CourseSearch, CourseList, SelectedCourses},
 
     data() {
 
@@ -155,10 +154,6 @@
 
   .course-selection li:first-of-type {
     border: none;
-  }
-
-  .course-list {
-    max-height: 500px;
   }
 
   button {
