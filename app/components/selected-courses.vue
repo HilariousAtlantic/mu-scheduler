@@ -2,7 +2,9 @@
 
   <ul class="selected-courses">
     <li>Selected Courses for {{semester}}</li>
-    <li v-for="course in courses" @click="$emit('unselect', course)">{{course}}</li>
+    <li v-for="course in courses" @click="$emit('unselect-course', course)">
+      {{course.subject}} {{course.number}} - {{course.name}}
+    </li>
   </ul>
 
 </template>
@@ -13,11 +15,7 @@
 
     name: 'selected-courses',
 
-    props: ['semester', 'courses'],
-
-    data() {
-
-    }
+    props: ['semester', 'courses']
 
   }
 

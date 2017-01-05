@@ -9,15 +9,15 @@
 
       <div class="course-selection-column">
 
-        <course-search :semesters="semesters" :selectedSemester="selectedSemester" @filter="setFilter" @semester="selectSemester"></course-search>
+        <course-search :semesters="semesters" :selectedSemester="selectedSemester" @set-filter="setFilter" @select-semester="selectSemester"></course-search>
 
-        <course-list :courses="filteredCourses" @select="selectCourse"></course-list>
+        <course-list :courses="filteredCourses" @select-course="selectCourse"></course-list>
 
       </div>
 
       <div class="course-selection-column">
 
-        <selected-courses @unselect="unselectCourse" :semester="selectedSemester" :courses="selectedCourses"></selected-courses>
+        <selected-courses @unselect-course="unselectCourse" :semester="selectedSemester" :courses="selectedCourses"></selected-courses>
 
       </div>
 
@@ -101,9 +101,9 @@
 
         let trim = (term) => term.toLowerCase().replace(/\W+/g, '');
 
-        return this.courses
-          .map(course => course.subject + ' ' + course.number + ' - ' + course.name)
-          .filter(course => trim(course).indexOf(trim(this.filter)) > -1)
+        return this.courses.filter(({subject, number, name}) =>
+          trim(subject+number+name).indexOf(trim(this.filter)) != -1
+        );
 
       }
 

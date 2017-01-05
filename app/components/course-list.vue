@@ -1,7 +1,9 @@
 <template>
 
   <ul class="course-list">
-    <li v-for="course in courses" @click="$emit('select', course)">{{course}}</li>
+    <li v-for="course in courses" @click="$emit('select-course', course)">
+      {{course.subject}} {{course.number}} - {{course.name}}
+    </li>
   </ul>
 
 </template>

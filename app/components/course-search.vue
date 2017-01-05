@@ -3,7 +3,7 @@
   <div class="course-search">
 
     <span @click="toggleSemesterList">{{selectedSemester}}<i class="fa fa-caret-down"></i></span>
-    <input type="text" placeholder="Filter Courses" autocomplete="off" @input="$emit('filter', $event.target.value)" />
+    <input type="text" placeholder="Filter Courses" autocomplete="off" @input="$emit('set-filter', $event.target.value)" />
 
     <ul class="semester-list" v-if="showSemesterList">
       <li v-for="semester in semesters" @click="selectSemester(semester)">{{semester}}</li>
@@ -36,7 +36,7 @@
 
       selectSemester(semester) {
 
-        this.$emit('semester', semester);
+        this.$emit('select-semester', semester);
         this.showSemesterList = false;
 
       },
