@@ -36,23 +36,31 @@
 <style scoped>
 
   .app {
+
     height: 100vh;
     display: flex;
     flex-direction: column;
+
   }
 
   .page {
+
     flex: 1;
     display: flex;
+
   }
 
   .sidebar {
+
     width: 300px;
+
   }
 
   .course-selection {
-    padding: 0 10px;
+
+    padding: 10px;
     flex: 1;
+    
   }
 
 </style>

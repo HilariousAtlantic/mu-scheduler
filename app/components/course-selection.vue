@@ -117,40 +117,39 @@
 <style scoped>
 
   .course-selection {
+
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
     color: #333;
+
   }
 
   h1, h2 {
+
     margin: 10px 0;
     text-align: center;
-  }
 
-  .course-search {
-    margin: 10px 0;
   }
 
   .course-list-container {
+
     display: flex;
     align-items: flex-start;
     flex: 1;
-  }
-
-  .course-list:first-of-type {
-
-    margin-right: 10px;
+    margin: 10px 0;
 
   }
+
 
   button {
+
     width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
     background: #66BB6A;
     color: #fff;
-    margin: 10px 0;
+
   }
 
 </style>

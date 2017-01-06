@@ -44,6 +44,12 @@
 
   }
 
+  .course-list:first-of-type {
+
+    margin-right: 10px;
+
+  }
+
   li {
 
     list-style: none;
