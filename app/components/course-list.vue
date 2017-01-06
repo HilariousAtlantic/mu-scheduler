@@ -1,6 +1,7 @@
 <template>
 
   <ul class="course-list">
+    <li>{{header}}</li>
     <li v-for="course in courses" @click="selectCourse(course)">
       {{course.subject}} {{course.number}} - {{course.name}}
     </li>
@@ -14,13 +15,13 @@
 
     name: 'course-list',
 
-    props: ['courses'],
+    props: ['header', 'courses'],
 
     methods: {
 
       selectCourse(course) {
 
-        this.$emit('selectCourse', course);
+        this.$emit('clickCourse', course);
 
       }
 
@@ -34,11 +35,12 @@
 
   .course-list {
 
+    flex: 1;
+    max-height: 100%;
     padding: 0;
     margin: 0;
     border: 1px solid #ddd;
     overflow-y: scroll;
-    max-height: 500px;
 
   }
 
@@ -57,7 +59,9 @@
 
     &:first-of-type {
 
+      background: #eee;
       border: none;
+      cursor: default;
 
     }
 

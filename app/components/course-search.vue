@@ -2,12 +2,12 @@
 
   <div class="course-search">
 
-    <span @click="toggleSemesterList">{{selectedSemester}}<i class="fa fa-caret-down"></i></span>
-    <input type="text" placeholder="Filter Courses" autocomplete="off" @input="setFilter" />
-
+    <button type="button" @click="toggleSemesterList">{{selectedSemester}}<i class="fa fa-caret-down"></i></button>
     <ul class="semester-list" v-if="showSemesterList">
       <li v-for="semester in semesters" @click="selectSemester(semester)">{{semester}}</li>
     </ul>
+
+    <input type="text" placeholder="Filter Courses" autocomplete="off" @input="setFilter" />
 
   </div>
 
@@ -64,17 +64,19 @@
 
     display: flex;
     position: relative;
-    background: #eee;
-    border: 1px solid #ddd;
-    margin-bottom: 5px;
 
   }
 
-  span {
+  button {
 
-    width: 7.5rem;
+    background: #eee;
+    border: 1px solid #ddd;
+    width: 200px;
+    margin-right: 10px;
     padding: 10px;
+    text-align: left;
     cursor: pointer;
+    outline: none;
 
     i {
 
@@ -87,8 +89,7 @@
   input {
 
     flex: 1;
-    border: none;
-    border-left: 1px solid #ddd;
+    border: 1px solid #ddd;
     font-size: 1rem;
     padding: 10px;
     outline: none;
@@ -98,11 +99,11 @@
   .semester-list {
 
     border: 1px solid #ddd;
-    left: -1px;
     top: 100%;
     margin: 0;
     padding: 0;
     position: absolute;
+    width: 198px;
 
   }
 
@@ -111,7 +112,6 @@
     padding: 10px;
     border-top: 1px solid #ddd;
     cursor: pointer;
-    width: 7.5rem;
     background: #fff;
     list-style: none;
 

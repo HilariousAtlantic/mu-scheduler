@@ -3,35 +3,28 @@
   <div class="app">
 
     <h1>Welcome to Schedule Buddy</h1>
-    <h2>Select the semester and the courses you would like to take</h2>
+    <h2>Select the semester and courses you would like to take</h2>
+
+    <course-search
+      :semesters="semesters"
+      :selectedSemester="selectedSemester"
+      @selectSemester="onSemesterSelect"
+      @changeFilter="onFilterChange"
+    ></course-search>
 
     <div class="course-selection">
 
-      <div class="course-selection-column">
+      <course-list
+        :header="'Course List for ' + selectedSemester"
+        :courses="filteredCourses"
+        @clickCourse="onCourseSelect"
+      ></course-list>
 
-        <course-search
-          :semesters="semesters"
-          :selectedSemester="selectedSemester"
-          @selectSemester="onSemesterSelect"
-          @changeFilter="onFilterChange"
-        ></course-search>
-
-        <course-list
-          :courses="filteredCourses"
-          @selectCourse="onCourseSelect"
-        ></course-list>
-
-      </div>
-
-      <div class="course-selection-column">
-
-        <selected-courses
-          :semester="selectedSemester"
-          :courses="selectedCourses"
-          @unselectCourse="onCourseUnselect"
-        ></selected-courses>
-
-      </div>
+      <course-list
+        :header="'Selected Courses for ' + selectedSemester"
+        :courses="selectedCourses"
+        @clickCourse="onCourseUnselect"
+      ></course-list>
 
     </div>
 
@@ -47,13 +40,12 @@
 
   import CourseSearch from './course-search.vue';
   import CourseList from './course-list.vue';
-  import SelectedCourses from './selected-courses.vue';
 
   export default {
 
     name: 'app',
 
-    components: {CourseSearch, CourseList, SelectedCourses},
+    components: {CourseSearch, CourseList},
 
     data() {
 
@@ -128,32 +120,41 @@
 <style scoped>
 
   .app {
-    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
     width: 90%;
+    height: 100vh;
     max-width: 1000px;
     margin: 0 auto;
-    text-align: center;
+    font-family: sans-serif;
     color: #333;
   }
 
-  .course-selection {
-    text-align: left;
-    display: flex;
+  h1, h2 {
+    margin: 10px 0;
+    text-align: center;
   }
 
-  .course-selection-column {
+  .course-selection {
+    display: flex;
+    align-items: flex-start;
     flex: 1;
-    padding: 0 20px;
+    margin: 10px 0;
+  }
+
+  .course-list:first-of-type {
+
+    margin-right: 10px;
+
   }
 
   button {
     width: 100%;
-    max-width: 1000px;
     padding: 15px;
     border: 1px solid #ddd;
     background: #66BB6A;
     color: #fff;
-    margin: 20px;
+    margin-bottom: 10px;
   }
 
 </style>
