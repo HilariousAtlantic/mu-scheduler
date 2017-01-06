@@ -20,7 +20,7 @@
 
       selectCourse(course) {
 
-        this.$emit('select-course', course);
+        this.$emit('selectCourse', course);
 
       }
 
@@ -40,24 +40,24 @@
     overflow-y: scroll;
     max-height: 500px;
 
-    li {
+  }
 
-      list-style: none;
-      padding: 10px;
-      border-top: 1px solid #ddd;
-      cursor: pointer;
+  li {
 
-      &:hover {
+    list-style: none;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    cursor: pointer;
 
-        background: #f5f5f5;
+    &:hover {
 
-      }
+      background: #f5f5f5;
 
-      &:first-of-type {
+    }
 
-        border: none;
+    &:first-of-type {
 
-      }
+      border: none;
 
     }
 

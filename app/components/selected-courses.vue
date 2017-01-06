@@ -21,7 +21,7 @@
 
       unselectCourse(course) {
 
-        this.$emit('unselect-course', course);
+        this.$emit('unselectCourse', course);
 
       }
 
@@ -41,26 +41,26 @@
     overflow-y: scroll;
     max-height: 545px;
 
-    li {
+  }
 
-      list-style: none;
-      padding: 10px;
-      border-top: 1px solid #ddd;
-      cursor: pointer;
+  li {
 
-      &:hover {
+    list-style: none;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    cursor: pointer;
 
-        background: #f5f5f5;
+    &:hover {
 
-      }
+      background: #f5f5f5;
 
-      &:first-of-type {
+    }
 
-        background: #eee;
-        border: none;
-        cursor: default;
+    &:first-of-type {
 
-      }
+      background: #eee;
+      border: none;
+      cursor: default;
 
     }
 

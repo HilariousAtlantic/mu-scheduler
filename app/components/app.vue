@@ -12,13 +12,13 @@
         <course-search
           :semesters="semesters"
           :selectedSemester="selectedSemester"
-          @select-semester="selectSemester"
-          @set-filter="setFilter"
+          @selectSemester="onSemesterSelect"
+          @changeFilter="onFilterChange"
         ></course-search>
 
         <course-list
           :courses="filteredCourses"
-          @select-course="selectCourse"
+          @selectCourse="onCourseSelect"
         ></course-list>
 
       </div>
@@ -28,7 +28,7 @@
         <selected-courses
           :semester="selectedSemester"
           :courses="selectedCourses"
-          @unselect-course="unselectCourse"
+          @unselectCourse="onCourseUnselect"
         ></selected-courses>
 
       </div>
@@ -75,7 +75,7 @@
 
     methods: {
 
-      selectCourse(course) {
+      onCourseSelect(course) {
 
         if (this.selectedCourses.indexOf(course) == -1) {
           this.selectedCourses.push(course);
@@ -83,7 +83,7 @@
 
       },
 
-      unselectCourse(course) {
+      onCourseUnselect(course) {
 
         let index = this.selectedCourses.indexOf(course);
 
@@ -93,13 +93,13 @@
 
       },
 
-      selectSemester(semester) {
+      onSemesterSelect(semester) {
 
         this.selectedSemester = semester;
 
       },
 
-      setFilter(filter) {
+      onFilterChange(filter) {
 
         this.filter = filter;
 

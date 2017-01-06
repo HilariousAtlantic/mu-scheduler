@@ -35,14 +35,14 @@
 
       selectSemester(semester) {
 
-        this.$emit('select-semester', semester);
+        this.$emit('selectSemester', semester);
         this.showSemesterList = false;
 
       },
 
       setFilter(event) {
 
-        this.$emit('set-filter', event.target.value);
+        this.$emit('changeFilter', event.target.value);
 
       },
 
@@ -68,68 +68,65 @@
     border: 1px solid #ddd;
     margin-bottom: 5px;
 
-    span {
+  }
 
-      width: 7.5rem;
-      padding: 10px;
-      cursor: pointer;
+  span {
 
-      i {
+    width: 7.5rem;
+    padding: 10px;
+    cursor: pointer;
 
-        float: right;
+    i {
 
-      }
-
-    }
-
-    input {
-
-      flex: 1;
-      border: none;
-      border-left: 1px solid #ddd;
-      font-size: 1rem;
-      padding: 10px;
-      outline: none;
-
-    }
-
-    .semester-list {
-
-      border: 1px solid #ddd;
-      left: -1px;
-      top: 100%;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-
-      li {
-
-        padding: 10px;
-        border-top: 1px solid #ddd;
-        cursor: pointer;
-        width: 7.5rem;
-        background: #fff;
-        list-style: none;
-
-        &:hover {
-
-          background: #f5f5f5;
-
-        }
-
-        &first-of-type {
-
-          border: none;
-
-        }
-
-      }
+      float: right;
 
     }
 
   }
 
+  input {
 
+    flex: 1;
+    border: none;
+    border-left: 1px solid #ddd;
+    font-size: 1rem;
+    padding: 10px;
+    outline: none;
 
+  }
+
+  .semester-list {
+
+    border: 1px solid #ddd;
+    left: -1px;
+    top: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+
+  }
+
+  li {
+
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    cursor: pointer;
+    width: 7.5rem;
+    background: #fff;
+    list-style: none;
+
+    &:hover {
+
+      background: #f5f5f5;
+
+    }
+
+    &first-of-type {
+
+      border: none;
+
+    }
+
+  }
 
 </style>
