@@ -9,15 +9,27 @@
 
       <div class="course-selection-column">
 
-        <course-search :semesters="semesters" :selectedSemester="selectedSemester" @set-filter="setFilter" @select-semester="selectSemester"></course-search>
+        <course-search
+          :semesters="semesters"
+          :selectedSemester="selectedSemester"
+          @select-semester="selectSemester"
+          @set-filter="setFilter"
+        ></course-search>
 
-        <course-list :courses="filteredCourses" @select-course="selectCourse"></course-list>
+        <course-list
+          :courses="filteredCourses"
+          @select-course="selectCourse"
+        ></course-list>
 
       </div>
 
       <div class="course-selection-column">
 
-        <selected-courses @unselect-course="unselectCourse" :semester="selectedSemester" :courses="selectedCourses"></selected-courses>
+        <selected-courses
+          :semester="selectedSemester"
+          :courses="selectedCourses"
+          @unselect-course="unselectCourse"
+        ></selected-courses>
 
       </div>
 
