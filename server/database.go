@@ -91,7 +91,7 @@ func batchInsertCourses(courses []*Course) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	}
+}
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Fatal(err)
@@ -101,6 +101,39 @@ func batchInsertCourses(courses []*Course) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+//UNFINISHED function for filtering
+//map["filter name"] []list of things to be filtered
+//ex: map: "days" -> ["M", "W"] 
+//	   "timesAfter" -> ["9:00"]
+func filterCourses(filters [string] []string){
+	where = ""
+	orderBy = ""
+	if filters["days"]{
+		for day in filters["days"]{
+			if where == "" {
+				Append(where, " meets.days LIKE " + day)
+			}
+			else{
+				Append(where, " OR meets.days LIKE " + day)
+			}
+		}
+	}
+	if filters["timesAfter"]{
+		for time in filters["timeAfter"]{
+			//do time filtering stuff and add to where
+		}
+	}
+
+	//include another filter for  ORDERBY gpa
+
+	filter = "SELECT id, name, subject, number, credits
+		FROM courses 
+		ORDER BY" + orderBy +
+		"WHERE" + where
+	rows, err := db.Query(filter)
+	//finish query, etc
 }
 
 func getCoursesFromDB() []*Course {
