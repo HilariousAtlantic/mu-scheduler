@@ -91,7 +91,7 @@ func batchInsertCourses(courses []*Course) {
 		if err != nil {
 			log.Fatal(err)
 		}
-}
+	}
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Fatal(err)
@@ -105,34 +105,40 @@ func batchInsertCourses(courses []*Course) {
 
 //UNFINISHED function for filtering
 //map["filter name"] []list of things to be filtered
-//ex: map: "days" -> ["M", "W"] 
+//ex: map: "days" -> ["M", "W"]
 //	   "timesAfter" -> ["9:00"]
-func filterCourses(filters [string] []string){
-	where = ""
-	orderBy = ""
-	if filters["days"]{
-		for day in filters["days"]{
+func filterCourses(filters map[string][]string) {
+	var where, orderBy string = "", ""
+
+	//check for the filter "days" (what days do you not want?
+	days, err := filters["days"]
+	if err == true {
+		for _, day := range days {
 			if where == "" {
-				Append(where, " meets.days LIKE " + day)
-			}
-			else{
-				Append(where, " OR meets.days LIKE " + day)
+				where += (" meets.days LIKE " + day)
+			} else {
+				where += (" AND NOT meets.days LIKE " + day)
 			}
 		}
 	}
-	if filters["timesAfter"]{
-		for time in filters["timeAfter"]{
+	//check for the filter "timesAfter"
+	times, err := filters["timesAfter"]
+	if err == true {
+		for _, time := range times {
+			fmt.Println(time)
 			//do time filtering stuff and add to where
 		}
 	}
 
 	//include another filter for  ORDERBY gpa
 
-	filter = "SELECT id, name, subject, number, credits
-		FROM courses 
-		ORDER BY" + orderBy +
-		"WHERE" + where
-	rows, err := db.Query(filter)
+	filter := "SELECT id, name, subject, number, credits FROM courses ORDER BY" + orderBy + "WHERE" + where
+	db := dbContext.open()
+	rows, err1 := db.Query(filter)
+	if err1 != nil {
+		log.Fatal(err1)
+	}
+	fmt.Println(rows)
 	//finish query, etc
 }
 
