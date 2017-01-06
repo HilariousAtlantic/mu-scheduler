@@ -125,7 +125,7 @@
 
 </script>
 
-<style>
+<style scoped>
 
   .app {
     font-family: sans-serif;
@@ -144,28 +144,6 @@
   .course-selection-column {
     flex: 1;
     padding: 0 20px;
-  }
-
-  .course-selection ul {
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ddd;
-    overflow-y: scroll;
-  }
-
-  .course-selection li {
-    list-style: none;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    cursor: pointer;
-  }
-
-  .course-selection li:hover {
-    background: #f5f5f5;
-  }
-
-  .course-selection li:first-of-type {
-    border: none;
   }
 
   button {

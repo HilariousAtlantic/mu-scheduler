@@ -58,47 +58,78 @@
 
 </script>
 
-<style>
+<style scoped>
 
   .course-search {
+
     display: flex;
     position: relative;
     background: #eee;
     border: 1px solid #ddd;
     margin-bottom: 5px;
+
+    span {
+
+      width: 7.5rem;
+      padding: 10px;
+      cursor: pointer;
+
+      i {
+
+        float: right;
+
+      }
+
+    }
+
+    input {
+
+      flex: 1;
+      border: none;
+      border-left: 1px solid #ddd;
+      font-size: 1rem;
+      padding: 10px;
+      outline: none;
+
+    }
+
+    .semester-list {
+
+      border: 1px solid #ddd;
+      left: -1px;
+      top: 100%;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+
+      li {
+
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        cursor: pointer;
+        width: 7.5rem;
+        background: #fff;
+        list-style: none;
+
+        &:hover {
+
+          background: #f5f5f5;
+
+        }
+
+        &first-of-type {
+
+          border: none;
+
+        }
+
+      }
+
+    }
+
   }
 
-  .course-search span {
-    width: 7.5rem;
-    padding: 10px;
-    cursor: pointer;
-  }
 
-  .course-search i {
-    float: right;
-  }
 
-  .course-search input {
-    flex: 1;
-    border: none;
-    border-left: 1px solid #ddd;
-    font-size: 1rem;
-    padding: 10px;
-    outline: none;
-  }
-
-  .semester-list {
-    left: -1px;
-    top: 100%;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-  }
-
-  .semester-list li {
-    width: 7.5rem;
-    background: #fff;
-    list-style: none;
-  }
 
 </style>

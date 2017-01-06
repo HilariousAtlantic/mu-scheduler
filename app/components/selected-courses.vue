@@ -31,15 +31,39 @@
 
 </script>
 
-<style>
-
-  .selected-courses li:first-of-type {
-    background: #eee;
-    cursor: default;
-  }
+<style scoped>
 
   .selected-courses {
+
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    overflow-y: scroll;
     max-height: 545px;
+
+    li {
+
+      list-style: none;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+      cursor: pointer;
+
+      &:hover {
+
+        background: #f5f5f5;
+
+      }
+
+      &:first-of-type {
+
+        background: #eee;
+        border: none;
+        cursor: default;
+
+      }
+
+    }
+
   }
 
 </style>
