@@ -100,6 +100,7 @@
 
     border: 1px solid #ddd;
     top: 100%;
+    left: 0;
     margin: 0;
     padding: 0;
     position: absolute;
