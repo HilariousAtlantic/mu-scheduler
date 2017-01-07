@@ -12,7 +12,6 @@ import (
 const (
 	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
 )
-
 const (
 	createCoursesTable = `
 	CREATE TABLE courses (
@@ -21,6 +20,16 @@ const (
 		subject TEXT NOT NULL,
 		number TEXT NOT NULL,
 		credits TEXT NOT NULL
+	);
+	`
+)
+const (
+	createSemestersTable = `
+	CREATE TABLE semesters (
+		id SERIAL PRIMARY KEY,
+		season TEXT NOT NULL,
+		year INT NOT NULL,
+		name TEXT NOT NULL
 	);
 	`
 	insertCourse = `
@@ -64,12 +73,23 @@ func createDatabase() {
 	defer db.Close()
 
 	_, err = db.Exec(createCoursesTable)
+
 	if err != nil {
 		log.Fatalf("%q: %s\n", err, createCoursesTable)
 	}
+	_, err = db.Exec(createSemestersTable)
+
+	if err != nil {
+		log.Fatalf("%q: %s\n", err, createSemestersTable)
+	}
+
 }
 
+func batchInsertSemesters(semesters []*Semester) {
+
+}
 func batchInsertCourses(courses []*Course) {
+	//fmt.Println(courses)
 	existingCourses := map[Course]bool{}
 	db := dbContext.open()
 	tx, err := db.Begin()
