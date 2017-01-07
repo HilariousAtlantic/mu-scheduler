@@ -4,6 +4,7 @@
     <li>{{header}}</li>
     <li v-for="course in courses" @click="selectCourse(course)">
       {{course.subject}} {{course.number}} - {{course.name}}
+      <i class="course-info fa fa-info-circle"></i>
     </li>
   </ul>
 
@@ -49,9 +50,9 @@
   li {
 
     list-style: none;
-    padding: 10px;
     border: 1px solid #ddd;
     border-top: none;
+    padding: 10px;
     cursor: pointer;
 
     &:hover {
@@ -67,6 +68,12 @@
       cursor: default;
 
     }
+
+  }
+
+  .course-info {
+
+    float: right;
 
   }
 
