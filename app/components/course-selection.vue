@@ -125,19 +125,19 @@
 
   }
 
-  h1, h2 {
+  .course-list-container {
 
+    flex: 1;
+    display: flex;
     margin: 10px 0;
-    text-align: center;
 
   }
 
-  .course-list-container {
+  .course-list {
 
-    display: flex;
-    align-items: flex-start;
     flex: 1;
-    margin: 10px 0;
+    max-height: 100%;
+    overflow-y: auto;
 
   }
 

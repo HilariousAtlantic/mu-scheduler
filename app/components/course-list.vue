@@ -35,12 +35,8 @@
 
   .course-list {
 
-    flex: 1;
-    max-height: 100%;
     padding: 0;
     margin: 0;
-    border: 1px solid #ddd;
-    overflow-y: scroll;
 
   }
 
@@ -54,7 +50,8 @@
 
     list-style: none;
     padding: 10px;
-    border-top: 1px solid #ddd;
+    border: 1px solid #ddd;
+    border-top: none;
     cursor: pointer;
 
     &:hover {
@@ -66,7 +63,7 @@
     &:first-of-type {
 
       background: #eee;
-      border: none;
+      border-top: 1px solid #ddd;
       cursor: default;
 
     }
