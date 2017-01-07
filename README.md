@@ -32,6 +32,8 @@ go run server/*.go <args>
 ```
 
 ## Database
+(in main directory)
+
 To create the database
 ```
 ./sb createdb
