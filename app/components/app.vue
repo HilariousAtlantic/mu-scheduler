@@ -12,7 +12,6 @@
 
     </div>
 
-
   </div>
 
 </template>
@@ -33,7 +32,7 @@
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
   .app {
 

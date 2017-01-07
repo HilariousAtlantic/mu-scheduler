@@ -114,7 +114,7 @@
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
   .course-selection {
 
@@ -137,7 +137,6 @@
 
     flex: 1;
 
-
     &:first-of-type {
 
       margin-right: 10px;
@@ -145,7 +144,6 @@
     }
 
   }
-
 
   button {
 

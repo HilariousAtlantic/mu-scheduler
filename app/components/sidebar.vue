@@ -41,7 +41,7 @@
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
   .sidebar {
 
@@ -82,7 +82,7 @@
     &:hover {
 
       color: #555;
-      
+
     }
 
   }
