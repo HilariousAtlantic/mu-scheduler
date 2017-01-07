@@ -38,11 +38,11 @@
     padding: 0;
     margin: 0;
 
-  }
+    &:first-of-type {
 
-  .course-list:first-of-type {
+      padding-right: 10px;
 
-    margin-right: 10px;
+    }
 
   }
 
