@@ -58,9 +58,9 @@
 
   .course-selection {
 
-    padding: 10px;
+    padding: 25px;
     flex: 1;
-    
+
   }
 
 </style>
