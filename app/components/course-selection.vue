@@ -136,8 +136,13 @@
   .course-list {
 
     flex: 1;
-    max-height: 100%;
-    overflow-y: auto;
+
+
+    &:first-of-type {
+
+      margin-right: 10px;
+
+    }
 
   }
 

@@ -1,12 +1,19 @@
 <template>
 
-  <ul class="course-list">
-    <li>{{header}}</li>
-    <li v-for="course in courses" @click="selectCourse(course)">
-      {{course.subject}} {{course.number}} - {{course.name}}
-      <i class="course-info fa fa-info-circle"></i>
-    </li>
-  </ul>
+  <div class="course-list">
+
+    <header>{{header}}</header>
+
+    <ul>
+      <li v-for="course in courses" @click="selectCourse(course)">
+        {{course.subject}} {{course.number}} - {{course.name}}
+        <i class="course-info fa fa-info-circle"></i>
+      </li>
+    </ul>
+
+  </div>
+
+
 
 </template>
 
@@ -36,22 +43,33 @@
 
   .course-list {
 
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  header {
+
+    background: #eee;
+    border: 1px solid #ddd;
+    padding: 10px;
+
+  }
+
+  ul {
+
     padding: 0;
     margin: 0;
-
-    &:first-of-type {
-
-      padding-right: 10px;
-
-    }
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-top: none;
 
   }
 
   li {
 
     list-style: none;
-    border: 1px solid #ddd;
-    border-top: none;
     padding: 10px;
     cursor: pointer;
 
@@ -59,13 +77,11 @@
 
       background: #f5f5f5;
 
-    }
+      .course-info {
 
-    &:first-of-type {
+        display: inline-block;
 
-      background: #eee;
-      border-top: 1px solid #ddd;
-      cursor: default;
+      }
 
     }
 
@@ -73,6 +89,7 @@
 
   .course-info {
 
+    display: none;
     float: right;
 
   }
