@@ -35,9 +35,15 @@ const (
 	insertCourse = `
 	INSERT INTO courses (name, subject, number, credits) VALUES (?, ?, ?, ?)
 	`
+	insertSemester = `
+	INSERT INTO semesterss (season, year, name) VALUES (?, ?, ?, ?)
+	`
 
 	selectCourses = `
 	SELECT id, name, subject, number, credits FROM courses
+	`
+	selectSemesters = `
+	SELECT id, season, year, name FROM semesters
 	`
 )
 
@@ -86,7 +92,31 @@ func createDatabase() {
 }
 
 func batchInsertSemesters(semesters []*Semester) {
+	db := dbContext.open()
+	tx, err := db.Begin()
+	if err != nil {
+		log.Fatal(err)
+	}
+	stmt, err := tx.Prepare(pq.CopyIn("semesters", "season", "year", "name"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer stmt.Close()
+	for _, semester := range semesters {
+		_, err = stmt.Exec(semester.Season, semester.Year, semester.Name)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	_, err = stmt.Exec()
+	if err != nil {
+		log.Fatal(err)
+	}
 
+	err = tx.Commit()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 func batchInsertCourses(courses []*Course) {
 	//fmt.Println(courses)
@@ -115,6 +145,7 @@ func batchInsertCourses(courses []*Course) {
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Fatal(err)
+
 	}
 
 	err = tx.Commit()

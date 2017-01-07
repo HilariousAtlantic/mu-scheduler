@@ -39,6 +39,11 @@ func importCourses() {
 	batchInsertCourses(courses)
 }
 
+func importSemesters() {
+	semesters := []*Semester{&Semester{-1, "Fall", 2016, "Fall 2016"}, &Semester{-1, "Winter", 2016, "Winter 2016"}, &Semester{-1, "Spring", 2017, "Spring 2017"}}
+	batchInsertSemesters(semesters)
+}
+
 func printInvalidCourses(parsed *parsedCoursesJSON) {
 	creditsRegex, _ := regexp.Compile("[\\d.-]")
 	numberRegex, _ := regexp.Compile("\\d+([A-Z])?$")

@@ -7,6 +7,12 @@ type Course struct {
 	Number  string `json:"number"`
 	Credits string `json:"credits"`
 }
+type Semester struct {
+	ID     int    `json:"id"`
+	Season string `json:"Season"`
+	Year   int    `json:"Year"`
+	Name   string `json:"name"`
+}
 type Meet struct {
 	Days       string `json:"days"`
 	Start_time int    `json:"start_time"`
