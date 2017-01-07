@@ -11,8 +11,7 @@ import (
 
 const (
 	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
-)
-const (
+
 	createCoursesTable = `
 	CREATE TABLE courses (
 		id SERIAL PRIMARY KEY,
@@ -22,8 +21,7 @@ const (
 		credits TEXT NOT NULL
 	);
 	`
-)
-const (
+
 	createSemestersTable = `
 	CREATE TABLE semesters (
 		id SERIAL PRIMARY KEY,
@@ -32,6 +30,19 @@ const (
 		name TEXT NOT NULL
 	);
 	`
+
+	createMeetsTable = `
+	CREATE TABLE semesters (
+		days TEXT NOT NULL,
+		start_time INT NOT NULL,
+		end_time INT NOT NULL,
+		instructor TEXT NOT NULL,
+		location TEXT NOT NULL,
+		start_date TEXT NOT NULL,
+		end_date TEXT NOT NULL
+	);
+	`
+
 	insertCourse = `
 	INSERT INTO courses (name, subject, number, credits) VALUES (?, ?, ?, ?)
 	`
@@ -120,6 +131,42 @@ func batchInsertSemesters(semesters []*Semester) {
 }
 func batchInsertCourses(courses []*Course) {
 	//fmt.Println(courses)
+	existingCourses := map[Course]bool{}
+	db := dbContext.open()
+	tx, err := db.Begin()
+	if err != nil {
+		log.Fatal(err)
+	}
+	stmt, err := tx.Prepare(pq.CopyIn("courses", "name", "subject", "number", "credits"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer stmt.Close()
+	for _, course := range courses {
+		if existingCourses[*course] {
+			continue
+		} else {
+			existingCourses[*course] = true
+		}
+		_, err = stmt.Exec(course.Name, course.Subject, course.Number, course.Credits)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	_, err = stmt.Exec()
+	if err != nil {
+		log.Fatal(err)
+
+	}
+
+	err = tx.Commit()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+//needs finishing
+func batchInsertMeets(meets []*Meet) {
 	existingCourses := map[Course]bool{}
 	db := dbContext.open()
 	tx, err := db.Begin()
