@@ -26,7 +26,7 @@
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
   .navbar {
 
@@ -66,6 +66,5 @@
     border-bottom: 1px solid #f5f5f5;
 
   }
-
 
 </style>

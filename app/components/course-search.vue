@@ -3,8 +3,11 @@
   <div class="course-search">
 
     <button type="button" @click="toggleSemesterList">{{selectedSemester}}<i class="fa fa-caret-down"></i></button>
+
     <ul class="semester-list" v-if="showSemesterList">
+
       <li v-for="semester in semesters" @click="selectSemester(semester)">{{semester}}</li>
+      
     </ul>
 
     <input type="text" placeholder="Filter Courses" autocomplete="off" @input="setFilter" />
@@ -58,7 +61,7 @@
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
   .course-search {
 

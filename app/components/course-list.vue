@@ -5,10 +5,14 @@
     <header>{{header}}</header>
 
     <ul>
+
       <li v-for="course in courses" @click="selectCourse(course)">
+
         {{course.subject}} {{course.number}} - {{course.name}}
         <i class="course-info fa fa-info-circle"></i>
+        
       </li>
+
     </ul>
 
   </div>
@@ -39,7 +43,7 @@
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
   .course-list {
 
