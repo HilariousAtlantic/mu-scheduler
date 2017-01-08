@@ -10,17 +10,8 @@ import (
 )
 
 const (
-	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
 
-	createCoursesTable = `
-	CREATE TABLE courses (
-		id SERIAL PRIMARY KEY,
-		name TEXT NOT NULL,
-		subject TEXT NOT NULL,
-		number TEXT NOT NULL,
-		credits TEXT NOT NULL
-	);
-	`
+	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
 
 	createSemestersTable = `
 	CREATE TABLE semesters (
@@ -31,11 +22,33 @@ const (
 	);
 	`
 
+	createCoursesTable = `
+	CREATE TABLE courses (
+		id SERIAL PRIMARY KEY,
+		semester_id INT NOT NULL,
+		name TEXT NOT NULL,
+		subject TEXT NOT NULL,
+		number TEXT NOT NULL,
+		credits TEXT NOT NULL
+	);
+	`
+
+	createSectionsTable = `
+	CREATE TABLE sections (
+		id INT PRIMARY KEY,
+		course_id INT NOT NULL,
+		section TEXT NOT NULL,
+		campus TEXT NOT NULL
+	);
+	`
+
 	createMeetsTable = `
-	CREATE TABLE semesters (
+	CREATE TABLE meets (
+		id SERIAL PRIMARY KEY,
+		section_id INT NOT NULL,
 		days TEXT NOT NULL,
-		start_time INT NOT NULL,
-		end_time INT NOT NULL,
+		start_time TEXT NOT NULL,
+		end_time TEXT NOT NULL,
 		instructor TEXT NOT NULL,
 		location TEXT NOT NULL,
 		start_date TEXT NOT NULL,
@@ -46,16 +59,19 @@ const (
 	insertCourse = `
 	INSERT INTO courses (name, subject, number, credits) VALUES (?, ?, ?, ?)
 	`
+
 	insertSemester = `
-	INSERT INTO semesterss (season, year, name) VALUES (?, ?, ?, ?)
+	INSERT INTO semesterss (season, year, name) VALUES (?, ?, ?)
 	`
 
 	selectCourses = `
 	SELECT id, name, subject, number, credits FROM courses
 	`
+
 	selectSemesters = `
 	SELECT id, season, year, name FROM semesters
 	`
+
 )
 
 type DB struct {
@@ -76,28 +92,47 @@ func (d *DB) open() *sql.DB {
 }
 
 func createDatabase() {
+
 	fmt.Println("Creating database...")
 
 	output, err := exec.Command("createdb", "schedule_buddy", "-U", "schedule_buddy").CombinedOutput()
+
 	if err != nil {
+
 		fmt.Println(string(output))
 		log.Fatal(err)
+
 	} else {
+
 		fmt.Println("Database created")
+
 	}
 
 	db := dbContext.open()
 	defer db.Close()
+
+	_, err = db.Exec(createSemestersTable)
+
+	if err != nil {
+		log.Fatalf("%q: %s\n", err, createSemestersTable)
+	}
 
 	_, err = db.Exec(createCoursesTable)
 
 	if err != nil {
 		log.Fatalf("%q: %s\n", err, createCoursesTable)
 	}
-	_, err = db.Exec(createSemestersTable)
+
+	_, err = db.Exec(createSectionsTable)
 
 	if err != nil {
-		log.Fatalf("%q: %s\n", err, createSemestersTable)
+		log.Fatalf("%q: %s\n", err, createSectionsTable)
+	}
+
+	_, err = db.Exec(createMeetsTable)
+
+	if err != nil {
+		log.Fatalf("%q: %s\n", err, createMeetsTable)
 	}
 
 }
@@ -129,6 +164,7 @@ func batchInsertSemesters(semesters []*Semester) {
 		log.Fatal(err)
 	}
 }
+
 func batchInsertCourses(courses []*Course) {
 	//fmt.Println(courses)
 	existingCourses := map[Course]bool{}
