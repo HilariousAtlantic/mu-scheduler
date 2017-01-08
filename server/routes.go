@@ -11,10 +11,14 @@ func startServer() {
 	e := echo.New()
 
 	e.File("/", "index.html")
+	e.File("/courses", "index.html")
+	e.File("/schedules", "index.html")
 	e.Static("/dist", "dist")
 
-	e.GET("/courses", coursesIndex)
-	e.GET("/semesters", semestersIndex)
+	api := e.Group("/api")
+
+	api.GET("/courses", coursesIndex)
+	api.GET("/semesters", semestersIndex)
 
 	fmt.Println("Starting server on http://localhost:8000")
 
