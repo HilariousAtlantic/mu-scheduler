@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 
-import App from './app.vue';
+import App from './components/app.vue';
 import CourseSelection from './pages/course-selection.vue';
 import ScheduleSelection from './pages/schedule-selection.vue';
 
