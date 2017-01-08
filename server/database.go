@@ -40,6 +40,7 @@ const (
 		location TEXT NOT NULL,
 		start_date TEXT NOT NULL,
 		end_date TEXT NOT NULL
+		section_id INT NOT NULL
 	);
 	`
 
@@ -178,7 +179,7 @@ func batchInsertMeets(meets []*Meet) {
 		log.Fatal(err)
 	}
 	defer stmt.Close()
-	for _, course := range courses {
+	for _, course := range meets {
 		if existingCourses[*course] {
 			continue
 		} else {
