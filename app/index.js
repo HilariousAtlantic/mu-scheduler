@@ -13,11 +13,11 @@ let router = new VueRouter({
 
   routes: [
 
-    {path: '/', component: App, children: [
+    {path: '/', redirect: '/courses', component: App, children: [
 
-      {path: 'courses', component: CourseSelection, alias: ''},
+      {path: '/courses', component: CourseSelection},
 
-      {path: 'schedules', component: ScheduleSelection}
+      {path: '/schedules', component: ScheduleSelection}
 
     ]}
 
