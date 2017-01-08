@@ -52,12 +52,11 @@ const (
 		location TEXT NOT NULL,
 		start_date TEXT NOT NULL,
 		end_date TEXT NOT NULL
-		section_id INT NOT NULL
 	);
 	`
 
 	insertCourse = `
-	INSERT INTO courses (name, subject, number, credits) VALUES (?, ?, ?, ?)
+	INSERT INTO courses (semester_id, name, subject, number, credits) VALUES (?, ?, ?, ?, ?)
 	`
 
 	insertSemester = `
@@ -65,7 +64,7 @@ const (
 	`
 
 	selectCourses = `
-	SELECT id, name, subject, number, credits FROM courses
+	SELECT id, semester_id, name, subject, number, credits FROM courses
 	`
 
 	selectSemesters = `
@@ -172,7 +171,7 @@ func batchInsertCourses(courses []*Course) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("courses", "name", "subject", "number", "credits"))
+	stmt, err := tx.Prepare(pq.CopyIn("courses", "semester_id", "name", "subject", "number", "credits"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -183,7 +182,7 @@ func batchInsertCourses(courses []*Course) {
 		} else {
 			existingCourses[*course] = true
 		}
-		_, err = stmt.Exec(course.Name, course.Subject, course.Number, course.Credits)
+		_, err = stmt.Exec(course.Semester, course.Name, course.Subject, course.Number, course.Credits)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -268,6 +267,29 @@ func filterCourses(filters map[string][]string) {
 	//finish query, etc
 }
 
+func getSemestersFromDB() []*Semester {
+	var semesters []*Semester
+	db := dbContext.open()
+	rows, err := db.Query(selectSemesters)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		semester := &Semester{}
+		err = rows.Scan(&semester.ID, &semester.Season, &semester.Year, &semester.Name)
+		if err != nil {
+			log.Fatal(err)
+		}
+		semesters = append(semesters, semester)
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return semesters
+}
+
 func getCoursesFromDB() []*Course {
 	var courses []*Course
 	db := dbContext.open()
@@ -278,7 +300,7 @@ func getCoursesFromDB() []*Course {
 	defer rows.Close()
 	for rows.Next() {
 		course := &Course{}
-		err = rows.Scan(&course.ID, &course.Name, &course.Subject, &course.Number, &course.Credits)
+		err = rows.Scan(&course.ID, &course.Semester, &course.Name, &course.Subject, &course.Number, &course.Credits)
 		if err != nil {
 			log.Fatal(err)
 		}

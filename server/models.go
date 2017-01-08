@@ -2,6 +2,7 @@ package main
 
 type Course struct {
 	ID      int    `json:"id"`
+	Semester int `json:"semester_id"`
 	Name    string `json:"name"`
 	Subject string `json:"subject"`
 	Number  string `json:"number"`
@@ -49,6 +50,7 @@ func getCoursesFromJSON(parsed *parsedCoursesJSON) []*Course {
 	for _, course := range *parsed {
 		c := &Course{
 			ID:      -1,
+			Semester: 3,
 			Name:    course.Title,
 			Subject: course.Subject,
 			Number:  course.Number,

@@ -14,6 +14,7 @@ func startServer() {
 	e.Static("/dist", "dist")
 
 	e.GET("/courses", coursesIndex)
+	e.GET("/semesters", semestersIndex)
 
 	fmt.Println("Starting server on http://localhost:8000")
 
@@ -23,4 +24,9 @@ func startServer() {
 func coursesIndex(c echo.Context) error {
 	courses := getCoursesFromDB()
 	return c.JSON(http.StatusOK, courses)
+}
+
+func semestersIndex(c echo.Context) error {
+	semesters := getSemestersFromDB()
+	return c.JSON(http.StatusOK, semesters)
 }
