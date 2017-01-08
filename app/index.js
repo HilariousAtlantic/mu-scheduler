@@ -9,11 +9,13 @@ Vue.use(VueRouter);
 
 let router = new VueRouter({
 
+  mode: 'history',
+
   routes: [
 
     {path: '/', component: App, children: [
 
-      {path: 'courses', component: CourseSelection},
+      {path: 'courses', component: CourseSelection, alias: ''},
 
       {path: 'schedules', component: ScheduleSelection}
 

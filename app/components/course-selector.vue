@@ -58,7 +58,7 @@
 
     mounted() {
 
-      axios.get('/courses').then(response => this.courses = response.data);
+      axios.get('/api/courses').then(response => this.courses = response.data);
 
     },
 
