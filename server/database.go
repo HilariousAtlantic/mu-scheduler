@@ -201,6 +201,7 @@ func batchInsertCourses(courses []*Course) {
 }
 
 //needs finishing
+/*
 func batchInsertMeets(meets []*Meet) {
 	existingCourses := map[Course]bool{}
 	db := dbContext.open()
@@ -213,16 +214,7 @@ func batchInsertMeets(meets []*Meet) {
 		log.Fatal(err)
 	}
 	defer stmt.Close()
-	for _, course := range courses {
-		if existingCourses[*course] {
-			continue
-		} else {
-			existingCourses[*course] = true
-		}
-		_, err = stmt.Exec(course.Name, course.Subject, course.Number, course.Credits)
-		if err != nil {
-			log.Fatal(err)
-		}
+	for _, meeet := range meets {
 	}
 	_, err = stmt.Exec()
 	if err != nil {
@@ -235,6 +227,7 @@ func batchInsertMeets(meets []*Meet) {
 		log.Fatal(err)
 	}
 }
+*/
 
 //UNFINISHED function for filtering
 //map["filter name"] []list of things to be filtered
