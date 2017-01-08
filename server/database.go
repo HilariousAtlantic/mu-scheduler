@@ -35,7 +35,7 @@ const (
 	createSectionsTable = `
 	CREATE TABLE sections (
 		id INT PRIMARY KEY,
-		course_id INT NOT NULL,
+		section_id TEXT NOT NULL,
 		section TEXT NOT NULL,
 		campus TEXT NOT NULL
 	);
@@ -60,7 +60,15 @@ const (
 	`
 
 	insertSemester = `
-	INSERT INTO semesterss (season, year, name) VALUES (?, ?, ?)
+	INSERT INTO semesters (season, year, name) VALUES (?, ?, ?)
+	`
+
+	insertSection = `
+	INSERT INTO sections (section_id, section,campus) VALUES (?, ?, ?)
+	`
+
+	selectSections = `
+	SELECT * FROM sections
 	`
 
 	selectCourses = `
@@ -198,6 +206,34 @@ func batchInsertCourses(courses []*Course) {
 		log.Fatal(err)
 	}
 }
+func batchInsertSections(sections []*Section) {
+	db := dbContext.open()
+	tx, err := db.Begin()
+	if err != nil {
+		log.Fatal(err)
+	}
+	stmt, err := tx.Prepare(pq.CopyIn("sections", "section_id", "section", "campus"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer stmt.Close()
+	for _, section := range sections {
+		_, err = stmt.Exec(section.Section_id, section.Section, section.Campus)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	_, err = stmt.Exec()
+	if err != nil {
+		log.Fatal(err)
+
+	}
+
+	err = tx.Commit()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 
 //needs finishing
 /*
@@ -265,6 +301,29 @@ func filterCourses(filters map[string][]string) {
 	}
 	fmt.Println(rows)
 	//finish query, etc
+}
+
+func getSectionsFromDB() []*Section {
+	var sections []*Section
+	db := dbContext.open()
+	rows, err := db.Query(selectSections)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		section := &Section{}
+		err = rows.Scan(&section.ID, &section.Section_id, &section.Section, &section.Campus)
+		if err != nil {
+			log.Fatal(err)
+		}
+		sections = append(sections, section)
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return sections
 }
 
 func getSemestersFromDB() []*Semester {

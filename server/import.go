@@ -37,7 +37,7 @@ func importCourses() {
 	courses := getCoursesFromJSON(&parsed)
 	sections := getSectionsFromJSON(&parsed)
 	batchInsertCourses(courses)
-
+	batchInsertSections(sections)
 }
 
 func importSemesters() {

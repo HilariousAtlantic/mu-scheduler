@@ -1,12 +1,12 @@
 package main
 
 type Course struct {
-	ID      int    `json:"id"`
-	Semester int `json:"semester_id"`
-	Name    string `json:"name"`
-	Subject string `json:"subject"`
-	Number  string `json:"number"`
-	Credits string `json:"credits"`
+	ID       int    `json:"id"`
+	Semester int    `json:"semester_id"`
+	Name     string `json:"name"`
+	Subject  string `json:"subject"`
+	Number   string `json:"number"`
+	Credits  string `json:"credits"`
 }
 type Semester struct {
 	ID     int    `json:"id"`
@@ -24,7 +24,7 @@ type Meet struct {
 	End_date   string `json:"end_date"`
 }
 type Section struct {
-	ID         string `json:"id"`
+	ID         int    `json:"id"`
 	Section_id string `json:"section_id"`
 	Section    string `json:"section"`
 	Campus     string `json:"campus"`
@@ -49,12 +49,12 @@ func getCoursesFromJSON(parsed *parsedCoursesJSON) []*Course {
 	courses := make([]*Course, 0)
 	for _, course := range *parsed {
 		c := &Course{
-			ID:      -1,
+			ID:       -1,
 			Semester: 3,
-			Name:    course.Title,
-			Subject: course.Subject,
-			Number:  course.Number,
-			Credits: course.Credits,
+			Name:     course.Title,
+			Subject:  course.Subject,
+			Number:   course.Number,
+			Credits:  course.Credits,
 		}
 		courses = append(courses, c)
 	}
