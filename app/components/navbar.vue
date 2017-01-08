@@ -6,9 +6,9 @@
 
     <ul>
 
-      <li class="active">Courses</li>
+      <li><router-link to="/courses">Courses</router-link></li>
 
-      <li>Schedules</li>
+      <li><router-link to="/schedules">Schedules</router-link></li>
 
     </ul>
 
@@ -35,6 +35,12 @@
 
   }
 
+  .router-link-active {
+
+    border-bottom: 1px solid #f5f5f5;
+
+  }
+
   a {
 
     font-size: 1.25rem;
@@ -55,15 +61,14 @@
 
     display: inline-block;
     list-style: none;
-    color: #f5f5f5;
-    line-height: 1.25rem;
     margin-left: 10px;
 
   }
 
-  li.active {
+  li a {
 
-    border-bottom: 1px solid #f5f5f5;
+    font-size: 1rem;
+    line-height: 1.25rem;
 
   }
 

@@ -1,6 +1,6 @@
 <template>
 
-  <div class="course-selection">
+  <div class="course-selector">
 
     <course-search
       :semesters="semesters"
@@ -40,7 +40,7 @@
 
   export default {
 
-    name: 'course-selection',
+    name: 'course-selector',
 
     components: {CourseSearch, CourseList},
 
@@ -116,7 +116,7 @@
 
 <style lang="postcss" scoped>
 
-  .course-selection {
+  .course-selector {
 
     display: flex;
     flex-direction: column;
