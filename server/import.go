@@ -34,9 +34,10 @@ func importCourses() {
 	var parsed parsedCoursesJSON
 	json.Unmarshal(data, &parsed)
 	printInvalidCourses(&parsed)
-
 	courses := getCoursesFromJSON(&parsed)
+	sections := getSectionsFromJSON(&parsed)
 	batchInsertCourses(courses)
+
 }
 
 func importSemesters() {

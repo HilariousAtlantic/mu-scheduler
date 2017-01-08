@@ -24,10 +24,10 @@ type Meet struct {
 	End_date   string `json:"end_date"`
 }
 type Section struct {
-	ID        string `json:"id"`
-	Course_id string `json:"course_id"`
-	Section   string `json:"section"`
-	Campus    string `json:"campus"`
+	ID         string `json:"id"`
+	Section_id string `json:"section_id"`
+	Section    string `json:"section"`
+	Campus     string `json:"campus"`
 }
 
 func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
@@ -35,10 +35,10 @@ func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 	sections := make([]*Section, 0)
 	for _, section := range *parsed {
 		s := &Section{
-			ID:        section.ID,
-			Course_id: section.Number,
-			Section:   section.Section,
-			Campus:    section.Campus,
+			ID:         -1,
+			Section_id: section.ID,
+			Section:    section.Section,
+			Campus:     section.Campus,
 		}
 		sections = append(sections, s)
 	}
