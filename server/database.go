@@ -44,7 +44,7 @@ const (
 	createMeetsTable = `
 	CREATE TABLE meets (
 		id SERIAL PRIMARY KEY,
-		section_id INT NOT NULL,
+		section_id TEXT NOT NULL,
 		days TEXT NOT NULL,
 		start_time TEXT NOT NULL,
 		end_time TEXT NOT NULL,
@@ -58,25 +58,27 @@ const (
 	insertCourse = `
 	INSERT INTO courses (semester_id, name, subject, number, credits) VALUES (?, ?, ?, ?, ?)
 	`
-
 	insertSemester = `
 	INSERT INTO semesters (season, year, name) VALUES (?, ?, ?)
 	`
-
 	insertSection = `
 	INSERT INTO sections (section_id, section,campus) VALUES (?, ?, ?)
 	`
-
+	insertMeet = `
+	INSERT INTO sections (section_id, days, start_time, end_time, instructor, location, start_date, end_date)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+	`
+	selectMeets = `
+	SELECT * FROM meets
+	`
 	selectSections = `
 	SELECT * FROM sections
 	`
-
 	selectCourses = `
-	SELECT id, semester_id, name, subject, number, credits FROM courses
+	SELECT * FROM courses 
 	`
-
 	selectSemesters = `
-	SELECT id, season, year, name FROM semesters
+	SELECT * FROM semesters
 	`
 )
 
@@ -235,34 +237,35 @@ func batchInsertSections(sections []*Section) {
 	}
 }
 
-//needs finishing
-/*
 func batchInsertMeets(meets []*Meet) {
-	existingCourses := map[Course]bool{}
 	db := dbContext.open()
 	tx, err := db.Begin()
 	if err != nil {
 		log.Fatal(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("courses", "name", "subject", "number", "credits"))
+	stmt, err := tx.Prepare(pq.CopyIn("section_id", "days", "start_time", "end_time", "instructor",
+		"location", "start_date", "end_date"))
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer stmt.Close()
-	for _, meeet := range meets {
+	for _, meet := range meets {
+		_, err = stmt.Exec(meet.Section_id, meet.Days, meet.Start_time, meet.End_time, meet.Instructor,
+			meet.Location, meet.Start_date, meet.End_date)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Fatal(err)
 
 	}
-
 	err = tx.Commit()
 	if err != nil {
 		log.Fatal(err)
 	}
 }
-*/
 
 //UNFINISHED function for filtering
 //map["filter name"] []list of things to be filtered
@@ -347,6 +350,30 @@ func getSemestersFromDB() []*Semester {
 		log.Fatal(err)
 	}
 	return semesters
+}
+
+func getMeetsFromDB() []*Meet {
+	var meets []*Meet
+	db := dbContext.open()
+	rows, err := db.Query(selectMeets)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		meet := &Meet{}
+		err = rows.Scan(&meet.ID, &meet.Section_id, &meet.Days, &meet.Start_time,
+			&meet.End_time, &meet.Instructor, &meet.Location, &meet.Start_date, &meet.End_date)
+		if err != nil {
+			log.Fatal(err)
+		}
+		meets = append(meets, meet)
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return meets
 }
 
 func getCoursesFromDB() []*Course {

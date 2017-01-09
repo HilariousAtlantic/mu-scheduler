@@ -15,6 +15,8 @@ type Semester struct {
 	Name   string `json:"name"`
 }
 type Meet struct {
+	ID         int    `json:"id"`
+	Section_id string `json:"days"`
 	Days       string `json:"days"`
 	Start_time int    `json:"start_time"`
 	End_time   int    `json:"end_time"`
@@ -30,6 +32,27 @@ type Section struct {
 	Campus     string `json:"campus"`
 }
 
+func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
+
+	meets := make([]*Meet, 0)
+	for _, course := range *parsed {
+		for _, meet := range course.Meets {
+			m := &Meet{
+				ID:         -1,
+				Section_id: course.ID,
+				Days:       meet.Days,
+				Start_time: -1,
+				End_time:   -1,
+				Instructor: meet.Instructor,
+				Location:   meet.Location,
+				Start_date: "Not set in import.go",
+				End_date:   "Not set in import.go",
+			}
+			meets = append(meets, m)
+		}
+	}
+	return meets
+}
 func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 
 	sections := make([]*Section, 0)
@@ -60,16 +83,3 @@ func getCoursesFromJSON(parsed *parsedCoursesJSON) []*Course {
 	}
 	return courses
 }
-
-//un-finished funciton, coming back later.
-/*
-func getMeetsFropmJSON(parsed *parsedCoursesJSON) []*Meet {
-	meets := make([]*Meet, 0)
-	for _, meet := range *parsed {
-		m := &Meet{
-			fmt.Printf(m)
-		}
-
-	}
-}
-*/

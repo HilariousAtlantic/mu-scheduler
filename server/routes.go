@@ -34,3 +34,13 @@ func semestersIndex(c echo.Context) error {
 	semesters := getSemestersFromDB()
 	return c.JSON(http.StatusOK, semesters)
 }
+
+func sectionsIndex(c echo.Context) error {
+	sections := getSectionsFromDB()
+	return c.JSON(http.StatusOK, sections)
+}
+
+func meetsIndex(c echo.Context) error {
+	meets := getMeetsFromDB()
+	return c.JSON(http.StatusOK, meets)
+}

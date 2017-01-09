@@ -36,8 +36,10 @@ func importCourses() {
 	printInvalidCourses(&parsed)
 	courses := getCoursesFromJSON(&parsed)
 	sections := getSectionsFromJSON(&parsed)
+	meets := getMeetsFromJSON(&parsed)
 	batchInsertCourses(courses)
 	batchInsertSections(sections)
+	batchInsertMeets(meets)
 }
 
 func importSemesters() {
