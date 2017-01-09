@@ -18,7 +18,13 @@
 
     name: 'app',
 
-    components: {Navbar}
+    components: {Navbar},
+
+    mounted() {
+
+      this.$store.dispatch('fetchSemesters');
+
+    }
 
   }
 

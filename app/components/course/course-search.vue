@@ -6,8 +6,8 @@
 
     <ul class="semester-list" v-if="showSemesterList">
 
-      <li v-for="semester in semesters" @click="selectSemester(semester)">{{semester}}</li>
-      
+      <li v-for="semester in $store.state.semesters" @click="selectSemester(semester)">{{semester.name}}</li>
+
     </ul>
 
     <input type="text" placeholder="Filter Courses" autocomplete="off" @input="setFilter" />
@@ -22,8 +22,6 @@
 
     name: 'course-search',
 
-    props: ['semesters', 'selectedSemester'],
-
     data() {
 
       return {
@@ -34,18 +32,30 @@
 
     },
 
+    computed: {
+
+      selectedSemester() {
+
+        let semester = this.$store.state.selectedSemester;
+
+        return semester ? semester.name : 'Select Semester';
+
+      }
+
+    },
+
     methods: {
 
       selectSemester(semester) {
 
-        this.$emit('selectSemester', semester);
+        this.$store.dispatch('selectSemester', semester);
         this.showSemesterList = false;
 
       },
 
       setFilter(event) {
 
-        this.$emit('changeFilter', event.target.value);
+        this.$store.dispatch('setFilter', event.target.value);
 
       },
 
@@ -102,6 +112,7 @@
   .semester-list {
 
     border: 1px solid #ddd;
+    border-top: none;
     top: 100%;
     left: 0;
     margin: 0;
@@ -114,7 +125,6 @@
   li {
 
     padding: 10px;
-    border-top: 1px solid #ddd;
     cursor: pointer;
     background: #fff;
     list-style: none;
@@ -122,12 +132,6 @@
     &:hover {
 
       background: #f5f5f5;
-
-    }
-
-    &first-of-type {
-
-      border: none;
 
     }
 

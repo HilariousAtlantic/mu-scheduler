@@ -2,25 +2,20 @@
 
   <div class="course-selector">
 
-    <course-search
-      :semesters="semesters"
-      :selectedSemester="selectedSemester"
-      @selectSemester="onSemesterSelect"
-      @changeFilter="onFilterChange"
-    ></course-search>
+    <course-search></course-search>
 
     <div class="course-list-container">
 
       <course-list
-        :header="'Course List for ' + selectedSemester"
+        :header="'Course List' + selectedSemester"
         :courses="filteredCourses"
-        @clickCourse="onCourseSelect"
+        dispatch="selectCourse"
       ></course-list>
 
       <course-list
-        :header="'Selected Courses for ' + selectedSemester"
-        :courses="selectedCourses"
-        @clickCourse="onCourseUnselect"
+        :header="'Selected Courses' + selectedSemester"
+        :courses="$store.state.selectedCourses"
+        dispatch="deselectCourse"
       ></course-list>
 
     </div>
@@ -33,8 +28,6 @@
 
 <script>
 
-  import axios from 'axios';
-
   import CourseSearch from './course-search.vue';
   import CourseList from './course-list.vue';
 
@@ -44,66 +37,34 @@
 
     components: {CourseSearch, CourseList},
 
-    data() {
-
-      return {
-        semesters: ['Fall 2016', 'Winter 2017', 'Spring 2017', 'Summer 2017'],
-        courses: [],
-        selectedCourses: [],
-        selectedSemester: 'Spring 2017',
-        filter: ''
-      }
-
-    },
-
-    mounted() {
-
-      axios.get('/api/courses').then(response => this.courses = response.data);
-
-    },
-
-    methods: {
-
-      onCourseSelect(course) {
-
-        if (this.selectedCourses.indexOf(course) == -1) {
-          this.selectedCourses.push(course);
-        }
-
-      },
-
-      onCourseUnselect(course) {
-
-        let index = this.selectedCourses.indexOf(course);
-
-        if (index != -1) {
-          this.selectedCourses.splice(index, 1);
-        }
-
-      },
-
-      onSemesterSelect(semester) {
-
-        this.selectedSemester = semester;
-
-      },
-
-      onFilterChange(filter) {
-
-        this.filter = filter;
-
-      }
-
-    },
-
     computed: {
+
+      selectedSemester() {
+
+        let semester = this.$store.state.selectedSemester;
+
+        return semester ? ' for ' + semester.name : '';
+
+      },
 
       filteredCourses() {
 
+        let semester = this.$store.state.selectedSemester;
+
+        if (!semester) {
+          return [];
+        }
+
+        let courses = this.$store.state.courses[semester.id];
+
+        if (!courses) {
+          return [];
+        }
+
         let trim = (term) => term.toLowerCase().replace(/\W+/g, '');
 
-        return this.courses.filter(({subject, number, name}) =>
-          trim(subject+number+name).indexOf(trim(this.filter)) != -1
+        return courses.filter(({subject, number, name}) =>
+          trim(subject+number+name).indexOf(trim(this.$store.state.coursesFilter)) != -1
         );
 
       }

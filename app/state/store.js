@@ -1,18 +1,22 @@
 import Vuex from 'vuex';
 
+import mutations from './mutations';
+import actions from './actions';
+
 export default function createStore() {
 
-  return new Vuex.Store({
+  return new Vuex.Store({mutations, actions,
 
     state: {
 
       semesters: [],
-      courses: [],
+      courses: {},
 
-      selectedSemester: {},
+      selectedSemester: null,
       selectedCourses: [],
 
-      coursesFilter: ''
+      coursesFilter: '',
+      requestingCourses: false
 
     }
 

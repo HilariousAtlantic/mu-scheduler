@@ -6,11 +6,11 @@
 
     <ul>
 
-      <li v-for="course in courses" @click="selectCourse(course)">
+      <li v-for="course in courses" @click="onCourseClick(course)">
 
         {{course.subject}} {{course.number}} - {{course.name}}
         <i class="course-info fa fa-info-circle"></i>
-        
+
       </li>
 
     </ul>
@@ -27,13 +27,13 @@
 
     name: 'course-list',
 
-    props: ['header', 'courses'],
+    props: ['header', 'courses', 'dispatch'],
 
     methods: {
 
-      selectCourse(course) {
+      onCourseClick(course) {
 
-        this.$emit('clickCourse', course);
+        this.$store.dispatch(this.dispatch, course);
 
       }
 
