@@ -1,12 +1,12 @@
 <template>
 
-  <div class="course-list">
+  <div class="filtered-courses">
 
-    <header>{{header}}</header>
+    <header>Course List {{selectedSemester}}</header>
 
     <ul v-if="!$store.state.requestingCourses">
 
-      <li v-for="course in courses" @click="onCourseClick(course)">
+      <li v-for="course in filteredCourses" @click="onCourseClick(course)">
 
         {{course.subject}} {{course.number}} - {{course.name}}
         <i class="course-info fa fa-info-circle"></i>
@@ -29,15 +29,35 @@
 
   export default {
 
-    name: 'course-list',
-
-    props: ['header', 'courses', 'dispatch'],
+    name: 'filtered-courses',
 
     methods: {
 
       onCourseClick(course) {
 
-        this.$store.dispatch(this.dispatch, course);
+        this.$store.dispatch('selectCourse', course);
+
+      }
+
+    },
+
+    computed: {
+
+      selectedSemester() {
+
+        let semester = this.$store.state.selectedSemester;
+
+        return semester ? 'for ' + semester.name : '';
+
+      },
+
+      filteredCourses() {
+
+        let trim = (term) => term.toLowerCase().replace(/\W+/g, '');
+
+        return this.$store.state.courses.filter(({subject, number, name}) =>
+          trim(subject+number+name).indexOf(trim(this.$store.state.coursesFilter)) != -1
+        );
 
       }
 
@@ -49,7 +69,7 @@
 
 <style lang="postcss" scoped>
 
-  .course-list {
+  .filtered-courses {
 
     display: flex;
     flex-direction: column;

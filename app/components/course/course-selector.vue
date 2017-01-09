@@ -6,17 +6,9 @@
 
     <div class="course-list-container">
 
-      <course-list
-        :header="'Course List' + selectedSemester"
-        :courses="filteredCourses"
-        dispatch="selectCourse"
-      ></course-list>
+      <filtered-courses></filtered-courses>
 
-      <course-list
-        :header="'Selected Courses' + selectedSemester"
-        :courses="$store.state.selectedCourses"
-        dispatch="deselectCourse"
-      ></course-list>
+      <selected-courses></selected-courses>
 
     </div>
 
@@ -29,13 +21,14 @@
 <script>
 
   import CourseSearch from './course-search.vue';
-  import CourseList from './course-list.vue';
+  import FilteredCourses from './filtered-courses.vue';
+  import SelectedCourses from './selected-courses.vue';
 
   export default {
 
     name: 'course-selector',
 
-    components: {CourseSearch, CourseList},
+    components: {CourseSearch, FilteredCourses, SelectedCourses},
 
     computed: {
 
@@ -82,15 +75,16 @@
 
   }
 
-  .course-list {
+  .filtered-courses {
 
     flex: 1;
+    margin-right: 10px;
 
-    &:first-of-type {
+  }
 
-      margin-right: 10px;
+  .selected-courses {
 
-    }
+    flex: 1;
 
   }
 
