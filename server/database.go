@@ -35,7 +35,6 @@ const (
 	createSectionsTable = `
 	CREATE TABLE sections (
 		id SERIAL PRIMARY KEY,
-		section_id TEXT NOT NULL,
 		section TEXT NOT NULL,
 		campus TEXT NOT NULL
 	);
@@ -62,10 +61,10 @@ const (
 	INSERT INTO semesters (season, year, name) VALUES (?, ?, ?)
 	`
 	insertSection = `
-	INSERT INTO sections (section_id, section,campus) VALUES (?, ?, ?)
+	INSERT INTO sections (section,campus) VALUES (?, ?)
 	`
 	insertMeet = `
-	INSERT INTO sections (section_id, days, start_time, end_time, instructor, location, start_date, end_date)
+	INSERT INTO meets (section_id, days, start_time, end_time, instructor, location, start_date, end_date)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 	`
 	selectMeets = `
@@ -201,15 +200,13 @@ func batchInsertSections(sections []*Section) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("sections", "section_id", "section", "campus"))
+	stmt, err := tx.Prepare(pq.CopyIn("sections", "section", "campus"))
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer stmt.Close()
 	for _, section := range sections {
-		_, err = stmt.Exec(section.Section_id,
-			section.Section,
-			section.Campus)
+		_, err = stmt.Exec(section.Section, section.Campus)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -311,7 +308,6 @@ func getSectionsFromDB() []*Section {
 	for rows.Next() {
 		section := &Section{}
 		err = rows.Scan(&section.ID,
-			&section.Section_id,
 			&section.Section,
 			&section.Campus)
 		if err != nil {
