@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo"
 )
@@ -26,8 +27,11 @@ func startServer() {
 }
 
 func coursesIndex(c echo.Context) error {
-	courses := getCoursesFromDB()
+
+	semester := c.QueryParam("semester")
+	courses := getCoursesFromDB(semester)
 	return c.JSON(http.StatusOK, courses)
+
 }
 
 func semestersIndex(c echo.Context) error {
