@@ -34,7 +34,7 @@ const (
 
 	createSectionsTable = `
 	CREATE TABLE sections (
-		id INT PRIMARY KEY,
+		id SERIAL PRIMARY KEY,
 		section_id TEXT NOT NULL,
 		section TEXT NOT NULL,
 		campus TEXT NOT NULL
@@ -206,6 +206,7 @@ func batchInsertCourses(courses []*Course) {
 		log.Fatal(err)
 	}
 }
+
 func batchInsertSections(sections []*Section) {
 	db := dbContext.open()
 	tx, err := db.Begin()
@@ -226,7 +227,6 @@ func batchInsertSections(sections []*Section) {
 	_, err = stmt.Exec()
 	if err != nil {
 		log.Fatal(err)
-
 	}
 
 	err = tx.Commit()
