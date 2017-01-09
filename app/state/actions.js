@@ -20,9 +20,15 @@ export default {
 
     commit('SELECT_SEMESTER', semester);
 
-    if (!state.courses[semester.name]) {
+    let courses = state.coursesCache[semester.id];
 
-      commit('REQUEST_COURSES', semester);
+    if (courses) {
+
+      commit('RECEIVE_COURSES', {semester, courses});
+
+    } else {
+
+      commit('REQUEST_COURSES');
 
       axios.get('/api/courses').then(response => {
 

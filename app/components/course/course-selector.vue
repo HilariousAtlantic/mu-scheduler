@@ -49,21 +49,9 @@
 
       filteredCourses() {
 
-        let semester = this.$store.state.selectedSemester;
-
-        if (!semester) {
-          return [];
-        }
-
-        let courses = this.$store.state.courses[semester.id];
-
-        if (!courses) {
-          return [];
-        }
-
         let trim = (term) => term.toLowerCase().replace(/\W+/g, '');
 
-        return courses.filter(({subject, number, name}) =>
+        return this.$store.state.courses.filter(({subject, number, name}) =>
           trim(subject+number+name).indexOf(trim(this.$store.state.coursesFilter)) != -1
         );
 

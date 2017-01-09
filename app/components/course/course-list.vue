@@ -4,7 +4,7 @@
 
     <header>{{header}}</header>
 
-    <ul>
+    <ul v-if="!$store.state.requestingCourses">
 
       <li v-for="course in courses" @click="onCourseClick(course)">
 
@@ -14,6 +14,10 @@
       </li>
 
     </ul>
+
+    <div class="loader-wrapper" v-if="$store.state.requestingCourses">
+      <div class="loader"></div>
+    </div>
 
   </div>
 
@@ -95,6 +99,38 @@
 
     display: none;
     float: right;
+
+  }
+
+  .loader-wrapper {
+
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-top: none;
+
+  }
+
+  .loader {
+
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ddd;
+    border-bottom: 5px solid #444;
+    border-radius: 90px;
+    animation: spin 1s linear infinite;
+
+  }
+
+  @keyframes spin {
+
+    to {
+
+      transform: rotate(360deg);
+
+    }
 
   }
 

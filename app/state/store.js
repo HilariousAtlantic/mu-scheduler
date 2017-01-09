@@ -10,7 +10,8 @@ export default function createStore() {
     state: {
 
       semesters: [],
-      courses: {},
+      courses: [],
+      coursesCache: {},
 
       selectedSemester: null,
       selectedCourses: [],

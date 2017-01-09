@@ -16,7 +16,7 @@ export default {
 
   },
 
-  REQUEST_COURSES(state, semester) {
+  REQUEST_COURSES(state) {
 
     state.requestingCourses = true;
 
@@ -24,10 +24,9 @@ export default {
 
   RECEIVE_COURSES(state, {semester, courses}) {
 
-    state.courses[semester.id] = courses;
+    state.coursesCache[semester.id] = courses;
+    state.courses = courses;
     state.requestingCourses = false;
-
-    console.log(state.courses);
 
   },
 
