@@ -11,12 +11,13 @@ export default function createStore() {
 
       semesters: [],
       courses: [],
-      coursesCache: {},
 
       selectedSemester: null,
       selectedCourses: [],
-
       coursesFilter: '',
+
+      coursesCache: {},
+      requestingSemesters: false,
       requestingCourses: false
 
     }

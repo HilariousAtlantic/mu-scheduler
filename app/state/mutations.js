@@ -2,17 +2,25 @@ export default {
 
   REQUEST_SEMESTERS(state) {
 
+    state.requestingSemesters = true;
+
   },
 
   RECEIVE_SEMESTERS(state, semesters) {
 
     state.semesters = semesters;
+    state.requestingSemesters = false;
 
   },
 
   SELECT_SEMESTER(state, semester) {
 
-    state.selectedSemester = semester;
+    if (semester != state.selectedSemester) {
+
+      state.selectedCourses = [];
+      state.selectedSemester = semester;
+
+    }
 
   },
 
