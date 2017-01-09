@@ -8,12 +8,14 @@ type Course struct {
 	Number   string `json:"number"`
 	Credits  string `json:"credits"`
 }
+
 type Semester struct {
 	ID     int    `json:"id"`
 	Season string `json:"Season"`
 	Year   int    `json:"Year"`
 	Name   string `json:"name"`
 }
+
 type Meet struct {
 	ID         int    `json:"id"`
 	Section_id string `json:"days"`
@@ -25,6 +27,7 @@ type Meet struct {
 	Start_date string `json:"start_date"`
 	End_date   string `json:"end_date"`
 }
+
 type Section struct {
 	ID         int    `json:"id"`
 	Section_id string `json:"section_id"`
@@ -33,7 +36,6 @@ type Section struct {
 }
 
 func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
-
 	meets := make([]*Meet, 0)
 	for _, course := range *parsed {
 		for _, meet := range course.Meets {
@@ -53,8 +55,8 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 	}
 	return meets
 }
-func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 
+func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 	sections := make([]*Section, 0)
 	for _, section := range *parsed {
 		s := &Section{
@@ -67,8 +69,8 @@ func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 	}
 	return sections
 }
-func getCoursesFromJSON(parsed *parsedCoursesJSON) []*Course {
 
+func getCoursesFromJSON(parsed *parsedCoursesJSON) []*Course {
 	courses := make([]*Course, 0)
 	for _, course := range *parsed {
 		c := &Course{

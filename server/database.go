@@ -75,12 +75,19 @@ const (
 	SELECT * FROM sections
 	`
 	selectCourses = `
-	SELECT * FROM courses 
+	SELECT * FROM courses
 	`
 	selectSemesters = `
 	SELECT * FROM semesters
 	`
 )
+
+var createTableStatements = [...]string{
+	createCoursesTable,
+	createSemestersTable,
+	createSectionsTable,
+	createMeetsTable,
+}
 
 type DB struct {
 	db *sql.DB
@@ -100,49 +107,24 @@ func (d *DB) open() *sql.DB {
 }
 
 func createDatabase() {
-
 	fmt.Println("Creating database...")
-
 	output, err := exec.Command("createdb", "schedule_buddy", "-U", "schedule_buddy").CombinedOutput()
-
 	if err != nil {
-
 		fmt.Println(string(output))
 		log.Fatal(err)
-
 	} else {
-
 		fmt.Println("Database created")
-
 	}
 
 	db := dbContext.open()
 	defer db.Close()
 
-	_, err = db.Exec(createSemestersTable)
-
-	if err != nil {
-		log.Fatalf("%q: %s\n", err, createSemestersTable)
+	for _, createTableStatement := range createTableStatements {
+		_, err = db.Exec(createTableStatement)
+		if err != nil {
+			log.Fatalf("%q: %s\n", err, createTableStatement)
+		}
 	}
-
-	_, err = db.Exec(createCoursesTable)
-
-	if err != nil {
-		log.Fatalf("%q: %s\n", err, createCoursesTable)
-	}
-
-	_, err = db.Exec(createSectionsTable)
-
-	if err != nil {
-		log.Fatalf("%q: %s\n", err, createSectionsTable)
-	}
-
-	_, err = db.Exec(createMeetsTable)
-
-	if err != nil {
-		log.Fatalf("%q: %s\n", err, createMeetsTable)
-	}
-
 }
 
 func batchInsertSemesters(semesters []*Semester) {
@@ -157,7 +139,9 @@ func batchInsertSemesters(semesters []*Semester) {
 	}
 	defer stmt.Close()
 	for _, semester := range semesters {
-		_, err = stmt.Exec(semester.Season, semester.Year, semester.Name)
+		_, err = stmt.Exec(semester.Season,
+			semester.Year,
+			semester.Name)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -174,7 +158,6 @@ func batchInsertSemesters(semesters []*Semester) {
 }
 
 func batchInsertCourses(courses []*Course) {
-	//fmt.Println(courses)
 	existingCourses := map[Course]bool{}
 	db := dbContext.open()
 	tx, err := db.Begin()
@@ -192,7 +175,11 @@ func batchInsertCourses(courses []*Course) {
 		} else {
 			existingCourses[*course] = true
 		}
-		_, err = stmt.Exec(course.Semester, course.Name, course.Subject, course.Number, course.Credits)
+		_, err = stmt.Exec(course.Semester,
+			course.Name,
+			course.Subject,
+			course.Number,
+			course.Credits)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -202,7 +189,6 @@ func batchInsertCourses(courses []*Course) {
 		log.Fatal(err)
 
 	}
-
 	err = tx.Commit()
 	if err != nil {
 		log.Fatal(err)
@@ -221,7 +207,9 @@ func batchInsertSections(sections []*Section) {
 	}
 	defer stmt.Close()
 	for _, section := range sections {
-		_, err = stmt.Exec(section.Section_id, section.Section, section.Campus)
+		_, err = stmt.Exec(section.Section_id,
+			section.Section,
+			section.Campus)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -250,8 +238,14 @@ func batchInsertMeets(meets []*Meet) {
 	}
 	defer stmt.Close()
 	for _, meet := range meets {
-		_, err = stmt.Exec(meet.Section_id, meet.Days, meet.Start_time, meet.End_time, meet.Instructor,
-			meet.Location, meet.Start_date, meet.End_date)
+		_, err = stmt.Exec(meet.Section_id,
+			meet.Days,
+			meet.Start_time,
+			meet.End_time,
+			meet.Instructor,
+			meet.Location,
+			meet.Start_date,
+			meet.End_date)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -316,7 +310,10 @@ func getSectionsFromDB() []*Section {
 	defer rows.Close()
 	for rows.Next() {
 		section := &Section{}
-		err = rows.Scan(&section.ID, &section.Section_id, &section.Section, &section.Campus)
+		err = rows.Scan(&section.ID,
+			&section.Section_id,
+			&section.Section,
+			&section.Campus)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -339,7 +336,11 @@ func getSemestersFromDB() []*Semester {
 	defer rows.Close()
 	for rows.Next() {
 		semester := &Semester{}
-		err = rows.Scan(&semester.ID, &semester.Season, &semester.Year, &semester.Name)
+		err = rows.Scan(
+			&semester.ID,
+			&semester.Season,
+			&semester.Year,
+			&semester.Name)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -362,8 +363,15 @@ func getMeetsFromDB() []*Meet {
 	defer rows.Close()
 	for rows.Next() {
 		meet := &Meet{}
-		err = rows.Scan(&meet.ID, &meet.Section_id, &meet.Days, &meet.Start_time,
-			&meet.End_time, &meet.Instructor, &meet.Location, &meet.Start_date, &meet.End_date)
+		err = rows.Scan(&meet.ID,
+			&meet.Section_id,
+			&meet.Days,
+			&meet.Start_time,
+			&meet.End_time,
+			&meet.Instructor,
+			&meet.Location,
+			&meet.Start_date,
+			&meet.End_date)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -386,7 +394,12 @@ func getCoursesFromDB() []*Course {
 	defer rows.Close()
 	for rows.Next() {
 		course := &Course{}
-		err = rows.Scan(&course.ID, &course.Semester, &course.Name, &course.Subject, &course.Number, &course.Credits)
+		err = rows.Scan(&course.ID,
+			&course.Semester,
+			&course.Name,
+			&course.Subject,
+			&course.Number,
+			&course.Credits)
 		if err != nil {
 			log.Fatal(err)
 		}
