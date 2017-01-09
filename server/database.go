@@ -88,13 +88,13 @@ var createTableStatements = [...]string{
 	createMeetsTable,
 }
 
-type DB struct {
+type DBContext struct {
 	db *sql.DB
 }
 
-var dbContext = new(DB)
+var dbContext = new(DBContext)
 
-func (d *DB) open() *sql.DB {
+func (d *DBContext) open() *sql.DB {
 	if d.db == nil {
 		var err error
 		d.db, err = sql.Open("postgres", databasePath)
