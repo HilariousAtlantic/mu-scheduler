@@ -2,14 +2,18 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 
+import state from './store/state';
+import mutations from './store/mutations';
+import actions from './store/actions';
+
 import App from './components/app.vue';
 import CourseSelection from './pages/course-selection.vue';
 import ScheduleSelection from './pages/schedule-selection.vue';
 
-import createStore from './state/store';
-
 Vue.use(Vuex);
 Vue.use(VueRouter);
+
+let store = new Vuex.Store({state, mutations, actions});
 
 let router = new VueRouter({
 
@@ -29,4 +33,4 @@ let router = new VueRouter({
 
 })
 
-new Vue({store: createStore(), router}).$mount('#app')
+new Vue({store, router}).$mount('#app')

@@ -24,7 +24,7 @@ export default {
 
     if (courses) {
 
-      commit('RECEIVE_COURSES', {semester, courses});
+      commit('RECEIVE_CACHED_COURSES', courses);
 
     } else {
 

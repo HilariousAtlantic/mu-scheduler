@@ -38,16 +38,33 @@ export default {
 
   },
 
+  RECEIVE_CACHED_COURSES(state, courses) {
+
+    state.courses = courses;
+
+  },
+
   SELECT_COURSE(state, course) {
 
-    state.selectedCourses.push(course);
+    let index = state.selectedCourses.indexOf(course);
+
+    if (index == -1) {
+
+      state.selectedCourses.push(course);
+
+    }
 
   },
 
   DESELECT_COURSE(state, course) {
 
     let index = state.selectedCourses.indexOf(course);
-    state.selectedCourses.splice(index, 1);
+
+    if (index != -1) {
+
+      state.selectedCourses.splice(index, 1);
+
+    }
 
   },
 
