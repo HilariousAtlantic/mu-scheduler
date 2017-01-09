@@ -53,5 +53,4 @@ psql -U schedule_buddy
 To run a query
 ```
 schedule_buddy#=> SELECT * FROM courses;
-
 ```
