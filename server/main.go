@@ -1,12 +1,8 @@
 package main
 
-import (
-	"log"
-	"os"
-)
+import "os"
 
 func main() {
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	if len(os.Args) >= 2 {
 		switch os.Args[1] {
 		case "import":

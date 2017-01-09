@@ -99,7 +99,7 @@ func (d *DB) open() *sql.DB {
 		var err error
 		d.db, err = sql.Open("postgres", databasePath)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 	}
 	return d.db
@@ -110,7 +110,7 @@ func createDatabase() {
 	output, err := exec.Command("createdb", "schedule_buddy", "-U", "schedule_buddy").CombinedOutput()
 	if err != nil {
 		fmt.Println(string(output))
-		log.Fatal(err)
+		handleError(err)
 	} else {
 		fmt.Println("Database created")
 	}
@@ -130,11 +130,11 @@ func batchInsertSemesters(semesters []*Semester) {
 	db := dbContext.open()
 	tx, err := db.Begin()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	stmt, err := tx.Prepare(pq.CopyIn("semesters", "season", "year", "name"))
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer stmt.Close()
 	for _, semester := range semesters {
@@ -142,17 +142,17 @@ func batchInsertSemesters(semesters []*Semester) {
 			semester.Year,
 			semester.Name)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 	}
 	_, err = stmt.Exec()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 
 	err = tx.Commit()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 }
 
@@ -161,11 +161,11 @@ func batchInsertCourses(courses []*Course) {
 	db := dbContext.open()
 	tx, err := db.Begin()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	stmt, err := tx.Prepare(pq.CopyIn("courses", "semester_id", "name", "subject", "number", "credits"))
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer stmt.Close()
 	for _, course := range courses {
@@ -180,17 +180,17 @@ func batchInsertCourses(courses []*Course) {
 			course.Number,
 			course.Credits)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 	}
 	_, err = stmt.Exec()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 
 	}
 	err = tx.Commit()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 }
 
@@ -198,27 +198,27 @@ func batchInsertSections(sections []*Section) {
 	db := dbContext.open()
 	tx, err := db.Begin()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	stmt, err := tx.Prepare(pq.CopyIn("sections", "section", "campus"))
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer stmt.Close()
 	for _, section := range sections {
 		_, err = stmt.Exec(section.Section, section.Campus)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 	}
 	_, err = stmt.Exec()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 
 	err = tx.Commit()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 }
 
@@ -226,12 +226,12 @@ func batchInsertMeets(meets []*Meet) {
 	db := dbContext.open()
 	tx, err := db.Begin()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("section_id", "days", "start_time", "end_time", "instructor",
+	stmt, err := tx.Prepare(pq.CopyIn("meets", "section_id", "days", "start_time", "end_time", "instructor",
 		"location", "start_date", "end_date"))
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer stmt.Close()
 	for _, meet := range meets {
@@ -244,24 +244,20 @@ func batchInsertMeets(meets []*Meet) {
 			meet.Start_date,
 			meet.End_date)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 	}
 	_, err = stmt.Exec()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 
 	}
 	err = tx.Commit()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 }
 
-//UNFINISHED function for filtering
-//map["filter name"] []list of things to be filtered
-//ex: map: "days" -> ["M", "W"]
-//	   "timesAfter" -> ["9:00"]
 func filterCourses(filters map[string][]string) {
 	var where, orderBy string = "", ""
 
@@ -291,7 +287,7 @@ func filterCourses(filters map[string][]string) {
 	db := dbContext.open()
 	rows, err1 := db.Query(filter)
 	if err1 != nil {
-		log.Fatal(err1)
+		handleError(err1)
 	}
 	fmt.Println(rows)
 	//finish query, etc
@@ -302,7 +298,7 @@ func getSectionsFromDB() []*Section {
 	db := dbContext.open()
 	rows, err := db.Query(selectSections)
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
@@ -311,13 +307,13 @@ func getSectionsFromDB() []*Section {
 			&section.Section,
 			&section.Campus)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 		sections = append(sections, section)
 	}
 	err = rows.Err()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	return sections
 }
@@ -327,7 +323,7 @@ func getSemestersFromDB() []*Semester {
 	db := dbContext.open()
 	rows, err := db.Query(selectSemesters)
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
@@ -338,13 +334,13 @@ func getSemestersFromDB() []*Semester {
 			&semester.Year,
 			&semester.Name)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 		semesters = append(semesters, semester)
 	}
 	err = rows.Err()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	return semesters
 }
@@ -354,7 +350,7 @@ func getMeetsFromDB() []*Meet {
 	db := dbContext.open()
 	rows, err := db.Query(selectMeets)
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
@@ -369,13 +365,13 @@ func getMeetsFromDB() []*Meet {
 			&meet.Start_date,
 			&meet.End_date)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 		meets = append(meets, meet)
 	}
 	err = rows.Err()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	return meets
 }
@@ -385,7 +381,7 @@ func getCoursesFromDB() []*Course {
 	db := dbContext.open()
 	rows, err := db.Query(selectCourses)
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
@@ -397,13 +393,13 @@ func getCoursesFromDB() []*Course {
 			&course.Number,
 			&course.Credits)
 		if err != nil {
-			log.Fatal(err)
+			handleError(err)
 		}
 		courses = append(courses, course)
 	}
 	err = rows.Err()
 	if err != nil {
-		log.Fatal(err)
+		handleError(err)
 	}
 	return courses
 }

@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"regexp"
 )
 
@@ -28,7 +27,7 @@ type parsedCoursesJSON []struct {
 func importCourses() {
 	data, err := ioutil.ReadFile("import/sections.json")
 	if err != nil {
-		log.Fatal("Could not find sections.json")
+		handleError("Could not find sections.json")
 	}
 
 	var parsed parsedCoursesJSON
