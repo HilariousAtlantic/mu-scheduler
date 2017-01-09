@@ -8,3 +8,4 @@ vendor
 *.db
 schedule_buddy
 sb
+*.swap
