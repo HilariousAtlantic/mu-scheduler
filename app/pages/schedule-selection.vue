@@ -1,6 +1,6 @@
 <template>
 
-  <div class="course-selection-page">
+  <div class="schedule-selection">
 
 
   </div>

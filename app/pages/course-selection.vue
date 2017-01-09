@@ -1,6 +1,6 @@
 <template>
 
-  <div class="course-selection-page">
+  <div class="course-selection">
 
     <sidebar></sidebar>
 
@@ -27,7 +27,7 @@
 
 <style lang="postcss" scoped>
 
-  .course-selection-page {
+  .course-selection {
     display: flex;
   }
 

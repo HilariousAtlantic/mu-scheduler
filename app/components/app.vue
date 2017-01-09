@@ -4,7 +4,7 @@
 
     <navbar></navbar>
 
-    <router-view></router-view>
+    <router-view class="page"></router-view>
 
   </div>
 
@@ -37,6 +37,12 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+
+  }
+
+  .page {
+
+    flex: 1;
 
   }
 
