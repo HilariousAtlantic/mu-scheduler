@@ -45,10 +45,10 @@ const (
 		id SERIAL PRIMARY KEY,
 		section_id TEXT NOT NULL,
 		days TEXT NOT NULL,
-		start_time TEXT NOT NULL,
-		end_time TEXT NOT NULL,
-		instructor TEXT NOT NULL,
-		location TEXT NOT NULL,
+		start_time TEXT,
+		end_time TEXT,
+		instructor TEXT,
+		location TEXT,
 		start_date TEXT NOT NULL,
 		end_date TEXT NOT NULL
 	);
@@ -74,7 +74,7 @@ const (
 	SELECT * FROM sections
 	`
 	selectCourses = `
-	SELECT * FROM courses
+	SELECT * FROM courses 
 	`
 	selectSemesters = `
 	SELECT * FROM semesters
@@ -376,12 +376,19 @@ func getMeetsFromDB() []*Meet {
 	return meets
 }
 
-func getCoursesFromDB() []*Course {
+func getCoursesFromDB(semester string) []*Course {
 	var courses []*Course
 	db := dbContext.open()
-	rows, err := db.Query(selectCourses)
-	if err != nil {
-		handleError(err)
+	if semester == "" {
+		rows, err := db.Query(selectCourses)
+		if err != nil {
+			handleError(err)
+		}
+	} else {
+		rows, err := db.Query("SELECT * FROM courses WHERE semester_id=?", semester)
+		if err != nil {
+			handleError(err)
+		}
 	}
 	defer rows.Close()
 	for rows.Next() {
