@@ -8,31 +8,38 @@ import (
 )
 
 type parsedCoursesJSON []struct {
-	Campus  string
-	Credits string
-	ID      string
-	Meets   []struct {
-		Date       string
-		Days       string
-		Instructor string
-		Location   string
-		Time       string
+	Subject  string
+	Number   string
+	Title    string
+	Credits  string
+	Sections []struct {
+		CRN    int
+		name   string
+		title  string
+		Campus string
+		tests  []struct {
+		}
+		Meets []struct {
+			Days       string
+			Start_time string
+			End_time   string
+			Instructor string
+			Start_date string
+			End_date   string
+			Location   string
+		}
 	}
-	Number  string
-	Section string
-	Subject string
-	Title   string
 }
 
 func importCourses() {
-	data, err := ioutil.ReadFile("import/sections.json")
+	data, err := ioutil.ReadFile("import/json/spring-2017.json")
 	if err != nil {
 		handleError("Could not find sections.json")
 	}
 
 	var parsed parsedCoursesJSON
 	json.Unmarshal(data, &parsed)
-	printInvalidCourses(&parsed)
+	//printInvalidCourses(&parsed)
 	courses := getCoursesFromJSON(&parsed)
 	sections := getSectionsFromJSON(&parsed)
 	meets := getMeetsFromJSON(&parsed)
@@ -49,6 +56,9 @@ func importSemesters() {
 	batchInsertSemesters(semesters)
 }
 
+//was used for parsing bad values, but its now done on front-end. Saving for future.
+//TODO: move this to a utils.go file for future
+/*
 func printInvalidCourses(parsed *parsedCoursesJSON) {
 	creditsRegex, _ := regexp.Compile("[\\d.-]")
 	numberRegex, _ := regexp.Compile("\\d+([A-Z])?$")
@@ -99,4 +109,4 @@ func printInvalidCourses(parsed *parsedCoursesJSON) {
 			}
 		}
 	}
-}
+}*/
