@@ -2,6 +2,7 @@
 
   <div class="schedule-list">
 
+    <schedule></schedule>
 
   </div>
 
@@ -9,9 +10,13 @@
 
 <script>
 
+  import Schedule from './schedule.vue';
+
   export default {
 
-    name: 'schedule-list'
+    name: 'schedule-list',
+
+    components: {Schedule}
 
   }
 
@@ -20,6 +25,14 @@
 <style lang="postcss" scoped>
 
   .schedule-list {
+
+    display: flex;
+
+  }
+
+  .schedule {
+
+    flex: 1;
 
   }
 
