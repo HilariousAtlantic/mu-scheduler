@@ -38,11 +38,11 @@ function parse() {
       meets: [{
 
         days: parts[7],
-        start_time: standardizeTime(parts[8].split('-')[0]),
-        end_time: standardizeTime(parts[8].split('-')[1]),
+        start_time: formatTime(parts[8].split('-')[0]),
+        end_time: formatTime(parts[8].split('-')[1]),
         instructor: parts[9].replace(';', ','),
-        start_date: parts[10].split('-')[0],
-        end_date: parts[10].split('-')[1],
+        start_date: formatDate(parts[10].split('-')[0]),
+        end_date: formatDate(parts[10].split('-')[1]),
         location: parts[11]
 
       }]
@@ -50,13 +50,13 @@ function parse() {
     };
 
     while (data[i+1] && data[i+1].startsWith(',')) {
-      parts = data[i++].split(',');
+      parts = data[++i].split(',');
       if (parts[10].split('-')[0] == parts[10].split('-')[1]) {
 
         section.tests.push({
-          start_time: standardizeTime(parts[8].split('-')[0]),
-          end_time: standardizeTime(parts[8].split('-')[1]),
-          date: parts[10].split('-')[0],
+          start_time: formatTime(parts[8].split('-')[0]),
+          end_time: formatTime(parts[8].split('-')[1]),
+          date: formatDate(parts[10].split('-')[0]),
           location: parts[11]
         });
 
@@ -64,11 +64,11 @@ function parse() {
 
         section.meets.push({
           days: parts[7],
-          start_time: standardizeTime(parts[8].split('-')[0]),
-          end_time: standardizeTime(parts[8].split('-')[1]),
+          start_time: formatTime(parts[8].split('-')[0]),
+          end_time: formatTime(parts[8].split('-')[1]),
           instructor: parts[9].replace(';', ','),
-          start_date: parts[10].split('-')[0],
-          end_date: parts[10].split('-')[1],
+          start_date: formatDate(parts[10].split('-')[0]),
+          end_date: formatDate(parts[10].split('-')[1]),
           location: parts[11]
         });
 
@@ -94,7 +94,7 @@ function parse() {
   writer.write(JSON.stringify(courses));
 }
 
-function standardizeTime(time) {
+function formatTime(time) {
 
   if (!time) return;
 
@@ -107,5 +107,13 @@ function standardizeTime(time) {
   if (period == 'pm' && parseInt(hours) < 12) hours = parseInt(hours) + 12;
 
   return hours + ':' + minutes;
+
+}
+
+function formatDate(date) {
+
+  if (!date) return;
+
+  return date.replace('/', '-');
 
 }
