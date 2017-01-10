@@ -2,6 +2,7 @@
 
   <div class="schedule-selection">
 
+    <schedule-list></schedule-list>
 
   </div>
 
@@ -9,10 +10,13 @@
 
 <script>
 
+  import ScheduleList from '../components/schedule-list.vue';
 
   export default {
 
-    name: 'schedule-selection-page'
+    name: 'schedule-selection-page',
+
+    components: {ScheduleList}
 
   }
 
