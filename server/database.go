@@ -74,7 +74,7 @@ const (
 	SELECT * FROM sections
 	`
 	selectCourses = `
-	SELECT * FROM courses 
+	SELECT * FROM courses
 	`
 	selectSemesters = `
 	SELECT * FROM semesters
@@ -379,16 +379,14 @@ func getMeetsFromDB() []*Meet {
 func getCoursesFromDB(semester string) []*Course {
 	var courses []*Course
 	db := dbContext.open()
+	var rows *sql.Rows
+	var err error
 	if semester == "" {
-		rows, err := db.Query(selectCourses)
-		if err != nil {
-			handleError(err)
-		}
+		rows, err = db.Query(selectCourses)
+		handleError(err)
 	} else {
-		rows, err := db.Query("SELECT * FROM courses WHERE semester_id=?", semester)
-		if err != nil {
-			handleError(err)
-		}
+		rows, err = db.Query("SELECT * FROM courses WHERE semester_id=?", semester)
+		handleError(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
@@ -399,15 +397,11 @@ func getCoursesFromDB(semester string) []*Course {
 			&course.Subject,
 			&course.Number,
 			&course.Credits)
-		if err != nil {
-			handleError(err)
-		}
+		handleError(err)
 		courses = append(courses, course)
 	}
 	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
+	handleError(err)
 	return courses
 }
 
