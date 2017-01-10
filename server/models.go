@@ -34,6 +34,55 @@ type Section struct {
 	Campus  string `json:"campus"`
 }
 
+/*
+
+type Term struct {
+	ID     			int    	`json:"id"`
+	Season 			string 	`json:"season"`
+	Year   			string 	`json:"year"`
+	Name   			string 	`json:"name"`
+}
+
+type Course struct {
+	ID       		int    	`json:"id"`
+	TermID 			int    	`json:"term_id"`
+	Title     	string 	`json:"title"`
+	Subject  		string 	`json:"subject"`
+	Number   		string 	`json:"number"`
+	Credits  		string 	`json:"credits"`
+}
+
+type Section struct {
+	ID      		int    	`json:"id"`
+	CourseID 		int			`json:"course_id"`
+	CRN					string	`json:"crn"`
+	Name 				string 	`json:"name"`
+	Campus  		string 	`json:"campus"`
+}
+
+type Meet struct {
+	ID       		int    	`json:"id"`
+	SectionID 	int    	`json:"section_id"`
+	Days       	string 	`json:"days"`
+	StartTime 	string 	`json:"start_time"`
+	EndTime   	string 	`json:"end_time"`
+	Instructor 	string 	`json:"instructor"`
+	Location   	string 	`json:"location"`
+	StartDate 	string 	`json:"start_date"`
+	EndDate   	string 	`json:"end_date"`
+}
+
+type Test struct {
+	ID       		int    	`json:"id"`
+	SectionID 	int    	`json:"section_id"`
+	StartTime 	string 	`json:"start_time"`
+	EndTime   	string 	`json:"end_time"`
+	Location   	string 	`json:"location"`
+	Date 				string 	`json:"date"`
+}
+
+*/
+
 func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 	meets := make([]*Meet, 0)
 	for _, course := range *parsed {
