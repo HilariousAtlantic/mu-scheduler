@@ -81,7 +81,7 @@ function parse() {
 
     if (course) {
 
-      course.sections.push({crn, section, meets, campus})
+      course.sections.push({crn, name, meets, campus})
 
     } else {
 
