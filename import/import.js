@@ -76,16 +76,16 @@ function parse() {
 
     }
 
-    let {subject, number, title, credits, crn, name, meets, campus} = section;
+    let {subject, number, title, credits, crn, name, tests, meets, campus} = section;
     let course = courses.find(course => course.subject == subject && course.number == number);
 
     if (course) {
 
-      course.sections.push({crn, name, meets, campus})
+      course.sections.push({crn, name, tests, meets, campus})
 
     } else {
 
-      courses.push({subject, number, title, credits, sections: [{crn, name, meets, campus}]})
+      courses.push({subject, number, title, credits, sections: [{crn, name, tests, meets, campus}]})
 
     }
   }
