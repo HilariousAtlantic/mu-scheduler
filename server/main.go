@@ -6,7 +6,7 @@ func main() {
 	if len(os.Args) >= 2 {
 		switch os.Args[1] {
 		case "import":
-			insertData()
+			importDatabase()
 		case "createdb":
 			createDatabase()
 		case "dropdb":

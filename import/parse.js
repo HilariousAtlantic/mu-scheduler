@@ -17,7 +17,7 @@ terms.forEach(term => {
 
     if (line != ',,,,,,,,,,' && !line.startsWith('CRN')) {
 
-      lines.push(line.replace(/TBA/g, ''));
+      lines.push(line);
 
     }
 

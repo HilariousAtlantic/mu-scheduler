@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os/exec"
+	"encoding/csv"
+	"os"
 
 	_"github.com/lib/pq"
 )
@@ -83,10 +85,6 @@ const (
 	);
 	`
 
-	insertStaging = `
-	COPY staging FROM '/import/courses.csv' DELIMITER ',' CSV;
-	`
-
 	insertTerms = `
 	INSERT INTO terms (name) SELECT DISTINCT term FROM staging;
 	`
@@ -145,7 +143,6 @@ var createTableStatements = [...]string{
 }
 
 var insertStatements = [...]string{
-	insertStaging,
 	insertTerms,
 	insertCourses,
 	insertSections,
@@ -191,10 +188,37 @@ func createDatabase() {
 	}
 }
 
-func insertData() {
+func importDatabase() {
+
+	f, err := os.Open("import/courses.csv")
+  if err != nil {
+      handleError(err)
+  }
+  defer f.Close()
+
+  lines, err := csv.NewReader(f).ReadAll()
+  if err != nil {
+  	log.Fatal(err)
+  }
 
 	db := dbContext.open()
 	defer db.Close()
+
+	for _, line := range lines {
+		var insertStaging = "INSERT INTO staging (type,term,crn,subject,number,title,name,credits,days,start_time,end_time,location,instructor,start_date,end_date) VALUES ("
+		for _, value := range line {
+			if value == "" {
+				value = "TBA"
+			}
+			insertStaging += "\""+ value + "\","
+		}
+		insertStaging = insertStaging[0:len(insertStaging)-1] + ")"
+		fmt.Println(insertStaging)
+		_, err = db.Exec(insertStaging)
+		if err != nil {
+			handleError(err)
+		}
+	}
 
 	for _, insertStatement := range insertStatements {
 		_, err := db.Exec(insertStatement)
@@ -339,42 +363,6 @@ func getCoursesFromDB(term string) []*Course {
 	err = rows.Err()
 	handleError(err)
 	return courses
-}
-
-//Probably not needed; for filtering on back-end
-func filterCourses(filters map[string][]string) {
-	var where, orderBy string = "", ""
-
-	//check for the filter "days" (what days do you not want?
-	days, err := filters["days"]
-	if err == true {
-		for _, day := range days {
-			if where == "" {
-				where += (" meets.days LIKE " + day)
-			} else {
-				where += (" AND NOT meets.days LIKE " + day)
-			}
-		}
-	}
-	//check for the filter "timesAfter"
-	times, err := filters["timesAfter"]
-	if err == true {
-		for _, time := range times {
-			fmt.Println(time)
-			//do time filtering stuff and add to where
-		}
-	}
-
-	//include another filter for  ORDERBY gpa
-
-	filter := "SELECT id, name, subject, number, credits FROM courses ORDER BY" + orderBy + "WHERE" + where
-	db := dbContext.open()
-	rows, err1 := db.Query(filter)
-	if err1 != nil {
-		handleError(err1)
-	}
-	fmt.Println(rows)
-	//finish query, etc
 }
 
 func deleteDatabase() {
