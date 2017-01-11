@@ -44,7 +44,7 @@ type Test struct {
 
 func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 	meets := make([]*Meet, 0)
-	sectionID := 0
+	sectionID := 1
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			for _, meet := range section.Meets {
@@ -69,7 +69,7 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 
 func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
 	tests := make([]*Test, 0)
-	sectionID := 0
+	sectionID := 1
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			for _, test := range section.Tests {
@@ -91,7 +91,7 @@ func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
 
 func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 	sections := make([]*Section, 0)
-	courseID := 0
+	courseID := 1
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			s := &Section{

@@ -256,6 +256,7 @@ func batchInsertMeets(meets []*Meet) {
 	defer stmt.Close()
 	for _, meet := range meets {
 		_, err = stmt.Exec(
+			meet.SectionID,
 			meet.Days,
 			meet.StartTime,
 			meet.EndTime,
