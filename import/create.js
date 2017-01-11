@@ -84,7 +84,7 @@ terms.forEach(term => {
 
       } else {
 
-        courses.push({semester_id: term.id, subject, number, title, credits, sections: [section]});
+        courses.push({term_id: term.id, subject, number, title, credits, sections: [section]});
 
       }
 
