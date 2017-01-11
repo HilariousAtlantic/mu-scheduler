@@ -26,17 +26,12 @@ terms.forEach(term => {
       let [crn, subject, number, name, credits, title,
         days, time, instructor, date, location] = lines[i].split(',');
 
-      let meets = [{
+      title = title.replace(';', ',');
+      instructor = instructor.replace(';', ',');
+      let {start_time, end_time} = formatTime(time);
+      let [start_date, end_date] = date.split('-');
 
-        days: days,
-        start_time: formatTime(time.split('-')[0]),
-        end_time: formatTime(time.split('-')[1]),
-        location: location,
-        instructor: instructor.replace(';', ','),
-        start_date: date.split('-')[0],
-        end_date: date.split('-')[1]
-
-      }];
+      let meets = [{days, start_time, end_time, location, instructor, start_date, end_date}];
 
       let tests = [];
 
@@ -45,30 +40,21 @@ terms.forEach(term => {
         let [crn, subject, number, name, credits, title,
           days, time, instructor, date, location] = lines[++i].split(',');
 
-        if (date.split('-')[0] == date.split('-')[1]) {
+        instructor = instructor.replace(';', ',');
+        let {start_time, end_time} = formatTime(time);
+        let [start_date, end_date] = date.split('-');
 
-          tests.push({
+        if (start_date == end_date) {
 
-            date: date.split('-')[0],
-            start_time: formatTime(time.split('-')[0]),
-            end_time: formatTime(time.split('-')[1]),
-            location: location
+          tests.push({start_time, end_time, location,
+
+            date: start_date
 
           });
 
         } else {
 
-          meets.push({
-
-            days: days,
-            start_time: formatTime(time.split('-')[0]),
-            end_time: formatTime(time.split('-')[1]),
-            location: location,
-            instructor: instructor.replace(';', ','),
-            start_date: date.split('-')[0],
-            end_date: date.split('-')[1]
-
-          });
+          meets.push({days, start_time, end_time, location, instructor, start_date, end_date});
 
         }
 
@@ -100,16 +86,19 @@ terms.forEach(term => {
 
 function formatTime(time) {
 
-  if (!time) return;
+  if (!time || time == 'TBA') return {start_time: '', end_time: ''};
 
-  let parts = time.split(' ');
+  let [start, end] = time.split('-');
 
-  let period = parts[1];
-  let hours = parts[0].split(':')[0];
-  let minutes = parts[0].split(':')[1];
+  let [startTime, startPeriod] = start.split(' ');
+  let [endTime, endPeriod] = start.split(' ');
 
-  if (period == 'pm' && parseInt(hours) < 12) hours = parseInt(hours) + 12;
+  let [startHours, startMinutes] = startTime.split(':');
+  let [endHours, endMinutes] = endTime.split(':');
 
-  return hours + ':' + minutes;
+  if (startPeriod == 'pm' && parseInt(startHours) < 12) startHours = parseInt(startHours) + 12;
+  if (endPeriod == 'pm' && parseInt(endHours) < 12) endHours = parseInt(endHours) + 12;
+
+  return {start_time: startHours + ':' + startMinutes, end_time: endHours + ':' + endMinutes};
 
 }
