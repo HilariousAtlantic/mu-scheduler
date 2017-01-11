@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"encoding/csv"
 	"os"
+	"strings"
 
 	_"github.com/lib/pq"
 )
@@ -190,6 +191,8 @@ func createDatabase() {
 
 func importDatabase() {
 
+	fmt.Println("Importing database...")
+
 	f, err := os.Open("import/courses.csv")
   if err != nil {
       handleError(err)
@@ -210,13 +213,13 @@ func importDatabase() {
 			if value == "" {
 				value = "TBA"
 			}
-			insertStaging += "\""+ value + "\","
+			insertStaging += "'"+ strings.Replace(value, "'", "''", -1) + "',"
 		}
 		insertStaging = insertStaging[0:len(insertStaging)-1] + ")"
-		fmt.Println(insertStaging)
 		_, err = db.Exec(insertStaging)
 		if err != nil {
 			handleError(err)
+			fmt.Println(insertStaging)
 		}
 	}
 
@@ -226,6 +229,8 @@ func importDatabase() {
 			handleError(err)
 		}
 	}
+
+	fmt.Println("Database imported")
 }
 
 func getSectionsFromDB() []*Section {
