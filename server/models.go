@@ -52,7 +52,6 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			for _, meet := range section.Meets {
-				fmt.Println(meet.Location)
 				fmt.Println(meet.StartDate)
 				m := &Meet{
 					ID:         -1,

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 )
 
@@ -24,10 +25,10 @@ type parsedCoursesJSON []struct {
 			Days       string
 			StartTime  string
 			EndTime    string
+			Location   string
 			Instructor string
 			StartDate  string
 			EndDate    string
-			Location   string
 		}
 	}
 }
@@ -40,6 +41,7 @@ func importCourses() {
 
 	var parsed parsedCoursesJSON
 	json.Unmarshal(data, &parsed)
+	fmt.Println(&parsed)
 	//printInvalidCourses(&parsed)
 	courses := getCoursesFromJSON(&parsed)
 	sections := getSectionsFromJSON(&parsed)
