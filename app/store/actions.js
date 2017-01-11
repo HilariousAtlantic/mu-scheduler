@@ -30,7 +30,7 @@ export default {
 
       commit('REQUEST_COURSES');
 
-      axios.get('/api/courses').then(response => {
+      axios.get('/api/courses?term='+term.id).then(response => {
 
         let courses = response.data;
 

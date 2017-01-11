@@ -233,6 +233,35 @@ func importDatabase() {
 	fmt.Println("Database imported")
 }
 
+func getCoursesFromDB(term string) []*Course {
+	var courses []*Course
+	db := dbContext.open()
+	var rows *sql.Rows
+	var err error
+	if term == "" {
+		rows, err = db.Query(selectCourses)
+		handleError(err)
+	} else {
+		rows, err = db.Query("SELECT * FROM courses WHERE term_id = $1", term)
+		handleError(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		course := &Course{}
+		err = rows.Scan(&course.ID,
+			&course.TermID,
+			&course.Subject,
+			&course.Number,
+			&course.Title,
+			&course.Credits)
+		handleError(err)
+		courses = append(courses, course)
+	}
+	err = rows.Err()
+	handleError(err)
+	return courses
+}
+
 func getSectionsFromDB() []*Section {
 	var sections []*Section
 	db := dbContext.open()
@@ -339,35 +368,6 @@ func getTestsFromDB() []*Test {
 		handleError(err)
 	}
 	return tests
-}
-
-func getCoursesFromDB(term string) []*Course {
-	var courses []*Course
-	db := dbContext.open()
-	var rows *sql.Rows
-	var err error
-	if term == "" {
-		rows, err = db.Query(selectCourses)
-		handleError(err)
-	} else {
-		rows, err = db.Query("SELECT * FROM courses WHERE term_id=?", term)
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		course := &Course{}
-		err = rows.Scan(&course.ID,
-			&course.TermID,
-			&course.Subject,
-			&course.Number,
-			&course.Title,
-			&course.Credits)
-		handleError(err)
-		courses = append(courses, course)
-	}
-	err = rows.Err()
-	handleError(err)
-	return courses
 }
 
 func deleteDatabase() {
