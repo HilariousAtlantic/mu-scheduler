@@ -2,11 +2,11 @@
 
   <div class="course-search">
 
-    <button type="button" @click="toggleSemesterList">{{selectedSemester}}<i class="fa fa-caret-down"></i></button>
+    <button type="button" @click="toggleTermList">{{selectedTerm}}<i class="fa fa-caret-down"></i></button>
 
-    <ul class="semester-list" v-if="showSemesterList">
+    <ul class="term-list" v-if="showTermList">
 
-      <li v-for="semester in $store.state.semesters" @click="selectSemester(semester)">{{semester.name}}</li>
+      <li v-for="term in $store.state.terms" @click="selectTerm(term)">{{term.name}}</li>
 
     </ul>
 
@@ -26,7 +26,7 @@
 
       return {
 
-        showSemesterList: false
+        showTermList: false
 
       }
 
@@ -34,11 +34,11 @@
 
     computed: {
 
-      selectedSemester() {
+      selectedTerm() {
 
-        let semester = this.$store.state.selectedSemester;
+        let term = this.$store.state.selectedTerm.name;
 
-        return semester ? semester.name : 'Select Semester';
+        return term ? term : 'Select Term';
 
       }
 
@@ -46,10 +46,10 @@
 
     methods: {
 
-      selectSemester(semester) {
+      selectTerm(term) {
 
-        this.$store.dispatch('selectSemester', semester);
-        this.showSemesterList = false;
+        this.$store.dispatch('selectTerm', term);
+        this.showTermList = false;
 
       },
 
@@ -59,9 +59,9 @@
 
       },
 
-      toggleSemesterList() {
+      toggleTermList() {
 
-        this.showSemesterList = !this.showSemesterList;
+        this.showTermList = !this.showTermList;
 
       }
 
@@ -109,7 +109,7 @@
 
   }
 
-  .semester-list {
+  .term-list {
 
     border: 1px solid #ddd;
     border-top: none;

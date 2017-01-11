@@ -22,7 +22,7 @@
 
     mounted() {
 
-      this.$store.dispatch('fetchSemesters');
+      this.$store.dispatch('fetchTerms');
 
     }
 

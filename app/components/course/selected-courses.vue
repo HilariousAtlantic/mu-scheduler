@@ -2,13 +2,13 @@
 
   <div class="selected-courses">
 
-    <header>Selected Courses {{selectedSemester}}</header>
+    <header>Selected Courses {{selectedTerm}}</header>
 
     <ul>
 
       <li v-for="course in $store.state.selectedCourses" @click="onCourseClick(course)">
 
-        {{course.subject}} {{course.number}} - {{course.name}}
+        {{course.subject}} {{course.number}} - {{course.title}}
         <i class="course-info fa fa-info-circle"></i>
 
       </li>
@@ -39,11 +39,11 @@
 
     computed: {
 
-      selectedSemester() {
+      selectedTerm() {
 
-        let semester = this.$store.state.selectedSemester;
+        let term = this.$store.state.selectedTerm.name;
 
-        return semester ? 'for ' + semester.name : '';
+        return term ? 'for ' + term : '';
 
       }
 

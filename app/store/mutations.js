@@ -1,24 +1,24 @@
 export default {
 
-  REQUEST_SEMESTERS(state) {
+  REQUEST_TERMS(state) {
 
-    state.requestingSemesters = true;
-
-  },
-
-  RECEIVE_SEMESTERS(state, semesters) {
-
-    state.semesters = semesters;
-    state.requestingSemesters = false;
+    state.requestingTerms = true;
 
   },
 
-  SELECT_SEMESTER(state, semester) {
+  RECEIVE_TERMS(state, terms) {
 
-    if (semester != state.selectedSemester) {
+    state.terms = terms;
+    state.requestingTerms = false;
+
+  },
+
+  SELECT_TERM(state, term) {
+
+    if (term != state.selectedTerm) {
 
       state.selectedCourses = [];
-      state.selectedSemester = semester;
+      state.selectedTerm = term;
 
     }
 
@@ -30,9 +30,9 @@ export default {
 
   },
 
-  RECEIVE_COURSES(state, {semester, courses}) {
+  RECEIVE_COURSES(state, {term, courses}) {
 
-    state.coursesCache[semester.id] = courses;
+    state.coursesCache[term.id] = courses;
     state.courses = courses;
     state.requestingCourses = false;
 

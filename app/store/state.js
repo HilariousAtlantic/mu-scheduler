@@ -1,10 +1,10 @@
 export default {
 
-    semesters: [],
+    terms: [],
     courses: [],
     schedules: [],
 
-    selectedSemester: null,
+    selectedTerm: {},
     selectedCourses: [],
     selectedSchedules: [],
 
@@ -12,7 +12,7 @@ export default {
     schedulesFilter: {},
 
     coursesCache: {},
-    requestingSemesters: false,
+    requestingTerms: false,
     requestingCourses: false,
     requestingSchedules: false
 

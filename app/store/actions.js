@@ -2,25 +2,25 @@ import axios from 'axios';
 
 export default {
 
-  fetchSemesters({commit}) {
+  fetchTerms({commit}) {
 
-    commit('REQUEST_SEMESTERS');
+    commit('REQUEST_TERMS');
 
-    axios.get('/api/semesters').then(response => {
+    axios.get('/api/terms').then(response => {
 
-      let semesters = response.data;
+      let terms = response.data;
 
-      commit('RECEIVE_SEMESTERS', semesters);
+      commit('RECEIVE_TERMS', terms);
 
     });
 
   },
 
-  selectSemester({commit, state}, semester) {
+  selectTerm({commit, state}, term) {
 
-    commit('SELECT_SEMESTER', semester);
+    commit('SELECT_TERM', term);
 
-    let courses = state.coursesCache[semester.id];
+    let courses = state.coursesCache[term.id];
 
     if (courses) {
 
@@ -34,7 +34,7 @@ export default {
 
         let courses = response.data;
 
-        commit('RECEIVE_COURSES', {semester, courses});
+        commit('RECEIVE_COURSES', {term, courses});
 
       });
 

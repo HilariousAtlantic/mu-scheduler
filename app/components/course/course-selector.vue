@@ -32,11 +32,11 @@
 
     computed: {
 
-      selectedSemester() {
+      selectedTerm() {
 
-        let semester = this.$store.state.selectedSemester;
+        let term = this.$store.state.selectedTerm.name;
 
-        return semester ? ' for ' + semester.name : '';
+        return term ? ' for ' + term : '';
 
       },
 
