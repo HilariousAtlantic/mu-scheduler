@@ -15,8 +15,6 @@ const (
 	createTermsTable = `
 	CREATE TABLE terms (
 		id SERIAL PRIMARY KEY,
-		season TEXT NOT NULL,
-		year INT NOT NULL,
 		name TEXT NOT NULL
 	);
 	`
@@ -25,9 +23,9 @@ const (
 	CREATE TABLE courses (
 		id SERIAL PRIMARY KEY,
 		term_id INT NOT NULL,
-		name TEXT NOT NULL,
 		subject TEXT NOT NULL,
 		number TEXT NOT NULL,
+		title TEXT NOT NULL,
 		credits TEXT NOT NULL
 	);
 	`
@@ -35,15 +33,16 @@ const (
 	createSectionsTable = `
 	CREATE TABLE sections (
 		id SERIAL PRIMARY KEY,
-		section TEXT NOT NULL,
-		campus TEXT NOT NULL
+		course_id INT REFERENCES courses(id) NOT NULL,	
+		crn int NOT NULL,
+		name TEXT NOT NULL
 	);
 	`
 
 	createMeetsTable = `
 	CREATE TABLE meets (
 		id SERIAL PRIMARY KEY,
-		section_id TEXT NOT NULL,
+		section_id INT REFERENCES sections(id) NOT NULL,
 		days TEXT NOT NULL,
 		start_time TEXT,
 		end_time TEXT,
@@ -56,7 +55,7 @@ const (
 	createTestsTable = `
 	CREATE TABLE tests (
 		id SERIAL PRIMARY KEY,
-		section_id TEXT NOT NULL,
+		section_id INT REFERENCES sections(id) NOT NULL,
 		date TEXT,
 		location TEXT,
 		start_time TEXT,
@@ -65,23 +64,25 @@ const (
 	`
 
 	insertCourse = `
-	INSERT INTO courses (term_id, name, subject, number, credits) VALUES (?, ?, ?, ?, ?)
+	INSERT INTO courses (term_id, subject, number, title,  credits) VALUES (?, ?, ?, ?, ?)
 	`
 	insertTerm = `
-	INSERT INTO terms (season, year, name) VALUES (?, ?, ?)
+	INSERT INTO terms (name) VALUES (?, ?, ?)
 	`
 	insertSection = `
-	INSERT INTO sections (section,campus) VALUES (?, ?)
+	INSERT INTO sections (course_id, crn, name ) VALUES (?, ?, ?, ?)
 	`
 	insertMeet = `
-	INSERT INTO meets (section_id, days, start_time, end_time, instructor, location, start_date, end_date)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-	`
+	INSERT INTO meets (section_id, days, 
+				start_time, end_time, instructor,
+				location, start_date, end_date)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+				`
 	insertTest = `
 	INSERT INTO tests (section_id, days, date, location, start_time, end_time)
-	
 		VALUES (?, ?, ?, ?, ?)
 	`
+
 	selectTests = `
 	SELECT * FROM tests
 	`
@@ -100,8 +101,8 @@ const (
 )
 
 var createTableStatements = [...]string{
-	createCoursesTable,
 	createTermsTable,
+	createCoursesTable,
 	createSectionsTable,
 	createMeetsTable,
 	createTestsTable,
@@ -151,15 +152,13 @@ func batchInsertTerms(terms []*Term) {
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("terms", "season", "year", "name"))
+	stmt, err := tx.Prepare(pq.CopyIn("terms", "name"))
 	if err != nil {
 		handleError(err)
 	}
 	defer stmt.Close()
 	for _, term := range terms {
-		_, err = stmt.Exec(term.Season,
-			term.Year,
-			term.Name)
+		_, err = stmt.Exec(term.Name)
 		if err != nil {
 			handleError(err)
 		}
@@ -182,7 +181,7 @@ func batchInsertCourses(courses []*Course) {
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("courses", "term_id", "name", "subject", "number", "credits"))
+	stmt, err := tx.Prepare(pq.CopyIn("courses", "term_id", "subject", "number", "title", "credits"))
 	if err != nil {
 		handleError(err)
 	}
@@ -193,10 +192,10 @@ func batchInsertCourses(courses []*Course) {
 		} else {
 			existingCourses[*course] = true
 		}
-		_, err = stmt.Exec(course.Term,
-			course.Name,
+		_, err = stmt.Exec(course.TermID,
 			course.Subject,
 			course.Number,
+			course.Title,
 			course.Credits)
 		if err != nil {
 			handleError(err)
@@ -219,13 +218,13 @@ func batchInsertSections(sections []*Section) {
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("sections", "section", "campus"))
+	stmt, err := tx.Prepare(pq.CopyIn("sections", "crn", "name"))
 	if err != nil {
 		handleError(err)
 	}
 	defer stmt.Close()
 	for _, section := range sections {
-		_, err = stmt.Exec(section.Section, section.Campus)
+		_, err = stmt.Exec(section.CourseID, section.CRN, section.Name)
 		if err != nil {
 			handleError(err)
 		}
@@ -247,21 +246,23 @@ func batchInsertMeets(meets []*Meet) {
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("meets", "section_id", "days", "start_time", "end_time", "instructor",
-		"location", "start_date", "end_date"))
+	stmt, err := tx.Prepare(pq.CopyIn("meets",
+		"days", "start_time", "end_time",
+		"instructor", "location", "start_date",
+		"end_date"))
 	if err != nil {
 		handleError(err)
 	}
 	defer stmt.Close()
 	for _, meet := range meets {
-		_, err = stmt.Exec(meet.Section_id,
+		_, err = stmt.Exec(
 			meet.Days,
-			meet.Start_time,
-			meet.End_time,
+			meet.StartTime,
+			meet.EndTime,
 			meet.Instructor,
 			meet.Location,
-			meet.Start_date,
-			meet.End_date)
+			meet.StartDate,
+			meet.EndDate)
 		if err != nil {
 			handleError(err)
 		}
@@ -277,6 +278,177 @@ func batchInsertMeets(meets []*Meet) {
 	}
 }
 
+func batchInsertTests(tests []*Test) {
+	db := dbContext.open()
+	tx, err := db.Begin()
+	if err != nil {
+		handleError(err)
+	}
+	stmt, err := tx.Prepare(pq.CopyIn("tests",
+		"date", "location", "start_time", "end_time"))
+	if err != nil {
+		handleError(err)
+	}
+	defer stmt.Close()
+	for _, test := range tests {
+		_, err = stmt.Exec(test.SectionID,
+			test.Date,
+			test.Location,
+			test.StartTime,
+			test.EndTime)
+		if err != nil {
+			handleError(err)
+		}
+	}
+	_, err = stmt.Exec()
+	if err != nil {
+		handleError(err)
+
+	}
+	err = tx.Commit()
+	if err != nil {
+		handleError(err)
+	}
+}
+
+func getSectionsFromDB() []*Section {
+	var sections []*Section
+	db := dbContext.open()
+	rows, err := db.Query(selectSections)
+	if err != nil {
+		handleError(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		section := &Section{}
+		err = rows.Scan(&section.ID,
+			&section.CourseID,
+			&section.Name)
+		if err != nil {
+			handleError(err)
+		}
+		sections = append(sections, section)
+	}
+	err = rows.Err()
+	if err != nil {
+		handleError(err)
+	}
+	return sections
+}
+
+func getTermsFromDB() []*Term {
+	var terms []*Term
+	db := dbContext.open()
+	rows, err := db.Query(selectTerms)
+	if err != nil {
+		handleError(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		term := &Term{}
+		err = rows.Scan(
+			&term.ID,
+			&term.Name)
+		if err != nil {
+			handleError(err)
+		}
+		terms = append(terms, term)
+	}
+	err = rows.Err()
+	if err != nil {
+		handleError(err)
+	}
+	return terms
+}
+
+func getMeetsFromDB() []*Meet {
+	var meets []*Meet
+	db := dbContext.open()
+	rows, err := db.Query(selectMeets)
+	if err != nil {
+		handleError(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		meet := &Meet{}
+		err = rows.Scan(&meet.ID,
+			&meet.SectionID,
+			&meet.Days,
+			&meet.StartTime,
+			&meet.EndTime,
+			&meet.Instructor,
+			&meet.Location,
+			&meet.StartDate,
+			&meet.EndDate)
+		if err != nil {
+			handleError(err)
+		}
+		meets = append(meets, meet)
+	}
+	err = rows.Err()
+	if err != nil {
+		handleError(err)
+	}
+	return meets
+}
+
+func getTestsFromDB() []*Test {
+	var tests []*Test
+	db := dbContext.open()
+	rows, err := db.Query(selectTests)
+	if err != nil {
+		handleError(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		test := &Test{}
+		err = rows.Scan(&test.ID,
+			&test.SectionID,
+			&test.Date,
+			&test.StartTime,
+			&test.EndTime)
+		if err != nil {
+			handleError(err)
+		}
+		tests = append(tests, test)
+	}
+	err = rows.Err()
+	if err != nil {
+		handleError(err)
+	}
+	return tests
+}
+
+func getCoursesFromDB(term string) []*Course {
+	var courses []*Course
+	db := dbContext.open()
+	var rows *sql.Rows
+	var err error
+	if term == "" {
+		rows, err = db.Query(selectCourses)
+		handleError(err)
+	} else {
+		rows, err = db.Query("SELECT * FROM courses WHERE term_id=?", term)
+		handleError(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		course := &Course{}
+		err = rows.Scan(&course.ID,
+			&course.TermID,
+			&course.Subject,
+			&course.Number,
+			&course.Title,
+			&course.Credits)
+		handleError(err)
+		courses = append(courses, course)
+	}
+	err = rows.Err()
+	handleError(err)
+	return courses
+}
+
+//Probably not needed; for filtering on back-end
 func filterCourses(filters map[string][]string) {
 	var where, orderBy string = "", ""
 
@@ -310,118 +482,6 @@ func filterCourses(filters map[string][]string) {
 	}
 	fmt.Println(rows)
 	//finish query, etc
-}
-
-func getSectionsFromDB() []*Section {
-	var sections []*Section
-	db := dbContext.open()
-	rows, err := db.Query(selectSections)
-	if err != nil {
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		section := &Section{}
-		err = rows.Scan(&section.ID,
-			&section.Section,
-			&section.Campus)
-		if err != nil {
-			handleError(err)
-		}
-		sections = append(sections, section)
-	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
-	return sections
-}
-
-func getTermsFromDB() []*Term {
-	var terms []*Term
-	db := dbContext.open()
-	rows, err := db.Query(selectTerms)
-	if err != nil {
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		term := &Term{}
-		err = rows.Scan(
-			&term.ID,
-			&term.Season,
-			&term.Year,
-			&term.Name)
-		if err != nil {
-			handleError(err)
-		}
-		terms = append(terms, term)
-	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
-	return terms
-}
-
-func getMeetsFromDB() []*Meet {
-	var meets []*Meet
-	db := dbContext.open()
-	rows, err := db.Query(selectMeets)
-	if err != nil {
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		meet := &Meet{}
-		err = rows.Scan(&meet.ID,
-			&meet.Section_id,
-			&meet.Days,
-			&meet.Start_time,
-			&meet.End_time,
-			&meet.Instructor,
-			&meet.Location,
-			&meet.Start_date,
-			&meet.End_date)
-		if err != nil {
-			handleError(err)
-		}
-		meets = append(meets, meet)
-	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
-	return meets
-}
-
-func getCoursesFromDB(term string) []*Course {
-	var courses []*Course
-	db := dbContext.open()
-	var rows *sql.Rows
-	var err error
-	if term == "" {
-		rows, err = db.Query(selectCourses)
-		handleError(err)
-	} else {
-		rows, err = db.Query("SELECT * FROM courses WHERE term_id=?", term)
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		course := &Course{}
-		err = rows.Scan(&course.ID,
-			&course.Term,
-			&course.Name,
-			&course.Subject,
-			&course.Number,
-			&course.Credits)
-		handleError(err)
-		courses = append(courses, course)
-	}
-	err = rows.Err()
-	handleError(err)
-	return courses
 }
 
 func deleteDatabase() {

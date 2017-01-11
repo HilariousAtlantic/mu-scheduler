@@ -19,6 +19,7 @@ type Section struct {
 	CourseID int    `json:"course_id"`
 	CRN      string `json:"crn"`
 	Name     string `json:"name"`
+	Campus   string `json:"campus"`
 }
 
 type Meet struct {
@@ -45,11 +46,11 @@ type Test struct {
 func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 	meets := make([]*Meet, 0)
 	for _, course := range *parsed {
-		for _, section := range course.Sections {
-			for _, meet := range section.Meets {
+		for _, section := range coure.Sections {
+			for _, meet := range course.Meets {
 				m := &Meet{
 					ID:         -1,
-					SectionID:  -1,
+					SectionID:  section.ID,
 					Days:       meet.Days,
 					StartTime:  meet.StartTime,
 					EndTime:    meet.EndTime,
@@ -68,21 +69,21 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
 	tests := make([]*Test, 0)
 	for _, course := range *parsed {
-		for _, section := range course.Sections {
-			for _, test := range section.Tests {
-				t := &Test{
+		for _, section := range coure.Sections {
+			for _, test := range course.Test {
+				t := &test{
 					ID:        -1,
-					SectionID: -1,
+					SectionID: section.ID,
 					Date:      test.Date,
-					Location:  test.Location,
 					StartTime: test.StartTime,
 					EndTime:   test.EndTime,
+					Location:  meet.Location,
 				}
-				tests = append(tests, t)
+				test = append(test, t)
 			}
 		}
 	}
-	return tests
+	return test
 }
 
 func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
@@ -91,12 +92,13 @@ func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 		for _, section := range course.Sections {
 			s := &Section{
 				ID:       -1,
-				CourseID: -1,
+				CourseID: course.ID,
 				CRN:      section.CRN,
 				Name:     section.Name,
+				Campus:   section.Campus,
 			}
-			sections = append(sections, s)
 		}
+		sections = append(sections, s)
 	}
 	return sections
 }
@@ -106,7 +108,7 @@ func getCoursesFromJSON(parsed *parsedCoursesJSON) []*Course {
 	for _, course := range *parsed {
 		c := &Course{
 			ID:      -1,
-			TermID:  course.TermID,
+			TermID:  "spring 2017",
 			Subject: course.Subject,
 			Number:  course.Number,
 			Title:   course.Title,

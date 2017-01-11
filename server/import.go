@@ -6,15 +6,15 @@ import (
 )
 
 type parsedCoursesJSON []struct {
+	TermID   int
 	Subject  string
 	Number   string
 	Title    string
 	Credits  string
 	Sections []struct {
-		CRN    string
-		Name   string
-		Campus string
-		Tests  []struct {
+		CRN   string
+		Name  string
+		Tests []struct {
 			Date      string
 			Location  string
 			StartTime string
@@ -44,16 +44,18 @@ func importCourses() {
 	courses := getCoursesFromJSON(&parsed)
 	sections := getSectionsFromJSON(&parsed)
 	meets := getMeetsFromJSON(&parsed)
+	tests := getTestsFromJSON(&parsed)
 	batchInsertCourses(courses)
 	batchInsertSections(sections)
 	batchInsertMeets(meets)
+	batchInsertTests(tests)
 }
 
 func importTerms() {
 	terms := []*Term{
-		&Term{-1, "Fall", 2016, "Fall 2016"},
-		&Term{-1, "Winter", 2016, "Winter 2016"},
-		&Term{-1, "Spring", 2017, "Spring 2017"}}
+		&Term{1, "Fall 2016"},
+		&Term{2, "Winter 2016"},
+		&Term{3, "Spring 2017"}}
 	batchInsertTerms(terms)
 }
 
