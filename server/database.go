@@ -6,11 +6,31 @@ import (
 	"log"
 	"os/exec"
 
-	"github.com/lib/pq"
+	_"github.com/lib/pq"
 )
 
 const (
 	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
+
+	createStagingTable = `
+	CREATE TABLE staging(
+		type TEXT,
+		term TEXT,
+		crn TEXT,
+		subject TEXT,
+		number TEXT,
+		title TEXT,
+		name TEXT,
+		credits TEXT,
+		days TEXT,
+		start_time TEXT,
+		end_time TEXT,
+		location TEXT,
+		instructor TEXT,
+		start_date TEXT,
+		end_date TEXT
+	);
+	`
 
 	createTermsTable = `
 	CREATE TABLE terms (
@@ -22,7 +42,7 @@ const (
 	createCoursesTable = `
 	CREATE TABLE courses (
 		id SERIAL PRIMARY KEY,
-		term_id INT NOT NULL,
+		term_id INT NOT NULL REFERENCES terms,
 		subject TEXT NOT NULL,
 		number TEXT NOT NULL,
 		title TEXT NOT NULL,
@@ -33,8 +53,8 @@ const (
 	createSectionsTable = `
 	CREATE TABLE sections (
 		id SERIAL PRIMARY KEY,
-		course_id INT REFERENCES courses(id) NOT NULL,	
-		crn int NOT NULL,
+		course_id INT NOT NULL REFERENCES courses,
+		crn TEXT NOT NULL,
 		name TEXT NOT NULL
 	);
 	`
@@ -42,12 +62,12 @@ const (
 	createMeetsTable = `
 	CREATE TABLE meets (
 		id SERIAL PRIMARY KEY,
-		section_id INT REFERENCES sections(id) NOT NULL,
+		section_id INT NOT NULL REFERENCES sections,
 		days TEXT NOT NULL,
 		start_time TEXT,
 		end_time TEXT,
-		instructor TEXT,
 		location TEXT,
+		instructor TEXT,
 		start_date TEXT NOT NULL,
 		end_date TEXT NOT NULL
 	);
@@ -55,32 +75,47 @@ const (
 	createTestsTable = `
 	CREATE TABLE tests (
 		id SERIAL PRIMARY KEY,
-		section_id INT REFERENCES sections(id) NOT NULL,
+		section_id INT NOT NULL REFERENCES sections,
 		date TEXT,
-		location TEXT,
 		start_time TEXT,
-		end_time TEXT
+		end_time TEXT,
+		location TEXT
 	);
 	`
 
-	insertCourse = `
-	INSERT INTO courses (term_id, subject, number, title,  credits) VALUES (?, ?, ?, ?, ?)
+	insertStaging = `
+	COPY staging FROM '/import/courses.csv' DELIMITER ',' CSV;
 	`
-	insertTerm = `
-	INSERT INTO terms (name) VALUES (?, ?, ?)
+
+	insertTerms = `
+	INSERT INTO terms (name) SELECT DISTINCT term FROM staging;
 	`
-	insertSection = `
-	INSERT INTO sections (course_id, crn, name ) VALUES (?, ?, ?, ?)
+
+	insertCourses = `
+	INSERT INTO courses (term_id,subject,number,title,credits)
+	SELECT t.id,subject,number,title,credits FROM staging s
+	JOIN terms t on t.name = s.term;
 	`
-	insertMeet = `
-	INSERT INTO meets (section_id, days, 
-				start_time, end_time, instructor,
-				location, start_date, end_date)
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+
+	insertSections = `
+	INSERT INTO sections (course_id,crn,name)
+	SELECT c.id,crn,s.name FROM staging s
+	JOIN terms t ON t.name = s.term
+	JOIN courses c ON c.term_id = t.id AND c.subject = s.subject AND c.number = s.number
+	WHERE type = 'section';
+	`
+
+	insertMeets = `
+	INSERT INTO meets (section_id,days,start_time,end_time,location,instructor,start_date,end_date)
+	SELECT sec.id,days,start_time,end_time,location,instructor,start_date,end_date FROM staging s
+	JOIN sections sec ON sec.crn = s.crn
+	WHERE type = 'meet';
 				`
-	insertTest = `
-	INSERT INTO tests (section_id, days, date, location, start_time, end_time)
-		VALUES (?, ?, ?, ?, ?)
+	insertTests = `
+	INSERT INTO tests (section_id,start_time,end_time,location,date)
+	SELECT sec.id,start_time,end_time,location,start_date FROM staging s
+	JOIN sections sec ON sec.crn = s.crn
+	WHERE type = 'test';
 	`
 
 	selectTests = `
@@ -101,11 +136,21 @@ const (
 )
 
 var createTableStatements = [...]string{
+	createStagingTable,
 	createTermsTable,
 	createCoursesTable,
 	createSectionsTable,
 	createMeetsTable,
 	createTestsTable,
+}
+
+var insertStatements = [...]string{
+	insertStaging,
+	insertTerms,
+	insertCourses,
+	insertSections,
+	insertMeets,
+	insertTests,
 }
 
 type DBContext struct {
@@ -146,169 +191,16 @@ func createDatabase() {
 	}
 }
 
-func batchInsertTerms(terms []*Term) {
+func insertData() {
+
 	db := dbContext.open()
-	tx, err := db.Begin()
-	if err != nil {
-		handleError(err)
-	}
-	stmt, err := tx.Prepare(pq.CopyIn("terms", "name"))
-	if err != nil {
-		handleError(err)
-	}
-	defer stmt.Close()
-	for _, term := range terms {
-		_, err = stmt.Exec(term.Name)
+	defer db.Close()
+
+	for _, insertStatement := range insertStatements {
+		_, err := db.Exec(insertStatement)
 		if err != nil {
 			handleError(err)
 		}
-	}
-	_, err = stmt.Exec()
-	if err != nil {
-		handleError(err)
-	}
-
-	err = tx.Commit()
-	if err != nil {
-		handleError(err)
-	}
-}
-
-func batchInsertCourses(courses []*Course) {
-	existingCourses := map[Course]bool{}
-	db := dbContext.open()
-	tx, err := db.Begin()
-	if err != nil {
-		handleError(err)
-	}
-	stmt, err := tx.Prepare(pq.CopyIn("courses", "term_id", "subject", "number", "title", "credits"))
-	if err != nil {
-		handleError(err)
-	}
-	defer stmt.Close()
-	for _, course := range courses {
-		if existingCourses[*course] {
-			continue
-		} else {
-			existingCourses[*course] = true
-		}
-		_, err = stmt.Exec(course.TermID,
-			course.Subject,
-			course.Number,
-			course.Title,
-			course.Credits)
-		if err != nil {
-			handleError(err)
-		}
-	}
-	_, err = stmt.Exec()
-	if err != nil {
-		handleError(err)
-
-	}
-	err = tx.Commit()
-	if err != nil {
-		handleError(err)
-	}
-}
-
-func batchInsertSections(sections []*Section) {
-	db := dbContext.open()
-	tx, err := db.Begin()
-	if err != nil {
-		handleError(err)
-	}
-	stmt, err := tx.Prepare(pq.CopyIn("sections", "course_id", "crn", "name"))
-	if err != nil {
-		handleError(err)
-	}
-	defer stmt.Close()
-	for _, section := range sections {
-		_, err = stmt.Exec(section.CourseID, section.CRN, section.Name)
-		if err != nil {
-			handleError(err)
-		}
-	}
-	_, err = stmt.Exec()
-	if err != nil {
-		handleError(err)
-	}
-
-	err = tx.Commit()
-	if err != nil {
-		handleError(err)
-	}
-}
-
-func batchInsertMeets(meets []*Meet) {
-	db := dbContext.open()
-	tx, err := db.Begin()
-	if err != nil {
-		handleError(err)
-	}
-	stmt, err := tx.Prepare(pq.CopyIn("meets", "section_id",
-		"days", "start_time", "end_time",
-		"instructor", "location", "start_date",
-		"end_date"))
-	if err != nil {
-		handleError(err)
-	}
-	defer stmt.Close()
-	for _, meet := range meets {
-		_, err = stmt.Exec(
-			meet.SectionID,
-			meet.Days,
-			meet.StartTime,
-			meet.EndTime,
-			meet.Instructor,
-			meet.Location,
-			meet.StartDate,
-			meet.EndDate)
-		if err != nil {
-			handleError(err)
-		}
-	}
-	_, err = stmt.Exec()
-	if err != nil {
-		handleError(err)
-
-	}
-	err = tx.Commit()
-	if err != nil {
-		handleError(err)
-	}
-}
-
-func batchInsertTests(tests []*Test) {
-	db := dbContext.open()
-	tx, err := db.Begin()
-	if err != nil {
-		handleError(err)
-	}
-	stmt, err := tx.Prepare(pq.CopyIn("tests",
-		"section_id", "date", "location", "start_time", "end_time"))
-	if err != nil {
-		handleError(err)
-	}
-	defer stmt.Close()
-	for _, test := range tests {
-		_, err = stmt.Exec(test.SectionID,
-			test.Date,
-			test.Location,
-			test.StartTime,
-			test.EndTime)
-		if err != nil {
-			handleError(err)
-		}
-	}
-	_, err = stmt.Exec()
-	if err != nil {
-		handleError(err)
-
-	}
-	err = tx.Commit()
-	if err != nil {
-		handleError(err)
 	}
 }
 

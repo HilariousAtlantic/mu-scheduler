@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+
 )
 
 type Term struct {
@@ -44,87 +44,4 @@ type Test struct {
 	Location  string `json:"location"`
 	StartTime string `json:"start_time"`
 	EndTime   string `json:"end_time"`
-}
-
-func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
-	meets := make([]*Meet, 0)
-	sectionID := 1
-	for _, course := range *parsed {
-		for _, section := range course.Sections {
-			for _, meet := range section.Meets {
-				fmt.Println(meet.Location)
-				fmt.Println(meet.StartDate)
-				m := &Meet{
-					ID:         -1,
-					SectionID:  sectionID,
-					Days:       meet.Days,
-					StartTime:  meet.StartTime,
-					EndTime:    meet.EndTime,
-					Instructor: meet.Instructor,
-					StartDate:  meet.StartDate,
-					EndDate:    meet.EndDate,
-					Location:   meet.Location,
-				}
-				meets = append(meets, m)
-			}
-			sectionID++
-		}
-	}
-	return meets
-}
-
-func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
-	tests := make([]*Test, 0)
-	sectionID := 1
-	for _, course := range *parsed {
-		for _, section := range course.Sections {
-			for _, test := range section.Tests {
-				t := &Test{
-					ID:        -1,
-					SectionID: sectionID,
-					StartTime: test.StartTime,
-					EndTime:   test.EndTime,
-					Date:      test.Date,
-					Location:  test.Location,
-				}
-				tests = append(tests, t)
-			}
-			sectionID++
-		}
-	}
-	return tests
-}
-
-func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
-	sections := make([]*Section, 0)
-	courseID := 1
-	for _, course := range *parsed {
-		for _, section := range course.Sections {
-			s := &Section{
-				ID:       -1,
-				CourseID: courseID,
-				CRN:      section.CRN,
-				Name:     section.Name,
-			}
-			sections = append(sections, s)
-		}
-		courseID++
-	}
-	return sections
-}
-
-func getCoursesFromJSON(parsed *parsedCoursesJSON) []*Course {
-	courses := make([]*Course, 0)
-	for _, course := range *parsed {
-		c := &Course{
-			ID:      -1,
-			TermID:  course.TermID,
-			Subject: course.Subject,
-			Number:  course.Number,
-			Title:   course.Title,
-			Credits: course.Credits,
-		}
-		courses = append(courses, c)
-	}
-	return courses
 }
