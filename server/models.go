@@ -44,12 +44,13 @@ type Test struct {
 
 func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 	meets := make([]*Meet, 0)
+	sectionID := 0
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			for _, meet := range section.Meets {
 				m := &Meet{
 					ID:         -1,
-					SectionID:  -1,
+					SectionID:  sectionID,
 					Days:       meet.Days,
 					StartTime:  meet.StartTime,
 					EndTime:    meet.EndTime,
@@ -60,6 +61,7 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 				}
 				meets = append(meets, m)
 			}
+			sectionID++
 		}
 	}
 	return meets
@@ -67,12 +69,13 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 
 func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
 	tests := make([]*Test, 0)
+	sectionID := 0
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			for _, test := range section.Tests {
 				t := &Test{
 					ID:        -1,
-					SectionID: -1,
+					SectionID: sectionID,
 					Date:      test.Date,
 					Location:  test.Location,
 					StartTime: test.StartTime,
@@ -80,6 +83,7 @@ func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
 				}
 				tests = append(tests, t)
 			}
+			sectionID++
 		}
 	}
 	return tests
@@ -87,16 +91,18 @@ func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
 
 func getSectionsFromJSON(parsed *parsedCoursesJSON) []*Section {
 	sections := make([]*Section, 0)
+	courseID := 0
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			s := &Section{
 				ID:       -1,
-				CourseID: -1,
+				CourseID: courseID,
 				CRN:      section.CRN,
 				Name:     section.Name,
 			}
 			sections = append(sections, s)
 		}
+		courseID++
 	}
 	return sections
 }

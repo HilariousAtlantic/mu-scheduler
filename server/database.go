@@ -218,7 +218,7 @@ func batchInsertSections(sections []*Section) {
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("sections", "crn", "name"))
+	stmt, err := tx.Prepare(pq.CopyIn("sections", "course_id", "crn", "name"))
 	if err != nil {
 		handleError(err)
 	}
@@ -246,7 +246,7 @@ func batchInsertMeets(meets []*Meet) {
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("meets",
+	stmt, err := tx.Prepare(pq.CopyIn("meets", "section_id",
 		"days", "start_time", "end_time",
 		"instructor", "location", "start_date",
 		"end_date"))
@@ -285,7 +285,7 @@ func batchInsertTests(tests []*Test) {
 		handleError(err)
 	}
 	stmt, err := tx.Prepare(pq.CopyIn("tests",
-		"date", "location", "start_time", "end_time"))
+		"section_id", "date", "location", "start_time", "end_time"))
 	if err != nil {
 		handleError(err)
 	}
