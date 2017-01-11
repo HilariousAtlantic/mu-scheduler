@@ -2,9 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
-	"regexp"
 )
 
 type parsedCoursesJSON []struct {
@@ -14,23 +12,22 @@ type parsedCoursesJSON []struct {
 	Credits  string
 	Sections []struct {
 		CRN    string
-		Mame   string
-		Title  string
+		Name   string
 		Campus string
 		Tests  []struct {
 			Date      string
+			Location  string
 			StartTime string
 			EndTime   string
-			Location  string
 		}
 		Meets []struct {
 			Days       string
 			StartTime  string
 			EndTime    string
 			Instructor string
+			Location   string
 			StartDate  string
 			EndDate    string
-			Location   string
 		}
 	}
 }
