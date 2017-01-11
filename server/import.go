@@ -15,19 +15,19 @@ type parsedCoursesJSON []struct {
 		CRN   string
 		Name  string
 		Tests []struct {
-			Date      string
-			Location  string
 			StartTime string
 			EndTime   string
+			Date      string
+			Location  string
 		}
 		Meets []struct {
 			Days       string
 			StartTime  string
 			EndTime    string
 			Instructor string
-			Location   string
 			StartDate  string
 			EndDate    string
+			Location   string
 		}
 	}
 }

@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type Term struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
@@ -48,6 +52,8 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 	for _, course := range *parsed {
 		for _, section := range course.Sections {
 			for _, meet := range section.Meets {
+				fmt.Println(meet.Location)
+				fmt.Println(meet.StartDate)
 				m := &Meet{
 					ID:         -1,
 					SectionID:  sectionID,
@@ -55,9 +61,9 @@ func getMeetsFromJSON(parsed *parsedCoursesJSON) []*Meet {
 					StartTime:  meet.StartTime,
 					EndTime:    meet.EndTime,
 					Instructor: meet.Instructor,
-					Location:   meet.Location,
 					StartDate:  meet.StartDate,
 					EndDate:    meet.EndDate,
+					Location:   meet.Location,
 				}
 				meets = append(meets, m)
 			}
@@ -76,10 +82,10 @@ func getTestsFromJSON(parsed *parsedCoursesJSON) []*Test {
 				t := &Test{
 					ID:        -1,
 					SectionID: sectionID,
-					Date:      test.Date,
-					Location:  test.Location,
 					StartTime: test.StartTime,
 					EndTime:   test.EndTime,
+					Date:      test.Date,
+					Location:  test.Location,
 				}
 				tests = append(tests, t)
 			}
