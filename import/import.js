@@ -1,9 +1,11 @@
 const readline = require('readline');
 const fs = require('fs');
 
-const terms = require('./terms');
+const terms = require('./terms.json');
 
 terms.forEach(term => {
+
+  console.log('Creating json for ' + term.name);
 
   let lines = [];
 
