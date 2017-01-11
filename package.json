@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "author": "Hilarious Atlantic",
   "scripts": {
-    "database": "brew services start postgresql && createuser schedule_buddy --createdb",
+    "database": "brew services start postgresql && createuser schedule_buddy --createdb --superuser",
     "setup": "cd server/ && go get && cd ../ && go build -o sb server/*.go && ./sb resetdb && ./sb import && npm install && webpack",
     "build-server": "go build -o sb server/*.go",
     "serve": "./sb",
