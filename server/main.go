@@ -7,7 +7,7 @@ func main() {
 		switch os.Args[1] {
 		case "import":
 			importCourses()
-			importSemesters()
+			importTerms()
 		case "createdb":
 			createDatabase()
 		case "dropdb":

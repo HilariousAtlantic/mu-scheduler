@@ -49,12 +49,12 @@ func importCourses() {
 	batchInsertMeets(meets)
 }
 
-func importSemesters() {
-	semesters := []*Semester{
-		&Semester{-1, "Fall", 2016, "Fall 2016"},
-		&Semester{-1, "Winter", 2016, "Winter 2016"},
-		&Semester{-1, "Spring", 2017, "Spring 2017"}}
-	batchInsertSemesters(semesters)
+func importTerms() {
+	terms := []*Term{
+		&Term{-1, "Fall", 2016, "Fall 2016"},
+		&Term{-1, "Winter", 2016, "Winter 2016"},
+		&Term{-1, "Spring", 2017, "Spring 2017"}}
+	batchInsertTerms(terms)
 }
 
 //was used for parsing bad values, but its now done on front-end. Saving for future.

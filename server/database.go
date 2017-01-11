@@ -12,8 +12,8 @@ import (
 const (
 	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
 
-	createSemestersTable = `
-	CREATE TABLE semesters (
+	createTermsTable = `
+	CREATE TABLE terms (
 		id SERIAL PRIMARY KEY,
 		season TEXT NOT NULL,
 		year INT NOT NULL,
@@ -24,7 +24,7 @@ const (
 	createCoursesTable = `
 	CREATE TABLE courses (
 		id SERIAL PRIMARY KEY,
-		semester_id INT NOT NULL,
+		term_id INT NOT NULL,
 		name TEXT NOT NULL,
 		subject TEXT NOT NULL,
 		number TEXT NOT NULL,
@@ -53,12 +53,22 @@ const (
 		end_date TEXT NOT NULL
 	);
 	`
+	createTestsTable = `
+	CREATE TABLE tests (
+		id SERIAL PRIMARY KEY,
+		section_id TEXT NOT NULL,
+		date TEXT,
+		location TEXT,
+		start_time TEXT,
+		end_time TEXT
+	);
+	`
 
 	insertCourse = `
-	INSERT INTO courses (semester_id, name, subject, number, credits) VALUES (?, ?, ?, ?, ?)
+	INSERT INTO courses (term_id, name, subject, number, credits) VALUES (?, ?, ?, ?, ?)
 	`
-	insertSemester = `
-	INSERT INTO semesters (season, year, name) VALUES (?, ?, ?)
+	insertTerm = `
+	INSERT INTO terms (season, year, name) VALUES (?, ?, ?)
 	`
 	insertSection = `
 	INSERT INTO sections (section,campus) VALUES (?, ?)
@@ -66,6 +76,14 @@ const (
 	insertMeet = `
 	INSERT INTO meets (section_id, days, start_time, end_time, instructor, location, start_date, end_date)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+	`
+	insertTest = `
+	INSERT INTO tests (section_id, days, date, location, start_time, end_time)
+	
+		VALUES (?, ?, ?, ?, ?)
+	`
+	selectTests = `
+	SELECT * FROM tests
 	`
 	selectMeets = `
 	SELECT * FROM meets
@@ -76,16 +94,17 @@ const (
 	selectCourses = `
 	SELECT * FROM courses
 	`
-	selectSemesters = `
-	SELECT * FROM semesters
+	selectTerms = `
+	SELECT * FROM terms
 	`
 )
 
 var createTableStatements = [...]string{
 	createCoursesTable,
-	createSemestersTable,
+	createTermsTable,
 	createSectionsTable,
 	createMeetsTable,
+	createTestsTable,
 }
 
 type DBContext struct {
@@ -126,21 +145,21 @@ func createDatabase() {
 	}
 }
 
-func batchInsertSemesters(semesters []*Semester) {
+func batchInsertTerms(terms []*Term) {
 	db := dbContext.open()
 	tx, err := db.Begin()
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("semesters", "season", "year", "name"))
+	stmt, err := tx.Prepare(pq.CopyIn("terms", "season", "year", "name"))
 	if err != nil {
 		handleError(err)
 	}
 	defer stmt.Close()
-	for _, semester := range semesters {
-		_, err = stmt.Exec(semester.Season,
-			semester.Year,
-			semester.Name)
+	for _, term := range terms {
+		_, err = stmt.Exec(term.Season,
+			term.Year,
+			term.Name)
 		if err != nil {
 			handleError(err)
 		}
@@ -163,7 +182,7 @@ func batchInsertCourses(courses []*Course) {
 	if err != nil {
 		handleError(err)
 	}
-	stmt, err := tx.Prepare(pq.CopyIn("courses", "semester_id", "name", "subject", "number", "credits"))
+	stmt, err := tx.Prepare(pq.CopyIn("courses", "term_id", "name", "subject", "number", "credits"))
 	if err != nil {
 		handleError(err)
 	}
@@ -174,7 +193,7 @@ func batchInsertCourses(courses []*Course) {
 		} else {
 			existingCourses[*course] = true
 		}
-		_, err = stmt.Exec(course.Semester,
+		_, err = stmt.Exec(course.Term,
 			course.Name,
 			course.Subject,
 			course.Number,
@@ -318,31 +337,31 @@ func getSectionsFromDB() []*Section {
 	return sections
 }
 
-func getSemestersFromDB() []*Semester {
-	var semesters []*Semester
+func getTermsFromDB() []*Term {
+	var terms []*Term
 	db := dbContext.open()
-	rows, err := db.Query(selectSemesters)
+	rows, err := db.Query(selectTerms)
 	if err != nil {
 		handleError(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
-		semester := &Semester{}
+		term := &Term{}
 		err = rows.Scan(
-			&semester.ID,
-			&semester.Season,
-			&semester.Year,
-			&semester.Name)
+			&term.ID,
+			&term.Season,
+			&term.Year,
+			&term.Name)
 		if err != nil {
 			handleError(err)
 		}
-		semesters = append(semesters, semester)
+		terms = append(terms, term)
 	}
 	err = rows.Err()
 	if err != nil {
 		handleError(err)
 	}
-	return semesters
+	return terms
 }
 
 func getMeetsFromDB() []*Meet {
@@ -376,23 +395,23 @@ func getMeetsFromDB() []*Meet {
 	return meets
 }
 
-func getCoursesFromDB(semester string) []*Course {
+func getCoursesFromDB(term string) []*Course {
 	var courses []*Course
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
-	if semester == "" {
+	if term == "" {
 		rows, err = db.Query(selectCourses)
 		handleError(err)
 	} else {
-		rows, err = db.Query("SELECT * FROM courses WHERE semester_id=?", semester)
+		rows, err = db.Query("SELECT * FROM courses WHERE term_id=?", term)
 		handleError(err)
 	}
 	defer rows.Close()
 	for rows.Next() {
 		course := &Course{}
 		err = rows.Scan(&course.ID,
-			&course.Semester,
+			&course.Term,
 			&course.Name,
 			&course.Subject,
 			&course.Number,

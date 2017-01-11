@@ -18,7 +18,7 @@ func startServer() {
 	api := e.Group("/api")
 
 	api.GET("/courses", coursesIndex)
-	api.GET("/semesters", semestersIndex)
+	api.GET("/terms", termsIndex)
 
 	fmt.Println("Starting server on http://localhost:8000")
 
@@ -27,15 +27,15 @@ func startServer() {
 
 func coursesIndex(c echo.Context) error {
 
-	semester := c.QueryParam("semester")
-	courses := getCoursesFromDB(semester)
+	term := c.QueryParam("term")
+	courses := getCoursesFromDB(term)
 	return c.JSON(http.StatusOK, courses)
 
 }
 
-func semestersIndex(c echo.Context) error {
-	semesters := getSemestersFromDB()
-	return c.JSON(http.StatusOK, semesters)
+func termsIndex(c echo.Context) error {
+	terms := getTermsFromDB()
+	return c.JSON(http.StatusOK, terms)
 }
 
 func sectionsIndex(c echo.Context) error {
