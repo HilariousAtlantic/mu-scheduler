@@ -1,98 +1,100 @@
 const readline = require('readline');
 const fs = require('fs');
 
-let data = [];
+const terms = require('./terms');
 
-let reader = readline.createInterface({
-  input: fs.createReadStream(process.argv[2] || 'sections.csv', {encoding: 'UTF-8'})
-});
+terms.forEach(term => {
 
-reader.on('line', line => {
+  let lines = [];
 
-  if (line != ',,,,,,,,,,' && !line.startsWith('CRN')) {
-    data.push(line)
-  }
+  let reader = readline.createInterface({
+    input: fs.createReadStream(`./csv/${term.file}.csv`, {encoding: 'UTF-8'})
+  });
 
-});
+  reader.on('line', line => {
+    if (line != ',,,,,,,,,,' && !line.startsWith('CRN')) lines.push(line)
+  });
 
-reader.on('close', parse);
+  reader.on('close', function() {
 
-function parse() {
+    let courses = [];
 
-  let courses = [];
+    for (var i = 0; i < lines.length; i++) {
 
-  for (var i = 0; i < data.length; i++) {
+      let [crn, subject, number, name, credits, title,
+        days, time, instructor, date, location] = lines[i].split(',');
 
-    let parts = data[i].split(',');
+      let meets = [{
 
-    let section = {
+        days: days,
+        start_time: formatTime(time.split('-')[0]),
+        end_time: formatTime(time.split('-')[1]),
+        location: location,
+        instructor: instructor.replace(';', ','),
+        start_date: date.split('-')[0],
+        end_date: date.split('-')[1]
 
-      crn: parts[0],
-      subject: parts[1],
-      number: parts[2],
-      name: parts[3],
-      campus: parts[4],
-      credits: parts[5],
-      title: parts[6].replace(';', ','),
-      tests: [],
-      meets: [{
+      }];
 
-        days: parts[7],
-        start_time: formatTime(parts[8].split('-')[0]),
-        end_time: formatTime(parts[8].split('-')[1]),
-        instructor: parts[9].replace(';', ','),
-        start_date: formatDate(parts[10].split('-')[0]),
-        end_date: formatDate(parts[10].split('-')[1]),
-        location: parts[11]
+      let tests = [];
 
-      }]
+      while (lines[i+1] && lines[i+1].startsWith(',')) {
 
-    };
+        let [crn, subject, number, name, credits, title,
+          days, time, instructor, date, location] = lines[++i].split(',');
 
-    while (data[i+1] && data[i+1].startsWith(',')) {
-      parts = data[++i].split(',');
-      if (parts[10].split('-')[0] == parts[10].split('-')[1]) {
+        if (date.split('-')[0] == date.split('-')[1]) {
 
-        section.tests.push({
-          start_time: formatTime(parts[8].split('-')[0]),
-          end_time: formatTime(parts[8].split('-')[1]),
-          date: formatDate(parts[10].split('-')[0]),
-          location: parts[11]
-        });
+          tests.push({
+
+            date: date.split('-')[0],
+            start_time: formatTime(time.split('-')[0]),
+            end_time: formatTime(time.split('-')[1]),
+            location: location
+
+          });
+
+        } else {
+
+          meets.push({
+
+            days: days,
+            start_time: formatTime(time.split('-')[0]),
+            end_time: formatTime(time.split('-')[1]),
+            location: location,
+            instructor: instructor.replace(';', ','),
+            start_date: date.split('-')[0],
+            end_date: date.split('-')[1]
+
+          });
+
+        }
+
+      }
+
+      let course = courses.find(course => course.subject == subject && course.number == number);
+
+      let section = {crn, name, tests, meets};
+
+      if (course) {
+
+        course.sections.push(section);
 
       } else {
 
-        section.meets.push({
-          days: parts[7],
-          start_time: formatTime(parts[8].split('-')[0]),
-          end_time: formatTime(parts[8].split('-')[1]),
-          instructor: parts[9].replace(';', ','),
-          start_date: formatDate(parts[10].split('-')[0]),
-          end_date: formatDate(parts[10].split('-')[1]),
-          location: parts[11]
-        });
+        courses.push({semester_id: term.id, subject, number, title, credits, sections: [section]});
 
       }
 
     }
 
-    let {subject, number, title, credits, crn, name, tests, meets, campus} = section;
-    let course = courses.find(course => course.subject == subject && course.number == number);
+    let writer = fs.createWriteStream(`./json/${term.file}.json`);
 
-    if (course) {
+    writer.write(JSON.stringify(courses));
 
-      course.sections.push({crn, name, tests, meets, campus})
+  })
 
-    } else {
-
-      courses.push({subject, number, title, credits, sections: [{crn, name, tests, meets, campus}]})
-
-    }
-  }
-
-  let writer = fs.createWriteStream(process.argv[3] || 'courses.json');
-  writer.write(JSON.stringify(courses));
-}
+});
 
 function formatTime(time) {
 
@@ -107,13 +109,5 @@ function formatTime(time) {
   if (period == 'pm' && parseInt(hours) < 12) hours = parseInt(hours) + 12;
 
   return hours + ':' + minutes;
-
-}
-
-function formatDate(date) {
-
-  if (!date) return;
-
-  return date.replace('/', '-');
 
 }
