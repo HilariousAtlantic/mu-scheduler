@@ -92,7 +92,7 @@ const (
 
 	insertCourses = `
 	INSERT INTO courses (term_id,subject,number,title,credits)
-	SELECT t.id,subject,number,title,credits FROM staging s
+	SELECT DISTINCT t.id,subject,number,title,credits FROM staging s
 	JOIN terms t on t.name = s.term;
 	`
 
