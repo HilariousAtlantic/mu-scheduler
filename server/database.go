@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 
 	_ "github.com/lib/pq"
@@ -232,19 +233,30 @@ func importDatabase() {
 
 	fmt.Println("Database imported")
 	fmt.Println("Testing functions: getSectionsFromCourse()")
-	for _, section := range getSectionsFromCourse(Course1) {
+	for _, section := range getSectionsFromCourse(Courses) {
 		fmt.Println(*section)
 	}
 }
-func getSectionsFromCourse(course Course) []*Section {
+func getSectionsFromCourse(courses []Course) []*Section {
 	var sections []*Section
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
-	rows, err = db.Query("SELECT * FROM sections WHERE course_id = $1", 110)
+	where := "SELECT * FROM sections WHERE course_id IN ("
+	for _, course := range courses {
+		//where += "course_id = " + strconv.Itoa(course.ID) + " OR "
+		where += strconv.Itoa(course.ID) + ","
+	}
+	where = where[0 : len(where)-1]
+	where += ")"
+	fmt.Println(where)
+	//rows, err = db.Query("SELECT * FROM sections WHERE course_id IN (99,12,23,45,67,76)")
+	rows, err = db.Query(where)
+
 	if err != nil {
 		handleError(err)
 	}
+	fmt.Println(rows)
 	defer rows.Close()
 	for rows.Next() {
 		section := &Section{}
