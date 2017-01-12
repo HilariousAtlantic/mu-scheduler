@@ -116,7 +116,7 @@
 
     background: #eee;
     border: 1px solid #ddd;
-    width: 200px;
+    width: 250px;
     margin-right: 10px;
     padding: 10px;
     text-align: left;
@@ -150,7 +150,7 @@
     margin: 0;
     padding: 0;
     position: absolute;
-    width: 198px;
+    width: 248px;
 
   }
 
