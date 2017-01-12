@@ -1,6 +1,9 @@
 package main
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 var GoodSchedules = make([][]Section, 0)
 
@@ -123,5 +126,5 @@ func main() {
 	} else {
 		startServer()
 	}
-
+	fmt.Println(getSectionsFromCourse(Course1))
 }
