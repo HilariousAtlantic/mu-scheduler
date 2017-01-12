@@ -2,11 +2,15 @@
 
   <div class="schedule">
 
-    <div class="day" v-for="day in days">
+    <div class="schedule-head">
 
-      <div class="day-head">{{day}}</div>
+      <span v-for="day in days">{{day}}</span>
 
-      <div class="day-body">
+    </div>
+
+    <div class="schedule-body">
+
+      <div class="day" v-for="day in days">
 
           <div class="course" v-for="course in coursesByDay[day]" :style="course.style">
 
@@ -64,8 +68,8 @@
 
       coursesByDay() {
 
-        let start = 450; //7:30am
-        let end = 1080; //6pm
+        let start = 420; //7am
+        let end = 1320; //10pm
 
         function getStartPercentage(startTime) {
 
@@ -123,42 +127,49 @@
 
   .schedule {
 
-    display: flex;
     border: 1px solid #ddd;
     font-size: .75rem;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .schedule-head {
+
+    display: flex;
+    padding: 10px;
+    background: #eee;
+    text-align: center;
+
+    span {
+
+      flex: 1;
+
+    }
+
+  }
+
+  .schedule-body {
+
+    flex: 1;
+    display: flex;
+    overflow-y: auto;
 
   }
 
   .day {
 
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    height: 60rem;
     border-right: 1px solid #eee;
+    padding: 10px;
+    position: relative;
 
     &:last-of-type {
 
       border: none;
 
     }
-
-  }
-
-  .day-head {
-
-    padding: 10px;
-    text-align: center;
-    background: #eee;
-    border-bottom: 1px solid #ddd;
-
-  }
-
-  .day-body {
-
-    flex: 1;
-    padding: 10px;
-    position: relative;
-    overflow-y: auto;
 
   }
 
