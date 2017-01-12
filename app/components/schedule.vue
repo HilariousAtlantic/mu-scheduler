@@ -44,7 +44,9 @@
 
       return {
 
-        days: ['M', 'T', 'W', 'R', 'F', 'S']
+        days: ['M', 'T', 'W', 'R', 'F', 'S'],
+
+        colors: ['#283593', '#B71C1C', '#00695C', '#FF6F00', '#4A148C', '#263238']
 
       }
 
@@ -78,26 +80,30 @@
 
         let coursesByDay = {M: [], T: [], W: [], R: [], F: [], S: []};
 
-        this.courses.forEach(({name, meets}) => {
+        this.courses
+          .map((course, i) => Object.assign(course, {color: this.colors[i] || "#000"}))
+          .forEach(({name, meets, color}) => {
 
-          meets.forEach(({days, start_time, end_time, location}) => {
+            meets.forEach(({days, start_time, end_time, location}) => {
 
-            days.split('').forEach(day => {
+              days.split('').forEach(day => {
 
-              let style = {
+                let style = {
 
-                top: getStartPercentage(start_time)+'%',
-                height: getLengthPercentage(start_time, end_time)+'%'
+                  top: getStartPercentage(start_time)+'%',
+                  height: getLengthPercentage(start_time, end_time)+'%',
+                  background: color,
+                  color: '#fff'
 
-              }
+                }
 
-              coursesByDay[day].push({name, start_time, end_time, location, style});
+                coursesByDay[day].push({name, start_time, end_time, location, style});
+
+              })
 
             })
 
           })
-
-        })
 
         return coursesByDay;
 
