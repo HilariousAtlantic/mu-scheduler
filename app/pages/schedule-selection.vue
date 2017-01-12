@@ -2,7 +2,15 @@
 
   <div class="schedule-selection">
 
-    <sidebar></sidebar>
+    <sidebar>
+
+      <div class="sidebar-content">
+
+        <h3>Schedule Selection</h3>
+
+      </div>
+
+    </sidebar>
 
     <schedule-list></schedule-list>
 
@@ -43,6 +51,16 @@
 
     flex: 1;
     padding: 25px;
+
+  }
+
+  .sidebar-content {
+
+    h3 {
+
+      margin-top: 0;
+
+    }
 
   }
 
