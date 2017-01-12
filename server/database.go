@@ -2,14 +2,14 @@ package main
 
 import (
 	"database/sql"
+	"encoding/csv"
 	"fmt"
 	"log"
-	"os/exec"
-	"encoding/csv"
 	"os"
+	"os/exec"
 	"strings"
 
-	_"github.com/lib/pq"
+	_ "github.com/lib/pq"
 )
 
 const (
@@ -194,15 +194,15 @@ func importDatabase() {
 	fmt.Println("Importing database...")
 
 	f, err := os.Open("import/courses.csv")
-  if err != nil {
-      handleError(err)
-  }
-  defer f.Close()
+	if err != nil {
+		handleError(err)
+	}
+	defer f.Close()
 
-  lines, err := csv.NewReader(f).ReadAll()
-  if err != nil {
-  	log.Fatal(err)
-  }
+	lines, err := csv.NewReader(f).ReadAll()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	db := dbContext.open()
 	defer db.Close()
@@ -213,7 +213,7 @@ func importDatabase() {
 			if value == "" {
 				value = "TBA"
 			}
-			insertStaging += "'"+ strings.Replace(value, "'", "''", -1) + "',"
+			insertStaging += "'" + strings.Replace(value, "'", "''", -1) + "',"
 		}
 		insertStaging = insertStaging[0:len(insertStaging)-1] + ")"
 		_, err = db.Exec(insertStaging)
@@ -231,6 +231,32 @@ func importDatabase() {
 	}
 
 	fmt.Println("Database imported")
+}
+func getSectionsFromCourse(course Course) []*Section {
+	var sections []*Section
+	db := dbContext.open()
+	var rows *sql.Rows
+	var err error
+	rows, err = db.Query("SELECT * FROM sections WHERE course_id = $1", course.ID)
+	if err != nil {
+		handleError(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		section := &Section{}
+		err = rows.Scan(&section.ID,
+			&section.CourseID,
+			&section.Name)
+		if err != nil {
+			handleError(err)
+		}
+		sections = append(sections, section)
+	}
+	err = rows.Err()
+	if err != nil {
+		handleError(err)
+	}
+	return sections
 }
 
 func getCoursesFromDB(term string) []*Course {
