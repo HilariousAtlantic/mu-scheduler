@@ -6,7 +6,7 @@
 
     <ul class="term-list" v-if="showTermList">
 
-      <li v-for="term in $store.state.terms" @click="selectTerm(term)">{{term.name}}</li>
+      <li v-for="term in sortedTerms" @click="selectTerm(term)">{{term.name}}</li>
 
     </ul>
 
@@ -33,6 +33,38 @@
     },
 
     computed: {
+
+      sortedTerms() {
+
+        let sorted = [];
+        let seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+        let termsByYear = {};
+
+        this.$store.state.terms.forEach(term => {
+
+          let year = parseInt(term.name.split(' ')[2]);
+
+          if (termsByYear[year]) {
+            termsByYear[year].push(term)
+          } else {
+            termsByYear[year] = [term];
+          }
+
+        });
+
+        Object.keys(termsByYear).forEach(year => {
+          termsByYear[year] = termsByYear[year].sort((a, b) => {
+            return seasons.indexOf(b.name.split(' ')[0]) - seasons.indexOf(a.name.split(' ')[0]);
+          });
+        });
+
+        Object.keys(termsByYear).sort((a, b) => b - a).forEach(year => {
+          sorted = sorted.concat(termsByYear[year]);
+        })
+
+        return sorted;
+
+      },
 
       selectedTerm() {
 

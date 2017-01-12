@@ -32,7 +32,11 @@ export default {
 
       axios.get('/api/courses?term='+term.id).then(response => {
 
-        let courses = response.data;
+        let courses = response.data.sort(
+
+          (a, b) => (a.subject+a.number).localeCompare(b.subject+b.number)
+          
+        );
 
         commit('RECEIVE_COURSES', {term, courses});
 
