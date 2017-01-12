@@ -5,9 +5,10 @@
   "author": "Hilarious Atlantic",
   "scripts": {
     "database": "brew services start postgresql && createuser schedule_buddy --createdb --superuser",
-    "setup": "cd server/ && go get && cd ../ && go build -o sb server/*.go && ./sb resetdb && ./sb import && npm install && webpack",
-    "build-server": "go build -o sb server/*.go",
-    "serve": "./sb",
+    "setup-server": "cd server/ && go get && cd ../ && go build -o start-server server/*.go && ./start-server resetdb && ./start-server import",
+    "setup-client": "npm install && webpack",
+    "setup": "npm run setup-server && npm run setup-client",
+    "serve": "./start-server",
     "dev": "webpack --watch"
   },
   "dependencies": {

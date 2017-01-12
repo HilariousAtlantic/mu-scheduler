@@ -1,11 +1,7 @@
 .DS_Store
 main
 node_modules
-npm-debug.log
 dist
-vendor
-*.sqlite3
-*.db
-schedule_buddy
-sb
+*.log
 *.swp
+start-server
