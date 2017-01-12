@@ -101,6 +101,9 @@ var Meet5 = Meet{
 	StartDate:  "1/1/16",
 	EndDate:    "1/1/20",
 }
+var Courses = []Course{Course1, Course2, Course3}
+var Sections = []Section{Section1, Section2, Section3}
+var Meets = []Meet{Meet1, Meet2, Meet3, Meet4, Meet5}
 
 func main() {
 	if len(os.Args) >= 2 {
