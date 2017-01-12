@@ -231,13 +231,17 @@ func importDatabase() {
 	}
 
 	fmt.Println("Database imported")
+	fmt.Println("Testing functions: getSectionsFromCourse()")
+	for _, section := range getSectionsFromCourse(Course1) {
+		fmt.Println(*section)
+	}
 }
 func getSectionsFromCourse(course Course) []*Section {
 	var sections []*Section
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
-	rows, err = db.Query("SELECT * FROM sections WHERE course_id = $1", course.ID)
+	rows, err = db.Query("SELECT * FROM sections WHERE course_id = $1", 110)
 	if err != nil {
 		handleError(err)
 	}
@@ -246,6 +250,7 @@ func getSectionsFromCourse(course Course) []*Section {
 		section := &Section{}
 		err = rows.Scan(&section.ID,
 			&section.CourseID,
+			&section.CRN,
 			&section.Name)
 		if err != nil {
 			handleError(err)
@@ -300,6 +305,7 @@ func getSectionsFromDB() []*Section {
 		section := &Section{}
 		err = rows.Scan(&section.ID,
 			&section.CourseID,
+			&section.CRN,
 			&section.Name)
 		if err != nil {
 			handleError(err)
