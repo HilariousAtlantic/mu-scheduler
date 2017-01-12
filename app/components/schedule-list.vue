@@ -6,9 +6,9 @@
 
       <div class="schedule-search">
 
-        <button><i class="fa fa-angle-left"></i></button>
-        <span>{{index}} of {{length}}</span>
-        <button><i class="fa fa-angle-right"></i></button>
+        <button @click="decreaseIndex"><i class="fa fa-angle-left"></i></button>
+        <span>{{index+1}} of {{schedules.length}}</span>
+        <button @click="increaseIndex"><i class="fa fa-angle-right"></i></button>
 
       </div>
 
@@ -16,7 +16,7 @@
 
     </div>
 
-    <schedule></schedule>
+    <schedule :courses="currentSchedule.courses"></schedule>
 
   </div>
 
@@ -36,9 +36,79 @@
 
       return {
 
-        index: 1,
+        index: 0,
 
-        length: 25
+        schedules: [
+
+          {
+
+            courses: [
+
+              {name: 'CSE 102', meets: [{days: 'MW', start_time: '13:00', end_time: '13:55', location: 'BEN 102'}, {days: 'F', start_time: '12:00', end_time: '13:50', location: 'BEN 010'}]},
+
+              {name: 'CSE 262', meets: [{days: 'MW', start_time: '14:30', end_time: '15:50', location: 'BEN 213'}]},
+
+              {name: 'CSE 278', meets: [{days: 'TR', start_time: '10:00', end_time: '11:50', location: 'BEN 010'}]},
+
+              {name: 'CSE 385', meets: [{days: 'TR', start_time: '08:30', end_time: '09:50', location: 'BEN 016'}]},
+
+              {name: 'PHY 192', meets: [{days: 'MWF', start_time: '10:00', end_time: '11:50', location: 'KRG 311'}]},
+
+              {name: 'ECO 202H', meets: [{days: 'TR', start_time: '14:30', end_time: '15:50', location: 'BEN 102'}]}
+
+            ]
+
+          },
+
+          {
+
+            courses: [
+
+              {name: 'CSE 102', meets: [{days: 'MWF', start_time: '13:00', end_time: '13:55', location: 'BEN 102'}]},
+
+              {name: 'CSE 262', meets: [{days: 'MW', start_time: '14:30', end_time: '15:50', location: 'BEN 213'}]},
+
+              {name: 'CSE 278', meets: [{days: 'TR', start_time: '10:00', end_time: '11:50', location: 'BEN 010'}]},
+
+              {name: 'CSE 385', meets: [{days: 'TR', start_time: '08:30', end_time: '09:50', location: 'BEN 016'}]},
+
+              {name: 'PHY 192', meets: [{days: 'MWF', start_time: '10:00', end_time: '11:50', location: 'KRG 311'}]},
+
+              {name: 'ECO 202H', meets: [{days: 'TR', start_time: '14:30', end_time: '15:50', location: 'BEN 102'}]}
+
+            ]
+
+          }
+
+        ]
+
+      }
+
+    },
+
+    computed: {
+
+      currentSchedule() {
+
+        return this.schedules[this.index];
+
+      }
+
+    },
+
+    methods: {
+
+      increaseIndex() {
+
+        this.index = this.index+1 >= this.schedules.length ?
+          this.schedules.length-1 : this.index+1;
+
+      },
+
+      decreaseIndex() {
+
+        this.index = this.index-1 < 0 ?
+          0 : this.index-1;
 
       }
 
@@ -72,6 +142,8 @@
       border: 1px solid #ddd;
       background: #eee;
       padding: 10px 50px;
+      outline: none;
+      cursor: pointer;
 
     }
 
@@ -93,6 +165,8 @@
     border: 1px solid #ddd;
     background: #66BB6A;
     color: #fff;
+    outline: none;
+    cursor: pointer;
 
   }
 

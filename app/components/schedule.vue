@@ -38,27 +38,13 @@
 
     name: 'schedule',
 
+    props: ['courses'],
+
     data() {
 
       return {
 
-        days: ['M', 'T', 'W', 'R', 'F', 'S'],
-
-        courses: [
-
-          {name: 'CSE 102', meets: [{days: 'MW', start_time: '13:00', end_time: '13:55', location: 'BEN 102'}, {days: 'F', start_time: '12:00', end_time: '13:50', location: 'BEN 010'}]},
-
-          {name: 'CSE 262', meets: [{days: 'MW', start_time: '14:30', end_time: '15:50', location: 'BEN 213'}]},
-
-          {name: 'CSE 278', meets: [{days: 'TR', start_time: '10:00', end_time: '11:50', location: 'BEN 010'}]},
-
-          {name: 'CSE 385', meets: [{days: 'TR', start_time: '08:30', end_time: '09:50', location: 'BEN 016'}]},
-
-          {name: 'PHY 192', meets: [{days: 'MWF', start_time: '10:00', end_time: '11:50', location: 'KRG 311'}]},
-
-          {name: 'ECO 202H', meets: [{days: 'TR', start_time: '14:30', end_time: '15:50', location: 'BEN 102'}]}
-
-        ]
+        days: ['M', 'T', 'W', 'R', 'F', 'S']
 
       }
 
