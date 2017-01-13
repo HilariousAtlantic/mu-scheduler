@@ -233,24 +233,57 @@ func importDatabase() {
 
 	fmt.Println("Database imported")
 	fmt.Println("Testing functions: getSectionsFromCourse()")
-	for _, section := range getSectionsFromCourse(Courses) {
-		fmt.Println(*section)
+	for _, meet := range getMeetsFromSections(Sections) {
+		fmt.Println(*meet)
 	}
 }
-func getSectionsFromCourse(courses []Course) []*Section {
+func getMeetsFromSections(sections []Section) []*Meet {
+	var meets []*Meet
+	db := dbContext.open()
+	var rows *sql.Rows
+	var err error
+	where := "SELECT * FROM meets WHERE section_id IN ("
+	for _, section := range sections {
+		where += strconv.Itoa(section.ID) + ","
+	}
+	where = where[0 : len(where)-1]
+	where += ")"
+	fmt.Println(where)
+	rows, err = db.Query(where)
+	defer rows.Close()
+	for rows.Next() {
+		meet := &Meet{}
+		err = rows.Scan(&meet.ID,
+			&meet.SectionID,
+			&meet.Days,
+			&meet.StartTime,
+			&meet.EndTime,
+			&meet.Instructor,
+			&meet.Location,
+			&meet.StartDate,
+			&meet.EndDate)
+		if err != nil {
+			handleError(err)
+		}
+		meets = append(meets, meet)
+	}
+	err = rows.Err()
+	if err != nil {
+		handleError(err)
+	}
+	return meets
+}
+func getSectionsFromCourses(courses []Course) []*Section {
 	var sections []*Section
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
 	where := "SELECT * FROM sections WHERE course_id IN ("
 	for _, course := range courses {
-		//where += "course_id = " + strconv.Itoa(course.ID) + " OR "
 		where += strconv.Itoa(course.ID) + ","
 	}
 	where = where[0 : len(where)-1]
 	where += ")"
-	fmt.Println(where)
-	//rows, err = db.Query("SELECT * FROM sections WHERE course_id IN (99,12,23,45,67,76)")
 	rows, err = db.Query(where)
 
 	if err != nil {

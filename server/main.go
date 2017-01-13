@@ -7,19 +7,19 @@ import (
 var GoodSchedules = make([][]Section, 0)
 
 var Section1 = Section{
-	ID:       1,
+	ID:       6,
 	CourseID: 10,
 	CRN:      "12345",
 	Name:     "CSE 148",
 }
 var Section2 = Section{
-	ID:       2,
+	ID:       2992,
 	CourseID: 20,
 	CRN:      "54321",
 	Name:     "CSE 283",
 }
 var Section3 = Section{
-	ID:       3,
+	ID:       2,
 	CourseID: 30,
 	CRN:      "12345",
 	Name:     "CSE 148",
