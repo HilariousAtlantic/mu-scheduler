@@ -1,13 +1,20 @@
 {
   "name": "mu-scheduler",
-  "description": "A web application designed to streamlines the course registration process at Miami University - Oxford.",
+  "description": "A web application designed to streamline the course registration process at Miami University - Oxford.",
   "version": "0.0.1",
   "author": "Hilarious Atlantic",
   "scripts": {
-    "database": "brew services start postgresql && createuser schedule_buddy --createdb --superuser",
-    "setup-server": "cd server/ && go get && cd ../ && go build -o start-server server/*.go && ./start-server resetdb && ./start-server import",
+    "database": "brew services restart postgresql && createuser schedule_buddy --createdb --superuser",
+    "build-client": "webpack",
+    "build-server":  "cd server/ && go get && cd ../ && go build -o start-server server/*.go",
+    "build": "npm run build-server && npm run build-client",
+    "setup-server": "npm run build-server && ./start-server resetdb && ./start-server import",
     "setup-client": "npm install && webpack",
     "setup": "npm run setup-server && npm run setup-client",
+    "createdb": "./start-server createdb",
+    "deletedb": "./start-server dropdb",
+    "resetdb": "./start-server resetdb",
+    "opendb": "psql -U schedule_buddy",
     "serve": "./start-server",
     "dev": "webpack --watch"
   },

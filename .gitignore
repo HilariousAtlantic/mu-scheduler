@@ -4,4 +4,5 @@ node_modules
 dist
 *.log
 *.swp
+server
 start-server
