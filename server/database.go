@@ -109,7 +109,7 @@ const (
 	INSERT INTO meets (section_id,days,start_time,end_time,location,instructor,start_date,end_date)
 	SELECT sec.id,days,start_time,end_time,location,instructor,start_date,end_date FROM staging s
 	JOIN sections sec ON sec.crn = s.crn
-	WHERE type = 'meet';
+	WHERE type = 'meet' OR type = 'section';
 				`
 	insertTests = `
 	INSERT INTO tests (section_id,start_time,end_time,location,date)
@@ -211,9 +211,6 @@ func importDatabase() {
 	for _, line := range lines {
 		var insertStaging = "INSERT INTO staging (type,term,crn,subject,number,title,name,credits,days,start_time,end_time,location,instructor,start_date,end_date) VALUES ("
 		for _, value := range line {
-			if value == "" {
-				value = "TBA"
-			}
 			insertStaging += "'" + strings.Replace(value, "'", "''", -1) + "',"
 		}
 		insertStaging = insertStaging[0:len(insertStaging)-1] + ")"
