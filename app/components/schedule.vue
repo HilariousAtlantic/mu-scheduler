@@ -68,11 +68,6 @@
               let [startHours, startMinutes] = start_time.split(':');
               let [endHours, endMinutes] = end_time.split(':');
 
-              startHours = parseInt(startHours);
-              startMinutes = parseInt(startMinutes);
-              endHours = parseInt(endHours);
-              endMinutes = parseInt(endMinutes);
-
               let start = startHours*60+startMinutes;
               let length = endHours*60+endMinutes-startHours*60-startMinutes;
 
@@ -84,11 +79,11 @@
 
               };
 
-              startHours = startHours%12 != 0 ? startHours%12 : 12;
-              endHours = endHours%12 != 0 ? endHours%12 : 12;
+              startHours = startHours > 12 ? startHours-12 : startHours;
+              endHours = endHours > 12 ? endHours-12 : endHours;
 
-              start_time = startHours + ':' + ('00' + (startMinutes)).slice(-2);
-              end_time = endHours + ':' + ('00' + (endMinutes)).slice(-2);
+              start_time = startHours + ':' + startMinutes;
+              end_time = endHours + ':' + endMinutes;
 
               days.split('').forEach(day => {
 
@@ -110,7 +105,7 @@
 
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 
   .schedule {
 

@@ -81,7 +81,7 @@
 
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 
   .schedule-selection {
 
