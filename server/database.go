@@ -233,9 +233,35 @@ func importDatabase() {
 
 	fmt.Println("Database imported")
 	fmt.Println("Testing functions: getSectionsFromCourse()")
-	for _, meet := range getMeetsFromSections(Sections) {
+	for _, meet := range getCoursesFromIDString("1,2,3,4,5") {
 		fmt.Println(*meet)
 	}
+}
+func getCoursesFromIDString(ids string) []*Course {
+	var courses []*Course
+	db := dbContext.open()
+	var rows *sql.Rows
+	var err error
+	where := "SELECT * FROM courses WHERE ID IN ("
+	where += ids + ")"
+	rows, err = db.Query(where)
+	fmt.Println(where)
+	defer rows.Close()
+	for rows.Next() {
+		course := &Course{}
+		err = rows.Scan(&course.ID,
+			&course.TermID,
+			&course.Subject,
+			&course.Number,
+			&course.Title,
+			&course.Credits)
+		handleError(err)
+		courses = append(courses, course)
+	}
+	err = rows.Err()
+	handleError(err)
+	return courses
+
 }
 func getMeetsFromSections(sections []Section) []*Meet {
 	var meets []*Meet
@@ -248,7 +274,6 @@ func getMeetsFromSections(sections []Section) []*Meet {
 	}
 	where = where[0 : len(where)-1]
 	where += ")"
-	fmt.Println(where)
 	rows, err = db.Query(where)
 	defer rows.Close()
 	for rows.Next() {
