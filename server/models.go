@@ -1,8 +1,6 @@
 package main
 
-import (
-
-)
+import ()
 
 type Term struct {
 	ID   int    `json:"id"`
@@ -10,15 +8,18 @@ type Term struct {
 }
 
 type Course struct {
-	ID      int    `json:"id"`
-	TermID  int    `json:"term_id"`
-	Subject string `json:"subject"`
-	Number  string `json:"number"`
-	Title   string `json:"title"`
-	Credits string `json:"credits"`
+	Sections []Section
+	ID       int    `json:"id"`
+	TermID   int    `json:"term_id"`
+	Subject  string `json:"subject"`
+	Number   string `json:"number"`
+	Title    string `json:"title"`
+	Credits  string `json:"credits"`
 }
 
 type Section struct {
+	Meets    []Meet
+	Tests    []Test
 	ID       int    `json:"id"`
 	CourseID int    `json:"course_id"`
 	CRN      string `json:"crn"`
