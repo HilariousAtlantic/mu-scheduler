@@ -64,7 +64,7 @@ function formatTime(time) {
   let [start, end] = time.split('-');
 
   let [startTime, startPeriod] = start.split(' ');
-  let [endTime, endPeriod] = start.split(' ');
+  let [endTime, endPeriod] = end.split(' ');
 
   let [startHours, startMinutes] = startTime.split(':');
   let [endHours, endMinutes] = endTime.split(':');
