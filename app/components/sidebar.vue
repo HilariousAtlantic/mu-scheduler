@@ -31,7 +31,7 @@
 
     display: flex;
     flex-direction: column;
-    background: #efefef;
+    background: #F0EBDF;
     border-right: 1px solid #ddd;
 
   }

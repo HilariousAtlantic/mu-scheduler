@@ -2,7 +2,7 @@
 
   <div class="navbar">
 
-    <a href="/">Schedule Buddy</a>
+    <a href="/">Course Scheduler for Miami University</a>
 
     <ul>
 
@@ -30,7 +30,7 @@
 
   .navbar {
 
-    background: #333;
+    background: #B61E2E;
     padding: 20px;
 
   }

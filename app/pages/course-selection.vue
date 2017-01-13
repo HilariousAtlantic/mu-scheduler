@@ -8,7 +8,7 @@
 
         <h3>Course Selection</h3>
 
-        <p>Welcome to Schedule Buddy! Select the semester and courses you would like to take.</p>
+        <p>Welcome to the unofficial course scheduler for Miami University! Select the term and courses you would like to take.</p>
 
         <p>You can use the course filter to search for the course you want to select. You do not have to worry about using the right case or symbols.</p>
 

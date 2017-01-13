@@ -1,6 +1,6 @@
 {
-  "name": "schedule-buddy",
-  "description": "A site to simplify the scheduling process, specifically at Miami University.",
+  "name": "mu-scheduler",
+  "description": "A web application designed to streamlines the course registration process at Miami University - Oxford.",
   "version": "0.0.1",
   "author": "Hilarious Atlantic",
   "scripts": {
