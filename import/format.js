@@ -7,6 +7,8 @@ let writer = fs.createWriteStream('courses.csv');
 
 terms.forEach(term => {
 
+  console.log('Formatting ' + term.name + '...');
+
   let lines = [];
 
   let reader = readline.createInterface({
@@ -47,7 +49,7 @@ terms.forEach(term => {
 
       }
 
-      return [type, term.name, crn, subject, number, title, name, credits, days, start_time, end_time, location, instructor, start_date, end_date].join(',')
+      return [type, term.name, crn, subject, number, title, name, credits, days, start_time, end_time, location, instructor, start_date, end_date].join(',').replace(/,,/g, ',TBA,');s
 
     }).forEach(line => writer.write(line + '\n'));
 
@@ -57,7 +59,7 @@ terms.forEach(term => {
 
 function formatTime(time) {
 
-  if (!time || time == 'TBA') return ['', ''];
+  if (!time || time == 'TBA') return ['TBA', 'TBA'];
 
   let [start, end] = time.split('-');
 
