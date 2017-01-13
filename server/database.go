@@ -230,8 +230,11 @@ func importDatabase() {
 
 	fmt.Println("Database imported")
 	fmt.Println("Testing functions: getSectionsFromCourse()")
-	for _, course := range getCourseTree("1,2,3,4,5") {
-		fmt.Print("section for Course with ID: ")
+	for _, course := range getCourseTree("100,230,231,680,1000,490,1800") {
+		fmt.Print("section for Course ")
+		fmt.Print(course.Subject)
+		fmt.Print(course.Number)
+		fmt.Print(" with ID: ")
 		fmt.Println(course.ID)
 		fmt.Println(course.Sections)
 	}
