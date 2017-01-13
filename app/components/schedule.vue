@@ -46,7 +46,7 @@
 
         days: ['M', 'T', 'W', 'R', 'F', 'S'],
 
-        colors: ['#283593', '#B71C1C', '#00695C', '#FF6F00', '#4A148C', '#263238']
+        colors: ['#0D47A1', '#B71C1C', '#1B5E20', '#E65100', '#4A148C', '#263238']
 
       }
 
@@ -56,54 +56,49 @@
 
       coursesByDay() {
 
-        let start = 420; //7am
-        let end = 1320; //10pm
-
-        function getStartPercentage(startTime) {
-
-          let [hours, minutes] = startTime.split(':');
-          let into = parseInt(hours)*60+parseInt(minutes);
-
-          return (into-start)/(end-start)*100;
-
-        }
-
-        function getLengthPercentage(startTime, endTime) {
-
-          let [startHours, startMinutes] = startTime.split(':');
-          let [endHours, endMinutes] = endTime.split(':');
-          let length = parseInt(endHours)*60+parseInt(endMinutes)-parseInt(startHours)*60-parseInt(startMinutes);
-
-          return length/(end-start)*100;
-
-        }
-
         let coursesByDay = {M: [], T: [], W: [], R: [], F: [], S: []};
 
-        this.courses
-          .map((course, i) => Object.assign(course, {color: this.colors[i] || "#000"}))
-          .forEach(({name, meets, color}) => {
+        let startTime = 420; //7am
+        let endTime = 1320; //10pm
+
+        this.courses.forEach(({name, meets}, i) => {
 
             meets.forEach(({days, start_time, end_time, location}) => {
 
+              let [startHours, startMinutes] = start_time.split(':');
+              let [endHours, endMinutes] = end_time.split(':');
+
+              startHours = parseInt(startHours);
+              startMinutes = parseInt(startMinutes);
+              endHours = parseInt(endHours);
+              endMinutes = parseInt(endMinutes);
+
+              let start = startHours*60+startMinutes;
+              let length = endHours*60+endMinutes-startHours*60-startMinutes;
+
+              let style = {
+
+                top: ((start-startTime)/(endTime-startTime)*100)+'%',
+                height: (length/(endTime-startTime)*100)+'%',
+                background: this.colors[i]
+
+              };
+
+              startHours = startHours%12 != 0 ? startHours%12 : 12;
+              endHours = endHours%12 != 0 ? endHours%12 : 12;
+
+              start_time = startHours + ':' + ('00' + (startMinutes)).slice(-2);
+              end_time = endHours + ':' + ('00' + (endMinutes)).slice(-2);
+
               days.split('').forEach(day => {
-
-                let style = {
-
-                  top: getStartPercentage(start_time)+'%',
-                  height: getLengthPercentage(start_time, end_time)+'%',
-                  background: color,
-                  color: '#fff'
-
-                }
 
                 coursesByDay[day].push({name, start_time, end_time, location, style});
 
-              })
+              });
 
-            })
+            });
 
-          })
+          });
 
         return coursesByDay;
 
@@ -132,6 +127,7 @@
     padding: 10px;
     background: #eee;
     text-align: center;
+    border-bottom: 1px solid #ddd;
 
     span {
 
@@ -170,7 +166,8 @@
     position: absolute;
     left: 5px;
     right: 5px;
-    background: #eee;
+    background: #333;
+    color: #fff;
 
   }
 
