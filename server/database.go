@@ -230,8 +230,10 @@ func importDatabase() {
 
 	fmt.Println("Database imported")
 	fmt.Println("Testing functions: getSectionsFromCourse()")
-	for _, meet := range getCoursesFromIDString("1,2,3,4,5") {
-		fmt.Println(*meet)
+	for _, course := range getCourseTree("1,2,3,4,5") {
+		fmt.Print("section for Course with ID: ")
+		fmt.Println(course.ID)
+		fmt.Println(course.Sections)
 	}
 }
 func getCoursesFromIDString(ids string) []*Course {
@@ -260,7 +262,7 @@ func getCoursesFromIDString(ids string) []*Course {
 	return courses
 
 }
-func getMeetsFromSections(sections []Section) []*Meet {
+func getMeetsFromSections(sections []*Section) []*Meet {
 	var meets []*Meet
 	db := dbContext.open()
 	var rows *sql.Rows
@@ -295,7 +297,7 @@ func getMeetsFromSections(sections []Section) []*Meet {
 	}
 	return meets
 }
-func getSectionsFromCourses(courses []Course) []*Section {
+func getSectionsFromCourses(courses []*Course) []*Section {
 	var sections []*Section
 	db := dbContext.open()
 	var rows *sql.Rows
