@@ -289,8 +289,8 @@ func getMeetsFromSections(sections []*Section) []*Meet {
 			&meet.Days,
 			&meet.StartTime,
 			&meet.EndTime,
-			&meet.Instructor,
 			&meet.Location,
+			&meet.Instructor,
 			&meet.StartDate,
 			&meet.EndDate)
 		if err != nil {

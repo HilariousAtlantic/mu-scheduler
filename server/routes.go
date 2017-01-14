@@ -17,33 +17,37 @@ func startServer() {
 
 	api := e.Group("/api")
 
-	api.GET("/courses", coursesIndex)
 	api.GET("/terms", termsIndex)
+	api.GET("/courses", coursesIndex)
+	api.GET("/courses/:id", courseIndex)
 
 	fmt.Println("Starting server on http://localhost:8000")
 
 	e.Logger.Fatal(e.Start(":8000"))
 }
 
+func termsIndex(c echo.Context) error {
+
+	terms := getTermsFromDB()
+
+	return c.JSON(http.StatusOK, terms)
+
+}
+
 func coursesIndex(c echo.Context) error {
 
 	term := c.QueryParam("term")
 	courses := getCoursesFromDB(term)
+
 	return c.JSON(http.StatusOK, courses)
 
 }
 
-func termsIndex(c echo.Context) error {
-	terms := getTermsFromDB()
-	return c.JSON(http.StatusOK, terms)
-}
+func courseIndex(c echo.Context) error {
 
-func sectionsIndex(c echo.Context) error {
-	sections := getSectionsFromDB()
-	return c.JSON(http.StatusOK, sections)
-}
+	id := c.Param("id")
+	course := getCourseTree(id)[0]
 
-func meetsIndex(c echo.Context) error {
-	meets := getMeetsFromDB()
-	return c.JSON(http.StatusOK, meets)
+	return c.JSON(http.StatusOK, course)
+
 }

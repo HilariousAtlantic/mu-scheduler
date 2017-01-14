@@ -35,7 +35,7 @@ export default {
         let courses = response.data.sort(
 
           (a, b) => (a.subject+a.number).localeCompare(b.subject+b.number)
-          
+
         );
 
         commit('RECEIVE_COURSES', {term, courses});
@@ -52,9 +52,25 @@ export default {
 
   },
 
-  selectCourse({commit}, course) {
+  selectCourse({commit, state}, course) {
 
-    commit('SELECT_COURSE', course);
+    let detailedCourse = state.detailedCourseCache[course.id];
+
+    if (!detailedCourse) {
+
+      axios.get('/api/courses/'+course.id).then(response => {
+
+        commit('RECEIVE_DETAILED_COURSE', course);
+
+        commit('SELECT_COURSE', response.data);
+
+      });
+
+    } else {
+
+      commit('SELECT_COURSE', course);
+
+    }
 
   },
 

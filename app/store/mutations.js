@@ -44,6 +44,19 @@ export default {
 
   },
 
+  REQUEST_DETAILED_COURSE(state) {
+
+    state.requestingDetailedCourse = true;
+
+  },
+
+  RECEIVE_DETAILED_COURSE(state, detailedCourse) {
+
+    state.detailedCourseCache[detailedCourse.id] = detailedCourse;
+    state.requestingDetailedCourse = false;
+
+  },
+
   SELECT_COURSE(state, course) {
 
     let index = state.selectedCourses.indexOf(course);

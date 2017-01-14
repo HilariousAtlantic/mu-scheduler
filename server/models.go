@@ -8,7 +8,7 @@ type Term struct {
 }
 
 type Course struct {
-	Sections []Section
+	Sections []Section `json:"sections"`
 	ID       int    `json:"id"`
 	TermID   int    `json:"term_id"`
 	Subject  string `json:"subject"`
@@ -18,8 +18,8 @@ type Course struct {
 }
 
 type Section struct {
-	Meets    []Meet
-	Tests    []Test
+	Meets    []Meet `json:"meets"`
+	Tests    []Test `json:"tests"`
 	ID       int    `json:"id"`
 	CourseID int    `json:"course_id"`
 	CRN      string `json:"crn"`
