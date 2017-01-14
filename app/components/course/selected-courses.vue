@@ -58,11 +58,11 @@
 
             let instructors = [];
 
-            meets.forEach(({location}) => {
+            meets.forEach(({instructor}) => {
 
-              if (instructors.indexOf(location) == -1) {
+              if (instructors.indexOf(instructor) == -1) {
 
-                instructors.push(location);
+                instructors.push(instructor);
 
               }
 
