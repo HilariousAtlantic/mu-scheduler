@@ -75,7 +75,7 @@ var Meet2 = Meet{
 var Meet3 = Meet{
 	ID:         300,
 	SectionID:  3,
-	Days:       "F",
+	Days:       "M",
 	StartTime:  840,
 	EndTime:    1020,
 	Instructor: "SHIT ITS SOBEL",

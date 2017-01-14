@@ -239,8 +239,8 @@ func importDatabase() {
 		fmt.Println(course.Sections)
 	}
 
-	fmt.Println(doTimesOverlap(Section2, Section2))
-	fmt.Println(doTimesOverlap(Section1, Section2))
+	fmt.Println(doTimesOverlap(Section1, Section3))
+	fmt.Println(doTimesOverlap(Section2, Section3))
 
 }
 func getCoursesFromIDString(ids string) []*Course {

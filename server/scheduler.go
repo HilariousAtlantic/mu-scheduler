@@ -71,10 +71,8 @@ func doTimesOverlap(a, b Section) bool {
 		for _, meetB := range b.Meets {
 			if !containsSameDay(meetA.Days, meetB.Days) {
 				break
-			} else if !((meetA.StartTime > meetB.StartTime &&
-				meetA.StartTime < meetB.EndTime) ||
-				(meetB.StartTime > meetA.StartTime &&
-					meetB.StartTime < meetA.EndTime)) {
+			} else if meetA.StartTime <= meetB.EndTime &&
+				meetB.StartTime <= meetA.EndTime {
 				fmt.Println(meetB)
 				fmt.Println(meetA)
 				return true
