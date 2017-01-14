@@ -1,5 +1,9 @@
 package main
 
+import (
+	"strings"
+)
+
 //without comments
 //goodSchedules := make([[]Section]Course,0)
 /*
@@ -47,7 +51,6 @@ func getCourseTree(ids string) []*Course {
 			if meet.SectionID == section.ID {
 				section.Meets = append(section.Meets, *meet)
 			}
-
 		}
 	}
 	for _, course := range courses {
@@ -58,4 +61,45 @@ func getCourseTree(ids string) []*Course {
 		}
 	}
 	return courses
+}
+
+//checks if two sections have any meet times that over lap,
+// ignoring meets that have no overlapping days
+func doTimesOverlap(a, b Section) bool {
+	for _, meetA := range a.Meets {
+		for _, meetB := range b.Meets {
+			if !containsSameDay(meetA.Days, meetB.Days) {
+				break
+			} else if !((meetA.StartTime > meetB.StartTime &&
+				meetA.StartTime < meetB.EndTime) ||
+				(meetB.StartTime > meetA.StartTime &&
+					meetB.StartTime < meetA.EndTime)) {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+//returns true if the two strings share a similar character
+//accounts for TBA and any upper/lower case issues
+func containsSameDay(a, b string) bool {
+	a = strings.ToLower(a)
+	b = strings.ToLower(b)
+	if a == "tba" || b == "tba" {
+		return false
+	}
+	m := make(map[string]bool)
+	for _, c := range a {
+		s := string(c)
+		m[s] = true
+	}
+	for _, c := range b {
+		s := string(c)
+		val, _ := m[s]
+		if val == true {
+			return true
+		}
+	}
+	return false
 }
