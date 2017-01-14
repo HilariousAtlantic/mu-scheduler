@@ -58,29 +58,27 @@
 
             let instructors = [];
 
-            meets.forEach(({instructor}) => {
+            meets.sort((a, b) => {
 
-              if (instructors.indexOf(instructor) == -1) {
-
-                instructors.push(instructor);
-
-              }
-
-            });
-
-            instructors = instructors.sort((a, b) => {
-
-              if (a.indexOf('(P)') != -1) {
+              if (a.instructor.indexOf('(P)') != -1) {
 
                 return -1;
 
-              } else if (b.indexOf('(P)') != -1) {
+              } else if (b.instructor.indexOf('(P)') != -1) {
 
                 return 1;
 
               }
 
               return 0;
+
+            }).forEach(({instructor}) => {
+
+              if (instructors.indexOf(instructor) == -1) {
+
+                instructors.push(instructor.replace(' (P)', ''));
+
+              }
 
             });
 
