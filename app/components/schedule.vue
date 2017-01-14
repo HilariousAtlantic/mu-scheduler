@@ -111,7 +111,6 @@
   .schedule {
 
     border: 1px solid #ddd;
-    font-size: .75rem;
     display: flex;
     flex-direction: column;
 
@@ -138,6 +137,7 @@
     flex: 1;
     display: flex;
     overflow-y: auto;
+    font-size: .75rem;
 
   }
 
