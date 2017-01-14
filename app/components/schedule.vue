@@ -17,7 +17,7 @@
             <div class="course-meta">
 
               <span>{{course.name}}</span><br>
-              <span>{{course.start_time}} - {{course.end_time}}</span><br>
+              <span>{{course.start}} - {{course.end}}</span><br>
               <span>{{course.location}}</span>
 
             </div>
@@ -58,41 +58,37 @@
 
         let coursesByDay = {M: [], T: [], W: [], R: [], F: [], S: []};
 
-        let startTime = 420; //7am
-        let endTime = 1320; //10pm
+        let start = 420; //7am
+        let end = 1320; //10pm
+
+        function formatTime(time) {
+
+          let hours = Math.floor(time/60);
+          let minutes = time-hours*60;
+
+          if (hours > 12) {
+            hours -= 12;
+          }
+
+          return hours + ':' + ('00'+minutes).slice(-2);
+
+        }
 
         this.courses.forEach(({name, meets}, i) => {
 
             meets.forEach(({days, start_time, end_time, location}) => {
 
-              let [startHours, startMinutes] = start_time.split(':');
-              let [endHours, endMinutes] = end_time.split(':');
-
-              startHours = parseInt(startHours);
-              startMinutes = parseInt(startMinutes);
-              endHours = parseInt(endHours);
-              endMinutes = parseInt(endMinutes);
-
-              let start = startHours*60+startMinutes;
-              let length = endHours*60+endMinutes-startHours*60-startMinutes;
-
               let style = {
 
-                top: ((start-startTime)/(endTime-startTime)*100)+'%',
-                height: (length/(endTime-startTime)*100)+'%',
+                top: ((start_time-start)/(end-start)*100)+'%',
+                height: ((end_time-start_time)/(end-start)*100)+'%',
                 background: this.colors[i]
 
               };
 
-              startHours = startHours%12 != 0 ? startHours%12 : 12;
-              endHours = endHours%12 != 0 ? endHours%12 : 12;
-
-              start_time = startHours + ':' + ('00' + (startMinutes)).slice(-2);
-              end_time = endHours + ':' + ('00' + (endMinutes)).slice(-2);
-
               days.split('').forEach(day => {
 
-                coursesByDay[day].push({name, start_time, end_time, location, style});
+                coursesByDay[day].push({name, start: formatTime(start_time), end: formatTime(end_time), location, style});
 
               });
 
@@ -110,7 +106,7 @@
 
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 
   .schedule {
 

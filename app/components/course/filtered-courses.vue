@@ -67,7 +67,7 @@
 
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 
   .filtered-courses {
 

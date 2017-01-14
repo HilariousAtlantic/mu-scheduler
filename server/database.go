@@ -27,8 +27,8 @@ const (
 		name TEXT,
 		credits TEXT,
 		days TEXT,
-		start_time TEXT,
-		end_time TEXT,
+		start_time INT,
+		end_time INT,
 		location TEXT,
 		instructor TEXT,
 		start_date TEXT,
@@ -68,8 +68,8 @@ const (
 		id SERIAL PRIMARY KEY,
 		section_id INT NOT NULL REFERENCES sections,
 		days TEXT NOT NULL,
-		start_time TEXT,
-		end_time TEXT,
+		start_time INT,
+		end_time INT,
 		location TEXT,
 		instructor TEXT,
 		start_date TEXT NOT NULL,
@@ -81,8 +81,8 @@ const (
 		id SERIAL PRIMARY KEY,
 		section_id INT NOT NULL REFERENCES sections,
 		date TEXT,
-		start_time TEXT,
-		end_time TEXT,
+		start_time INT,
+		end_time INT,
 		location TEXT
 	);
 	`

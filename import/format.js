@@ -59,7 +59,7 @@ terms.forEach(term => {
 
 function formatTime(time) {
 
-  if (!time || time == 'TBA') return ['TBA', 'TBA'];
+  if (!time || time == 'TBA') return ['-1', '-1'];
 
   let [start, end] = time.split('-');
 
@@ -69,9 +69,14 @@ function formatTime(time) {
   let [startHours, startMinutes] = startTime.split(':');
   let [endHours, endMinutes] = endTime.split(':');
 
-  if (startPeriod == 'pm' && parseInt(startHours) < 12) startHours = parseInt(startHours) + 12;
-  if (endPeriod == 'pm' && parseInt(endHours) < 12) endHours = parseInt(endHours) + 12;
+  startHours = parseInt(startHours);
+  startMinutes = parseInt(startMinutes);
+  endHours = parseInt(endHours);
+  endMinutes = parseInt(endMinutes);
 
-  return [startHours + ':' + startMinutes, endHours + ':' + endMinutes];
+  if (startPeriod == 'pm' && startHours < 12) startHours += 12;
+  if (endPeriod == 'pm' && endHours < 12) endHours += 12;
+
+  return [startHours*60+startMinutes, endHours*60+endMinutes];
 
 }

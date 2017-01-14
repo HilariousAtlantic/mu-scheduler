@@ -53,7 +53,7 @@
 
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 
   .selected-courses {
 
