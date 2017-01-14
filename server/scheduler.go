@@ -7,7 +7,7 @@ import (
 
 //without comments
 //goodSchedules := make([[]Section]Course,0)
-/*
+
 func findGoodSchedules(courses *[]Course, selectedSections *[]Section) {
 
 	if len(*selectedSections) == len(*courses) {
@@ -22,22 +22,22 @@ SKIPCOURSE:
 				continue SKIPCOURSE
 			}
 		}
-		for _, section := range getSectionsFromCourse(*course) {
+	SKIPSECTION:
+		for _, section := range course.Sections {
 			for _, selectedSection := range *selectedSections {
 
-				if !(section.startTime > selectedSection.startTime &&
-					section.startTime < selectedSection.endTime ||
-					selectedSection.startTime > section.startTime &&
-						selectedSection.startTime < section.startTime) {
-					*selectedSections = append(*selectedSections, section)
-					findGoodSchedules(courses, selectedSections)
+				if doTimesOverlap(selectedSection, section) {
+					continue SKIPSECTION
 				}
 			}
-			return
+			*selectedSections = append(*selectedSections, section)
+			findGoodSchedules(courses, selectedSections)
 		}
+		return
 	}
+	return
 }
-*/
+
 func getCourseTree(ids string) []*Course {
 
 	courses := getCoursesFromIDString(ids)
