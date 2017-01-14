@@ -6,35 +6,38 @@ import (
 
 var GoodSchedules = make([][]Section, 0)
 var Course1 = Course{
-	ID:      10,
-	TermID:  1,
-	Subject: "CSE",
-	Number:  "148",
-	Title:   "Programming and stuff",
-	Credits: "3.00",
+	Sections: []Section{Section1, Section2},
+	ID:       10,
+	TermID:   1,
+	Subject:  "CSE",
+	Number:   "148",
+	Title:    "Programming and stuff",
+	Credits:  "3.00",
 }
 var Course2 = Course{
-	ID:      20,
-	TermID:  1,
-	Subject: "CSE",
-	Number:  "283",
-	Title:   "Networking and stuff",
-	Credits: "3.00",
+	Sections: []Section{Section3, Section2},
+	ID:       20,
+	TermID:   1,
+	Subject:  "CSE",
+	Number:   "283",
+	Title:    "Networking and stuff",
+	Credits:  "3.00",
 }
 var Course3 = Course{
-	ID:      30,
-	TermID:  1,
-	Subject: "CSE",
-	Number:  "201",
-	Title:   "Straight Bullshit",
-	Credits: "3.00",
+	Sections: []Section{Section4},
+	ID:       30,
+	TermID:   1,
+	Subject:  "CSE",
+	Number:   "201",
+	Title:    "Straight Bullshit",
+	Credits:  "3.00",
 }
 var Section1 = Section{
 	Meets:    []Meet{Meet1},
 	ID:       6,
 	CourseID: 10,
-	CRN:      "12345",
-	Name:     "CSE 148",
+	CRN:      "23232",
+	Name:     "CSE 100",
 }
 var Section2 = Section{
 	Meets:    []Meet{Meet2, Meet3},
@@ -43,12 +46,20 @@ var Section2 = Section{
 	CRN:      "54321",
 	Name:     "CSE 283",
 }
+
 var Section3 = Section{
 	Meets:    []Meet{Meet4},
 	ID:       2,
 	CourseID: 30,
 	CRN:      "12345",
 	Name:     "CSE 148",
+}
+var Section4 = Section{
+	Meets:    []Meet{Meet5},
+	ID:       2,
+	CourseID: 40,
+	CRN:      "44444",
+	Name:     "CSE 486",
 }
 var Meet1 = Meet{
 	ID:         100,
@@ -87,7 +98,7 @@ var Meet4 = Meet{
 	ID:         400,
 	SectionID:  3,
 	Days:       "MTH",
-	StartTime:  630,
+	StartTime:  850,
 	EndTime:    1020,
 	Instructor: "SHIT ITS SOBEL",
 	Location:   "BEN 101",
@@ -97,7 +108,7 @@ var Meet4 = Meet{
 var Meet5 = Meet{
 	ID:         500,
 	SectionID:  2,
-	Days:       "MF",
+	Days:       "WM",
 	StartTime:  510,
 	EndTime:    720,
 	Instructor: "SHIT ITS SOBEL",
@@ -105,6 +116,7 @@ var Meet5 = Meet{
 	StartDate:  "1/1/16",
 	EndDate:    "1/1/20",
 }
+
 var Courses = []Course{Course1, Course2, Course3}
 var Sections = []Section{Section1, Section2, Section3}
 var Meets = []Meet{Meet1, Meet2, Meet3, Meet4, Meet5}

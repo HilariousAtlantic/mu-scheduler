@@ -8,30 +8,30 @@ import (
 //without comments
 //goodSchedules := make([[]Section]Course,0)
 
-func findGoodSchedules(courses *[]Course, selectedSections *[]Section) {
+func findGoodSchedules(courses []Course, selectedSections []Section, goodSchedules *[][]Section) {
 
-	if len(*selectedSections) == len(*courses) {
-		GoodSchedules = append(GoodSchedules, *selectedSections)
+	if len(selectedSections) == len(courses) {
+		*goodSchedules = append(*goodSchedules, selectedSections)
 		return
 	}
 SKIPCOURSE:
-	for _, course := range *courses {
+	for _, course := range courses {
 
-		for _, selectedSection := range *selectedSections {
+		for _, selectedSection := range selectedSections {
 			if selectedSection.CourseID == course.ID {
 				continue SKIPCOURSE
 			}
 		}
 	SKIPSECTION:
 		for _, section := range course.Sections {
-			for _, selectedSection := range *selectedSections {
+			for _, selectedSection := range selectedSections {
 
 				if doTimesOverlap(selectedSection, section) {
 					continue SKIPSECTION
 				}
 			}
-			*selectedSections = append(*selectedSections, section)
-			findGoodSchedules(courses, selectedSections)
+			selectedSections = append(selectedSections, section)
+			findGoodSchedules(courses, selectedSections, goodSchedules)
 		}
 		return
 	}

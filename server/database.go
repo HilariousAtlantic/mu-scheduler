@@ -241,7 +241,22 @@ func importDatabase() {
 
 	fmt.Println(doTimesOverlap(Section1, Section3))
 	fmt.Println(doTimesOverlap(Section2, Section3))
+	fmt.Println("Testing Scheduler")
 
+	goodSchedules := make([][]Section, 0)
+	//coursesPointer := getCourseTree("1,90,4,6")
+	//courses := make([]Course, 0)
+	//for _, coursePointer := range coursesPointer {
+	//	courses = append(courses, *coursePointer)
+	//}
+	fmt.Println("courses:")
+	fmt.Println(Courses)
+	fmt.Println("good schedules:")
+	selectedSections := make([]Section, 0)
+	findGoodSchedules(Courses, selectedSections, &goodSchedules)
+	for _, goodSchedule := range goodSchedules {
+		fmt.Println(goodSchedule)
+	}
 }
 func getCoursesFromIDString(ids string) []*Course {
 	var courses []*Course
