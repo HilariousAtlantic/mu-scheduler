@@ -238,13 +238,9 @@ func importDatabase() {
 		fmt.Println(course.ID)
 		fmt.Println(course.Sections)
 	}
-	fmt.Println("Testing function")
-	fmt.Println(containsSameDay("th", "MWF"))
-	fmt.Println(containsSameDay("SmDDFDFDFDFDFDFFDFDFDFF", "MMMMMMM"))
-	fmt.Println(containsSameDay("mwf", "fffffff"))
 
+	fmt.Println(doTimesOverlap(Section2, Section2))
 	fmt.Println(doTimesOverlap(Section1, Section2))
-	fmt.Println(doTimesOverlap(Section1, Section3))
 
 }
 func getCoursesFromIDString(ids string) []*Course {

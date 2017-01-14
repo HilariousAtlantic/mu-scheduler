@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -74,11 +75,13 @@ func doTimesOverlap(a, b Section) bool {
 				meetA.StartTime < meetB.EndTime) ||
 				(meetB.StartTime > meetA.StartTime &&
 					meetB.StartTime < meetA.EndTime)) {
-				return false
+				fmt.Println(meetB)
+				fmt.Println(meetA)
+				return true
 			}
 		}
 	}
-	return true
+	return false
 }
 
 //returns true if the two strings share a similar character
