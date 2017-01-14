@@ -12,8 +12,11 @@ export default {
     schedulesFilter: {},
 
     coursesCache: {},
+    detailedCourseCache: {},
+
     requestingTerms: false,
     requestingCourses: false,
+    requestingDetailedCourse: false,
     requestingSchedules: false
 
 }
