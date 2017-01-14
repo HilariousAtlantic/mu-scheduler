@@ -5,25 +5,6 @@ import (
 )
 
 var GoodSchedules = make([][]Section, 0)
-
-var Section1 = Section{
-	ID:       6,
-	CourseID: 10,
-	CRN:      "12345",
-	Name:     "CSE 148",
-}
-var Section2 = Section{
-	ID:       2992,
-	CourseID: 20,
-	CRN:      "54321",
-	Name:     "CSE 283",
-}
-var Section3 = Section{
-	ID:       2,
-	CourseID: 30,
-	CRN:      "12345",
-	Name:     "CSE 148",
-}
 var Course1 = Course{
 	ID:      10,
 	TermID:  1,
@@ -48,12 +29,33 @@ var Course3 = Course{
 	Title:   "Straight Bullshit",
 	Credits: "3.00",
 }
+var Section1 = Section{
+	Meets:    []Meet{Meet1},
+	ID:       6,
+	CourseID: 10,
+	CRN:      "12345",
+	Name:     "CSE 148",
+}
+var Section2 = Section{
+	Meets:    []Meet{Meet2, Meet3},
+	ID:       2992,
+	CourseID: 20,
+	CRN:      "54321",
+	Name:     "CSE 283",
+}
+var Section3 = Section{
+	Meets:    []Meet{Meet4},
+	ID:       2,
+	CourseID: 30,
+	CRN:      "12345",
+	Name:     "CSE 148",
+}
 var Meet1 = Meet{
 	ID:         100,
 	SectionID:  1,
 	Days:       "MWF",
-	StartTime:  600,
-	EndTime:    720,
+	StartTime:  610,
+	EndTime:    730,
 	Instructor: "SHIT ITS SOBEL",
 	Location:   "BEN 101",
 	StartDate:  "1/1/16",

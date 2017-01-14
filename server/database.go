@@ -243,6 +243,9 @@ func importDatabase() {
 	fmt.Println(containsSameDay("SmDDFDFDFDFDFDFFDFDFDFF", "MMMMMMM"))
 	fmt.Println(containsSameDay("mwf", "fffffff"))
 
+	fmt.Println(doTimesOverlap(Section1, Section2))
+	fmt.Println(doTimesOverlap(Section1, Section3))
+
 }
 func getCoursesFromIDString(ids string) []*Course {
 	var courses []*Course
