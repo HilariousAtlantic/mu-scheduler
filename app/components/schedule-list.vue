@@ -44,17 +44,17 @@
 
             courses: [
 
-              {name: 'CSE 102 A', meets: [{days: 'MW', start_time: '13:00', end_time: '13:55', location: 'BEN 102'}, {days: 'F', start_time: '12:00', end_time: '13:50', location: 'BEN 010'}]},
+              {name: 'CSE 102 A', meets: [{days: 'MW', start_time: 780, end_time: 835, location: 'BEN 102'}, {days: 'F', start_time: 720, end_time: 830, location: 'BEN 010'}]},
 
-              {name: 'CSE 262 B', meets: [{days: 'MW', start_time: '14:30', end_time: '15:50', location: 'BEN 213'}]},
+              {name: 'CSE 262 B', meets: [{days: 'MW', start_time: 870, end_time: 950, location: 'BEN 213'}]},
 
-              {name: 'CSE 278 C', meets: [{days: 'TR', start_time: '10:00', end_time: '11:50', location: 'BEN 010'}]},
+              {name: 'CSE 278 C', meets: [{days: 'TR', start_time: 600, end_time: 710, location: 'BEN 010'}]},
 
-              {name: 'CSE 385 D', meets: [{days: 'TR', start_time: '08:30', end_time: '09:50', location: 'BEN 016'}]},
+              {name: 'CSE 385 D', meets: [{days: 'TR', start_time: 510, end_time: 590, location: 'BEN 016'}]},
 
-              {name: 'PHY 192 E', meets: [{days: 'MWF', start_time: '10:00', end_time: '11:50', location: 'KRG 311'}]},
+              {name: 'PHY 192 E', meets: [{days: 'MWF', start_time: 600, end_time: 710, location: 'KRG 311'}]},
 
-              {name: 'ECO 202H F', meets: [{days: 'TR', start_time: '14:30', end_time: '15:50', location: 'BEN 102'}]}
+              {name: 'ECO 202H F', meets: [{days: 'TR', start_time: 870, end_time: 950, location: 'BEN 102'}]}
 
             ]
 
@@ -64,17 +64,17 @@
 
             courses: [
 
-              {name: 'CSE 102 F', meets: [{days: 'MWF', start_time: '13:00', end_time: '13:55', location: 'BEN 102'}]},
+              {name: 'CSE 102 A', meets: [{days: 'MWF', start_time: 780, end_time: 835, location: 'BEN 102'}]},
 
-              {name: 'CSE 262 E', meets: [{days: 'MW', start_time: '14:30', end_time: '15:50', location: 'BEN 213'}]},
+              {name: 'CSE 262 B', meets: [{days: 'MW', start_time: 870, end_time: 950, location: 'BEN 213'}]},
 
-              {name: 'CSE 278 D', meets: [{days: 'TR', start_time: '10:00', end_time: '11:50', location: 'BEN 010'}]},
+              {name: 'CSE 278 C', meets: [{days: 'TR', start_time: 600, end_time: 710, location: 'BEN 010'}]},
 
-              {name: 'CSE 385 C', meets: [{days: 'TR', start_time: '08:30', end_time: '09:50', location: 'BEN 016'}]},
+              {name: 'CSE 385 D', meets: [{days: 'TR', start_time: 510, end_time: 590, location: 'BEN 016'}]},
 
-              {name: 'PHY 192 B', meets: [{days: 'MWF', start_time: '10:00', end_time: '11:50', location: 'KRG 311'}]},
+              {name: 'PHY 192 E', meets: [{days: 'MWF', start_time: 600, end_time: 710, location: 'KRG 311'}]},
 
-              {name: 'ECO 202H A', meets: [{days: 'TR', start_time: '14:30', end_time: '15:50', location: 'BEN 102'}]}
+              {name: 'ECO 202H F', meets: [{days: 'TR', start_time: 870, end_time: 950, location: 'BEN 102'}]}
 
             ]
 

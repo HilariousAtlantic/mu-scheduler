@@ -30,8 +30,8 @@ type Meet struct {
 	ID         int    `json:"id"`
 	SectionID  int    `json:"section_id"`
 	Days       string `json:"days"`
-	StartTime  string `json:"start_time"`
-	EndTime    string `json:"end_time"`
+	StartTime  int    `json:"start_time"`
+	EndTime    int    `json:"end_time"`
 	Instructor string `json:"instructor"`
 	Location   string `json:"location"`
 	StartDate  string `json:"start_date"`
@@ -43,6 +43,6 @@ type Test struct {
 	SectionID int    `json:"section_id"`
 	Date      string `json:"date"`
 	Location  string `json:"location"`
-	StartTime string `json:"start_time"`
-	EndTime   string `json:"end_time"`
+	StartTime int    `json:"start_time"`
+	EndTime   int    `json:"end_time"`
 }
