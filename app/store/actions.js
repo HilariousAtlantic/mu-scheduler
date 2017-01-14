@@ -62,7 +62,7 @@ export default {
 
         commit('RECEIVE_DETAILED_COURSE', course);
 
-        commit('SELECT_COURSE', course);
+        commit('SELECT_COURSE', response.data);
 
       });
 

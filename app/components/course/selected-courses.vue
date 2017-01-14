@@ -6,10 +6,9 @@
 
     <ul>
 
-      <li v-for="course in $store.state.selectedCourses" @click="onCourseClick(course)">
+      <li v-for="course in selectedCourses" @click="onCourseClick(course)">
 
-        {{course.subject}} {{course.number}} - {{course.title}}
-        <i class="course-info fa fa-info-circle"></i>
+        <detailed-course :course="course"></detailed-course>
 
       </li>
 
@@ -23,9 +22,13 @@
 
 <script>
 
+  import DetailedCourse from './detailed-course.vue';
+
   export default {
 
     name: 'selected-courses',
+
+    components: {DetailedCourse},
 
     methods: {
 
@@ -44,6 +47,50 @@
         let term = this.$store.state.selectedTerm.name;
 
         return term ? 'for ' + term : '';
+
+      },
+
+      selectedCourses() {
+
+        return this.$store.state.selectedCourses.map(course => {
+
+          let sections = course.sections.map(({name, meets}) => {
+
+            let instructors = [];
+
+            meets.forEach(({location}) => {
+
+              if (instructors.indexOf(location) == -1) {
+
+                instructors.push(location);
+
+              }
+
+            });
+
+            instructors = instructors.sort((a, b) => {
+
+              if (a.indexOf('(P)') != -1) {
+
+                return -1;
+
+              } else if (b.indexOf('(P)') != -1) {
+
+                return 1;
+
+              }
+
+              return 0;
+
+            });
+
+            return {name, instructor: instructors.join(', ')};
+
+          }).sort((a, b) => a.name.localeCompare(b.name));
+
+          return Object.assign({}, course, {sections});
+
+        })
 
       }
 

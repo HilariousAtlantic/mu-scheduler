@@ -59,8 +59,6 @@ export default {
 
   SELECT_COURSE(state, course) {
 
-    console.log(course);
-
     let index = state.selectedCourses.indexOf(course);
 
     if (index == -1) {
