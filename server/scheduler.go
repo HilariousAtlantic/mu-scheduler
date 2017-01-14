@@ -11,17 +11,21 @@ import (
 func findGoodSchedules(courses []Course, selectedSections []Section, goodSchedules *[][]Section) {
 
 	if len(selectedSections) == len(courses) {
+		fmt.Println("len is: " + string(len(courses)) + " sections are: ")
+		fmt.Println(selectedSections)
 		*goodSchedules = append(*goodSchedules, selectedSections)
 		return
 	}
 SKIPCOURSE:
 	for _, course := range courses {
-
+		fmt.Println("new course")
 		for _, selectedSection := range selectedSections {
+			fmt.Printf("courseID is: %v course.ID is: %v", selectedSection.CourseID, course.ID)
 			if selectedSection.CourseID == course.ID {
 				continue SKIPCOURSE
 			}
 		}
+		fmt.Println("approved")
 	SKIPSECTION:
 		for _, section := range course.Sections {
 			for _, selectedSection := range selectedSections {
@@ -30,9 +34,13 @@ SKIPCOURSE:
 					continue SKIPSECTION
 				}
 			}
+			fmt.Println(selectedSections)
 			selectedSections = append(selectedSections, section)
+			fmt.Println(selectedSections)
 			findGoodSchedules(courses, selectedSections, goodSchedules)
+			selectedSections = selectedSections[:len(selectedSections)-1]
 		}
+		fmt.Println("none worked")
 		return
 	}
 	return
@@ -73,8 +81,8 @@ func doTimesOverlap(a, b Section) bool {
 				break
 			} else if meetA.StartTime <= meetB.EndTime &&
 				meetB.StartTime <= meetA.EndTime {
-				fmt.Println(meetB)
-				fmt.Println(meetA)
+				//fmt.Println(meetB)
+				//fmt.Println(meetA)
 				return true
 			}
 		}
