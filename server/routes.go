@@ -20,6 +20,7 @@ func startServer() {
 	api.GET("/terms", termsIndex)
 	api.GET("/courses", coursesIndex)
 	api.GET("/courses/:id", courseIndex)
+	api.GET("/schedules", scheduleIndex)
 
 	fmt.Println("Starting server on http://localhost:8000")
 
@@ -49,5 +50,14 @@ func courseIndex(c echo.Context) error {
 	course := getCourseTree(id)[0]
 
 	return c.JSON(http.StatusOK, course)
+
+}
+
+func scheduleIndex(c echo.Context) error {
+
+	courses := c.QueryParam("courses")
+	schedules := findGoodSchedules(courses)
+
+	return c.JSON(http.StatusOK, schedules)
 
 }
