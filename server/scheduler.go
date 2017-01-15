@@ -5,12 +5,13 @@ import (
 	"strings"
 )
 
-//without comments
-//goodSchedules := make([[]Section]Course,0)
-
+// a helper function that is used to create the necessary
+// variables to call findGoodSchedulesRecursive
 func findGoodSchedules(ids string) []Schedule {
 
 	goodSchedules := make([]Schedule, 0)
+
+	//courses cannot be a pointer due to recursion, so convert
 	coursesPointer := getCourseTree(ids)
 	courses := make([]Course, 0)
 	for _, coursePointer := range coursesPointer {
@@ -19,17 +20,23 @@ func findGoodSchedules(ids string) []Schedule {
 
 	selectedSections := make([]Section, 0)
 	findGoodSchedulesRecursive(courses, selectedSections, &goodSchedules)
-	fmt.Println("good schedules")
+	//fmt.Println("good schedules")
+
+	//add courses to each goodSchedule
 	for _, goodSchedule := range goodSchedules {
 		goodSchedule.Courses = courses
-		fmt.Println(goodSchedule.Sections)
+		//fmt.Println(goodSchedule.Sections)
 	}
 	return goodSchedules
 
 }
 
+/*recursive function to find all good schedules.
+  works by checking every combination until it finds an invalid time, then returning and checking
+  the next section.
+*/
 func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, goodSchedules *[]Schedule) {
-
+	//base case; we found a good schedule. Append it and return.
 	if len(selectedSections) == len(courses) {
 		//fmt.Println("len is: " + string(len(courses)) + " sections are: ")
 		//fmt.Println(selectedSections)
@@ -38,10 +45,12 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 		*goodSchedules = append(*goodSchedules, newGoodSchedule)
 		return
 	}
+	//skip a course and continue
 SKIPCOURSE:
 	for _, course := range courses {
 		//fmt.Println("new course")
 		for _, selectedSection := range selectedSections {
+			//if we have a course in the selectedSections, we dont check the other sections of said course
 			//fmt.Printf("courseID is: %v course.ID is: %v", selectedSection.CourseID, course.ID)
 			if selectedSection.CourseID == course.ID {
 				continue SKIPCOURSE
