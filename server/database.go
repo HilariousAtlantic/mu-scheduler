@@ -133,6 +133,10 @@ const (
 	selectTerms = `
 	SELECT * FROM terms
 	`
+
+	selectSubjects = `
+	SELECT DISTINCT subject FROM courses ORDER BY subject
+	`
 )
 
 var createTableStatements = [...]string{
@@ -493,6 +497,25 @@ func getTestsFromDB() []*Test {
 		handleError(err)
 	}
 	return tests
+}
+
+func getSubjectsFromDB() []string {
+	var subjects []string
+
+	db := dbContext.open()
+	rows, err := db.Query(selectSubjects)
+	handleError(err)
+
+	defer rows.Close()
+	for rows.Next() {
+		var subject string
+		err = rows.Scan(&subject)
+		handleError(err)
+		subjects = append(subjects, subject)
+	}
+	err = rows.Err()
+	handleError(err)
+	return subjects
 }
 
 func deleteDatabase() {

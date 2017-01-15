@@ -140,6 +140,8 @@ func main() {
 		case "resetdb":
 			deleteDatabase()
 			createDatabase()
+		case "gpas":
+			importGPAs()
 		default:
 			startServer()
 		}
