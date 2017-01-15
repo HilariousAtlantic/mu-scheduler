@@ -8,24 +8,46 @@ import (
 //without comments
 //goodSchedules := make([[]Section]Course,0)
 
-func findGoodSchedules(courses []Course, selectedSections []Section, goodSchedules *[][]Section) {
+func findGoodSchedules(ids string) []Schedule {
+
+	goodSchedules := make([]Schedule, 0)
+	coursesPointer := getCourseTree(ids)
+	courses := make([]Course, 0)
+	for _, coursePointer := range coursesPointer {
+		courses = append(courses, *coursePointer)
+	}
+
+	selectedSections := make([]Section, 0)
+	findGoodSchedulesRecursive(courses, selectedSections, &goodSchedules)
+	fmt.Println("good schedules")
+	for _, goodSchedule := range goodSchedules {
+		goodSchedule.Courses = courses
+		fmt.Println(goodSchedule.Sections)
+	}
+	return goodSchedules
+
+}
+
+func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, goodSchedules *[]Schedule) {
 
 	if len(selectedSections) == len(courses) {
-		fmt.Println("len is: " + string(len(courses)) + " sections are: ")
-		fmt.Println(selectedSections)
-		*goodSchedules = append(*goodSchedules, selectedSections)
+		//fmt.Println("len is: " + string(len(courses)) + " sections are: ")
+		//fmt.Println(selectedSections)
+		var newGoodSchedule Schedule
+		newGoodSchedule.Sections = selectedSections
+		*goodSchedules = append(*goodSchedules, newGoodSchedule)
 		return
 	}
 SKIPCOURSE:
 	for _, course := range courses {
-		fmt.Println("new course")
+		//fmt.Println("new course")
 		for _, selectedSection := range selectedSections {
-			fmt.Printf("courseID is: %v course.ID is: %v", selectedSection.CourseID, course.ID)
+			//fmt.Printf("courseID is: %v course.ID is: %v", selectedSection.CourseID, course.ID)
 			if selectedSection.CourseID == course.ID {
 				continue SKIPCOURSE
 			}
 		}
-		fmt.Println("approved")
+		//fmt.Println("approved")
 	SKIPSECTION:
 		for _, section := range course.Sections {
 			for _, selectedSection := range selectedSections {
@@ -34,13 +56,13 @@ SKIPCOURSE:
 					continue SKIPSECTION
 				}
 			}
-			fmt.Println(selectedSections)
+			//fmt.Println(selectedSections)
 			selectedSections = append(selectedSections, section)
-			fmt.Println(selectedSections)
-			findGoodSchedules(courses, selectedSections, goodSchedules)
+			//fmt.Println(selectedSections)
+			findGoodSchedulesRecursive(courses, selectedSections, goodSchedules)
 			selectedSections = selectedSections[:len(selectedSections)-1]
 		}
-		fmt.Println("none worked")
+		//fmt.Println("none worked")
 		return
 	}
 	return

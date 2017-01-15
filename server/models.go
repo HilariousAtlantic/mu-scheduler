@@ -9,12 +9,12 @@ type Term struct {
 
 type Course struct {
 	Sections []Section `json:"sections"`
-	ID       int    `json:"id"`
-	TermID   int    `json:"term_id"`
-	Subject  string `json:"subject"`
-	Number   string `json:"number"`
-	Title    string `json:"title"`
-	Credits  string `json:"credits"`
+	ID       int       `json:"id"`
+	TermID   int       `json:"term_id"`
+	Subject  string    `json:"subject"`
+	Number   string    `json:"number"`
+	Title    string    `json:"title"`
+	Credits  string    `json:"credits"`
 }
 
 type Section struct {
@@ -45,4 +45,9 @@ type Test struct {
 	Location  string `json:"location"`
 	StartTime int    `json:"start_time"`
 	EndTime   int    `json:"end_time"`
+}
+
+type Schedule struct {
+	Courses  []Course  `json:"courses"`
+	Sections []Section `json:"sections"`
 }

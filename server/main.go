@@ -10,54 +10,61 @@ var Course1 = Course{
 	ID:       10,
 	TermID:   1,
 	Subject:  "CSE",
-	Number:   "148",
+	Number:   "100",
 	Title:    "Programming and stuff",
 	Credits:  "3.00",
 }
 var Course2 = Course{
-	Sections: []Section{Section3, Section2},
+	Sections: []Section{Section3, Section4},
 	ID:       20,
 	TermID:   1,
 	Subject:  "CSE",
-	Number:   "283",
+	Number:   "148",
 	Title:    "Networking and stuff",
 	Credits:  "3.00",
 }
 var Course3 = Course{
-	Sections: []Section{Section4},
+	Sections: []Section{Section5},
 	ID:       30,
 	TermID:   1,
 	Subject:  "CSE",
-	Number:   "201",
+	Number:   "486",
 	Title:    "Straight Bullshit",
 	Credits:  "3.00",
 }
 var Section1 = Section{
 	Meets:    []Meet{Meet1},
-	ID:       6,
+	ID:       1,
 	CourseID: 10,
 	CRN:      "23232",
 	Name:     "CSE 100",
 }
 var Section2 = Section{
 	Meets:    []Meet{Meet2, Meet3},
-	ID:       2992,
-	CourseID: 20,
+	ID:       2,
+	CourseID: 10,
 	CRN:      "54321",
-	Name:     "CSE 283",
+	Name:     "CSE 100",
 }
 
 var Section3 = Section{
 	Meets:    []Meet{Meet4},
-	ID:       2,
-	CourseID: 30,
+	ID:       3,
+	CourseID: 20,
 	CRN:      "12345",
 	Name:     "CSE 148",
 }
 var Section4 = Section{
+	Meets:    []Meet{Meet4},
+	ID:       4,
+	CourseID: 20,
+	CRN:      "12346",
+	Name:     "CSE 148",
+}
+var Section5 = Section{
 	Meets:    []Meet{Meet5},
-	ID:       2,
-	CourseID: 40,
+	ID:       5,
+	CourseID: 30,
 	CRN:      "44444",
 	Name:     "CSE 486",
 }
@@ -108,7 +115,7 @@ var Meet4 = Meet{
 var Meet5 = Meet{
 	ID:         500,
 	SectionID:  2,
-	Days:       "WM",
+	Days:       "A",
 	StartTime:  510,
 	EndTime:    720,
 	Instructor: "SHIT ITS SOBEL",
