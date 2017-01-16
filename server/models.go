@@ -48,6 +48,5 @@ type Test struct {
 }
 
 type Schedule struct {
-	Courses  []Course  `json:"courses"`
-	Sections []Section `json:"sections"`
+	SectionIDs string `json:"sections"`
 }
