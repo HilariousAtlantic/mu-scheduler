@@ -64,12 +64,15 @@ SKIPCOURSE:
 		//fmt.Println("approved")
 	SKIPSECTION:
 		for _, section := range course.Sections {
+			//go through all selectedSections and make sure none overlap
 			for _, selectedSection := range selectedSections {
 
+				//if overlap, skip that section
 				if doTimesOverlap(selectedSection, section) {
 					continue SKIPSECTION
 				}
 			}
+			//if none overlap, section is good, add to selectedSections
 			//fmt.Println(selectedSections)
 			selectedSections = append(selectedSections, section)
 			//fmt.Println(selectedSections)
@@ -82,6 +85,8 @@ SKIPCOURSE:
 	return
 }
 
+//returns a built out "tree" of courses.
+//a tree means that the courses have sections and the sections have meets
 func getCourseTree(ids string) []*Course {
 
 	courses := getCoursesFromIDString(ids)
