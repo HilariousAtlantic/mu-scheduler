@@ -5,10 +5,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 const (
-	sectionsURI     string = "http://grdist.miamioh.edu/php/getClasses.php?dept=%v&num=&inst=&from=%v&to=%v&iid=-1&did=%v&sem=&loc=O"
+	sectionsURI     string = "http://grdist.miamioh.edu/php/getClasses.php?dept=%v&num=%v&inst=&from=%v&to=%v&iid=-1&did=%v&sem=&loc=O"
 	departmentIDURI string = "http://grdist.miamioh.edu/php/getDID.php?dept=%s"
 )
 
@@ -24,30 +25,39 @@ type sectionsJSON struct {
 	ProfessorName string  `json:"name"`
 }
 
+type subjectMap map[string]uint
+
 func (s *sectionsJSON) String() string {
 	return fmt.Sprintf("%v\n%v\n%v\n%v\n%v\n",
 		s.GPA, s.Year, s.SubjectCode, s.CourseNumber, s.ProfessorName)
 }
 
 func importGPAs() {
+	total := 0
 	subjects := getSubjects()
-
-	for code, id := range subjects {
-		fetchGPAsFromSubject(code, id, 2016)
+	courses := getCoursesFromDB("")
+	start := time.Now()
+	count := 0
+	for _, course := range courses {
+		count++
+		total += fetchGPAsForCourse(course, &subjects)
+		fmt.Printf("%v/%v %v %v\n", count, len(courses), total, time.Since(start))
 	}
 }
 
-func fetchGPAsFromSubject(subjectCode string, subjectID uint, year int) {
-	res, err := http.Get(fmt.Sprintf(sectionsURI, subjectCode, year-1, year, subjectID))
+func fetchGPAsForCourse(course *Course, subjects *subjectMap) int {
+	//"http://grdist.miamioh.edu/php/getClasses.php?dept=%v&num=%v&inst=&from=%v&to=%v&iid=-1&did=%v&sem=&loc=O"
+	res, err := http.Get(fmt.Sprintf(sectionsURI, course.Subject, course.Number, 2000, 2017, (*subjects)[course.Subject]))
 	handleError(err)
 	body, _ := ioutil.ReadAll(res.Body)
 
 	var decoded []sectionsJSON
 	json.Unmarshal(body, &decoded)
+	return len(decoded)
 }
 
-func getSubjects() map[string]uint {
-	subjects := make(map[string]uint)
+func getSubjects() subjectMap {
+	subjects := make(subjectMap)
 
 	subjectCodes := getSubjectsFromDB()
 	for _, subjectCode := range subjectCodes {
