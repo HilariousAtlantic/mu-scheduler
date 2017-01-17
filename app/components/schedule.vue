@@ -18,7 +18,8 @@
 
               <span>{{course.name}}</span><br>
               <span>{{course.start}} - {{course.end}}</span><br>
-              <span>{{course.location}}</span>
+              <span>{{course.location}}</span><br>
+              <span>{{course.instructor}}</span>
 
             </div>
 
@@ -76,7 +77,7 @@
 
         this.courses.forEach(({name, meets}, i) => {
 
-            meets.forEach(({days, start_time, end_time, location}) => {
+            meets.forEach(({days, start_time, end_time, location, instructor}) => {
 
               let style = {
 
@@ -88,7 +89,7 @@
 
               days.split('').forEach(day => {
 
-                coursesByDay[day].push({name, start: formatTime(start_time), end: formatTime(end_time), location, style});
+                coursesByDay[day].push({name, start: formatTime(start_time), end: formatTime(end_time), location, instructor: instructor.replace(' (P)', ''), style});
 
               });
 
