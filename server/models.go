@@ -48,5 +48,5 @@ type Test struct {
 }
 
 type Schedule struct {
-	SectionIDs string `json:"sections"`
+	Sections []int   `json:"sections"`
 }

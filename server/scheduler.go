@@ -1,8 +1,6 @@
 package main
 
 import (
-	"bytes"
-	"strconv"
 	"strings"
 )
 
@@ -36,17 +34,12 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 	if len(selectedSections) == len(courses) {
 		//fmt.Println("len is: " + string(len(courses)) + " sections are: ")
 		//fmt.Println(selectedSections)
-		var sectionIDs bytes.Buffer
-		sectionIDs.WriteString("[")
+		var sections []int
 		for _, selectedSection := range selectedSections {
-			sectionIDs.WriteString(strconv.Itoa(selectedSection.ID))
-			sectionIDs.WriteString(",")
+			sections = append(sections, selectedSection.ID)
 		}
-		sectionIDs.WriteString("]")
-		ids := sectionIDs.String()
-		ids = ids[:len(ids)-1]
 		var goodSchedule Schedule
-		goodSchedule.SectionIDs = ids
+		goodSchedule.Sections = sections
 		//	fmt.Println(goodSchedule.SectionIDs)
 		*goodSchedules = append(*goodSchedules, goodSchedule)
 		return
