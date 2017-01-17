@@ -59,11 +59,11 @@ export default {
 
   SELECT_COURSE(state, course) {
 
-    let index = state.selectedCourses.indexOf(course);
+    let index = state.selectedCourses.indexOf(course.id);
 
     if (index == -1) {
 
-      state.selectedCourses.push(course);
+      state.selectedCourses.push(course.id);
 
     }
 
@@ -71,7 +71,7 @@ export default {
 
   DESELECT_COURSE(state, course) {
 
-    let index = state.selectedCourses.indexOf(course);
+    let index = state.selectedCourses.indexOf(course.id);
 
     if (index != -1) {
 
@@ -84,6 +84,26 @@ export default {
   SET_FILTER(state, filter) {
 
     state.coursesFilter = filter;
+
+  },
+
+  REQUEST_SCHEDULES(state) {
+
+    state.requestingSchedules = true;
+
+  },
+
+  RECEIVE_SCHEDULES(state, schedules) {
+
+    state.requestingSchedules = false;
+    state.schedules = schedules;
+    state.schedulesCache[state.selectedCourses.join(',')] = schedules;
+
+  },
+
+  RECEIVE_CACHED_SCHEDULES(state, schedules) {
+
+    state.schedules = schedules;
 
   }
 

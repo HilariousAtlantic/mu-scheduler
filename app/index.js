@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 
 import state from './store/state';
+import getters from './store/getters';
 import mutations from './store/mutations';
 import actions from './store/actions';
 
@@ -13,7 +14,7 @@ import ScheduleSelection from './pages/schedule-selection.vue';
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
-let store = new Vuex.Store({state, mutations, actions});
+let store = new Vuex.Store({state, getters, mutations, actions});
 
 let router = new VueRouter({
 

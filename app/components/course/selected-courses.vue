@@ -52,7 +52,7 @@
 
       selectedCourses() {
 
-        return this.$store.state.selectedCourses.map(course => {
+        return this.$store.getters.selectedCourses.map(course => {
 
           let sections = course.sections.map(({name, meets}) => {
 

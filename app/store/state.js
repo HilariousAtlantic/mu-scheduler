@@ -13,6 +13,7 @@ export default {
 
     coursesCache: {},
     detailedCourseCache: {},
+    schedulesCache: {},
 
     requestingTerms: false,
     requestingCourses: false,

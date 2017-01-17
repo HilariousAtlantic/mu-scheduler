@@ -60,9 +60,11 @@ export default {
 
       axios.get('/api/courses/'+course.id).then(response => {
 
-        commit('RECEIVE_DETAILED_COURSE', course);
+        let detailedCourse = response.data;
 
-        commit('SELECT_COURSE', response.data);
+        commit('RECEIVE_DETAILED_COURSE', detailedCourse);
+
+        commit('SELECT_COURSE', detailedCourse);
 
       });
 
@@ -77,6 +79,32 @@ export default {
   deselectCourse({commit}, course) {
 
     commit('DESELECT_COURSE', course);
+
+  },
+
+  generateSchedules({commit, state}) {
+
+    commit('REQUEST_SCHEDULES');
+
+    let courses = state.selectedCourses.join(',');
+
+    let schedules = state.schedulesCache[courses];
+
+    if (!schedules) {
+
+      axios.get('/api/schedules?courses='+courses).then(response => {
+
+          let schedules = response.data;
+
+          commit('RECEIVE_SCHEDULES', {courses, schedules});
+
+      });
+
+    } else {
+
+      commit('RECEIVE_CACHED_SCHEDULES', schedules);
+
+    }
 
   }
 
