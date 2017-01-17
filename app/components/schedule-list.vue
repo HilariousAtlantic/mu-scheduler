@@ -16,7 +16,7 @@
 
     </div>
 
-    <schedule :courses="currentSchedule.courses"></schedule>
+    <schedule v-if="!$store.state.requestingSchedules" :courses="currentSchedule.courses"></schedule>
 
   </div>
 
@@ -36,57 +36,19 @@
 
       return {
 
-        index: 0,
-
-        schedules: [
-
-          {
-
-            courses: [
-
-              {name: 'CSE 102 A', meets: [{days: 'MW', start_time: 780, end_time: 835, location: 'BEN 102'}, {days: 'F', start_time: 720, end_time: 830, location: 'BEN 010'}]},
-
-              {name: 'CSE 262 B', meets: [{days: 'MW', start_time: 870, end_time: 950, location: 'BEN 213'}]},
-
-              {name: 'CSE 278 C', meets: [{days: 'TR', start_time: 600, end_time: 710, location: 'BEN 010'}]},
-
-              {name: 'CSE 385 D', meets: [{days: 'TR', start_time: 510, end_time: 590, location: 'BEN 016'}]},
-
-              {name: 'PHY 192 E', meets: [{days: 'MWF', start_time: 600, end_time: 710, location: 'KRG 311'}]},
-
-              {name: 'ECO 202H F', meets: [{days: 'TR', start_time: 870, end_time: 950, location: 'BEN 102'}]}
-
-            ]
-
-          },
-
-          {
-
-            courses: [
-
-              {name: 'CSE 102 A', meets: [{days: 'MWF', start_time: 780, end_time: 835, location: 'BEN 102'}]},
-
-              {name: 'CSE 262 B', meets: [{days: 'MW', start_time: 870, end_time: 950, location: 'BEN 213'}]},
-
-              {name: 'CSE 278 C', meets: [{days: 'TR', start_time: 600, end_time: 710, location: 'BEN 010'}]},
-
-              {name: 'CSE 385 D', meets: [{days: 'TR', start_time: 510, end_time: 590, location: 'BEN 016'}]},
-
-              {name: 'PHY 192 E', meets: [{days: 'MWF', start_time: 600, end_time: 710, location: 'KRG 311'}]},
-
-              {name: 'ECO 202H F', meets: [{days: 'TR', start_time: 870, end_time: 950, location: 'BEN 102'}]}
-
-            ]
-
-          }
-
-        ]
+        index: 0
 
       }
 
     },
 
     computed: {
+
+      schedules() {
+
+        return this.$store.getters.generatedSchedules;
+
+      },
 
       currentSchedule() {
 
@@ -100,15 +62,15 @@
 
       increaseIndex() {
 
-        this.index = this.index+1 >= this.schedules.length ?
-          this.schedules.length-1 : this.index+1;
+        let length = this.schedules.length;
+
+        this.index = this.index+1 >= length ? length-1 : this.index+1;
 
       },
 
       decreaseIndex() {
 
-        this.index = this.index-1 < 0 ?
-          0 : this.index-1;
+        this.index = this.index-1 < 0 ? 0 : this.index-1;
 
       }
 

@@ -93,11 +93,11 @@ export default {
 
   },
 
-  RECEIVE_SCHEDULES(state, schedules) {
+  RECEIVE_SCHEDULES(state, {courses, schedules}) {
 
     state.requestingSchedules = false;
     state.schedules = schedules;
-    state.schedulesCache[state.selectedCourses.join(',')] = schedules;
+    state.schedulesCache[courses] = schedules;
 
   },
 
