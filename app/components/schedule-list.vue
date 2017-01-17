@@ -62,15 +62,21 @@
 
       increaseIndex() {
 
-        let length = this.schedules.length;
+        if (this.index < this.schedules.length-1) {
 
-        this.index = this.index+1 >= length ? length-1 : this.index+1;
+          this.index++;
+
+        }
 
       },
 
       decreaseIndex() {
 
-        this.index = this.index-1 < 0 ? 0 : this.index-1;
+        if (this.index > 0) {
+
+          this.index--;
+
+        }
 
       }
 
