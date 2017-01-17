@@ -12,7 +12,9 @@
 
     </div>
 
-    <button type="button">Generate Schedules</button>
+    <router-link to="/schedules">
+      <button type="button" @click="handleGenerateSchedules">Generate Schedules</button>
+    </router-link>
 
   </div>
 
@@ -47,6 +49,16 @@
         return this.$store.state.courses.filter(({subject, number, name}) =>
           trim(subject+number+name).indexOf(trim(this.$store.state.coursesFilter)) != -1
         );
+
+      }
+
+    },
+
+    methods: {
+
+      handleGenerateSchedules() {
+
+        this.$store.dispatch('generateSchedules');
 
       }
 
@@ -93,8 +105,10 @@
     width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
-    background: #66BB6A;
+    background: #4CAF50;
     color: #fff;
+    outline: none;
+    cursor: pointer;
 
   }
 
