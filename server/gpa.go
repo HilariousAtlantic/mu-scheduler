@@ -47,7 +47,8 @@ func importGPAs() {
 
 func fetchGPAsForCourse(course *Course, subjects *subjectMap) int {
 	//"http://grdist.miamioh.edu/php/getClasses.php?dept=%v&num=%v&inst=&from=%v&to=%v&iid=-1&did=%v&sem=&loc=O"
-	res, err := http.Get(fmt.Sprintf(sectionsURI, course.Subject, course.Number, 2000, 2017, (*subjects)[course.Subject]))
+	res, err := http.Get(fmt.Sprintf(
+		sectionsURI, course.Subject, course.Number, 2000, 2017, (*subjects)[course.Subject]))
 	handleError(err)
 	body, _ := ioutil.ReadAll(res.Body)
 

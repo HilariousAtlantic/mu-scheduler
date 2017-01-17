@@ -6,7 +6,7 @@
   "scripts": {
     "database": "brew services restart postgresql && createuser schedule_buddy --createdb --superuser",
     "build-client": "webpack",
-    "build-server":  "cd server/ && go get && cd ../ && go build -o start-server server/*.go",
+    "build-server": "cd server/ && go get && cd ../ && go build -o start-server server/*.go",
     "build": "npm run build-server && npm run build-client",
     "setup-server": "npm run build-server && ./start-server resetdb && ./start-server import",
     "setup-client": "npm install && webpack",
@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "request": "^2.79.0",
+    "request-promise-native": "^1.0.3",
     "vue": "^2.1.0",
     "vue-router": "^2.1.1",
     "vuex": "^2.1.1"
