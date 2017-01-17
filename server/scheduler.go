@@ -37,10 +37,12 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 		//fmt.Println("len is: " + string(len(courses)) + " sections are: ")
 		//fmt.Println(selectedSections)
 		var sectionIDs bytes.Buffer
+		sectionIDs.WriteString("[")
 		for _, selectedSection := range selectedSections {
 			sectionIDs.WriteString(strconv.Itoa(selectedSection.ID))
 			sectionIDs.WriteString(",")
 		}
+		sectionIDs.WriteString("]")
 		ids := sectionIDs.String()
 		ids = ids[:len(ids)-1]
 		var goodSchedule Schedule
