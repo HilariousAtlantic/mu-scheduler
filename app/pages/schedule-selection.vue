@@ -1,6 +1,20 @@
 <template>
 
-  <div class="schedule-selection">
+  <div v-if="$store.state.schedules.length === 0" class="schedules-none">
+
+    <span>No schedules generated</span>
+
+    <router-link to="/courses"><button>Select Courses</button></router-link>
+
+  </div>
+
+  <div v-else-if="$store.state.requestingSchedules" class="schedules-loading">
+
+    <div class="loader"></div>
+
+  </div>
+
+  <div v-else class="schedule-selection">
 
     <sidebar>
 
@@ -37,6 +51,72 @@
 </script>
 
 <style scoped>
+
+  .schedules-none {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    span {
+
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: #ccc;
+      text-transform: uppercase;
+
+    }
+
+    button {
+
+      padding: 15px 150px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      background: #1565C0;
+      color: #fff;
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+
+        background: #0D47A1;
+
+      }
+
+    }
+
+  }
+
+  .schedules-loading {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .loader {
+
+    width: 100px;
+    height: 100px;
+    border: 10px solid #ddd;
+    border-bottom: 10px solid #444;
+    border-radius: 90px;
+    animation: spin 1s linear infinite;
+
+  }
+
+  @keyframes spin {
+
+    to {
+
+      transform: rotate(360deg);
+
+    }
+
+  }
 
   .schedule-selection {
 
