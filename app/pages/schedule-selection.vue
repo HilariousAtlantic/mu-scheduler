@@ -37,7 +37,7 @@
 <script>
 
   import Sidebar from '../components/sidebar.vue';
-  import FilterList from '../components/filter-list.vue';
+  import FilterList from '../components/filter/filter-list.vue';
   import ScheduleList from '../components/schedule/schedule-list.vue';
 
   export default {
