@@ -1,6 +1,22 @@
 <template>
 
-  <div class="schedule-list">
+  <div v-if="noSchedules" class="no-schedules">
+
+    <h3>No schedules generated</h3>
+
+    <router-link to="/courses"><button>Select Courses</button></router-link>
+
+  </div>
+
+  <div v-else-if="loadingSchedules" class="loader-wrapper">
+
+    <div class="loader"></div>
+
+  </div>
+
+
+
+  <div v-else class="schedule-list">
 
     <div class="schedule-toolbar">
 
@@ -16,15 +32,7 @@
 
     </div>
 
-    <div class="schedule-wrapper">
-
-      <span v-if="noSchedules" class="no-schedules">No schedules generated</span>
-
-      <div v-else-if="loadingSchedules" class="loader"></div>
-
-      <schedule v-else :courses="currentSchedule.courses"></schedule>
-
-    </div>
+    <schedule :courses="currentSchedule.courses"></schedule>
 
   </div>
 
@@ -158,14 +166,6 @@
 
   }
 
-  .schedule-wrapper {
-
-    flex: 1;
-    display: flex;
-    justify-content: center;
-
-  }
-
   .schedule {
 
     flex: 1;
@@ -175,16 +175,46 @@
   .no-schedules {
 
     flex: 1;
-    align-self: center;
-    text-align: center;
-    font-size: 2rem;
-    color: #999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    h3 {
+
+      font-size: 2rem;
+      color: #ccc;
+      text-transform: uppercase;
+
+    }
+
+    button {
+
+      width: 400px;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      background: #1565C0;
+      color: #fff;
+      outline: none;
+      cursor: pointer;
+
+    }
+
+  }
+
+  .loader-wrapper {
+
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
   }
 
   .loader {
 
-    align-self: center;
     width: 100px;
     height: 100px;
     border: 10px solid #ddd;
