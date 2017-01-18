@@ -79,6 +79,8 @@
 
             meets.forEach(({days, start_time, end_time, location, instructor}) => {
 
+              if (location === 'WEB') return;
+
               let style = {
 
                 top: ((start_time-start)/(end-start)*100)+'%',
