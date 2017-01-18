@@ -14,11 +14,11 @@
 
     <div class="browser-group">
 
-      <button class="toolbar-button details">Details</button>
+      <button class="schedule-details">Details</button>
 
-      <button class="toolbar-button select">Save</button>
+      <button class="schedule-select">Save</button>
 
-      <button class="toolbar-button export">Export</button>
+      <button class="schedule-export">Export</button>
 
     </div>
 
@@ -85,13 +85,7 @@
 
   }
 
-  .toolbar-button {
-
-    margin-left: 10px;
-
-  }
-
-  .details {
+  .schedule-details {
 
     background: #1565C0;
     color: #fff;
@@ -104,7 +98,7 @@
 
   }
 
-  .select {
+  .schedule-select {
 
     background: #4CAF50;
     color: #fff;
@@ -117,7 +111,7 @@
 
   }
 
-  .export {
+  .schedule-export {
 
     background: #fff;
     color: #333;
