@@ -16,7 +16,15 @@
 
     </div>
 
-    <schedule v-if="!$store.state.requestingSchedules" :courses="currentSchedule.courses"></schedule>
+    <schedule v-if="!loadingSchedules" :courses="currentSchedule.courses"></schedule>
+
+    <div v-else class="loader-wrapper">
+
+      <div class="loader"></div>
+
+    </div>
+
+
 
   </div>
 
@@ -53,6 +61,12 @@
       currentSchedule() {
 
         return this.schedules[this.index];
+
+      },
+
+      loadingSchedules() {
+
+        return this.$store.state.requestingSchedules || this.$store.state.schedules.length === 0;
 
       }
 
@@ -141,6 +155,36 @@
   .schedule {
 
     flex: 1;
+
+  }
+
+  .loader-wrapper {
+
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .loader {
+
+    width: 100px;
+    height: 100px;
+    border: 5px solid #ddd;
+    border-bottom: 5px solid #444;
+    border-radius: 90px;
+    animation: spin 1s linear infinite;
+
+  }
+
+  @keyframes spin {
+
+    to {
+
+      transform: rotate(360deg);
+
+    }
 
   }
 
