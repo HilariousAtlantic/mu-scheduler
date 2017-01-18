@@ -58,6 +58,8 @@ export default {
 
     if (!detailedCourse) {
 
+      commit('REQUEST_DETAILED_COURSE');
+
       axios.get('/api/courses/'+course.id).then(response => {
 
         let detailedCourse = response.data;
@@ -84,13 +86,13 @@ export default {
 
   generateSchedules({commit, state}) {
 
-    commit('REQUEST_SCHEDULES');
-
     let courses = state.selectedCourses.join(',');
 
     let schedules = state.schedulesCache[courses];
 
     if (!schedules) {
+
+      commit('REQUEST_SCHEDULES');
 
       axios.get('/api/schedules?courses='+courses).then(response => {
 
