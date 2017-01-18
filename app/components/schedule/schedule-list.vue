@@ -45,7 +45,7 @@
 
       currentSchedule() {
 
-        return this.schedules[0];
+        return this.schedules[this.$store.state.schedulesIndex];
 
       },
 

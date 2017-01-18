@@ -9,6 +9,7 @@ export default {
     selectedSchedules: [],
 
     coursesFilter: '',
+    schedulesIndex: 0,
     schedulesFilter: {},
 
     coursesCache: {},

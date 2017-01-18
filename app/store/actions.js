@@ -108,6 +108,18 @@ export default {
 
     }
 
+  },
+
+  increaseSchedulesIndex({commit}) {
+
+    commit('INCREASE_SCHEDULES_INDEX');
+
+  },
+
+  decreaseSchedulesIndex({commit}) {
+
+    commit('DECREASE_SCHEDULES_INDEX');
+
   }
 
 }

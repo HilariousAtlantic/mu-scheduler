@@ -6,7 +6,7 @@
 
       <button @click="decreaseIndex"><i class="fa fa-angle-left"></i></button>
 
-      <span>0 of 0</span>
+      <span>{{$store.state.schedulesIndex+1}} of {{$store.state.schedules.length}}</span>
 
       <button @click="increaseIndex"><i class="fa fa-angle-right"></i></button>
 
@@ -32,35 +32,17 @@
 
     name: 'schedule-browser',
 
-    data() {
-
-      return {
-
-        index: 0
-
-      }
-
-    },
-
     methods: {
 
       increaseIndex() {
 
-        if (this.index < this.schedules.length-1) {
-
-          this.index++;
-
-        }
+        this.$store.dispatch('increaseSchedulesIndex');
 
       },
 
       decreaseIndex() {
 
-        if (this.index > 0) {
-
-          this.index--;
-
-        }
+        this.$store.dispatch('decreaseSchedulesIndex');
 
       }
 
