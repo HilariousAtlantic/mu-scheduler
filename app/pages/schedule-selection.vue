@@ -69,7 +69,7 @@
 <script>
 
   import Sidebar from '../components/sidebar.vue';
-  import ScheduleList from '../components/schedule-list.vue';
+  import ScheduleList from '../components/schedule/schedule-list.vue';
 
   export default {
 

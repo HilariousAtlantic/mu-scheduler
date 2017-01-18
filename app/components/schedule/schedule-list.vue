@@ -14,23 +14,9 @@
 
   </div>
 
-
-
   <div v-else class="schedule-list">
 
-    <div class="schedule-toolbar">
-
-      <div class="schedule-search">
-
-        <button @click="decreaseIndex"><i class="fa fa-angle-left"></i></button>
-        <span>{{index+1}} of {{schedules.length}}</span>
-        <button @click="increaseIndex"><i class="fa fa-angle-right"></i></button>
-
-      </div>
-
-      <button class="schedule-select">Save Schedule</button>
-
-    </div>
+    <schedule-browser></schedule-browser>
 
     <schedule :courses="currentSchedule.courses"></schedule>
 
@@ -41,22 +27,13 @@
 <script>
 
   import Schedule from './schedule.vue';
+  import ScheduleBrowser from './schedule-browser.vue';
 
   export default {
 
     name: 'schedule-list',
 
-    components: {Schedule},
-
-    data() {
-
-      return {
-
-        index: 0
-
-      }
-
-    },
+    components: {Schedule, ScheduleBrowser},
 
     computed: {
 
@@ -68,7 +45,7 @@
 
       currentSchedule() {
 
-        return this.schedules[this.index];
+        return this.schedules[0];
 
       },
 
@@ -81,30 +58,6 @@
       noSchedules() {
 
         return this.$store.state.schedules.length === 0;
-
-      }
-
-    },
-
-    methods: {
-
-      increaseIndex() {
-
-        if (this.index < this.schedules.length-1) {
-
-          this.index++;
-
-        }
-
-      },
-
-      decreaseIndex() {
-
-        if (this.index > 0) {
-
-          this.index--;
-
-        }
 
       }
 
@@ -123,46 +76,9 @@
 
   }
 
-  .schedule-toolbar {
+  .schedule-browser {
 
     margin-bottom: 10px;
-
-  }
-
-  .schedule-search {
-
-    display: inline-block;
-
-    button {
-
-      border: 1px solid #ddd;
-      background: #eee;
-      padding: 10px 50px;
-      outline: none;
-      cursor: pointer;
-
-    }
-
-    span {
-
-      text-align: center;
-      border: 1px solid #ddd;
-      padding: 10px 75px;
-
-    }
-
-  }
-
-  .schedule-select {
-
-    float: right;
-    display: inline-block;
-    padding: 10px 100px;
-    border: 1px solid #ddd;
-    background: #4CAF50;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
 
   }
 
@@ -199,6 +115,12 @@
       color: #fff;
       outline: none;
       cursor: pointer;
+
+      &:hover {
+
+        background: #0D47A1;
+
+      }
 
     }
 
