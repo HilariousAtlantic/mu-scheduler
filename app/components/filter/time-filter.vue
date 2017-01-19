@@ -2,9 +2,7 @@
 
   <div class="time-filter">
 
-    <input type="checkbox">
-
-    <span>I want to start before 10:00 AM on Monday, Wednesday, and Friday</span>
+    <schedule-filter :text="text" :active="active"></schedule-filter>
 
   </div>
 
@@ -12,9 +10,25 @@
 
 <script>
 
+  import ScheduleFilter from './schedule-filter.vue';
+
   export default {
 
-    name: 'time-filter'
+    name: 'time-filter',
+
+    props: ['operator', 'time', 'days', 'active'],
+
+    components: {ScheduleFilter},
+
+    computed: {
+
+      text() {
+
+        return 'I want to ' + this.operator.toLowerCase() + ' ' + this.time + ' on ' + this.days;
+
+      }
+
+    }
 
   }
 

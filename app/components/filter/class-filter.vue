@@ -2,9 +2,7 @@
 
   <div class="class-filter">
 
-    <input type="checkbox">
-
-    <span>I want less than 3 classes on Tuesday and Thursday</span>
+    <schedule-filter :text="text" :active="active"></schedule-filter>
 
   </div>
 
@@ -12,9 +10,25 @@
 
 <script>
 
+  import ScheduleFilter from './schedule-filter.vue';
+
   export default {
 
-    name: 'class-filter'
+    name: 'class-filter',
+
+    props: ['operator', 'amount', 'days', 'active'],
+
+    components: {ScheduleFilter},
+
+    computed: {
+
+      text() {
+
+        return 'I want ' + this.operator.toLowerCase() + ' ' + this.amount + ' classes on ' + this.days;
+
+      }
+
+    }
 
   }
 
