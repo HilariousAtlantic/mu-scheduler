@@ -46,5 +46,10 @@ type Test struct {
 }
 
 type Schedule struct {
-	Sections []int   `json:"sections"`
+	Sections []ScheduledCourse `json:"sections"`
+}
+
+type ScheduledCourse struct {
+	CourseID  int `json:"course_id"`
+	SectionID int `json:"section_id"`
 }

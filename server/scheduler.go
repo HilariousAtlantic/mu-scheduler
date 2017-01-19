@@ -34,9 +34,13 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 	if len(selectedSections) == len(courses) {
 		//fmt.Println("len is: " + string(len(courses)) + " sections are: ")
 		//fmt.Println(selectedSections)
-		var sections []int
+		var sections []ScheduledCourse
 		for _, selectedSection := range selectedSections {
-			sections = append(sections, selectedSection.ID)
+			var scheduledCourse = ScheduledCourse{
+				CourseID:  selectedSection.CourseID,
+				SectionID: selectedSection.ID,
+			}
+			sections = append(sections, scheduledCourse)
 		}
 		var goodSchedule Schedule
 		goodSchedule.Sections = sections
