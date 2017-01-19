@@ -19,6 +19,7 @@
           <time-input
             :step="15"
             :defaultTime="options.time"
+            @change="handleTimeChange"
           ></time-input>
 
           <days-input
@@ -44,6 +45,8 @@
   import Dropdown from '../editor/dropdown.vue';
   import TimeInput from '../editor/time-input.vue';
   import DaysInput from '../editor/days-input.vue';
+
+  import {toTime} from '../lib/time';
 
   export default {
 
@@ -80,9 +83,11 @@
 
         let operator = this.options.operator.toLowerCase();
 
+        let time = toTime(this.options.time);
+
         let days = this.options.days.map(day => abbreviations[day]).join(', ');
 
-        return 'I want to ' + operator + ' ' + this.options.time + ' on ' + days;
+        return 'I want to ' + operator + ' ' + time + ' on ' + days;
 
       }
 
@@ -96,15 +101,21 @@
 
       },
 
-      handleOperatorChange() {
+      handleOperatorChange(operator) {
 
-
+        this.options.operator = operator;
 
       },
 
-      handleDaysChange() {
+      handleTimeChange(time) {
 
+        this.options.time = time;
 
+      },
+
+      handleDaysChange(days) {
+
+        this.options.days = days;
 
       }
 
