@@ -36,9 +36,10 @@
 
     methods: {
 
-      selectedOption(option) {
+      selectOption(option) {
 
         this.selectedOption = option;
+        this.showDropdown = false;
 
       },
 
