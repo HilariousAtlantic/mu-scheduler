@@ -10,7 +10,13 @@
 
         <div class="filter-options">
 
-          <input type="text">
+          <dropdown
+            :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
+          ></dropdown>
+
+          <time-input :step="15" :defaultTime="'10:00 AM'"></time-input>
+
+          <days-input :days="['M', 'T', 'W', 'R', 'F', 'S']"></days-input>
 
         </div>
 
@@ -26,6 +32,9 @@
 
   import ScheduleFilter from './schedule-filter.vue';
   import FilterEditor from './filter-editor.vue';
+  import Dropdown from '../editor/dropdown.vue';
+  import TimeInput from '../editor/time-input.vue';
+  import DaysInput from '../editor/days-input.vue';
 
   export default {
 
@@ -33,7 +42,7 @@
 
     props: ['options', 'active'],
 
-    components: {ScheduleFilter, FilterEditor},
+    components: {ScheduleFilter, FilterEditor, Dropdown, TimeInput, DaysInput},
 
     data() {
 
