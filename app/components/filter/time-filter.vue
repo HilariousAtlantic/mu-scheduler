@@ -2,13 +2,13 @@
 
   <div class="time-filter">
 
-    <schedule-filter :text="text" :active="active" @edit="toggleEditing"></schedule-filter>
+    <schedule-filter :text="text" :active="active" @edit="toggleEditing" @toggle="toggleActive"></schedule-filter>
 
     <div v-if="showEditor" class="modal">
 
       <filter-editor :result="previewText" @done="submitChanges" @quit="discardChanges">
 
-        <time-filter-editor :options="preview" @change="onPreviewChange"></time-filter-editor>
+        <time-filter-editor :options="preview" @change="changePreview"></time-filter-editor>
 
       </filter-editor>
 
@@ -83,7 +83,13 @@
 
       },
 
-      onPreviewChange(changes) {
+      toggleActive() {
+
+        // TODO dispatch a filter change action
+
+      },
+
+      changePreview(changes) {
 
         Object.assign(this.preview, changes);
 

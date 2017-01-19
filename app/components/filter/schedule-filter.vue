@@ -2,7 +2,7 @@
 
   <div class="schedule-filter">
 
-    <input type="checkbox" :checked="active">
+    <input type="checkbox" :checked="active" @change="$emit('toggle')">
 
     <span @click="$emit('edit')">{{text}}</span>
 
