@@ -46,7 +46,7 @@
   import TimeInput from '../editor/time-input.vue';
   import DaysInput from '../editor/days-input.vue';
 
-  import {toTime} from '../lib/time';
+  import {toTime} from '../../lib/time';
 
   export default {
 
