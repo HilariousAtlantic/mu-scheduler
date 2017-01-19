@@ -12,7 +12,9 @@
 
       <slot></slot>
 
-      <button class="editor-done" @click="$emit('done')">Done</button>
+      <button class="editor-button editor-done" @click="$emit('done')">Save</button>
+
+      <button class="editor-button editor-quit" @click="$emit('quit')">Cancel</button>
 
     </div>
 
@@ -48,14 +50,25 @@
 
   }
 
-  .editor-done {
+  .editor-button {
 
     padding: 10px 50px;
     border: 1px solid #ddd;
-    background: #4CAF50;
     color: #fff;
     outline: none;
     cursor: pointer;
+
+  }
+
+  .editor-done {
+
+    background: #4CAF50;
+
+  }
+
+  .editor-quit {
+
+    background: #F44336;
 
   }
 
