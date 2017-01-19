@@ -46,7 +46,7 @@
 
         }
 
-        this.$emit('change', this.selectedDays);
+        this.$emit('change', this.selectedDays.sort((a, b) => this.days.indexOf(a)-this.days.indexOf(b)));
 
       }
 
