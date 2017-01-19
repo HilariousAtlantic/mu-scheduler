@@ -2,7 +2,7 @@
 
   <div class="time-input">
 
-    <input type="text" @input="handleChange" v-model="time">
+    <input type="text" v-model="time">
 
     <ul v-if="times.length > 1" class="suggestion-list">
 

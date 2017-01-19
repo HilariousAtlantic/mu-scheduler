@@ -2,33 +2,13 @@
 
   <div class="time-filter">
 
-    <schedule-filter :text="text" :active="active" @edit="toggleEditor"></schedule-filter>
+    <schedule-filter :text="text" :active="active" @edit="toggleEditing"></schedule-filter>
 
     <div v-if="showEditor" class="modal">
 
-      <filter-editor :result="text" @done="toggleEditor">
+      <filter-editor :result="previewText" @done="submitChanges" @quit="discardChanges">
 
-        <div class="filter-options">
-
-          <dropdown
-            :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
-            :defaultOption="options.operator"
-            @select="handleOperatorChange"
-          ></dropdown>
-
-          <time-input
-            :step="15"
-            :defaultTime="options.time"
-            @change="handleTimeChange"
-          ></time-input>
-
-          <days-input
-            :days="['M', 'T', 'W', 'R', 'F', 'S']"
-            :defaultDays="options.days"
-            @change="handleDaysChange"
-          ></days-input>
-
-        </div>
+        <time-filter-editor :options="preview" @change="onPreviewChange"></time-filter-editor>
 
       </filter-editor>
 
@@ -42,9 +22,7 @@
 
   import ScheduleFilter from './schedule-filter.vue';
   import FilterEditor from './filter-editor.vue';
-  import Dropdown from '../editor/dropdown.vue';
-  import TimeInput from '../editor/time-input.vue';
-  import DaysInput from '../editor/days-input.vue';
+  import TimeFilterEditor from './time-filter-editor.vue';
 
   import {toTime} from '../../lib/time';
 
@@ -54,13 +32,15 @@
 
     props: ['options', 'active'],
 
-    components: {ScheduleFilter, FilterEditor, Dropdown, TimeInput, DaysInput},
+    components: {ScheduleFilter, FilterEditor, TimeFilterEditor},
 
     data() {
 
       return {
 
-        showEditor: false
+        showEditor: false,
+
+        preview: Object.assign({}, this.options)
 
       }
 
@@ -89,33 +69,58 @@
 
         return 'I want to ' + operator + ' ' + time + ' on ' + days;
 
+      },
+
+      previewText() {
+
+        let abbreviations = {
+
+          M: 'Monday',
+          T: 'Tuesday',
+          W: 'Wednesday',
+          R: 'Thursday',
+          F: 'Friday',
+          S: 'Saturday'
+
+        }
+
+        let operator = this.preview.operator.toLowerCase();
+
+        let time = toTime(this.preview.time);
+
+        let days = this.preview.days.map(day => abbreviations[day]).join(', ');
+
+        return 'I want to ' + operator + ' ' + time + ' on ' + days;
+
       }
 
     },
 
     methods: {
 
-      toggleEditor() {
+      toggleEditing() {
 
         this.showEditor = !this.showEditor;
 
       },
 
-      handleOperatorChange(operator) {
+      onPreviewChange(changes) {
 
-        this.options.operator = operator;
-
-      },
-
-      handleTimeChange(time) {
-
-        this.options.time = time;
+        Object.assign(this.preview, changes);
 
       },
 
-      handleDaysChange(days) {
+      submitChanges() {
 
-        this.options.days = days;
+        // TODO dispatch a filter change action
+        this.toggleEditing();
+
+      },
+
+      discardChanges() {
+
+        Object.assign(this.preview, this.options);
+        this.toggleEditing();
 
       }
 
