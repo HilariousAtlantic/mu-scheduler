@@ -40,7 +40,8 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 		}
 		var goodSchedule Schedule
 		goodSchedule.Sections = sections
-		//	fmt.Println(goodSchedule.SectionIDs)
+		//fmt.Println("good schedule added:")
+		//fmt.Println(goodSchedule)
 		*goodSchedules = append(*goodSchedules, goodSchedule)
 		return
 	}
@@ -112,12 +113,15 @@ func getCourseTree(ids string) []*Course {
 func doTimesOverlap(a, b Section) bool {
 	for _, meetA := range a.Meets {
 		for _, meetB := range b.Meets {
+			//fmt.Printf("comparing meet: %v to meet: %v", meetA, meetB)
 			if !containsSameDay(meetA.Days, meetB.Days) {
-				break
+				//fmt.Println("different day")
+				continue
 			} else if meetA.StartTime <= meetB.EndTime &&
 				meetB.StartTime <= meetA.EndTime {
 				//fmt.Println(meetB)
 				//fmt.Println(meetA)
+				//fmt.Println("no overlap")
 				return true
 			}
 		}

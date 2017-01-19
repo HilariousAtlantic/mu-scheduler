@@ -234,8 +234,8 @@ func importDatabase() {
 
 	fmt.Println("Database imported")
 
-	fmt.Println("Testing Scheduler")
-	findGoodSchedules("2035,789,717,738,732")
+	//fmt.Println("Testing Scheduler")
+	//findGoodSchedules("404,717")
 	/*
 		goodSchedules := make([][]Section, 0)
 		coursesPointer := getCourseTree("2035,789,717,738,732")
