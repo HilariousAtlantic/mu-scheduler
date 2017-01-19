@@ -22,6 +22,10 @@
 
         <h3>Schedule Selection</h3>
 
+        <p>Here you can view your potential schedules. You can click the details button to get information about the courses and professors.</p>
+
+        <p>You can use the filters to narrow down the choices. In order to edit a filter, click on its text and an editor will appear.</p>
+
         <filter-list></filter-list>
 
       </div>
