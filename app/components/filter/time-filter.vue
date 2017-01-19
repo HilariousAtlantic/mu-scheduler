@@ -25,6 +25,7 @@
   import TimeFilterEditor from './time-filter-editor.vue';
 
   import {toTime} from '../../lib/time';
+  import {formatDayList} from '../../lib/days';
 
   export default {
 
@@ -50,22 +51,11 @@
 
       text() {
 
-        let abbreviations = {
-
-          M: 'Monday',
-          T: 'Tuesday',
-          W: 'Wednesday',
-          R: 'Thursday',
-          F: 'Friday',
-          S: 'Saturday'
-
-        }
-
         let operator = this.options.operator.toLowerCase();
 
         let time = toTime(this.options.time);
 
-        let days = this.options.days.map(day => abbreviations[day]).join(', ');
+        let days = formatDayList(this.options.days);
 
         return 'I want to ' + operator + ' ' + time + ' on ' + days;
 
@@ -73,22 +63,11 @@
 
       previewText() {
 
-        let abbreviations = {
-
-          M: 'Monday',
-          T: 'Tuesday',
-          W: 'Wednesday',
-          R: 'Thursday',
-          F: 'Friday',
-          S: 'Saturday'
-
-        }
-
         let operator = this.preview.operator.toLowerCase();
 
         let time = toTime(this.preview.time);
 
-        let days = this.preview.days.map(day => abbreviations[day]).join(', ');
+        let days = formatDayList(this.preview.days);
 
         return 'I want to ' + operator + ' ' + time + ' on ' + days;
 
@@ -133,12 +112,6 @@
 <style scoped>
 
   .time-filter {
-
-  }
-
-  .filter-options {
-
-    display: inline-block;
 
   }
 
