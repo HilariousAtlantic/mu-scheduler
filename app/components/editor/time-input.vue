@@ -2,7 +2,7 @@
 
   <div class="time-input">
 
-    <input type="text" @input="handleChange" :value="time">
+    <input type="text" @input="handleChange" v-model="time">
 
     <ul v-if="times.length > 1" class="suggestion-list">
 
@@ -16,7 +16,7 @@
 
 <script>
 
-  import {getSuggestedTimes, toTime, toMinutes} from '../lib/time';
+  import {getSuggestedTimes, toTime, toMinutes} from '../../lib/time';
 
   export default {
 
@@ -35,20 +35,6 @@
     },
 
     methods: {
-
-      handleChange(event) {
-
-        let time = event.target.value;
-
-        this.time = time;
-
-        if (time.match(/\d{1,2}:\d{2} (AM|PM)/)) {
-
-          this.selectTime(time);
-
-        }
-
-      },
 
       selectTime(time) {
 
