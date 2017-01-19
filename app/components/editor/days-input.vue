@@ -2,7 +2,11 @@
 
   <div class="days-input">
 
-    <button v-for="day in days" :class="{selected: selectedDays.indexOf(day) != -1}" @click="toggleDay(day)">{{day}}</button>
+    <button
+      v-for="day in days"
+      :class="{selected: selectedDays.indexOf(day) != -1}"
+      @click="toggleDay(day)"
+    >{{day}}</button>
 
   </div>
 
@@ -20,7 +24,7 @@
 
       return {
 
-        selectedDays: this.defaultDays || []
+        selectedDays: this.defaultDays ? [...this.defaultDays] : []
 
       }
 
@@ -41,6 +45,8 @@
           this.selectedDays.splice(index, 1);
 
         }
+
+        this.$emit('change', this.selectedDays);
 
       }
 

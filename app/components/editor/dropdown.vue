@@ -40,6 +40,7 @@
 
         this.selectedOption = option;
         this.showDropdown = false;
+        this.$emit('select', option);
 
       },
 
