@@ -4,7 +4,7 @@
 
     <input type="checkbox" :checked="active">
 
-    <span>{{text}}</span>
+    <span @click="$emit('edit')">{{text}}</span>
 
   </div>
 

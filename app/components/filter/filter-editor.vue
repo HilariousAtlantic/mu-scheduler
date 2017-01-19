@@ -4,19 +4,22 @@
 
     <div class="editor-header">
 
-      <span>Filter Editor</span>
+      <span>{{result}}</span>
 
     </div>
 
-    <div class="editor-form">
+    <div class="editor-section">
 
-      <h4>Options</h4>
+      <slot></slot>
 
     </div>
 
-    <div class="editor-result">
 
-      <h4>Result</h4>
+    <div class="editor-footer">
+
+      <button class="editor-button">Cancel</button>
+
+      <button class="editor-button filter-save">Save</button>
 
     </div>
 
@@ -28,7 +31,9 @@
 
   export default {
 
-    name: 'filter-editor'
+    name: 'filter-editor',
+
+    props: ['result']
 
   }
 
@@ -41,38 +46,46 @@
     background: #fff;
     border: 1px solid #ddd;
 
-    h4 {
-
-      margin: 10px 0;
-
-    }
-
-    input {
-
-      padding: 10px;
-
-    }
-
   }
 
   .editor-header {
 
-    background: #eee;
-    border-bottom: 1px solid #ddd;
     padding: 10px;
-
-  }
-
-  .editor-form {
-
-    padding: 20px;
-
-  }
-
-  .editor-result {
-
-    padding: 20px;
     border-bottom: 1px solid #ddd;
+    background: #eee;
+
+  }
+
+  .editor-section {
+
+    padding: 25px;
+
+  }
+
+  .editor-footer {
+
+    display: flex;
+    padding: 10px;
+    justify-content: flex-end;
+    border-top: 1px solid #ddd;
+
+  }
+
+  .editor-button {
+
+    margin-left: 10px;
+    padding: 10px 50px;
+    border: 1px solid #ddd;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+
+  }
+
+  .filter-save {
+
+    background: #4CAF50;
+    color: #fff;
 
   }
 
