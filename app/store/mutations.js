@@ -96,8 +96,25 @@ export default {
   RECEIVE_SCHEDULES(state, {courses, schedules}) {
 
     state.requestingSchedules = false;
-    state.schedules = schedules;
-    state.schedulesCache[courses] = schedules;
+
+    state.schedules = schedules.map(schedule => {
+
+      let courses = [];
+
+      schedule.sections.forEach(({course_id, section_id}) => {
+
+        let course = state.detailedCourseCache[course_id];
+        let section = course.sections.find(({id}) => id === section_id);
+
+        courses.push({name: course.subject + ' ' + course.number + ' ' + section.name, meets: section.meets});
+
+      });
+
+      return {courses};
+
+    });
+
+    state.schedulesCache[courses] = state.schedules;
 
   },
 

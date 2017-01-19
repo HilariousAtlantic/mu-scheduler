@@ -6,25 +6,11 @@ export default {
 
   },
 
-  generatedSchedules(state, getters) {
+  filteredSchedules(state) {
 
-    function getSection(id) {
+    let schedules = state.schedules;
 
-      for (let course of getters.selectedCourses) {
-
-        let found = course.sections.find(section => section.id === id);
-
-        if (found) {
-
-          return {meets: found.meets, name: course.subject + ' ' + course.number + ' ' + found.name}
-
-        }
-
-      }
-
-    }
-
-    return state.schedules.map(schedule => ({courses: schedule.sections.map(getSection)}));
+    let filters = state.scheduleFilters;
 
   }
 

@@ -23,15 +23,9 @@
 
     computed: {
 
-      schedules() {
-
-        return this.$store.getters.generatedSchedules;
-
-      },
-
       currentSchedule() {
 
-        return this.schedules[this.$store.state.schedulesIndex];
+        return this.$store.state.schedules[this.$store.state.schedulesIndex];
 
       }
 
