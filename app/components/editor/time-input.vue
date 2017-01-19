@@ -28,7 +28,7 @@
 
       return {
 
-        time: this.defaultTime || ''
+        time: this.defaultTime + '' || ''
 
       }
 

@@ -6,20 +6,20 @@
 
     <div v-if="showEditor" class="modal">
 
-      <filter-editor :result="text">
+      <filter-editor :result="text" @done="toggleEditor">
 
         <div class="filter-options">
 
           <dropdown
             :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
-            :defaultOption="'Start After'"
+            :defaultOption="options.operator"
           ></dropdown>
 
-          <time-input :step="15" :defaultTime="'10:00 AM'"></time-input>
+          <time-input :step="15" :defaultTime="options.time"></time-input>
 
           <days-input
             :days="['M', 'T', 'W', 'R', 'F', 'S']"
-            :defaultDays="['M', 'W', 'F']"
+            :defaultDays="options.days"
           ></days-input>
 
         </div>
@@ -62,7 +62,22 @@
 
       text() {
 
-        return 'I want to ' + this.options.operator.toLowerCase() + ' ' + this.options.time + ' on ' + this.options.days;
+        let abbreviations = {
+
+          M: 'Monday',
+          T: 'Tuesday',
+          W: 'Wednesday',
+          R: 'Thursday',
+          F: 'Friday',
+          S: 'Saturday'
+
+        }
+
+        let operator = this.options.operator.toLowerCase();
+
+        let days = this.options.days.map(day => abbreviations[day]).join(', ');
+
+        return 'I want to ' + operator + ' ' + this.options.time + ' on ' + days;
 
       }
 

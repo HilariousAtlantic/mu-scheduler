@@ -12,7 +12,7 @@
 
       <slot></slot>
 
-      <button class="editor-done">Done</button>
+      <button class="editor-done" @click="$emit('done')">Done</button>
 
     </div>
 
