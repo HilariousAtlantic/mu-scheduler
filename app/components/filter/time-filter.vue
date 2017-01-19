@@ -12,11 +12,15 @@
 
           <dropdown
             :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
+            :defaultOption="'Start After'"
           ></dropdown>
 
           <time-input :step="15" :defaultTime="'10:00 AM'"></time-input>
 
-          <days-input :days="['M', 'T', 'W', 'R', 'F', 'S']"></days-input>
+          <days-input
+            :days="['M', 'T', 'W', 'R', 'F', 'S']"
+            :defaultDays="['M', 'W', 'F']"
+          ></days-input>
 
         </div>
 
@@ -81,6 +85,12 @@
 <style scoped>
 
   .time-filter {
+
+  }
+
+  .filter-options {
+
+    display: inline-block;
 
   }
 

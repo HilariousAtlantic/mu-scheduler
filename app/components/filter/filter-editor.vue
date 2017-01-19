@@ -4,7 +4,7 @@
 
     <div class="editor-header">
 
-      <span>{{result}}</span>
+      <span class="editor-result">{{result}}</span>
 
     </div>
 
@@ -12,14 +12,7 @@
 
       <slot></slot>
 
-    </div>
-
-
-    <div class="editor-footer">
-
-      <button class="editor-button">Cancel</button>
-
-      <button class="editor-button filter-save">Save</button>
+      <button class="editor-done">Done</button>
 
     </div>
 
@@ -45,47 +38,24 @@
 
     background: #fff;
     border: 1px solid #ddd;
+    padding: 20px;
 
   }
 
   .editor-header {
 
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    background: #eee;
+    margin-bottom: 10px
 
   }
 
-  .editor-section {
+  .editor-done {
 
-    padding: 25px;
-
-  }
-
-  .editor-footer {
-
-    display: flex;
-    padding: 10px;
-    justify-content: flex-end;
-    border-top: 1px solid #ddd;
-
-  }
-
-  .editor-button {
-
-    margin-left: 10px;
     padding: 10px 50px;
     border: 1px solid #ddd;
-    background: #fff;
-    outline: none;
-    cursor: pointer;
-
-  }
-
-  .filter-save {
-
     background: #4CAF50;
     color: #fff;
+    outline: none;
+    cursor: pointer;
 
   }
 
