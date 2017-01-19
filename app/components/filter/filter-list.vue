@@ -39,13 +39,13 @@
 
         filters: [
 
-            {type: 'time', options: {operator: 'Start After', time: '10:00 AM', days: ['M', 'W', 'F']}, active: true},
+            {type: 'time', options: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']}, active: true},
 
-            {type: 'time', options: {operator: 'End Before', time: '4:00 PM', days: ['T', 'R']}, active: false},
+            {type: 'time', options: {operator: 'End Before', time: 1200, days: ['T', 'R']}, active: false},
 
-            {type: 'class', options: {operator: 'At Most', amount: '2', days: ['M']}, active: false},
+            {type: 'class', options: {operator: 'At Most', amount: 2, days: ['M']}, active: false},
 
-            {type: 'class', options: {operator: 'Exactly', amount: '3', days: ['M', 'T', 'W', 'R', 'F', 'S']}, active: true}
+            {type: 'class', options: {operator: 'Exactly', amount: 3, days: ['M', 'T', 'W', 'R', 'F', 'S']}, active: true}
 
           ]
 

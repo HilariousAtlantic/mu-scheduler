@@ -16,7 +16,7 @@
 
 <script>
 
-  import {getSuggestedTimes} from '../lib/time';
+  import {getSuggestedTimes, toTime, toMinutes} from '../lib/time';
 
   export default {
 
@@ -28,7 +28,7 @@
 
       return {
 
-        time: this.defaultTime.toUpperCase() || ''
+        time: toTime(this.defaultTime || 600),
 
       }
 
@@ -53,8 +53,8 @@
       selectTime(time) {
 
         this.time = time;
-        
-        this.$emit('change', time);
+
+        this.$emit('change', toMinutes(time));
 
       }
 
