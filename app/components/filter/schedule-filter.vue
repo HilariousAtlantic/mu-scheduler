@@ -34,6 +34,7 @@
 
   input {
 
+    height: 1rem;
     margin-right: 5px;
 
   }
@@ -41,6 +42,13 @@
   span {
 
     flex: 1;
+    cursor: pointer;
+
+    &:hover {
+
+      background: rgba(0, 0, 0, .05);
+
+    }
 
   }
 

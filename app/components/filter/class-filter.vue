@@ -2,7 +2,7 @@
 
   <div class="class-filter">
 
-    <schedule-filter :text="text" :active="active"></schedule-filter>
+    <schedule-filter :text="text" :active="options.active"></schedule-filter>
 
   </div>
 
@@ -16,7 +16,7 @@
 
     name: 'class-filter',
 
-    props: ['operator', 'amount', 'days', 'active'],
+    props: ['options'],
 
     components: {ScheduleFilter},
 
@@ -24,7 +24,7 @@
 
       text() {
 
-        return 'I want ' + this.operator.toLowerCase() + ' ' + this.amount + ' classes on ' + this.days;
+        return 'I want ' + this.options.operator.toLowerCase() + ' ' + this.options.amount + ' classes on ' + this.options.days;
 
       }
 

@@ -2,7 +2,7 @@
 
   <div class="time-filter">
 
-    <schedule-filter :text="text" :active="active"></schedule-filter>
+    <schedule-filter :text="text" :active="options.active"></schedule-filter>
 
   </div>
 
@@ -16,7 +16,7 @@
 
     name: 'time-filter',
 
-    props: ['operator', 'time', 'days', 'active'],
+    props: ['options'],
 
     components: {ScheduleFilter},
 
@@ -24,7 +24,7 @@
 
       text() {
 
-        return 'I want to ' + this.operator.toLowerCase() + ' ' + this.time + ' on ' + this.days;
+        return 'I want to ' + this.options.operator.toLowerCase() + ' ' + this.options.time + ' on ' + this.options.days;
 
       }
 

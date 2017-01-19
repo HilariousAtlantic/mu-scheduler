@@ -4,21 +4,11 @@
 
     <h4>Time Filters</h4>
 
-    <time-filter
-      v-for="filter in filters.time"
-      :operator="filter.operator"
-      :time="filter.time"
-      :days="filter.days"
-    ></time-filter>
+    <time-filter v-for="filter in filters.time" :options="filter"></time-filter>
 
     <h4>Class Filters</h4>
 
-    <class-filter
-      v-for="filter in filters.class"
-      :operator="filter.operator"
-      :amount="filter.amount"
-      :days="filter.days"
-    ></class-filter>
+    <class-filter v-for="filter in filters.class" :options="filter"></class-filter>
 
   </div>
 
