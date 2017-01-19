@@ -2,11 +2,11 @@
 
   <div class="time-input">
 
-    <input type="text" v-model="time">
+    <input type="text" @input="handleChange" :value="time">
 
-    <ul v-if="suggestedTimes.length > 1" class="suggestion-list">
+    <ul v-if="times.length > 1" class="suggestion-list">
 
-      <li v-for="time in suggestedTimes" @click="selectTime(time)">{{time}}</li>
+      <li v-for="time in times" @click="selectTime(time)">{{time}}</li>
 
     </ul>
 
@@ -28,7 +28,7 @@
 
       return {
 
-        time: this.defaultTime + '' || ''
+        time: this.defaultTime.toUpperCase() || ''
 
       }
 
@@ -36,9 +36,25 @@
 
     methods: {
 
+      handleChange(event) {
+
+        let time = event.target.value;
+
+        this.time = time;
+
+        if (time.match(/\d{1,2}:\d{2} (AM|PM)/)) {
+
+          this.selectTime(time);
+
+        }
+
+      },
+
       selectTime(time) {
 
         this.time = time;
+        
+        this.$emit('change', time);
 
       }
 
@@ -46,7 +62,7 @@
 
     computed: {
 
-      suggestedTimes() {
+      times() {
 
         return getSuggestedTimes(this.step, this.time).slice(0, 4);
 

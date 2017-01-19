@@ -13,13 +13,18 @@
           <dropdown
             :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
             :defaultOption="options.operator"
+            @select="handleOperatorChange"
           ></dropdown>
 
-          <time-input :step="15" :defaultTime="options.time"></time-input>
+          <time-input
+            :step="15"
+            :defaultTime="options.time"
+          ></time-input>
 
           <days-input
             :days="['M', 'T', 'W', 'R', 'F', 'S']"
             :defaultDays="options.days"
+            @change="handleDaysChange"
           ></days-input>
 
         </div>
@@ -88,6 +93,18 @@
       toggleEditor() {
 
         this.showEditor = !this.showEditor;
+
+      },
+
+      handleOperatorChange() {
+
+
+
+      },
+
+      handleDaysChange() {
+
+
 
       }
 
