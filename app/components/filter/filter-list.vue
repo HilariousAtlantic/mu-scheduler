@@ -4,11 +4,19 @@
 
     <h4>Time Filters</h4>
 
-    <time-filter v-for="filter in filters.time" :options="filter"></time-filter>
+    <time-filter
+      v-for="filter in timeFilters"
+      :options="filter.options"
+      :active="filter.active"
+    ></time-filter>
 
     <h4>Class Filters</h4>
 
-    <class-filter v-for="filter in filters.class" :options="filter"></class-filter>
+    <class-filter
+      v-for="filter in classFilters"
+      :options="filter.options"
+      :active="filter.active"
+    ></class-filter>
 
   </div>
 
@@ -29,25 +37,33 @@
 
       return {
 
-        filters: {
+        filters: [
 
-          time: [
+            {type: 'time', options: {operator: 'Start After', time: '10:00 AM', days: 'Monday, Wednesday, and Friday'}, active: true},
 
-            {operator: 'Start After', time: '10:00 AM', days: 'Monday, Wednesday, and Friday', active: true},
+            {type: 'time', options: {operator: 'End Before', time: '4:00 PM', days: 'Tuesday and Thursday'}, active: false},
 
-            {operator: 'End Before', time: '4:00 PM', days: 'Tuesday and Thursday', active: false}
+            {type: 'class', options: {operator: 'At Most', amount: '2', days: 'Monday'}, active: false},
 
-          ],
-
-          class: [
-
-            {operator: 'At Most', amount: '2', days: 'Monday', active: false},
-
-            {operator: 'Exactly', amount: '3', days: 'Every Day', active: true}
+            {type: 'class', options: {operator: 'Exactly', amount: '3', days: 'Every Day'}, active: true}
 
           ]
 
-        }
+      }
+
+    },
+
+    computed: {
+
+      timeFilters() {
+
+        return this.filters.filter(({type}) => type === 'time');
+
+      },
+
+      classFilters() {
+
+        return this.filters.filter(({type}) => type === 'class');
 
       }
 

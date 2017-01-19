@@ -2,7 +2,7 @@
 
   <div class="class-filter">
 
-    <schedule-filter :text="text" :active="options.active"></schedule-filter>
+    <schedule-filter :text="text" :active="active"></schedule-filter>
 
   </div>
 
@@ -16,7 +16,7 @@
 
     name: 'class-filter',
 
-    props: ['options'],
+    props: ['options', 'active'],
 
     components: {ScheduleFilter},
 

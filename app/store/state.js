@@ -10,7 +10,7 @@ export default {
 
     coursesFilter: '',
     schedulesIndex: 0,
-    schedulesFilter: {},
+    scheduleFilters: [],
 
     coursesCache: {},
     detailedCourseCache: {},
