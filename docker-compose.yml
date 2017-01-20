@@ -1,16 +1,19 @@
-api:
-  build: ./server
-  ports:
-    - 3000:3000
-  volumes:
-    - ./server:/go/src/github.com/hilariousatlantic/mu-scheduler
-  links:
-    - database
-  environment:
-    - DB_NAME=mu-scheduler
+version: '2'
 
-database:
-  image: postgres
+services:
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/go/src/github.com/hilariousatlantic/mu-scheduler
+    links:
+      - database
+    environment:
+      - DB_NAME=mu-scheduler
+
+  database:
+    image: postgres
 
 
 # database:
