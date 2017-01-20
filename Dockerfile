@@ -5,8 +5,10 @@ ADD . /go/src/github.com/hilariousatlantic/mu-scheduler
 RUN go get "github.com/lib/pq"
 RUN go get "github.com/labstack/echo"
 
-RUN go install github.com/hilariousatlantic/mu-scheduler/server
+WORKDIR /go/src/github.com/hilariousatlantic/mu-scheduler
 
-ENTRYPOINT /go/bin/server
+RUN go build -o start_server server/*.go
 
-EXPOSE 3000
+CMD ["./start_server"]
+
+EXPOSE 8000
