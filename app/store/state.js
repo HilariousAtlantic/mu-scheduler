@@ -9,7 +9,6 @@ export default {
     selectedSchedules: [],
 
     coursesFilter: '',
-    schedulesIndex: 0,
     scheduleFilters: [
 
       {id: 0, type: 'time', options: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']}, active: true, test(schedule) {return true}},
