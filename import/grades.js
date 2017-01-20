@@ -16,7 +16,9 @@ let semesters = {
   "30": "Summer"
 };
 
-importGrades();
+// importGrades();
+
+fixExistingProfessorNames();
 
 function importGrades() {
   let reader = readline.createInterface({
@@ -81,7 +83,7 @@ function fixProfessorName(name) {
   [lastName, firstName, middleInitial] = name.trim().split(/\s+/);
 
   if (middleInitial) {
-    return [firstName, lastName, middleInitial].join(' ');
+    return [firstName, middleInitial, lastName].join(' ');
   }
 
   return [firstName, lastName].join(' ');
