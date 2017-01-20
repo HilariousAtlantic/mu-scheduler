@@ -142,6 +142,14 @@ export default {
 
     }
 
+  },
+
+  UPDATE_SCHEDULE_FILTER(state, {id, changes}) {
+
+    let filter = state.scheduleFilters.find(filter => filter.id === id);
+
+    Object.assign(filter, changes);
+
   }
 
 }
