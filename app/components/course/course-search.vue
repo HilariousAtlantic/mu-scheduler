@@ -10,7 +10,7 @@
 
     </ul>
 
-    <input type="text" placeholder="Filter Courses" autocomplete="off" @input="setFilter" />
+    <input type="text" placeholder="Filter Courses" autocomplete="off" @input="updateFilter" />
 
   </div>
 
@@ -85,9 +85,9 @@
 
       },
 
-      setFilter(event) {
+      updateFilter(event) {
 
-        this.$store.dispatch('setFilter', event.target.value);
+        this.$store.dispatch('updateCourseFilter', event.target.value);
 
       },
 
