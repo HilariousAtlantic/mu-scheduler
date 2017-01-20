@@ -152,11 +152,19 @@ export default {
 
   },
 
-  UPDATE_SCHEDULE_FILTER(state, {id, changes}) {
+  CHANGE_SCHEDULE_FILTER(state, {id, changes}) {
 
     let filter = state.scheduleFilters.find(filter => filter.id === id);
 
-    Object.assign(filter, {options: changes, test: getFilter(filter.type, changes)});
+    Object.assign(filter, {options: changes});
+
+  },
+
+  UPDATE_SCHEDULE_FILTER(state, id) {
+
+    let filter = state.scheduleFilters.find(filter => filter.id === id);
+
+    Object.assign(filter, {test: getFilter(filter.type, filter.options)});
 
   }
 

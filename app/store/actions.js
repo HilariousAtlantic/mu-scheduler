@@ -114,11 +114,15 @@ export default {
 
     commit('TOGGLE_SCHEDULE_FILTER', id);
 
+    commit('UPDATE_SCHEDULE_FILTER', id);
+
   },
 
-  updateScheduleFilter({commit}, filter) {
+  changeScheduleFilter({commit}, {id, changes}) {
 
-    commit('UPDATE_SCHEDULE_FILTER', filter);
+    commit('CHANGE_SCHEDULE_FILTER', {id, changes});
+
+    commit('UPDATE_SCHEDULE_FILTER', id);
 
   }
 

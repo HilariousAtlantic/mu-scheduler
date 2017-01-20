@@ -101,7 +101,7 @@
         let id = this.filter.id;
         let changes = Object.assign({}, this.preview);
 
-        this.$store.dispatch('updateScheduleFilter', {id, changes});
+        this.$store.dispatch('changeScheduleFilter', {id, changes});
         this.toggleEditing();
 
       },
