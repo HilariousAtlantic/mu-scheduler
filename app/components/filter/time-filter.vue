@@ -4,7 +4,7 @@
 
     <schedule-filter :text="text" :active="active" @edit="toggleEditing" @toggle="toggleActive"></schedule-filter>
 
-    <div v-if="showEditor" class="modal">
+    <modal v-if="showEditor">
 
       <filter-editor :result="previewText" @done="submitChanges" @quit="discardChanges">
 
@@ -12,7 +12,7 @@
 
       </filter-editor>
 
-    </div>
+    </modal>
 
   </div>
 
@@ -21,6 +21,7 @@
 <script>
 
   import ScheduleFilter from './schedule-filter.vue';
+  import Modal from '../modal.vue';
   import FilterEditor from './filter-editor.vue';
   import TimeFilterEditor from './time-filter-editor.vue';
 
@@ -33,7 +34,7 @@
 
     props: ['options', 'active'],
 
-    components: {ScheduleFilter, FilterEditor, TimeFilterEditor},
+    components: {ScheduleFilter, Modal, FilterEditor, TimeFilterEditor},
 
     data() {
 
@@ -118,21 +119,6 @@
 <style scoped>
 
   .time-filter {
-
-  }
-
-  .modal {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, .5);
-    z-index: 1;
 
   }
 
