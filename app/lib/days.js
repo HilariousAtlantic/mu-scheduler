@@ -35,7 +35,15 @@ export function formatDayList(days) {
 
   } else {
 
-    return days.slice(0, days.length-1).map(formatDay).join(', ') + ', and ' + formatDay(days[days.length-1]);
+    if ('MTWRFS'.indexOf(days.join('')) != -1) {
+
+      return formatDay(days[0]) + ' through ' + formatDay(days[days.length-1]);
+
+    } else {
+
+      return days.slice(0, days.length-1).map(formatDay).join(', ') + ', and ' + formatDay(days[days.length-1]);
+
+    }
 
   }
 
