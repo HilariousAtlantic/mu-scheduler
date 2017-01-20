@@ -1,6 +1,8 @@
 package main
 
 import (
+	"database/sql"
+	"fmt"
 	"strings"
 )
 
@@ -110,6 +112,56 @@ func getCourseTree(ids string) []*Course {
 		}
 	}
 	return courses
+}
+func setCoursesGPA(courses []Course) {
+	for _, course := range courses {
+		for _, section := range course.Sections {
+			meet := section.Meets[0]
+			instructor := meet.Instructor
+			index := strings.Index(instructor, ";")
+
+			//there is not two professors
+			if index != -1 {
+				instructors := strings.Split(instructor, ";")
+				//instructor1 := instructors[0]
+				//instructors2 := instructors[1]
+				avgGPA := (getAvgGPA(instructors[0], course) + getAvgGPA(instructors[1], course)) / 2
+				section.AverageGPA = avgGPA
+			} else {
+				section.AverageGPA = getAvgGPA(instructor, course)
+			}
+		}
+	}
+}
+
+func getAvgGPA(instructor string, course Course) float64 {
+	var avgGPA = 0.0
+	var divideBy = 0.0
+
+	strings.Replace(instructor, "(P)", "", -1)
+	instructor = strings.TrimSpace(instructor)
+	fmt.Printf("instructor after: %v", instructor)
+	db := dbContext.open()
+	var rows *sql.Rows
+	var err error
+	rows, err = db.Query("SELECT gpa FROM grades WHERE LOWER(instructor) LIKE  LOWER(%'$1'%) AND WHERE subject = $2 AND WHERE number = $3;",
+		instructor, course.Subject, course.Number)
+	handleError(err)
+	defer rows.Close()
+	for rows.Next() {
+		divideBy++
+		var gpa float64
+		err = rows.Scan(gpa)
+		avgGPA += gpa
+		handleError(err)
+	}
+	err = rows.Err()
+	handleError(err)
+	avgGPA = (avgGPA / divideBy)
+	avgGPA = float64(int(avgGPA*100)) / 100
+	fmt.Printf("avg gpa is: %v", avgGPA)
+	return avgGPA
+
 }
 
 //checks if two sections have any meet times that over lap,

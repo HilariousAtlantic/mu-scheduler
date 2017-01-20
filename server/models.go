@@ -16,12 +16,13 @@ type Course struct {
 }
 
 type Section struct {
-	Meets    []Meet `json:"meets"`
-	Tests    []Test `json:"tests"`
-	ID       int    `json:"id"`
-	CourseID int    `json:"course_id"`
-	CRN      string `json:"crn"`
-	Name     string `json:"name"`
+	Meets      []Meet  `json:"meets"`
+	Tests      []Test  `json:"tests"`
+	ID         int     `json:"id"`
+	CourseID   int     `json:"course_id"`
+	CRN        string  `json:"crn"`
+	Name       string  `json:"name"`
+	AverageGPA float64 `json:"average_grade"`
 }
 
 type Meet struct {
