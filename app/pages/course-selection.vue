@@ -32,7 +32,7 @@
 
 <script>
 
-  import Sidebar from '../components/sidebar.vue';
+  import Sidebar from '../components/common/sidebar.vue';
   import CourseSelector from '../components/course/course-selector.vue';
 
   export default {
