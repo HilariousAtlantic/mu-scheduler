@@ -2,7 +2,7 @@
 
   <div class="schedule-list">
 
-    <schedule-browser></schedule-browser>
+    <schedule-browser :index="index" @change="updateIndex"></schedule-browser>
 
     <schedule :courses="currentSchedule.courses"></schedule>
 
@@ -21,11 +21,31 @@
 
     components: {Schedule, ScheduleBrowser},
 
+    data() {
+
+      return {
+
+        index: 0
+
+      }
+
+    },
+
     computed: {
 
       currentSchedule() {
 
-        return this.$store.getters.filteredSchedules[this.$store.state.schedulesIndex];
+        return this.$store.getters.filteredSchedules[this.index];
+
+      }
+
+    },
+
+    methods: {
+
+      updateIndex(index) {
+
+        this.index = index;
 
       }
 

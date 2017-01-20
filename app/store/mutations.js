@@ -124,26 +124,6 @@ export default {
 
   },
 
-  INCREASE_SCHEDULES_INDEX(state) {
-
-    if (state.schedulesIndex < state.schedules.length-1) {
-
-      state.schedulesIndex++;
-
-    }
-
-  },
-
-  DECREASE_SCHEDULES_INDEX(state) {
-
-    if (state.schedulesIndex > 0) {
-
-      state.schedulesIndex--;
-
-    }
-
-  },
-
   UPDATE_SCHEDULE_FILTER(state, {id, changes}) {
 
     let filter = state.scheduleFilters.find(filter => filter.id === id);
