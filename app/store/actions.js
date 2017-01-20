@@ -46,9 +46,9 @@ export default {
 
   },
 
-  setFilter({commit}, filter) {
+  updateCourseFilter({commit}, filter) {
 
-    commit('SET_FILTER', filter);
+    commit('UPDATE_COURSE_FILTER', filter);
 
   },
 

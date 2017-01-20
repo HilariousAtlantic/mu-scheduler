@@ -56,7 +56,7 @@
         let trim = (term) => term.toLowerCase().replace(/\W+/g, '');
 
         return this.$store.state.courses.filter(({subject, number, title}) =>
-          trim(subject+number+title).indexOf(trim(this.$store.state.coursesFilter)) != -1
+          trim(subject+number+title).indexOf(trim(this.$store.state.courseFilter)) != -1
         );
 
       }

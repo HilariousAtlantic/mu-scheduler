@@ -81,9 +81,9 @@ export default {
 
   },
 
-  SET_FILTER(state, filter) {
+  UPDATE_COURSE_FILTER(state, updatedFilter) {
 
-    state.coursesFilter = filter;
+    state.courseFilter = updatedFilter;
 
   },
 
