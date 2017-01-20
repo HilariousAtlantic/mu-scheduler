@@ -40,6 +40,12 @@ export function toMinutes(time) {
 
   }
 
+  if (p === 'am' && h == 12) {
+
+    h = 0;
+
+  }
+
   return h*60 + m;
 
 }
@@ -60,9 +66,9 @@ export function getTimes(step = 10) {
 
 export function getSuggestedTimes(step, term) {
 
-  let trim = (term) => term.toLowerCase().replace(/\W+/, '');
+  let trim = (term) => term.toLowerCase().replace(/\s+/, '');
 
-  return getTimes(step).filter(time => trim(time).indexOf(trim(term)) != -1);
+  return getTimes(step).filter(time => trim(time).startsWith(trim(term)));
 
 
 }
