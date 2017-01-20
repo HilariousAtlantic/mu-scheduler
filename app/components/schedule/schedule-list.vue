@@ -25,7 +25,7 @@
 
       currentSchedule() {
 
-        return this.$store.state.schedules[this.$store.state.schedulesIndex];
+        return this.$store.getters.filteredSchedules[this.$store.state.schedulesIndex];
 
       }
 

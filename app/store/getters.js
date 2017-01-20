@@ -10,7 +10,15 @@ export default {
 
     let schedules = state.schedules;
 
-    let filters = state.scheduleFilters;
+    let activeFilters = state.scheduleFilters.filter(({active}) => active);
+
+    activeFilters.forEach(({test}) => {
+
+      schedules = schedules.filter(test);
+
+    });
+
+    return schedules;
 
   }
 
