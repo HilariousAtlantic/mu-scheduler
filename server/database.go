@@ -14,8 +14,6 @@ import (
 )
 
 const (
-	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
-
 	createStagingTable = `
 	CREATE TABLE staging(
 		type TEXT,
@@ -161,6 +159,8 @@ type DBContext struct {
 }
 
 var dbContext = new(DBContext)
+
+var databasePath string = fmt.Sprintf("user=postgres dbname=%v sslmode=disable", os.Getenv("DB_NAME"))
 
 func (d *DBContext) open() *sql.DB {
 	if d.db == nil {

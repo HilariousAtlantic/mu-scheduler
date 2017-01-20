@@ -1,0 +1,18 @@
+api:
+  build: ./server
+  ports:
+    - 3000:3000
+  volumes:
+    - ./server:/go/src/github.com/hilariousatlantic/mu-scheduler
+  links:
+    - database
+  environment:
+    - DB_NAME=mu-scheduler
+
+database:
+  image: postgres
+
+
+# database:
+#   image: mongo:3.0
+#   command: mongod --smallfiles --quiet --logpath=/dev/null
