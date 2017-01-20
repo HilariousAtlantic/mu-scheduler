@@ -38,7 +38,7 @@
 
       length() {
 
-        return this.$store.state.schedules.length;
+        return this.$store.getters.filteredSchedules.length;
 
       }
 
