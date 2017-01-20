@@ -124,11 +124,19 @@ export default {
 
   },
 
+  TOGGLE_SCHEDULE_FILTER(state, id) {
+
+    let filter = state.scheduleFilters.find(filter => filter.id === id);
+
+    Object.assign(filter, {active: !filter.active});
+
+  },
+
   UPDATE_SCHEDULE_FILTER(state, {id, changes}) {
 
     let filter = state.scheduleFilters.find(filter => filter.id === id);
 
-    Object.assign(filter, changes);
+    Object.assign(filter.options, changes);
 
   }
 
