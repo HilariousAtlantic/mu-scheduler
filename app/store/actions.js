@@ -110,9 +110,15 @@ export default {
 
   },
 
-  updateScheduleFilter({commit}, {id, changes}) {
+  toggleScheduleFilter({commit}, id) {
 
-    commit('UPDATE_SCHEDULE_FILTER', {id, changes});
+    commit('TOGGLE_SCHEDULE_FILTER', id);
+
+  },
+
+  updateScheduleFilter({commit}, filter) {
+
+    commit('UPDATE_SCHEDULE_FILTER', filter);
 
   }
 

@@ -86,7 +86,7 @@
 
       toggleActive() {
 
-        this.$store.dispatch('updateScheduleFilter', {id: this.filter.id, changes: {active: !this.filter.active}});
+        this.$store.dispatch('toggleScheduleFilter', this.filter.id);
 
       },
 
@@ -98,9 +98,10 @@
 
       submitChanges() {
 
-        let {operator, time, days} = this.preview;
+        let id = this.filter.id;
+        let changes = this.preview;
 
-        this.$store.dispatch('updateScheduleFilter', {id: this.filter.id, changes: {options: {operator, time, days}}});
+        this.$store.dispatch('updateScheduleFilter', {id, changes});
         this.toggleEditing();
 
       },
