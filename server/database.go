@@ -279,7 +279,7 @@ func importDatabase() {
 }
 func importGradesDatabase() {
 	fmt.Println("Importing grades...")
-	f, err := os.Open("import/gradesTesting.csv")
+	f, err := os.Open("import/grades.csv")
 	if err != nil {
 		handleError(err)
 	}
