@@ -1,6 +1,6 @@
 <template>
 
-  <div class="time-filter-editor">
+  <div class="time-filter-options">
 
     <dropdown
       :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
@@ -30,11 +30,9 @@
   import TimeInput from '../editor/time-input.vue';
   import DaysInput from '../editor/days-input.vue';
 
-  import {toTime} from '../../lib/time';
-
   export default {
 
-    name: 'time-filter',
+    name: 'time-filter-options',
 
     props: ['options'],
 
@@ -68,7 +66,7 @@
 
 <style scoped>
 
-  .time-filter-editor {
+  .time-filter-options {
 
     display: inline-block;
 

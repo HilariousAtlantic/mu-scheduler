@@ -8,7 +8,7 @@
 
       <filter-editor :result="previewText" @done="submitChanges" @quit="discardChanges">
 
-        <time-filter-editor :options="preview" @change="changePreview"></time-filter-editor>
+        <time-filter-options :options="preview" @change="changePreview"></time-filter-options>
 
       </filter-editor>
 
@@ -23,7 +23,7 @@
   import ScheduleFilter from './schedule-filter.vue';
   import Modal from '../modal.vue';
   import FilterEditor from './filter-editor.vue';
-  import TimeFilterEditor from './time-filter-editor.vue';
+  import TimeFilterOptions from './time-filter-options.vue';
 
   import {toTime} from '../../lib/time';
   import {formatDayList} from '../../lib/days';
@@ -34,7 +34,7 @@
 
     props: ['options', 'active'],
 
-    components: {ScheduleFilter, Modal, FilterEditor, TimeFilterEditor},
+    components: {ScheduleFilter, Modal, FilterEditor, TimeFilterOptions},
 
     data() {
 
