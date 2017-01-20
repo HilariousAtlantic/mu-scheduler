@@ -26,9 +26,9 @@
 
 <script>
 
-  import Dropdown from '../editor/dropdown.vue';
-  import NumberInput from '../editor/number-input.vue';
-  import DaysInput from '../editor/days-input.vue';
+  import Dropdown from '../common/dropdown.vue';
+  import NumberInput from '../common/number-input.vue';
+  import DaysInput from '../common/days-input.vue';
 
   export default {
 
