@@ -86,6 +86,18 @@ const (
 		location TEXT
 	);
 	`
+	createGradesTable = `
+	CREATE TABLE grades (
+		id SERIAL PRIMARY KEY,
+		gpa NUMERIC NOT NULL,
+		instructor TEXT NOT NULL,
+		number TEXT NOT NULL,
+		subject TEXT NOT NULL,
+		year INT NOT NULL,
+		season TEXT NOT NULL,
+		section TEXT NOT NULL
+	);
+	`
 
 	insertTerms = `
 	INSERT INTO terms (name) SELECT DISTINCT term FROM staging;
@@ -117,7 +129,12 @@ const (
 	JOIN sections sec ON sec.crn = s.crn
 	WHERE type = 'test';
 	`
+	insertGrades = `
+	INSERT INTO grades (gpa,instructor,season,year,subject,number) VALUES(;	`
 
+	selectGrades = `
+	SELECT * FROM grades
+	`
 	selectTests = `
 	SELECT * FROM tests
 	`
@@ -133,7 +150,6 @@ const (
 	selectTerms = `
 	SELECT * FROM terms
 	`
-
 	selectSubjects = `
 	SELECT DISTINCT subject FROM courses ORDER BY subject
 	`
@@ -146,6 +162,7 @@ var createTableStatements = [...]string{
 	createSectionsTable,
 	createMeetsTable,
 	createTestsTable,
+	createGradesTable,
 }
 
 var insertStatements = [...]string{
@@ -197,7 +214,6 @@ func createDatabase() {
 func importDatabase() {
 
 	fmt.Println("Importing database...")
-
 	f, err := os.Open("import/courses.csv")
 	if err != nil {
 		handleError(err)
@@ -233,6 +249,7 @@ func importDatabase() {
 	}
 
 	fmt.Println("Database imported")
+	createGradesDatabase()
 
 	//fmt.Println("Testing Scheduler")
 	//findGoodSchedules("404,717")
@@ -253,6 +270,36 @@ func importDatabase() {
 		}
 	*/
 }
+func createGradesDatabase() {
+	fmt.Println("Importing grades...")
+	f, err := os.Open("import/grades.csv")
+	if err != nil {
+		handleError(err)
+	}
+	defer f.Close()
+	lines, err := csv.NewReader(f).ReadAll()
+	if err != nil {
+		log.Fatal(err)
+	}
+	db := dbContext.open()
+	defer db.Close()
+
+	for _, line := range lines {
+		var insertGrades = "INSERT INTO grades (gpa,instructor,subject,number,year,season,IDK) VALUES("
+
+		for _, value := range line {
+			insertGrades += "'" + strings.Replace(value, "'", "''", -1) + "',"
+		}
+		insertGrades = insertGrades[0:len(insertGrades)-1] + ")"
+		_, err = db.Exec(insertGrades)
+		if err != nil {
+			handleError(err)
+			fmt.Println(insertGrades)
+		}
+	}
+	fmt.Println("Grades Imported")
+}
+
 func getCoursesFromIDString(ids string) []*Course {
 	var courses []*Course
 	db := dbContext.open()
