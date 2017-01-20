@@ -1,3 +1,5 @@
+import {getFilter} from '../lib/filter';
+
 export default {
 
   REQUEST_TERMS(state) {
@@ -101,16 +103,34 @@ export default {
 
       let courses = [];
 
+      let startTimes = {};
+      let endTimes = {};
+      let classLoads = {};
+
       schedule.sections.forEach(({course_id, section_id}) => {
 
         let course = state.detailedCourseCache[course_id];
         let section = course.sections.find(({id}) => id === section_id);
 
+        section.meets.forEach(({days, start_time, end_time}) => {
+
+          days.split('').forEach(day => {
+
+            startTimes[day] = Math.min(startTimes[day] || 1440, start_time);
+            endTimes[day] = Math.max(endTimes[day] || 0, end_time);
+
+            if (!classLoads[day]) classLoads[day] = 1;
+            else classLoads[day]++;
+
+          });
+
+        });
+
         courses.push({name: course.subject + ' ' + course.number + ' ' + section.name, meets: section.meets});
 
       });
 
-      return {courses};
+      return {courses, startTimes, endTimes, classLoads};
 
     });
 
@@ -136,7 +156,7 @@ export default {
 
     let filter = state.scheduleFilters.find(filter => filter.id === id);
 
-    Object.assign(filter.options, changes);
+    Object.assign(filter, {options: changes, test: getFilter(filter.type, changes)});
 
   }
 

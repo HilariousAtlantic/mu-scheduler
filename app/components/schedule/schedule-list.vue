@@ -4,7 +4,7 @@
 
     <schedule-browser :index="index" @change="updateIndex"></schedule-browser>
 
-    <schedule :courses="currentSchedule.courses"></schedule>
+    <schedule v-if="schedule" :courses="schedule.courses"></schedule>
 
   </div>
 
@@ -33,7 +33,7 @@
 
     computed: {
 
-      currentSchedule() {
+      schedule() {
 
         return this.$store.getters.filteredSchedules[this.index];
 
