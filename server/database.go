@@ -249,7 +249,7 @@ func importDatabase() {
 	}
 
 	fmt.Println("Database imported")
-	createGradesDatabase()
+	importGradesDatabase()
 
 	//fmt.Println("Testing Scheduler")
 	//findGoodSchedules("404,717")
@@ -270,9 +270,9 @@ func importDatabase() {
 		}
 	*/
 }
-func createGradesDatabase() {
+func importGradesDatabase() {
 	fmt.Println("Importing grades...")
-	f, err := os.Open("import/grades.csv")
+	f, err := os.Open("import/gradesTesting.csv")
 	if err != nil {
 		handleError(err)
 	}
@@ -285,7 +285,7 @@ func createGradesDatabase() {
 	defer db.Close()
 
 	for _, line := range lines {
-		var insertGrades = "INSERT INTO grades (gpa,instructor,subject,number,year,season,IDK) VALUES("
+		var insertGrades = "INSERT INTO grades (gpa,instructor,subject,number,year,season,section) VALUES("
 
 		for _, value := range line {
 			insertGrades += "'" + strings.Replace(value, "'", "''", -1) + "',"
