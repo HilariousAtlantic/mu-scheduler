@@ -21,7 +21,7 @@
 <script>
 
   import ScheduleFilter from './schedule-filter.vue';
-  import Modal from '../modal.vue';
+  import Modal from '../common/modal.vue';
   import FilterEditor from './filter-editor.vue';
   import TimeFilterOptions from './time-filter-options.vue';
 
