@@ -4,19 +4,11 @@
 
     <h4>Time Filters</h4>
 
-    <time-filter
-      v-for="filter in timeFilters"
-      :options="filter.options"
-      :active="filter.active"
-    ></time-filter>
+    <time-filter v-for="filter in timeFilters" :filter="filter"></time-filter>
 
     <h4>Class Filters</h4>
 
-    <class-filter
-      v-for="filter in classFilters"
-      :options="filter.options"
-      :active="filter.active"
-    ></class-filter>
+    <class-filter v-for="filter in classFilters" :filter="filter"></class-filter>
 
   </div>
 
@@ -33,37 +25,17 @@
 
     components: {TimeFilter, ClassFilter},
 
-    data() {
-
-      return {
-
-        filters: [
-
-            {type: 'time', options: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']}, active: true},
-
-            {type: 'time', options: {operator: 'End Before', time: 1200, days: ['T', 'R']}, active: false},
-
-            {type: 'class', options: {operator: 'At Most', amount: 2, days: ['M']}, active: false},
-
-            {type: 'class', options: {operator: 'Exactly', amount: 3, days: ['M', 'T', 'W', 'R', 'F', 'S']}, active: true}
-
-          ]
-
-      }
-
-    },
-
     computed: {
 
       timeFilters() {
 
-        return this.filters.filter(({type}) => type === 'time');
+        return this.$store.state.scheduleFilters.filter(({type}) => type === 'time');
 
       },
 
       classFilters() {
 
-        return this.filters.filter(({type}) => type === 'class');
+        return this.$store.state.scheduleFilters.filter(({type}) => type === 'class');
 
       }
 

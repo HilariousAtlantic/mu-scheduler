@@ -2,7 +2,7 @@
 
   <div class="class-filter">
 
-    <schedule-filter :text="text" :active="active" @edit="toggleEditing" @toggle="toggleActive"></schedule-filter>
+    <schedule-filter :text="text" :active="filter.active" @edit="toggleEditing" @toggle="toggleActive"></schedule-filter>
 
     <modal v-if="showEditor">
 
@@ -31,7 +31,7 @@
 
     name: 'class-filter',
 
-    props: ['options', 'active'],
+    props: ['filter'],
 
     components: {ScheduleFilter, Modal, FilterEditor, ClassFilterOptions},
 
@@ -41,7 +41,7 @@
 
         showEditor: false,
 
-        preview: Object.assign({}, this.options)
+        preview: Object.assign({}, this.filter.options)
 
       }
 
@@ -51,11 +51,11 @@
 
       text() {
 
-        let operator = this.options.operator.toLowerCase();
+        let operator = this.filter.options.operator.toLowerCase();
 
-        let amount = this.options.amount;
+        let amount = this.filter.options.amount;
 
-        let days = formatDayList(this.options.days);
+        let days = formatDayList(this.filter.options.days);
 
         return 'I want ' + operator + ' ' + amount + ' classes on ' + days;
 
@@ -85,7 +85,7 @@
 
       toggleActive() {
 
-        // TODO dispatch a filter change action
+        this.$store.dispatch('updateScheduleFilter', {id: this.filter.id, changes: {active: !this.filter.active}});
 
       },
 
@@ -97,14 +97,16 @@
 
       submitChanges() {
 
-        // TODO dispatch a filter change action
+        let {operator, amount, days} = this.preview;
+
+        this.$store.dispatch('updateScheduleFilter', {id: this.filter.id, changes: {options: {operator, amount, days}}});
         this.toggleEditing();
 
       },
 
       discardChanges() {
 
-        Object.assign(this.preview, this.options);
+        Object.assign(this.preview, this.filter.options);
         this.toggleEditing();
 
       }

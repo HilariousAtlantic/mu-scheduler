@@ -4,7 +4,7 @@
 
     <input type="text" v-model="time">
 
-    <ul v-if="times.length > 1" class="suggestion-list">
+    <ul v-if="showSuggestions" class="suggestion-list">
 
       <li v-for="time in times" @click="selectTime(time)">{{time}}</li>
 
@@ -51,6 +51,12 @@
       times() {
 
         return getSuggestedTimes(this.step, this.time).slice(0, 4);
+
+      },
+
+      showSuggestions() {
+
+        return this.times.length !== 1 || this.times[0] !== this.time;
 
       }
 
