@@ -141,11 +141,9 @@ func setCoursesGPA(courses []*Course) {
 func getAvgGPA(instructor string, course Course) float64 {
 	var avgGPA = 0.0
 	var divideBy = 0.0
-	fmt.Printf("p exists: %v", strings.Index(instructor, "(P)"))
-	fmt.Println("ASDFJASFJDSA")
-	strings.Replace(instructor, "(P)", "", -1)
+	instructor = strings.Replace(instructor, "(P)", "", -1)
 	instructor = strings.TrimSpace(instructor)
-	fmt.Printf("instructor after: %v", instructor)
+	fmt.Printf("instructor after:%v \n", instructor)
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
@@ -154,20 +152,21 @@ func getAvgGPA(instructor string, course Course) float64 {
 		"' AND number = '" + course.Number + "';"
 	rows, err = db.Query(query)
 	handleError(err)
-	fmt.Println(rows)
+	fmt.Printf("rows: %s \n", rows)
 	defer rows.Close()
 	for rows.Next() {
 		divideBy++
 		var gpa float64
 		err = rows.Scan(gpa)
+		fmt.Println(gpa)
 		avgGPA += gpa
 		handleError(err)
 	}
 	err = rows.Err()
 	handleError(err)
 	avgGPA = (avgGPA / divideBy)
-	avgGPA = float64(int(avgGPA*100)) / 100
 	fmt.Printf("avg gpa is: %v", avgGPA)
+	avgGPA = float64(int(avgGPA*100)) / 100
 	return avgGPA
 
 }
