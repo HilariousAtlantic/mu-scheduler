@@ -40,8 +40,6 @@
   .schedules-view {
 
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
@@ -51,7 +49,7 @@
   .schedule-list {
 
     flex: 1;
-    padding: 25px;
+    margin-top: 20px;
 
   }
 
@@ -60,6 +58,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 20px auto;
 
     span {
 

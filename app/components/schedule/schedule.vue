@@ -8,7 +8,13 @@
 
     </div>
 
-    <div class="schedule-body">
+    <div class="schedule-body" :style="scheduleHeight">
+
+      <div class="times">
+
+
+
+      </div>
 
       <div class="day" v-for="day in days">
 
@@ -17,8 +23,7 @@
             <div class="course-meta">
 
               <span>{{course.name}}</span><br>
-              <span>{{course.start}} - {{course.end}}</span><br>
-              <span>{{course.location}}</span><br>
+              <span>{{course.start}} - {{course.end}} {{course.location}}</span><br>
               <span>{{course.instructor}}</span>
 
             </div>
@@ -35,11 +40,13 @@
 
 <script>
 
+  import {toTime} from '../../lib/time';
+
   export default {
 
     name: 'schedule',
 
-    props: ['courses'],
+    props: ['schedule'],
 
     data() {
 
@@ -59,23 +66,10 @@
 
         let coursesByDay = {M: [], T: [], W: [], R: [], F: [], S: []};
 
-        let start = 420; //7am
-        let end = 1320; //10pm
+        let start = this.schedule.start-30;
+        let length = this.schedule.length+60;
 
-        function formatTime(time) {
-
-          let hours = Math.floor(time/60);
-          let minutes = time-hours*60;
-
-          if (hours > 12) {
-            hours -= 12;
-          }
-
-          return hours + ':' + ('00'+minutes).slice(-2);
-
-        }
-
-        this.courses.forEach(({name, meets}, i) => {
+        this.schedule.courses.forEach(({name, meets}, i) => {
 
             meets.forEach(({days, start_time, end_time, location, instructor}) => {
 
@@ -83,15 +77,15 @@
 
               let style = {
 
-                top: ((start_time-start)/(end-start)*100)+'%',
-                height: ((end_time-start_time)/(end-start)*100)+'%',
+                top: ((start_time-start)/length*100)+'%',
+                height: ((end_time-start_time)/length*100)+'%',
                 background: this.colors[i]
 
               };
 
               days.split('').forEach(day => {
 
-                coursesByDay[day].push({name, start: formatTime(start_time), end: formatTime(end_time), location, instructor: instructor.replace(' (P)', ''), style});
+                coursesByDay[day].push({name, start: toTime(start_time, true), end: toTime(end_time, true), location, instructor: instructor.replace(' (P)', ''), style});
 
               });
 
@@ -100,6 +94,12 @@
           });
 
         return coursesByDay;
+
+      },
+
+      scheduleHeight() {
+
+        return {height: ((this.schedule.length+60)*1.2)+'px'};
 
       }
 
@@ -114,8 +114,6 @@
   .schedule {
 
     border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
 
   }
 
@@ -137,9 +135,7 @@
 
   .schedule-body {
 
-    flex: 1;
     display: flex;
-    overflow-y: auto;
     font-size: .75rem;
 
   }
@@ -147,7 +143,6 @@
   .day {
 
     flex: 1;
-    height: 60rem;
     border-right: 1px solid #eee;
     padding: 10px;
     position: relative;
@@ -174,6 +169,18 @@
 
     margin-top: 5px;
     margin-left: 5px;
+
+    span {
+
+      font-weight: 100;
+
+    }
+
+    span:first-of-type {
+
+      font-weight: 900;
+
+    }
 
   }
 

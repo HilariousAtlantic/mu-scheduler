@@ -121,6 +121,8 @@ export default {
 
       let courses = [];
 
+      let start = 1440;
+      let end = 0;
       let startTimes = {};
       let endTimes = {};
       let classLoads = {};
@@ -132,10 +134,15 @@ export default {
 
         section.meets.forEach(({days, start_time, end_time}) => {
 
+          start = Math.min(start, start_time);
+          end = Math.max(end, end_time);
+
           days.split('').forEach(day => {
 
             startTimes[day] = Math.min(startTimes[day] || 1440, start_time);
             endTimes[day] = Math.max(endTimes[day] || 0, end_time);
+
+
 
             if (!classLoads[day]) classLoads[day] = 1;
             else classLoads[day]++;
@@ -148,7 +155,7 @@ export default {
 
       });
 
-      return {courses, startTimes, endTimes, classLoads};
+      return {courses, start, end, length: end-start, startTimes, endTimes, classLoads};
 
     });
 
