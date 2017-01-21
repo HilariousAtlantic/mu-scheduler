@@ -7,15 +7,16 @@ services:
       - 8000:8000
     volumes:
       - ./:/go/src/github.com/hilariousatlantic/mu-scheduler
-    links:
+    depends_on:
       - database
-    environment:
-      - DB_NAME=mu-scheduler
 
   database:
-    image: postgres
-
-
-# database:
-#   image: mongo:3.0
-#   command: mongod --smallfiles --quiet --logpath=/dev/null
+    image: postgres:latest
+    ports:
+      - "5432"
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_DBNAME=mu-scheduler
+      - POSTGRES_USERNAME=mu-scheduler
+      - POSTGRES_PASSWORD=password
