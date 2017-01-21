@@ -16,22 +16,6 @@
 
   <div v-else class="schedule-selection">
 
-    <sidebar>
-
-      <div class="sidebar-content">
-
-        <h3>Schedule Selection</h3>
-
-        <p>Here you can view your potential schedules. You can click the details button to get information about the courses and professors.</p>
-
-        <p>You can use the filters to narrow down the choices. In order to edit a filter, click on its text and an editor will appear.</p>
-
-        <filter-list></filter-list>
-
-      </div>
-
-    </sidebar>
-
     <schedule-list></schedule-list>
 
   </div>
@@ -40,7 +24,6 @@
 
 <script>
 
-  import Sidebar from '../components/common/sidebar.vue';
   import FilterList from '../components/filter/filter-list.vue';
   import ScheduleList from '../components/schedule/schedule-list.vue';
 
@@ -48,7 +31,7 @@
 
     name: 'schedule-selection-page',
 
-    components: {Sidebar, FilterList, ScheduleList}
+    components: {FilterList, ScheduleList}
 
   }
 
@@ -125,12 +108,6 @@
   .schedule-selection {
 
     display: flex;
-
-  }
-
-  .sidebar {
-
-    width: 350px;
 
   }
 
