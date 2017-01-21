@@ -8,6 +8,8 @@
 
       <li><router-link to="/courses">Courses</router-link></li>
 
+      <li><router-link to="/filters">Filters</router-link></li>
+
       <li><router-link to="/schedules">Schedules</router-link></li>
 
     </ul>
