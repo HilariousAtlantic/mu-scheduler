@@ -2,37 +2,33 @@
 
   <div class="selected-courses">
 
-    <header>Selected Courses {{selectedTerm}}</header>
+    <header>
 
-    <ul>
+      <span class="title">Selected Courses {{selectedTerm}}</span>
 
-      <li v-for="course in selectedCourses" @click="onCourseClick(course)">
+      <span class="credits">{{totalCredits}} Credits</span>
 
-        <course :course="course"></course>
+    </header>
 
-      </li>
-
-    </ul>
+    <detailed-course v-for="course in $store.getters.selectedCourses" :course="course"></detailed-course>
 
   </div>
-
-
 
 </template>
 
 <script>
 
-  import Course from './course.vue';
+  import DetailedCourse from './detailed-course.vue';
 
   export default {
 
     name: 'selected-courses',
 
-    components: {Course},
+    components: {DetailedCourse},
 
     methods: {
 
-      onCourseClick(course) {
+      deselectCourse(course) {
 
         this.$store.dispatch('deselectCourse', course);
 
@@ -50,45 +46,22 @@
 
       },
 
-      selectedCourses() {
+      totalCredits() {
 
-        return this.$store.getters.selectedCourses.map(course => {
+        let minTotal = 0;
+        let maxTotal = 0;
 
-          let sections = course.sections.map(({name, meets}) => {
+        this.$store.getters.selectedCourses.forEach(({credits}) => {
 
-            let instructors = [];
+          let [min, max] = credits.split('-');
 
-            meets.sort((a, b) => {
+          minTotal += parseInt(min);
 
-              if (a.instructor.indexOf('(P)') != -1) {
+          maxTotal += parseInt(max ? max : min);
 
-                return -1;
+        });
 
-              } else if (b.instructor.indexOf('(P)') != -1) {
-
-                return 1;
-
-              }
-
-              return 0;
-
-            }).forEach(({instructor}) => {
-
-              if (instructors.indexOf(instructor) == -1) {
-
-                instructors.push(instructor.replace(' (P)', ''));
-
-              }
-
-            });
-
-            return {name, instructor: instructors.join(', ')};
-
-          }).sort((a, b) => a.name.localeCompare(b.name));
-
-          return Object.assign({}, course, {sections});
-
-        })
+        return minTotal === maxTotal ? minTotal : minTotal + '-' + maxTotal;
 
       }
 
@@ -109,79 +82,16 @@
 
   header {
 
-    background: #eee;
-    border: 1px solid #ddd;
-    padding: 10px;
-
-  }
-
-  ul {
-
-    padding: 0;
-    margin: 0;
-    flex: 1;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    border-top: none;
-
-  }
-
-  li {
-
-    list-style: none;
-    padding: 10px;
-    cursor: pointer;
-
-    &:hover {
-
-      background: #f5f5f5;
-
-      .course-info {
-
-        display: inline-block;
-
-      }
-
-    }
-
-  }
-
-  .course-info {
-
-    display: none;
-    float: right;
-
-  }
-
-  .loader-wrapper {
-
-    flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-top: none;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-weight: 900;
 
   }
 
-  .loader {
+  .title {
 
-    width: 50px;
-    height: 50px;
-    border: 5px solid #ddd;
-    border-bottom: 5px solid #444;
-    border-radius: 90px;
-    animation: spin 1s linear infinite;
-
-  }
-
-  @keyframes spin {
-
-    to {
-
-      transform: rotate(360deg);
-
-    }
+    flex: 1;
 
   }
 
