@@ -2,6 +2,8 @@
 
   <div class="courses-view">
 
+    <header>Course List</header>
+
     <course-search></course-search>
 
     <selected-courses></selected-courses>
@@ -48,6 +50,14 @@
     width: 90%;
     max-width: 1000px;
     margin: 20px auto;
+
+  }
+
+  header {
+
+    font-weight: 900;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
 
   }
 

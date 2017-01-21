@@ -1,22 +1,20 @@
 <template>
 
-  <div v-if="$store.state.schedules.length === 0" class="schedules-none">
+  <div class="schedules-view">
 
-    <span>No schedules generated</span>
+    <schedule-list v-if="$store.state.schedules.length"></schedule-list>
 
-    <router-link to="/courses"><button>Select Courses</button></router-link>
+    <div v-else class="schedules-none">
 
-  </div>
+      <span>No schedules generated</span>
 
-  <div v-else-if="$store.state.requestingSchedules" class="schedules-loading">
+      <router-link to="/courses">
 
-    <div class="loader"></div>
+        <button>Select Courses</button>
 
-  </div>
+      </router-link>
 
-  <div v-else class="schedule-selection">
-
-    <schedule-list></schedule-list>
+    </div>
 
   </div>
 
@@ -29,7 +27,7 @@
 
   export default {
 
-    name: 'schedule-selection-page',
+    name: 'schedules-view',
 
     components: {FilterList, ScheduleList}
 
@@ -39,27 +37,41 @@
 
 <style scoped>
 
+  .schedules-view {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+  }
+
+  .schedule-list {
+
+    flex: 1;
+    padding: 25px;
+
+  }
+
   .schedules-none {
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     span {
 
-      font-size: 2rem;
+      font-size: 1.25rem;
       font-weight: 900;
       margin-bottom: 10px;
-      color: #ccc;
-      text-transform: uppercase;
 
     }
 
     button {
 
-      padding: 15px 150px;
-      font-size: 1rem;
+      padding: 10px 50px;
       border: 1px solid #ddd;
       background: #1565C0;
       color: #fff;
@@ -71,66 +83,6 @@
         background: #0D47A1;
 
       }
-
-    }
-
-  }
-
-  .schedules-loading {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-
-  .loader {
-
-    width: 100px;
-    height: 100px;
-    border: 10px solid #ddd;
-    border-bottom: 10px solid #444;
-    border-radius: 90px;
-    animation: spin 1s linear infinite;
-
-  }
-
-  @keyframes spin {
-
-    to {
-
-      transform: rotate(360deg);
-
-    }
-
-  }
-
-  .schedule-selection {
-
-    display: flex;
-
-  }
-
-  .schedule-list {
-
-    flex: 1;
-    padding: 25px;
-
-  }
-
-  .sidebar-content {
-
-    h3 {
-
-      margin-top: 0;
-      margin-bottom: 15px;
-
-    }
-
-    h4 {
-
-      display: inline-block;
-      margin: 0;
 
     }
 
