@@ -8,7 +8,7 @@
 
       <li v-for="course in selectedCourses" @click="onCourseClick(course)">
 
-        <detailed-course :course="course"></detailed-course>
+        <course :course="course"></course>
 
       </li>
 
@@ -22,13 +22,13 @@
 
 <script>
 
-  import DetailedCourse from './detailed-course.vue';
+  import Course from './course.vue';
 
   export default {
 
     name: 'selected-courses',
 
-    components: {DetailedCourse},
+    components: {Course},
 
     methods: {
 
