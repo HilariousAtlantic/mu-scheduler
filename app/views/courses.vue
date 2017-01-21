@@ -1,8 +1,16 @@
 <template>
 
-  <div class="course-selection">
+  <div class="courses-view">
 
-    <course-selector></course-selector>
+    <course-search></course-search>
+
+    <selected-courses></selected-courses>
+
+    <router-link to="/filters">
+
+      <button type="button" class="schedules-generate" @click="generateSchedules">Generate Schedules</button>
+
+    </router-link>
 
   </div>
 
@@ -10,13 +18,24 @@
 
 <script>
 
-  import CourseSelector from '../components/course/course-selector.vue';
+  import CourseSearch from '../components/course/course-search.vue';
+  import SelectedCourses from '../components/course/selected-courses.vue';
 
   export default {
 
-    name: 'course-selection-page',
+    name: 'courses-view',
 
-    components: {CourseSelector}
+    components: {CourseSearch, SelectedCourses},
+
+    methods: {
+
+      generateSchedules() {
+
+        this.$store.dispatch('generateSchedules');
+
+      }
+
+    }
 
   }
 
@@ -24,22 +43,29 @@
 
 <style scoped>
 
-  .course-selection {
-    display: flex;
+  .courses-view {
+
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+
   }
 
-  .course-selector {
-    flex: 1;
-    padding: 25px;
+  .selected-courses {
+
+    margin: 20px 0;
+
   }
 
-  .sidebar-content {
+  .schedules-generate {
 
-    h3 {
-
-      margin-top: 0;
-
-    }
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #4CAF50;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
 
   }
 
