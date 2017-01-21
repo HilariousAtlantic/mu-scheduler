@@ -2,9 +2,31 @@
 
   <div class="filters-view">
 
-    <header>Schedule Filters</header>
+    <header>
+
+      <span class="title">Schedule Filters</span>
+
+      <span>{{count}} Schedules Remain</span>
+
+    </header>
 
     <filter-list></filter-list>
+
+    <nav>
+
+      <router-link to="/courses">
+
+        <button type="button"><i class="fa fa-arrow-left"></i> Select Schedules</button>
+
+      </router-link>
+
+      <router-link to="/schedules">
+
+        <button type="button">View Schedules <i class="fa fa-arrow-right"></i></button>
+
+      </router-link>
+
+    </nav>
 
   </div>
 
@@ -18,7 +40,21 @@
 
     name: 'filters-view',
 
-    components: {FilterList}
+    components: {FilterList},
+
+    computed: {
+
+      count() {
+
+        let filtered = this.$store.getters.filteredSchedules.length;
+
+        let total = this.$store.state.schedules.length;
+
+        return filtered + ' of ' + total;
+
+      }
+
+    }
 
   }
 
@@ -36,9 +72,46 @@
 
   header {
 
+    display: flex;
     font-weight: 900;
     font-size: 1.25rem;
     margin-bottom: 20px;
+
+  }
+
+  .title {
+
+    flex: 1;
+
+  }
+
+  nav {
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+
+  }
+
+  button {
+
+    background: #0D47A1;
+    color: #fff;
+    padding: 10px 25px;
+    outline: none;
+    cursor: pointer;
+
+  }
+
+  .fa-arrow-left {
+
+    margin-right: 25px;
+
+  }
+
+  .fa-arrow-right {
+
+    margin-left: 25px;
 
   }
 
