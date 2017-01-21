@@ -7,8 +7,6 @@ RUN go get "github.com/labstack/echo"
 
 WORKDIR /go/src/github.com/hilariousatlantic/mu-scheduler
 
-RUN go build -o start_server server/*.go
+CMD ["./run.sh"]
 
-CMD ["./start_server"]
-
-EXPOSE 8000
+RUN chmod +x run.sh
