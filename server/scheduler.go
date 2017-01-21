@@ -111,9 +111,10 @@ func getCourseTree(ids string) []*Course {
 			}
 		}
 	}
+	setCoursesGPA(courses)
 	return courses
 }
-func setCoursesGPA(courses []Course) {
+func setCoursesGPA(courses []*Course) {
 	for _, course := range courses {
 		for _, section := range course.Sections {
 			meet := section.Meets[0]
@@ -122,13 +123,16 @@ func setCoursesGPA(courses []Course) {
 
 			//there is not two professors
 			if index != -1 {
+				fmt.Println("2 profs")
 				instructors := strings.Split(instructor, ";")
 				//instructor1 := instructors[0]
 				//instructors2 := instructors[1]
-				avgGPA := (getAvgGPA(instructors[0], course) + getAvgGPA(instructors[1], course)) / 2
+				avgGPA := (getAvgGPA(instructors[0], *course) + getAvgGPA(instructors[1], *course)) / 2
 				section.AverageGPA = avgGPA
 			} else {
-				section.AverageGPA = getAvgGPA(instructor, course)
+				fmt.Println("1 prof")
+				fmt.Println(getAvgGPA(instructor, *course))
+				section.AverageGPA = getAvgGPA(instructor, *course)
 			}
 		}
 	}
@@ -137,16 +141,20 @@ func setCoursesGPA(courses []Course) {
 func getAvgGPA(instructor string, course Course) float64 {
 	var avgGPA = 0.0
 	var divideBy = 0.0
-
+	fmt.Printf("p exists: %v", strings.Index(instructor, "(P)"))
+	fmt.Println("ASDFJASFJDSA")
 	strings.Replace(instructor, "(P)", "", -1)
 	instructor = strings.TrimSpace(instructor)
 	fmt.Printf("instructor after: %v", instructor)
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
-	rows, err = db.Query("SELECT gpa FROM grades WHERE LOWER(instructor) LIKE  LOWER(%'$1'%) AND WHERE subject = $2 AND WHERE number = $3;",
-		instructor, course.Subject, course.Number)
+	query := "SELECT gpa FROM grades WHERE LOWER(instructor) LIKE LOWER('%" + instructor +
+		"%') AND subject = '" + course.Subject +
+		"' AND number = '" + course.Number + "';"
+	rows, err = db.Query(query)
 	handleError(err)
+	fmt.Println(rows)
 	defer rows.Close()
 	for rows.Next() {
 		divideBy++

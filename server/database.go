@@ -256,8 +256,8 @@ func importDatabase() {
 	}
 
 	fmt.Println("Database imported")
-	importGradesDatabase()
 
+	importGradesDatabase()
 	//fmt.Println("Testing Scheduler")
 	//findGoodSchedules("404,717")
 	/*
