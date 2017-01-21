@@ -8,8 +8,9 @@ import mutations from './store/mutations';
 import actions from './store/actions';
 
 import App from './components/app.vue';
-import CourseSelection from './pages/course-selection.vue';
-import ScheduleSelection from './pages/schedule-selection.vue';
+import Courses from './views/courses.vue';
+import Filters from './views/filters.vue';
+import Schedules from './views/schedules.vue';
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -24,9 +25,11 @@ let router = new VueRouter({
 
     {path: '/', redirect: '/courses', component: App, children: [
 
-      {path: '/courses', component: CourseSelection},
+      {path: '/courses', component: Courses},
 
-      {path: '/schedules', component: ScheduleSelection}
+      {path: '/filters', component: Filters},
+
+      {path: '/schedules', component: Schedules}
 
     ]}
 
