@@ -2,15 +2,15 @@
 
   <div class="course-search">
 
-    <button type="button" @click="toggleTermList">{{selectedTerm}}<i class="fa fa-caret-down"></i></button>
+    <button type="button" @click="toggleTermList">{{selectedTermName}}<i class="fa fa-angle-down"></i></button>
 
     <ul class="term-list" v-if="showTermList">
 
-      <li v-for="term in sortedTerms" @click="selectTerm(term)">{{term.name}}</li>
+      <li v-for="term in $store.state.terms" @click="selectTerm(term)">{{term.name}}</li>
 
     </ul>
 
-    <input type="text" placeholder="Filter Courses" autocomplete="off" @input="updateFilter" />
+    <search-input :options="courses" :limit="5" @select="selectCourse"></search-input>
 
   </div>
 
@@ -18,15 +18,21 @@
 
 <script>
 
+  import SearchInput from '../common/search-input.vue';
+
   export default {
 
     name: 'course-search',
+
+    components: {SearchInput},
 
     data() {
 
       return {
 
-        showTermList: false
+        showTermList: false,
+
+        selectedTerm: {name: 'Select Term'}
 
       }
 
@@ -34,43 +40,21 @@
 
     computed: {
 
-      sortedTerms() {
+      selectedTermName() {
 
-        let sorted = [];
-        let seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
-        let termsByYear = {};
-
-        this.$store.state.terms.forEach(term => {
-
-          let year = parseInt(term.name.split(' ')[2]);
-
-          if (termsByYear[year]) {
-            termsByYear[year].push(term)
-          } else {
-            termsByYear[year] = [term];
-          }
-
-        });
-
-        Object.keys(termsByYear).forEach(year => {
-          termsByYear[year] = termsByYear[year].sort((a, b) => {
-            return seasons.indexOf(b.name.split(' ')[0]) - seasons.indexOf(a.name.split(' ')[0]);
-          });
-        });
-
-        Object.keys(termsByYear).sort((a, b) => b - a).forEach(year => {
-          sorted = sorted.concat(termsByYear[year]);
-        })
-
-        return sorted;
+        return this.$store.state.selectedTerm.name || 'Select Term';
 
       },
 
-      selectedTerm() {
+      courses() {
 
-        let term = this.$store.state.selectedTerm.name;
+        let getText = ({subject, number, title}) => subject + ' ' + number + ' - ' + title;
 
-        return term ? term : 'Select Term';
+        return this.$store.state.courses.map(
+
+          course => Object.assign({}, course, {text: getText(course)})
+
+        );
 
       }
 
@@ -85,15 +69,15 @@
 
       },
 
-      updateFilter(event) {
-
-        this.$store.dispatch('updateCourseFilter', event.target.value);
-
-      },
-
       toggleTermList() {
 
         this.showTermList = !this.showTermList;
+
+      },
+
+      selectCourse(course) {
+
+        this.$store.dispatch('selectCourse', course);
 
       }
 
@@ -131,16 +115,6 @@
 
   }
 
-  input {
-
-    flex: 1;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-    padding: 10px;
-    outline: none;
-
-  }
-
   .term-list {
 
     border: 1px solid #ddd;
@@ -166,6 +140,12 @@
       background: #f5f5f5;
 
     }
+
+  }
+
+  .search-input {
+
+    flex: 1;
 
   }
 

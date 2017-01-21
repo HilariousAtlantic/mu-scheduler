@@ -10,8 +10,26 @@ export default {
 
   RECEIVE_TERMS(state, terms) {
 
-    state.terms = terms;
     state.requestingTerms = false;
+
+    state.terms = terms.sort((termA, termB) => {
+
+      let seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+
+      let [seasonA, typeA, yearA] = termA.name.split(' ');
+      let [seasonB, typeB, yearB] = termB.name.split(' ');
+
+      if (yearA === yearB) {
+
+        return seasons.indexOf(seasonB) - seasons.indexOf(seasonA);
+
+      } else {
+
+        return parseInt(yearB) - parseInt(yearA);
+
+      }
+
+    });
 
   },
 

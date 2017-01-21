@@ -1,29 +1,35 @@
 <template>
 
-  <div class="class-filter">
+    <schedule-filter :id="filter.id" :text="text" :active="filter.active">
 
-    <schedule-filter :text="text" :active="filter.active" @edit="toggleEditing" @toggle="toggleActive"></schedule-filter>
+      <dropdown
+        :options="['At Least', 'At Most', 'Exactly']"
+        :defaultOption="filter.options.operator"
+        @select="handleOperatorChange"
+      ></dropdown>
 
-    <modal v-if="showEditor">
+      <number-input
+        :step="1"
+        :defaultNumber="filter.options.amount"
+        @change="handleAmountChange"
+      ></number-input>
 
-      <filter-editor :result="previewText" @done="submitChanges" @quit="discardChanges">
+      <days-input
+        :days="['M', 'T', 'W', 'R', 'F', 'S']"
+        :defaultDays="filter.options.days"
+        @change="handleDaysChange"
+      ></days-input>
 
-        <class-filter-options :options="preview" @change="changePreview"></class-filter-options>
-
-      </filter-editor>
-
-    </modal>
-
-  </div>
+    </schedule-filter>
 
 </template>
 
 <script>
 
   import ScheduleFilter from './schedule-filter.vue';
-  import Modal from '../common/modal.vue';
-  import FilterEditor from './filter-editor.vue';
-  import ClassFilterOptions from './class-filter-options.vue';
+  import Dropdown from '../common/dropdown.vue';
+  import NumberInput from '../common/number-input.vue';
+  import DaysInput from '../common/days-input.vue';
 
   import {formatDayList} from '../../lib/days';
 
@@ -33,15 +39,12 @@
 
     props: ['filter'],
 
-    components: {ScheduleFilter, Modal, FilterEditor, ClassFilterOptions},
+    components: {ScheduleFilter, Dropdown, NumberInput, DaysInput},
 
     data() {
 
       return {
 
-        showEditor: false,
-
-        preview: Object.assign({}, this.filter.options)
 
       }
 
@@ -59,56 +62,37 @@
 
         return 'I want ' + operator + ' ' + amount + ' classes on ' + days;
 
-      },
-
-      previewText() {
-
-        let operator = this.preview.operator.toLowerCase();
-
-        let amount = this.preview.amount;
-
-        let days = formatDayList(this.preview.days);
-
-        return 'I want ' + operator + ' ' + amount + ' classes on ' + days;
-
       }
 
     },
 
     methods: {
 
-      toggleEditing() {
+      handleOperatorChange(operator) {
 
-        this.showEditor = !this.showEditor;
-
-      },
-
-      toggleActive() {
-
-        this.$store.dispatch('toggleScheduleFilter', this.filter.id);
+        this.submitChanges({operator});
 
       },
 
-      changePreview(changes) {
+      handleAmountChange(amount) {
 
-        Object.assign(this.preview, changes);
+        this.submitChanges({amount});
 
       },
 
-      submitChanges() {
+
+      handleDaysChange(days) {
+
+        this.submitChanges({days});
+
+      },
+
+      submitChanges(change) {
 
         let id = this.filter.id;
-        let changes = Object.assign({}, this.preview);
+        let changes = Object.assign({}, this.filter.options, change);
 
         this.$store.dispatch('changeScheduleFilter', {id, changes});
-        this.toggleEditing();
-
-      },
-
-      discardChanges() {
-
-        Object.assign(this.preview, this.filter.options);
-        this.toggleEditing();
 
       }
 

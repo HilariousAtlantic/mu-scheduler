@@ -2,17 +2,35 @@
 
   <div class="detailed-course">
 
-    <span class="course-header">{{course.subject}} {{course.number}} - {{course.title}}</span>
+    <div class="course-head" @click="toggleExpanded">
 
-    <ul class="course-sections">
+      <span class="course-name">{{course.subject}} {{course.number}} - {{course.title}}</span>
 
-      <li v-for="section in course.sections">
+      <button type="button" class="course-expand">
 
-        Section {{section.name}} - {{section.instructor}}
+        <i class="fa" :class="{'fa-chevron-down': !expanded, 'fa-chevron-up': expanded}"></i>
 
-      </li>
+      </button>
 
-    </ul>
+    </div>
+
+    <div v-if="expanded" class="course-body">
+
+      <div class="course-sections">
+
+        <span v-for="section in sections">{{section}}</span>
+
+      </div>
+
+      <div class="course-actions">
+
+        <span>{{course.credits}} Credits</span>
+
+        <button class="course-deselect" type="button" @click="deselectCourse">Remove Course</button>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -24,7 +42,53 @@
 
     name: 'detailed-course',
 
-    props: ['course']
+    props: ['course'],
+
+    data() {
+
+      return {
+
+        expanded: false
+
+      }
+
+    },
+
+    methods: {
+
+      deselectCourse() {
+
+        this.$store.dispatch('deselectCourse', this.course);
+
+      },
+
+      toggleExpanded() {
+
+        this.expanded = !this.expanded;
+
+      }
+
+    },
+
+    computed: {
+
+      sections() {
+
+        return this.course.sections.sort((sectionA, sectionB) => {
+
+          return sectionA.name.localeCompare(sectionB.name);
+
+        }).map(({name, meets}) => {
+
+          let instructor = meets.find(({instructor}) => instructor.indexOf('(P)') != -1).instructor;
+
+          return 'Section ' + name + ' - ' + instructor.replace(' (P)', '');
+
+        });
+
+      }
+
+    }
 
   }
 
@@ -34,15 +98,81 @@
 
   .detailed-course {
 
-
-
-  }
-
-  ul {
-
-    font-size: .75rem;
+    margin-bottom: 10px;
 
   }
 
+  .course-head {
+
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #eee;
+    border: 1px solid #ddd;
+    cursor: pointer;
+
+  }
+
+  .course-body {
+
+    display: flex;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+
+  }
+
+  .course-sections {
+
+    flex: 1;
+
+    span {
+
+      display: block;
+
+    }
+
+  }
+
+  .course-actions {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span {
+
+      font-weight: 900;
+      margin-bottom: 10px;
+
+    }
+
+  }
+
+  .course-name {
+
+    flex: 1;
+
+  }
+
+  .course-expand {
+
+    background: #eee;
+    border: none;
+    outline: none;
+
+  }
+
+  .course-deselect {
+
+    background: #F44336;
+    color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 25px;
+    outline: none;
+    cursor: pointer;
+
+  }
 
 </style>
