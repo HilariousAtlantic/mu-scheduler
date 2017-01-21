@@ -4,7 +4,7 @@
 
     <schedule-browser :index="index" @change="updateIndex"></schedule-browser>
 
-    <schedule v-if="schedule" :courses="schedule.courses"></schedule>
+    <schedule v-if="schedule" :schedule="schedule"></schedule>
 
   </div>
 

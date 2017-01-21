@@ -1,4 +1,4 @@
-export function toTime(minutes) {
+export function toTime(minutes, hidePeriod) {
 
   let h = Math.floor(minutes/60);
   let m = minutes - h*60;
@@ -22,7 +22,15 @@ export function toTime(minutes) {
 
   }
 
-  return h + ':' + ('00'+m).slice(-2) + ' ' + p;
+  if (hidePeriod) {
+
+    return h + ':' + ('00'+m).slice(-2);
+
+  } else {
+
+    return h + ':' + ('00'+m).slice(-2) + ' ' + p;
+
+  }  
 
 }
 
