@@ -1,32 +1,38 @@
 <template>
 
-  <div class="time-filter">
+    <schedule-filter :id="filter.id" :text="text" :active="filter.active">
 
-    <schedule-filter :text="text" :active="filter.active" @edit="toggleEditing" @toggle="toggleActive"></schedule-filter>
+      <dropdown
+        :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
+        :defaultOption="filter.options.operator"
+        @select="handleOperatorChange"
+      ></dropdown>
 
-    <modal v-if="showEditor">
+      <time-input
+        :step="15"
+        :defaultTime="filter.options.time"
+        @change="handleTimeChange"
+      ></time-input>
 
-      <filter-editor :result="previewText" @done="submitChanges" @quit="discardChanges">
+      <days-input
+        :days="['M', 'T', 'W', 'R', 'F', 'S']"
+        :defaultDays="filter.options.days"
+        @change="handleDaysChange"
+      ></days-input>
 
-        <time-filter-options :options="preview" @change="changePreview"></time-filter-options>
-
-      </filter-editor>
-
-    </modal>
-
-  </div>
+    </schedule-filter>
 
 </template>
 
 <script>
 
   import ScheduleFilter from './schedule-filter.vue';
-  import Modal from '../common/modal.vue';
-  import FilterEditor from './filter-editor.vue';
-  import TimeFilterOptions from './time-filter-options.vue';
+  import Dropdown from '../common/dropdown.vue';
+  import TimeInput from '../common/time-input.vue';
+  import DaysInput from '../common/days-input.vue';
 
-  import {toTime} from '../../lib/time';
   import {formatDayList} from '../../lib/days';
+  import {toTime} from '../../lib/time';
 
   export default {
 
@@ -34,15 +40,12 @@
 
     props: ['filter'],
 
-    components: {ScheduleFilter, Modal, FilterEditor, TimeFilterOptions},
+    components: {ScheduleFilter, Dropdown, TimeInput, DaysInput},
 
     data() {
 
       return {
 
-        showEditor: false,
-
-        preview: Object.assign({}, this.filter.options)
 
       }
 
@@ -58,19 +61,7 @@
 
         let days = formatDayList(this.filter.options.days);
 
-        return 'I want to ' + operator + ' ' + time + ' on ' + days;
-
-      },
-
-      previewText() {
-
-        let operator = this.preview.operator.toLowerCase();
-
-        let time = toTime(this.preview.time);
-
-        let days = formatDayList(this.preview.days);
-
-        return 'I want to ' + operator + ' ' + time + ' on ' + days;
+        return 'I want ' + operator + ' ' + time + ' on ' + days;
 
       }
 
@@ -78,38 +69,31 @@
 
     methods: {
 
-      toggleEditing() {
+      handleOperatorChange(operator) {
 
-        this.showEditor = !this.showEditor;
-
-      },
-
-      toggleActive() {
-
-        this.$store.dispatch('toggleScheduleFilter', this.filter.id);
+        this.submitChanges({operator});
 
       },
 
-      changePreview(changes) {
+      handleTimeChange(time) {
 
-        Object.assign(this.preview, changes);
+        this.submitChanges({time});
 
       },
 
-      submitChanges() {
+
+      handleDaysChange(days) {
+
+        this.submitChanges({days});
+
+      },
+
+      submitChanges(change) {
 
         let id = this.filter.id;
-        let changes = Object.assign({}, this.preview);
+        let changes = Object.assign({}, this.filter.options, change);
 
         this.$store.dispatch('changeScheduleFilter', {id, changes});
-        this.toggleEditing();
-
-      },
-
-      discardChanges() {
-
-        Object.assign(this.preview, this.filter.options);
-        this.toggleEditing();
 
       }
 
