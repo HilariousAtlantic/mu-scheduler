@@ -4,16 +4,12 @@
 
     <course-search></course-search>
 
-    <div class="course-list-container">
-
-      <filtered-courses></filtered-courses>
-
-      <selected-courses></selected-courses>
-
-    </div>
+    <selected-courses></selected-courses>
 
     <router-link to="/schedules">
-      <button type="button" @click="handleGenerateSchedules">Generate Schedules</button>
+
+      <button class="schedules-generate" type="button" @click="handleGenerateSchedules">Generate Schedules</button>
+
     </router-link>
 
   </div>
@@ -23,14 +19,13 @@
 <script>
 
   import CourseSearch from './course-search.vue';
-  import FilteredCourses from './filtered-courses.vue';
   import SelectedCourses from './selected-courses.vue';
 
   export default {
 
     name: 'course-selector',
 
-    components: {CourseSearch, FilteredCourses, SelectedCourses},
+    components: {CourseSearch, SelectedCourses},
 
     computed: {
 
@@ -79,28 +74,14 @@
 
   }
 
-  .course-list-container {
+  .selected-courses {
 
     flex: 1;
-    display: flex;
     margin: 10px 0;
 
   }
 
-  .filtered-courses {
-
-    flex: 1;
-    margin-right: 10px;
-
-  }
-
-  .selected-courses {
-
-    flex: 1;
-
-  }
-
-  button {
+  .schedules-generate {
 
     width: 100%;
     padding: 15px;

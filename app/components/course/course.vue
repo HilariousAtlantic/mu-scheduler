@@ -1,6 +1,6 @@
 <template>
 
-  <div class="detailed-course">
+  <div class="course">
 
     <span class="course-header">{{course.subject}} {{course.number}} - {{course.title}}</span>
 
@@ -22,7 +22,7 @@
 
   export default {
 
-    name: 'detailed-course',
+    name: 'course',
 
     props: ['course']
 
@@ -32,7 +32,7 @@
 
 <style scoped>
 
-  .detailed-course {
+  .course {
 
 
 
