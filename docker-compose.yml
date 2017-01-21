@@ -9,6 +9,9 @@ services:
       - ./:/go/src/github.com/hilariousatlantic/mu-scheduler
     depends_on:
       - database
+    extends:
+      file: base.yml
+      service: base
 
   database:
     image: postgres:latest
@@ -16,7 +19,6 @@ services:
       - "5432"
     volumes:
       - /var/lib/postgresql/data
-    environment:
-      - POSTGRES_DBNAME=mu-scheduler
-      - POSTGRES_USERNAME=mu-scheduler
-      - POSTGRES_PASSWORD=password
+    extends:
+      file: base.yml
+      service: base
