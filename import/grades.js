@@ -82,10 +82,6 @@ function saveGPAs(GPAs) {
 function fixProfessorName(name) {
   [lastName, firstName, middleInitial] = name.trim().split(/\s+/);
 
-  if (middleInitial) {
-    return [firstName, middleInitial, lastName].join(' ');
-  }
-
   return [firstName, lastName].join(' ');
 }
 
