@@ -1,8 +1,9 @@
 version: '2'
 
 services:
-  api:
-    build: .
+  go:
+    build:
+      context: ./docker/go
     ports:
       - 8000:8000
     volumes:
@@ -14,7 +15,8 @@ services:
       service: base
 
   database:
-    image: postgres:latest
+    build:
+      context: ./docker/postgres
     ports:
       - "5432"
     volumes:
@@ -22,3 +24,11 @@ services:
     extends:
       file: base.yml
       service: base
+
+  node:
+    build:
+      context: ./docker/node
+    command: echo 'ready'
+    volumes:
+      - .:/home/mu-scheduler
+      - .:/home/mu-scheduler/node_modules
