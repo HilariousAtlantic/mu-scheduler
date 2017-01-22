@@ -3,6 +3,6 @@ version: '2'
 services:
   base:
     environment:
-      - POSTGRES_DBNAME=mu-scheduler
-      - POSTGRES_USERNAME=mu-scheduler
+      - POSTGRES_DB=mu-scheduler
+      - POSTGRES_USER=mu-scheduler
       - POSTGRES_PASSWORD=password

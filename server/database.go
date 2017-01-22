@@ -160,7 +160,10 @@ type DBContext struct {
 
 var dbContext = new(DBContext)
 
-var databasePath string = fmt.Sprintf("user=postgres dbname=%v sslmode=disable", os.Getenv("DB_NAME"))
+var databasePath string = fmt.Sprintf("user=%v dbname=%v password=%v host=database sslmode=disable",
+	os.Getenv("POSTGRES_DB"),
+	os.Getenv("POSTGRES_USER"),
+	os.Getenv("POSTGRES_PASSWORD"))
 
 func (d *DBContext) open() *sql.DB {
 	if d.db == nil {
@@ -183,11 +186,15 @@ func createDatabase() {
 		fmt.Println("Database created")
 	}
 
+	createTables()
+}
+
+func createTables() {
 	db := dbContext.open()
 	defer db.Close()
 
 	for _, createTableStatement := range createTableStatements {
-		_, err = db.Exec(createTableStatement)
+		_, err := db.Exec(createTableStatement)
 		if err != nil {
 			log.Fatalf("%q: %s\n", err, createTableStatement)
 		}

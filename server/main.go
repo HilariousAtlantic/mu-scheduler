@@ -134,7 +134,7 @@ func main() {
 		case "import":
 			importDatabase()
 		case "createdb":
-			createDatabase()
+			createTables()
 		case "dropdb":
 			deleteDatabase()
 		case "resetdb":
