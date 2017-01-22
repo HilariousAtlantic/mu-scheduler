@@ -80,9 +80,7 @@
 
         }).map(({name, meets}) => {
 
-          let instructor = meets.find(({instructor}) => instructor.indexOf('(P)') != -1).instructor;
-
-          return 'Section ' + name + ' - ' + instructor.replace(' (P)', '');
+          return 'Section ' + name + ' - ' + meets.map(({instructor}) => instructor).join(',');
 
         });
 
