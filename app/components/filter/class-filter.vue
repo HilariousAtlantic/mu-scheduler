@@ -15,7 +15,7 @@
       ></number-input>
 
       <days-input
-        :days="['M', 'T', 'W', 'R', 'F', 'S']"
+        :days="['M', 'T', 'W', 'R', 'F']"
         :defaultDays="filter.options.days"
         @change="handleDaysChange"
       ></days-input>

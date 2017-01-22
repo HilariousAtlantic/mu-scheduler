@@ -16,8 +16,8 @@
 
             <div class="course-meta">
 
-              <span>{{course.name}}</span><br>
-              <span>{{course.start}} - {{course.end}} {{course.location}}</span><br>
+              <span>{{course.name}}</span>
+              <span>{{course.start}} - {{course.end}} {{course.location}}</span>
               <span>{{course.instructor}}</span>
 
             </div>
@@ -163,6 +163,13 @@
 
     margin-top: 5px;
     margin-left: 5px;
+
+    span {
+
+      display: block;
+      margin-bottom: 3px;
+
+    }
 
     span:first-of-type {
 
