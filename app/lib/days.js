@@ -4,8 +4,7 @@ export const Abbreviations = {
   T: 'Tuesday',
   W: 'Wednesday',
   R: 'Thursday',
-  F: 'Friday',
-  S: 'Saturday'
+  F: 'Friday'
 
 }
 
