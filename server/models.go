@@ -22,7 +22,7 @@ type Section struct {
 	CourseID   int     `json:"course_id"`
 	CRN        string  `json:"crn"`
 	Name       string  `json:"name"`
-	AverageGPA float64 `json:"average_grade"`
+	AverageGPA float64 `json:"average_gpa"`
 }
 
 type Meet struct {
@@ -47,7 +47,8 @@ type Test struct {
 }
 
 type Schedule struct {
-	Sections []ScheduledCourse `json:"sections"`
+	Sections   []ScheduledCourse `json:"sections"`
+	AverageGPA float64           `json:"average_gpa"`
 }
 
 type ScheduledCourse struct {

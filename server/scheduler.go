@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"math"
 	"strings"
 )
 
@@ -37,15 +38,23 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 		//fmt.Println("len is: " + string(len(courses)) + " sections are: ")
 		//fmt.Println(selectedSections)
 		var sections []ScheduledCourse
+		goodScheduleAvgGPA := 0.0
 		for _, selectedSection := range selectedSections {
+			if !math.IsNaN(selectedSection.AverageGPA) {
+				goodScheduleAvgGPA += selectedSection.AverageGPA
+			}
 			var scheduledCourse = ScheduledCourse{
 				CourseID:  selectedSection.CourseID,
 				SectionID: selectedSection.ID,
 			}
 			sections = append(sections, scheduledCourse)
 		}
-		var goodSchedule Schedule
-		goodSchedule.Sections = sections
+		var goodSchedule = Schedule{
+			Sections:   sections,
+			AverageGPA: goodScheduleAvgGPA,
+		}
+
+		//fmt.Printf("sched gpa is: %v", goodScheduleAvgGPA)
 		//fmt.Println("good schedule added:")
 		//fmt.Println(goodSchedule)
 		*goodSchedules = append(*goodSchedules, goodSchedule)
@@ -123,14 +132,12 @@ func setCoursesGPA(courses []*Course) {
 
 			//there is not two professors
 			if index != -1 {
-				fmt.Println("2 profs")
 				instructors := strings.Split(instructor, ";")
 				//instructor1 := instructors[0]
 				//instructors2 := instructors[1]
 				avgGPA := (getAvgGPA(instructors[0], *course) + getAvgGPA(instructors[1], *course)) / 2
 				section.AverageGPA = avgGPA
 			} else {
-				fmt.Println("1 prof")
 				fmt.Println(getAvgGPA(instructor, *course))
 				section.AverageGPA = getAvgGPA(instructor, *course)
 			}
@@ -153,13 +160,12 @@ func getAvgGPA(instructor string, course Course) float64 {
 	//query := "SELECT gpa FROM grades WHERE LOWER(instructor) LIKE LOWER('%zmuda%')"
 	rows, err = db.Query(query)
 	handleError(err)
-	fmt.Printf("rows: %s \n", rows)
 	defer rows.Close()
 	for rows.Next() {
 		divideBy++
 		var gpa float64
 		err = rows.Scan(&gpa)
-		fmt.Printf("in loop gpa: %v", gpa)
+		//fmt.Printf("in loop gpa: %v", gpa)
 		avgGPA += gpa
 		handleError(err)
 	}
@@ -167,7 +173,7 @@ func getAvgGPA(instructor string, course Course) float64 {
 	handleError(err)
 	avgGPA = (avgGPA / divideBy)
 	avgGPA = float64(int(avgGPA*100)) / 100
-	fmt.Printf("avg gpa is: %v", avgGPA)
+	//fmt.Printf("avg gpa is: %v", avgGPA)
 	return avgGPA
 
 }
