@@ -157,7 +157,7 @@ func getAvgGPA(instructor string, course Course) float64 {
 	for rows.Next() {
 		divideBy++
 		var gpa float64
-		err = rows.Scan(gpa)
+		err = rows.Scan(&gpa)
 		fmt.Println(gpa)
 		avgGPA += gpa
 		handleError(err)
