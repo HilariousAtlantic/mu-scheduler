@@ -143,13 +143,14 @@ func getAvgGPA(instructor string, course Course) float64 {
 	var divideBy = 0.0
 	instructor = strings.Replace(instructor, "(P)", "", -1)
 	instructor = strings.TrimSpace(instructor)
-	fmt.Printf("instructor after:%v \n", instructor)
+	fmt.Printf("instructor after:%v.\n", instructor)
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
 	query := "SELECT gpa FROM grades WHERE LOWER(instructor) LIKE LOWER('%" + instructor +
 		"%') AND subject = '" + course.Subject +
 		"' AND number = '" + course.Number + "';"
+	//query := "SELECT gpa FROM grades WHERE LOWER(instructor) LIKE LOWER('%zmuda%')"
 	rows, err = db.Query(query)
 	handleError(err)
 	fmt.Printf("rows: %s \n", rows)
@@ -158,15 +159,15 @@ func getAvgGPA(instructor string, course Course) float64 {
 		divideBy++
 		var gpa float64
 		err = rows.Scan(&gpa)
-		fmt.Println(gpa)
+		fmt.Printf("in loop gpa: %v", gpa)
 		avgGPA += gpa
 		handleError(err)
 	}
 	err = rows.Err()
 	handleError(err)
 	avgGPA = (avgGPA / divideBy)
-	fmt.Printf("avg gpa is: %v", avgGPA)
 	avgGPA = float64(int(avgGPA*100)) / 100
+	fmt.Printf("avg gpa is: %v", avgGPA)
 	return avgGPA
 
 }
