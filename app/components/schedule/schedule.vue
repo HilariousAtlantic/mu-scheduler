@@ -10,12 +10,6 @@
 
     <div class="schedule-body" :style="scheduleHeight">
 
-      <div class="times">
-
-
-
-      </div>
-
       <div class="day" v-for="day in days">
 
           <div class="course" v-for="course in coursesByDay[day]" :style="course.style">
@@ -52,7 +46,7 @@
 
       return {
 
-        days: ['M', 'T', 'W', 'R', 'F', 'S'],
+        days: ['M', 'T', 'W', 'R', 'F'],
 
         colors: ['#0D47A1', '#B71C1C', '#1B5E20', '#E65100', '#4A148C', '#263238']
 
@@ -64,7 +58,7 @@
 
       coursesByDay() {
 
-        let coursesByDay = {M: [], T: [], W: [], R: [], F: [], S: []};
+        let coursesByDay = {M: [], T: [], W: [], R: [], F: []};
 
         let start = this.schedule.start-30;
         let length = this.schedule.length+60;
@@ -136,7 +130,7 @@
   .schedule-body {
 
     display: flex;
-    font-size: .75rem;
+    font-size: .7rem;
 
   }
 
@@ -169,12 +163,6 @@
 
     margin-top: 5px;
     margin-left: 5px;
-
-    span {
-
-      font-weight: 100;
-
-    }
 
     span:first-of-type {
 
