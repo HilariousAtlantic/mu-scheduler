@@ -37,6 +37,11 @@ terms.forEach(term => {
       let [start_time, end_time] = formatTime(time);
       let [start_date, end_date] = date.split('-');
 
+      instructor = instructor.split(';')[0].replace(' (P)', '');
+      let names = instructor.split(' ');
+      instructor = names[0] + ' ' + names[names.length-1];
+      if (instructor == 'TBA TBA') instructor = 'TBA';
+
       if (!crn) {
 
         type = start_date == end_date ? 'test' : 'meet';
