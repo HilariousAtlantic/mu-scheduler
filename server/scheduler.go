@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"math"
+	"strconv"
 	"strings"
 )
 
@@ -48,8 +49,9 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 		for _, selectedSection := range selectedSections {
 			if !math.IsNaN(selectedSection.AverageGPA) {
 				fmt.Printf("adding gpa: %v", selectedSection.AverageGPA)
-				goodScheduleAvgGPA += selectedSection.AverageGPA
-				divideBy++
+				goodScheduleAvgGPA += (selectedSection.AverageGPA * selectedSection.Credits)
+				divideBy += selectedSection.Credits
+				fmt.Println("goodSchedGPA is now : %v, divideBy is now: %v", goodScheduleAvgGPA, divideBy)
 			}
 			var scheduledCourse = ScheduledCourse{
 				CourseID:  selectedSection.CourseID,
@@ -134,6 +136,18 @@ func getCourseTree(ids string) []*Course {
 func setCoursesGPA(courses []*Course) {
 	for _, course := range courses {
 		for _, section := range course.Sections {
+			//credits stuff
+			creditsStr := course.Credits
+			//check for credit range
+			if strings.Index(creditsStr, "-") != -1 {
+				temp := strings.Split(creditsStr, "-")
+				creditsStr = temp[0]
+			}
+			credits, err := strconv.ParseFloat(creditsStr, 64)
+			handleError(err)
+			section.Credits = credits
+
+			//GPA stuff
 			meet := section.Meets[0]
 			instructor := meet.Instructor
 			index := strings.Index(instructor, ";")
