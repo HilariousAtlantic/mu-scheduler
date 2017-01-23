@@ -8,11 +8,11 @@
 
     </div>
 
-    <div class="schedule-body" :style="scheduleHeight">
+    <div class="schedule-body" :style="{height: schedule.length+'px'}">
 
       <div class="day" v-for="day in days">
 
-          <div class="course" v-for="course in coursesByDay[day]" :style="course.style">
+          <div class="course" v-for="course in courses[day]" :style="course.style">
 
             <div class="course-meta">
 
@@ -56,12 +56,12 @@
 
     computed: {
 
-      coursesByDay() {
+      courses() {
 
         let coursesByDay = {M: [], T: [], W: [], R: [], F: []};
 
-        let start = this.schedule.start-30;
-        let length = this.schedule.length+60;
+        let start = this.schedule.start;
+        let length = this.schedule.length;
 
         this.schedule.courses.forEach(({name, meets}, i) => {
 
@@ -88,12 +88,6 @@
           });
 
         return coursesByDay;
-
-      },
-
-      scheduleHeight() {
-
-        return {height: ((this.schedule.length+60)*1.2)+'px'};
 
       }
 
@@ -131,15 +125,15 @@
 
     display: flex;
     font-size: .7rem;
+    padding: 5px 0;
 
   }
 
   .day {
 
     flex: 1;
-    border-right: 1px solid #eee;
-    padding: 10px;
     position: relative;
+    border-right: 1px solid #eee;
 
     &:last-of-type {
 
