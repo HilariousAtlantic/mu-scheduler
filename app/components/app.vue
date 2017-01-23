@@ -4,6 +4,8 @@
 
     <navbar></navbar>
 
+    <generator></generator>
+
     <router-view class="page"></router-view>
 
   </div>
@@ -13,12 +15,13 @@
 <script>
 
   import Navbar from './common/navbar.vue';
+  import Generator from './generator.vue';
 
   export default {
 
     name: 'app',
 
-    components: {Navbar},
+    components: {Navbar, Generator},
 
     mounted() {
 
