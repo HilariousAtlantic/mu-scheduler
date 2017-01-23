@@ -6,4 +6,6 @@ COPY . MU_SCHEDULER
 
 WORKDIR MU_SCHEDULER
 
-RUN npm install && npm cache clean
+RUN npm run setup-client
+
+# CMD ["npm run setup"]

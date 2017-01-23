@@ -3,7 +3,8 @@ version: '2'
 services:
   go:
     build:
-      context: ./docker/go
+      context: .
+      dockerfile: Dockerfile-go
     ports:
       - 8000:8000
     volumes:
@@ -16,7 +17,8 @@ services:
 
   database:
     build:
-      context: ./docker/postgres
+      context: .
+      dockerfile: Dockerfile-postgres
     ports:
       - "5432"
     volumes:
@@ -27,8 +29,10 @@ services:
 
   node:
     build:
-      context: ./docker/node
-    command: echo 'ready'
+      context: .
+      dockerfile: Dockerfile-node
+    ports:
+      - 3000:3000
     volumes:
       - .:/home/mu-scheduler
       - .:/home/mu-scheduler/node_modules
