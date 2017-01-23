@@ -18,7 +18,7 @@
 
 <script>
 
-  import SearchInput from '../common/search-input.vue';
+  import SearchInput from '../input/search-input.vue';
 
   export default {
 

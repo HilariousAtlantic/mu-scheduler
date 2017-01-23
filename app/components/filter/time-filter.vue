@@ -27,9 +27,9 @@
 <script>
 
   import ScheduleFilter from './schedule-filter.vue';
-  import Dropdown from '../common/dropdown.vue';
-  import TimeInput from '../common/time-input.vue';
-  import DaysInput from '../common/days-input.vue';
+  import Dropdown from '../input/dropdown.vue';
+  import TimeInput from '../input/time-input.vue';
+  import DaysInput from '../input/days-input.vue';
 
   import {formatDayList} from '../../lib/days';
   import {toTime} from '../../lib/time';

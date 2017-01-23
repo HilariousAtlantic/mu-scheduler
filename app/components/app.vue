@@ -18,7 +18,7 @@
 
 <script>
 
-  import Navbar from './common/navbar.vue';
+  import Navbar from './navbar.vue';
   import Generator from './generator.vue';
 
   export default {
