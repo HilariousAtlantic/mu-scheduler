@@ -56,3 +56,12 @@ type ScheduledCourse struct {
 	CourseID  int `json:"course_id"`
 	SectionID int `json:"section_id"`
 }
+
+type Grade struct {
+	Gpa        float64 `json:"gpa"`
+	instructor string  `json:"instructor"`
+	season     string  `json:"season"`
+	year       int     `json:"year"`
+	subject    string  `json:"subject"`
+	number     string  `json:"number"`
+}
