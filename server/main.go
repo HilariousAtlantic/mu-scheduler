@@ -6,7 +6,7 @@ import (
 
 var GoodSchedules = make([][]Section, 0)
 var Course1 = Course{
-	Sections: []Section{Section1, Section2},
+	Sections: []*Section{&Section1, &Section2},
 	ID:       10,
 	TermID:   1,
 	Subject:  "CSE",
@@ -15,7 +15,7 @@ var Course1 = Course{
 	Credits:  "3.00",
 }
 var Course2 = Course{
-	Sections: []Section{Section3, Section4},
+	Sections: []*Section{&Section3, &Section4},
 	ID:       20,
 	TermID:   1,
 	Subject:  "CSE",
@@ -24,7 +24,7 @@ var Course2 = Course{
 	Credits:  "3.00",
 }
 var Course3 = Course{
-	Sections: []Section{Section5},
+	Sections: []*Section{&Section5},
 	ID:       30,
 	TermID:   1,
 	Subject:  "CSE",
@@ -33,14 +33,14 @@ var Course3 = Course{
 	Credits:  "3.00",
 }
 var Section1 = Section{
-	Meets:    []Meet{Meet1},
+	Meets:    []*Meet{&Meet1},
 	ID:       1,
 	CourseID: 10,
 	CRN:      "23232",
 	Name:     "CSE 100",
 }
 var Section2 = Section{
-	Meets:    []Meet{Meet2, Meet3},
+	Meets:    []*Meet{&Meet2, &Meet3},
 	ID:       2,
 	CourseID: 10,
 	CRN:      "54321",
@@ -48,21 +48,21 @@ var Section2 = Section{
 }
 
 var Section3 = Section{
-	Meets:    []Meet{Meet4},
+	Meets:    []*Meet{&Meet4},
 	ID:       3,
 	CourseID: 20,
 	CRN:      "12345",
 	Name:     "CSE 148",
 }
 var Section4 = Section{
-	Meets:    []Meet{Meet4},
+	Meets:    []*Meet{&Meet4},
 	ID:       4,
 	CourseID: 20,
 	CRN:      "12346",
 	Name:     "CSE 148",
 }
 var Section5 = Section{
-	Meets:    []Meet{Meet5},
+	Meets:    []*Meet{&Meet5},
 	ID:       5,
 	CourseID: 30,
 	CRN:      "44444",

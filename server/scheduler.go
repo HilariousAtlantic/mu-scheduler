@@ -20,7 +20,11 @@ func findGoodSchedules(ids string) []Schedule {
 	for _, coursePointer := range coursesPointer {
 		courses = append(courses, *coursePointer)
 	}
-
+	for _, course := range courses {
+		for _, section := range course.Sections {
+			fmt.Printf("section gpa: %v", section.AverageGPA)
+		}
+	}
 	selectedSections := make([]Section, 0)
 	findGoodSchedulesRecursive(courses, selectedSections, &goodSchedules)
 	//fmt.Println("good schedules")
@@ -40,10 +44,12 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 		//fmt.Println(selectedSections)
 		var sections []ScheduledCourse
 		goodScheduleAvgGPA := 0.0
+		divideBy := 0.0
 		for _, selectedSection := range selectedSections {
 			if !math.IsNaN(selectedSection.AverageGPA) {
 				fmt.Printf("adding gpa: %v", selectedSection.AverageGPA)
 				goodScheduleAvgGPA += selectedSection.AverageGPA
+				divideBy++
 			}
 			var scheduledCourse = ScheduledCourse{
 				CourseID:  selectedSection.CourseID,
@@ -51,12 +57,13 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 			}
 			sections = append(sections, scheduledCourse)
 		}
+
 		var goodSchedule = Schedule{
 			Sections:   sections,
-			AverageGPA: goodScheduleAvgGPA / float64(len(selectedSections)),
+			AverageGPA: (goodScheduleAvgGPA / divideBy),
 		}
 
-		fmt.Printf("sched gpa is: %v", goodScheduleAvgGPA)
+		fmt.Printf("sched gpa is: %v", goodSchedule.AverageGPA)
 		//fmt.Println("good schedule added:")
 		//fmt.Println(goodSchedule)
 		*goodSchedules = append(*goodSchedules, goodSchedule)
@@ -80,13 +87,13 @@ SKIPCOURSE:
 			for _, selectedSection := range selectedSections {
 
 				//if overlap, skip that section
-				if doTimesOverlap(selectedSection, section) {
+				if doTimesOverlap(selectedSection, *section) {
 					continue SKIPSECTION
 				}
 			}
 			//if none overlap, section is good, add to selectedSections
 			//fmt.Println(selectedSections)
-			selectedSections = append(selectedSections, section)
+			selectedSections = append(selectedSections, *section)
 			//fmt.Println(selectedSections)
 			findGoodSchedulesRecursive(courses, selectedSections, goodSchedules)
 			selectedSections = selectedSections[:len(selectedSections)-1]
@@ -111,14 +118,14 @@ func getCourseTree(ids string) []*Course {
 		}
 		for _, meet := range meets {
 			if meet.SectionID == section.ID {
-				section.Meets = append(section.Meets, *meet)
+				section.Meets = append(section.Meets, meet)
 			}
 		}
 	}
 	for _, course := range courses {
 		for _, section := range sections {
 			if section.CourseID == course.ID {
-				course.Sections = append(course.Sections, *section)
+				course.Sections = append(course.Sections, section)
 			}
 		}
 	}
@@ -131,7 +138,7 @@ func setCoursesGPA(courses []*Course) {
 			instructor := meet.Instructor
 			index := strings.Index(instructor, ";")
 
-			//there is not two professors
+			//there is two professors
 			if index != -1 {
 				instructors := strings.Split(instructor, ";")
 				//instructor1 := instructors[0]
@@ -141,6 +148,7 @@ func setCoursesGPA(courses []*Course) {
 			} else {
 				fmt.Println(getAvgGPA(instructor, *course))
 				section.AverageGPA = getAvgGPA(instructor, *course)
+				fmt.Printf("setCourse avg gpa is: %v", section.AverageGPA)
 			}
 		}
 	}

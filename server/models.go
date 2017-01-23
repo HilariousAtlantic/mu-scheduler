@@ -6,18 +6,18 @@ type Term struct {
 }
 
 type Course struct {
-	Sections []Section `json:"sections"`
-	ID       int       `json:"id"`
-	TermID   int       `json:"term_id"`
-	Subject  string    `json:"subject"`
-	Number   string    `json:"number"`
-	Title    string    `json:"title"`
-	Credits  string    `json:"credits"`
+	Sections []*Section `json:"sections"`
+	ID       int        `json:"id"`
+	TermID   int        `json:"term_id"`
+	Subject  string     `json:"subject"`
+	Number   string     `json:"number"`
+	Title    string     `json:"title"`
+	Credits  string     `json:"credits"`
 }
 
 type Section struct {
-	Meets      []Meet  `json:"meets"`
-	Tests      []Test  `json:"tests"`
+	Meets      []*Meet `json:"meets"`
+	Tests      []*Test `json:"tests"`
 	ID         int     `json:"id"`
 	CourseID   int     `json:"course_id"`
 	CRN        string  `json:"crn"`
