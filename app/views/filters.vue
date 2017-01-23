@@ -2,31 +2,21 @@
 
   <div class="filters-view">
 
-    <header>
+    <double-header>
 
-      <span class="title">Schedule Filters</span>
+      <span slot="left">Schedule Filters</span>
 
-      <span>{{count}} Schedules Remain</span>
+      <span slot="right">{{count}} Schedules Remain</span>
 
-    </header>
+    </double-header>
 
     <filter-list></filter-list>
 
-    <nav>
+    <router-link to="/schedules">
 
-      <router-link to="/courses">
+      <button type="button" class="schedules-view">View Schedules</button>
 
-        <button type="button"><i class="fa fa-arrow-left"></i> Select Schedules</button>
-
-      </router-link>
-
-      <router-link to="/schedules">
-
-        <button type="button">View Schedules <i class="fa fa-arrow-right"></i></button>
-
-      </router-link>
-
-    </nav>
+    </router-link>
 
   </div>
 
@@ -34,13 +24,14 @@
 
 <script>
 
+  import DoubleHeader from '../components/common/double-header.vue';
   import FilterList from '../components/filter/filter-list.vue';
 
   export default {
 
     name: 'filters-view',
 
-    components: {FilterList},
+    components: {DoubleHeader, FilterList},
 
     computed: {
 
@@ -70,48 +61,26 @@
 
   }
 
-  header {
+  .double-header {
 
-    display: flex;
     font-weight: 900;
     font-size: 1.25rem;
-    margin-bottom: 20px;
 
   }
 
-  .title {
-
-    flex: 1;
-
+  .filter-list {
+    margin: 20px 0;
   }
 
-  nav {
+  .schedules-view {
 
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-
-  }
-
-  button {
-
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
     background: #0D47A1;
     color: #fff;
-    padding: 10px 25px;
     outline: none;
     cursor: pointer;
-
-  }
-
-  .fa-arrow-left {
-
-    margin-right: 25px;
-
-  }
-
-  .fa-arrow-right {
-
-    margin-left: 25px;
 
   }
 

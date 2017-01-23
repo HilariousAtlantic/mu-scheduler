@@ -2,7 +2,13 @@
 
   <div class="courses-view">
 
-    <header>Course List</header>
+    <double-header>
+
+      <span slot="left">Selected Courses {{selectedTerm}}</span>
+
+      <span slot="right">{{totalCredits}} Credits</span>
+
+    </double-header>
 
     <course-search></course-search>
 
@@ -20,6 +26,7 @@
 
 <script>
 
+  import DoubleHeader from '../components/common/double-header.vue';
   import CourseSearch from '../components/course/course-search.vue';
   import SelectedCourses from '../components/course/selected-courses.vue';
 
@@ -27,7 +34,38 @@
 
     name: 'courses-view',
 
-    components: {CourseSearch, SelectedCourses},
+    components: {DoubleHeader, CourseSearch, SelectedCourses},
+
+    computed: {
+
+      selectedTerm() {
+
+        let term = this.$store.state.selectedTerm.name;
+
+        return term ? 'for ' + term : '';
+
+      },
+
+      totalCredits() {
+
+        let minTotal = 0;
+        let maxTotal = 0;
+
+        this.$store.getters.selectedCourses.forEach(({credits}) => {
+
+          let [min, max] = credits.split('-');
+
+          minTotal += parseInt(min);
+
+          maxTotal += parseInt(max ? max : min);
+
+        });
+
+        return minTotal === maxTotal ? minTotal : minTotal + '-' + maxTotal;
+
+      }
+
+    },
 
     methods: {
 
@@ -53,17 +91,22 @@
 
   }
 
-  header {
+  .double-header {
 
     font-weight: 900;
     font-size: 1.25rem;
-    margin-bottom: 20px;
+
+  }
+
+  .course-search {
+
+    margin-top: 20px;
 
   }
 
   .selected-courses {
 
-    margin: 20px 0;
+    margin-bottom: 20px;
 
   }
 

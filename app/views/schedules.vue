@@ -2,17 +2,27 @@
 
   <div class="schedules-view">
 
-    <schedule-list v-if="$store.state.schedules.length"></schedule-list>
+    <double-header>
 
-    <div v-else class="schedules-none">
+      <span slot="left">Generated Schedules</span>
 
-      <span>No schedules generated</span>
+      <span slot="right">{{numSchedules}} Schedules</span>
 
-      <router-link to="/courses">
+    </double-header>
 
-        <button>Select Courses</button>
+    <schedule-list></schedule-list>
 
-      </router-link>
+    <router-link v-if="numSchedules === 0" to="/course">
+
+      <button class="courses-select">Select Courses</button>
+
+    </router-link>
+
+    <router-link v-else to="/filters">
+
+      <button class="filters-change">Change Filters</button>
+
+    </router-link>
 
     </div>
 
@@ -22,14 +32,24 @@
 
 <script>
 
-  import FilterList from '../components/filter/filter-list.vue';
+  import DoubleHeader from '../components/common/double-header.vue';
   import ScheduleList from '../components/schedule/schedule-list.vue';
 
   export default {
 
     name: 'schedules-view',
 
-    components: {FilterList, ScheduleList}
+    components: {DoubleHeader, ScheduleList},
+
+    computed: {
+
+      numSchedules() {
+
+        return this.$store.state.schedules.length;
+
+      }
+
+    }
 
   }
 
@@ -39,51 +59,34 @@
 
   .schedules-view {
 
-    display: flex;
     width: 90%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 20px auto;
+
+  }
+
+  .double-header {
+
+    font-weight: 900;
+    font-size: 1.25rem;
 
   }
 
   .schedule-list {
 
-    flex: 1;
-    margin-top: 20px;
+    margin: 20px 0;
 
   }
 
-  .schedules-none {
+  .courses-select, .filters-change {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto;
-
-    span {
-
-      font-size: 1.25rem;
-      font-weight: 900;
-      margin-bottom: 10px;
-
-    }
-
-    button {
-
-      padding: 10px 50px;
-      border: 1px solid #ddd;
-      background: #1565C0;
-      color: #fff;
-      outline: none;
-      cursor: pointer;
-
-      &:hover {
-
-        background: #0D47A1;
-
-      }
-
-    }
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #4CAF50;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
 
   }
 
