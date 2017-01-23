@@ -12,7 +12,7 @@
 
     <schedule-list></schedule-list>
 
-    <router-link v-if="numSchedules === 0" to="/course">
+    <router-link v-if="numSchedules === 0" to="/courses">
 
       <button class="courses-select">Select Courses</button>
 
