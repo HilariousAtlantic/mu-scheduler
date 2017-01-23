@@ -23,6 +23,7 @@ type Section struct {
 	CRN        string  `json:"crn"`
 	Name       string  `json:"name"`
 	AverageGPA float64 `json:"average_gpa"`
+	Credits    float64 //Only used for calculating average GPA
 }
 
 type Meet struct {
