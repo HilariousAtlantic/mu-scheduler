@@ -85,10 +85,6 @@
 
   .courses-view {
 
-    width: 90%;
-    max-width: 1000px;
-    margin: 20px auto;
-
   }
 
   .double-header {

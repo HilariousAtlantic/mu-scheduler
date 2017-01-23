@@ -42,9 +42,7 @@
 
   .generator {
 
-    width: 90%;
-    max-width: 1000px;
-    margin: 10px auto;
+    margin: 10px 0;
 
   }
 

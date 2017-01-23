@@ -4,9 +4,13 @@
 
     <navbar></navbar>
 
-    <generator></generator>
+    <div class="container">
 
-    <router-view class="page"></router-view>
+      <generator></generator>
+
+      <router-view></router-view>
+
+    </div>
 
   </div>
 
@@ -37,15 +41,16 @@
 
   .app {
 
-    display: flex;
-    flex-direction: column;
     color: #333;
+    margin-bottom: 50px;
 
   }
 
-  .page {
+  .container {
 
-    flex: 1;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
 
   }
 
