@@ -2,11 +2,11 @@
 
     <schedule-filter :id="filter.id" :text="text" :active="filter.active">
 
-      <dropdown
-        :options="['At Least', 'At Most', 'Exactly']"
-        :defaultOption="filter.options.operator"
+      <option-input
+        :options="operators"
+        :defaultOption="{text: filter.options.operator}"
         @select="handleOperatorChange"
-      ></dropdown>
+      ></option-input>
 
       <number-input
         :step="1"
@@ -27,7 +27,7 @@
 <script>
 
   import ScheduleFilter from './schedule-filter.vue';
-  import Dropdown from '../input/dropdown.vue';
+  import OptionInput from '../input/option-input.vue';
   import NumberInput from '../input/number-input.vue';
   import DaysInput from '../input/days-input.vue';
 
@@ -39,11 +39,21 @@
 
     props: ['filter'],
 
-    components: {ScheduleFilter, Dropdown, NumberInput, DaysInput},
+    components: {ScheduleFilter, OptionInput, NumberInput, DaysInput},
 
     data() {
 
       return {
+
+        operators: [
+
+          {text: 'At Least'},
+
+          {text: 'At Most'},
+
+          {text: 'Exactly'}
+
+        ]
 
 
       }
@@ -70,7 +80,7 @@
 
       handleOperatorChange(operator) {
 
-        this.submitChanges({operator});
+        this.submitChanges({operator: operator.text});
 
       },
 
@@ -104,7 +114,9 @@
 
 <style scoped>
 
-  .class-filter {
+  .option-input {
+
+    width: 125px;
 
   }
 

@@ -2,11 +2,11 @@
 
     <schedule-filter :id="filter.id" :text="text" :active="filter.active">
 
-      <dropdown
-        :options="['Start Before', 'Start After', 'Finish Before', 'Finish After']"
-        :defaultOption="filter.options.operator"
+      <option-input
+        :options="operators"
+        :defaultOption="{text: filter.options.operator}"
         @select="handleOperatorChange"
-      ></dropdown>
+      ></option-input>
 
       <time-input
         :step="15"
@@ -27,7 +27,7 @@
 <script>
 
   import ScheduleFilter from './schedule-filter.vue';
-  import Dropdown from '../input/dropdown.vue';
+  import OptionInput from '../input/option-input.vue';
   import TimeInput from '../input/time-input.vue';
   import DaysInput from '../input/days-input.vue';
 
@@ -40,12 +40,23 @@
 
     props: ['filter'],
 
-    components: {ScheduleFilter, Dropdown, TimeInput, DaysInput},
+    components: {ScheduleFilter, OptionInput, TimeInput, DaysInput},
 
     data() {
 
       return {
 
+        operators: [
+
+          {text: 'Start Before'},
+
+          {text: 'Start After'},
+
+          {text: 'Finish Before'},
+
+          {text: 'Finish After'},
+
+        ]
 
       }
 
@@ -71,7 +82,7 @@
 
       handleOperatorChange(operator) {
 
-        this.submitChanges({operator});
+        this.submitChanges({operator: operator.text});
 
       },
 
@@ -105,7 +116,9 @@
 
 <style scoped>
 
-  .time-filter {
+  .option-input {
+
+    width: 150px;
 
   }
 

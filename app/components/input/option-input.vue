@@ -1,12 +1,20 @@
 <template>
 
-  <div class="dropdown">
+  <div class="option-input">
 
-    <button @click="toggleDropdown">{{selectedOption}} <i class="fa fa-angle-down"></i></button>
+    <button @click="toggleDropdown">
+
+      {{selectedOption.text}} <i class="fa fa-angle-down"></i>
+
+    </button>
 
     <ul v-if="showDropdown" class="option-list">
 
-      <li v-for="option in options" @click="selectOption(option)">{{option}}</li>
+      <li v-for="option in options" @click="selectOption(option)">
+
+        <span>{{option.text}}</span>
+
+      </li>
 
     </ul>
 
@@ -18,7 +26,7 @@
 
   export default {
 
-    name: 'dropdown',
+    name: 'option-input',
 
     props: ['options', 'defaultOption'],
 
@@ -58,7 +66,7 @@
 
 <style scoped>
 
-  .dropdown {
+  .option-input {
 
     display: inline-block;
     position: relative;
@@ -70,7 +78,7 @@
     background: #fff;
     border: 1px solid #ddd;
     padding: 10px;
-    width: 150px;
+    width: 100%;
     text-align: left;
     outline: none;
     cursor: pointer;
@@ -87,7 +95,8 @@
 
     margin: 0;
     padding: 0;
-    width: 148px;
+    width: 100%;
+    box-sizing: border-box;
     position: absolute;
     border: 1px solid #ddd;
     border-top: none;
