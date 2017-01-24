@@ -2,11 +2,31 @@
 
   <div class="filter-list">
 
-    <h4>Time Filters</h4>
+    <double-header>
+
+      <span slot="left">Time Filters</span>
+
+      <button type="button" slot="right">
+
+        <i class="fa fa-plus"></i> Add Filter
+
+      </button>
+
+    </double-header>
 
     <time-filter v-for="filter in timeFilters" :filter="filter"></time-filter>
 
-    <h4>Class Filters</h4>
+    <double-header>
+
+      <span slot="left">Class Filters</span>
+
+      <button type="button" slot="right">
+
+        <i class="fa fa-plus"></i> Add Filter
+
+      </button>
+
+    </double-header>
 
     <class-filter v-for="filter in classFilters" :filter="filter"></class-filter>
 
@@ -16,6 +36,7 @@
 
 <script>
 
+  import DoubleHeader from '../common/double-header.vue'
   import TimeFilter from './time-filter.vue';
   import ClassFilter from './class-filter.vue';
 
@@ -23,7 +44,7 @@
 
     name: 'filter-list',
 
-    components: {TimeFilter, ClassFilter},
+    components: {DoubleHeader, TimeFilter, ClassFilter},
 
     computed: {
 
@@ -46,6 +67,25 @@
 </script>
 
 <style scoped>
+
+  .double-header {
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 900;
+
+  }
+
+  button {
+
+    padding: 0;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: inherit;
+
+  }
 
 
 </style>
