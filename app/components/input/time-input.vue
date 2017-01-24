@@ -2,11 +2,11 @@
 
   <div class="time-input">
 
-    <input type="text" v-model="time">
+    <input type="text" v-model="time" @focus="focused = true" @blur="focused = false">
 
     <ul v-if="showSuggestions" class="suggestion-list">
 
-      <li v-for="time in times" @click="selectTime(time)">{{time}}</li>
+      <li v-for="time in times" @mousedown="selectTime(time)">{{time}}</li>
 
     </ul>
 
@@ -29,6 +29,8 @@
       return {
 
         time: toTime(this.defaultTime || 600),
+
+        focused: false
 
       }
 
@@ -56,7 +58,7 @@
 
       showSuggestions() {
 
-        return this.times.length !== 1 || this.times[0] !== this.time;
+        return this.time.trim().length > 0 && this.focused;
 
       }
 
