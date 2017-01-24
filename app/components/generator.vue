@@ -57,6 +57,13 @@
     text-align: center;
     margin: 20px auto;
 
+    .router-link-active {
+
+      background: #f5f5f5;
+      border-bottom: 4px solid #B61E2E;
+
+    }
+
   }
 
   .tab {
@@ -73,14 +80,7 @@
       background: #f5f5f5;
 
     }
-
-  }
-
-  .router-link-active {
-
-    background: #f5f5f5;
-    border-bottom: 4px solid #B61E2E;
-
+    
   }
 
 </style>
