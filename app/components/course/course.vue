@@ -1,6 +1,6 @@
 <template>
 
-  <div class="detailed-course">
+  <div class="course">
 
     <div class="course-head" @click="toggleExpanded">
 
@@ -40,7 +40,7 @@
 
   export default {
 
-    name: 'detailed-course',
+    name: 'course',
 
     props: ['course'],
 
@@ -94,7 +94,7 @@
 
 <style scoped>
 
-  .detailed-course {
+  .course {
 
     margin-bottom: 10px;
 

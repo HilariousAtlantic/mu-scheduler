@@ -10,9 +10,7 @@
 
     </double-header>
 
-    <course-search></course-search>
-
-    <selected-courses></selected-courses>
+    <course-list></course-list>
 
     <router-link to="filters">
 
@@ -27,14 +25,13 @@
 <script>
 
   import DoubleHeader from '../components/common/double-header.vue';
-  import CourseSearch from '../components/course/course-search.vue';
-  import SelectedCourses from '../components/course/selected-courses.vue';
+  import CourseList from '../components/course/course-list.vue';
 
   export default {
 
     name: 'courses-view',
 
-    components: {DoubleHeader, CourseSearch, SelectedCourses},
+    components: {DoubleHeader, CourseList},
 
     computed: {
 
@@ -83,10 +80,6 @@
 
 <style scoped>
 
-  .courses-view {
-
-  }
-
   .double-header {
 
     font-weight: 900;
@@ -94,7 +87,7 @@
 
   }
 
-  .course-search {
+  .course-list {
 
     margin: 20px 0;
 
