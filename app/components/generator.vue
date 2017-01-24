@@ -55,7 +55,7 @@
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 20px 0;
+    margin: 20px auto;
 
   }
 
@@ -78,6 +78,7 @@
 
   .router-link-active {
 
+    background: #f5f5f5;
     border-bottom: 4px solid #B61E2E;
 
   }
