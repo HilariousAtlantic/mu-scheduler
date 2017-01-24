@@ -14,7 +14,7 @@
 
     <selected-courses></selected-courses>
 
-    <router-link to="/filters">
+    <router-link to="filters">
 
       <button type="button" class="schedules-generate" @click="generateSchedules">Generate Schedules</button>
 

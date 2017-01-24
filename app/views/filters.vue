@@ -12,7 +12,7 @@
 
     <filter-list></filter-list>
 
-    <router-link to="/schedules">
+    <router-link to="schedules">
 
       <button type="button" class="schedules-view">View Schedules</button>
 

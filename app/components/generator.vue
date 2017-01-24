@@ -4,25 +4,27 @@
 
     <div class="tab-list">
 
-      <router-link class="tab" to="/courses">
+      <router-link class="tab" to="courses">
 
         <span>Courses</span>
 
       </router-link>
 
-      <router-link class="tab" to="/filters">
+      <router-link class="tab" to="filters">
 
         <span>Filters</span>
 
       </router-link>
 
-      <router-link class="tab" to="/schedules">
+      <router-link class="tab" to="schedules">
 
         <span>Schedules</span>
 
       </router-link>
 
     </div>
+
+    <router-view></router-view>
 
   </div>
 
@@ -42,7 +44,9 @@
 
   .generator {
 
-    margin: 10px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
 
   }
 
@@ -51,6 +55,7 @@
     display: flex;
     align-items: center;
     text-align: center;
+    margin: 20px 0;
 
   }
 

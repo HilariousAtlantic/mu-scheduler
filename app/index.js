@@ -8,6 +8,8 @@ import mutations from './store/mutations';
 import actions from './store/actions';
 
 import App from './components/app.vue';
+import Generator from './components/generator.vue';
+
 import Courses from './views/courses.vue';
 import Filters from './views/filters.vue';
 import Schedules from './views/schedules.vue';
@@ -23,13 +25,17 @@ let router = new VueRouter({
 
   routes: [
 
-    {path: '/', redirect: '/courses', component: App, children: [
+    {path: '/', redirect: '/generator/courses', component: App, children: [
 
-      {path: '/courses', component: Courses},
+      {path: '/generator', component: Generator, children: [
 
-      {path: '/filters', component: Filters},
+        {name: 'courses', path: '/generator/courses', component: Courses},
 
-      {path: '/schedules', component: Schedules}
+        {name: 'filters', path: '/generator/filters', component: Filters},
+
+        {name: 'schedules', path: '/generator/schedules', component: Schedules}
+
+      ]}
 
     ]}
 
