@@ -2,7 +2,7 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
+	//	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -21,11 +21,6 @@ func findGoodSchedules(ids string) []Schedule {
 	for _, coursePointer := range coursesPointer {
 		courses = append(courses, *coursePointer)
 	}
-	for _, course := range courses {
-		for _, section := range course.Sections {
-			fmt.Printf("section gpa: %v", section.AverageGPA)
-		}
-	}
 	selectedSections := make([]Section, 0)
 	findGoodSchedulesRecursive(courses, selectedSections, &goodSchedules)
 	//fmt.Println("good schedules")
@@ -41,17 +36,14 @@ func findGoodSchedules(ids string) []Schedule {
 func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, goodSchedules *[]Schedule) {
 	//base case; we found a good schedule. Append it and return.
 	if len(selectedSections) == len(courses) {
-		//fmt.Println("len is: " + string(len(courses)) + " sections are: ")
-		//fmt.Println(selectedSections)
 		var sections []ScheduledCourse
 		goodScheduleAvgGPA := 0.0
 		divideBy := 0.0
 		for _, selectedSection := range selectedSections {
-			if !math.IsNaN(selectedSection.AverageGPA) {
-				fmt.Printf("adding gpa: %v", selectedSection.AverageGPA)
+			if !(selectedSection.AverageGPA == 0.0) {
 				goodScheduleAvgGPA += (selectedSection.AverageGPA * selectedSection.Credits)
 				divideBy += selectedSection.Credits
-				fmt.Println("goodSchedGPA is now : %v, divideBy is now: %v", goodScheduleAvgGPA, divideBy)
+				//fmt.Println("goodSchedGPA is now : %v, divideBy is now: %v", goodScheduleAvgGPA, divideBy)
 			}
 			var scheduledCourse = ScheduledCourse{
 				CourseID:  selectedSection.CourseID,
@@ -65,24 +57,19 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 			AverageGPA: (goodScheduleAvgGPA / divideBy),
 		}
 
-		fmt.Printf("sched gpa is: %v", goodSchedule.AverageGPA)
-		//fmt.Println("good schedule added:")
-		//fmt.Println(goodSchedule)
+		//fmt.Printf("sched gpa is: %v", goodSchedule.AverageGPA)
 		*goodSchedules = append(*goodSchedules, goodSchedule)
 		return
 	}
 	//skip a course and continue
 SKIPCOURSE:
 	for _, course := range courses {
-		//fmt.Println("new course")
 		for _, selectedSection := range selectedSections {
 			//if we have a course in the selectedSections, we dont check the other sections of said course
-			//fmt.Printf("courseID is: %v course.ID is: %v", selectedSection.CourseID, course.ID)
 			if selectedSection.CourseID == course.ID {
 				continue SKIPCOURSE
 			}
 		}
-		//fmt.Println("approved")
 	SKIPSECTION:
 		for _, section := range course.Sections {
 			//go through all selectedSections and make sure none overlap
@@ -94,13 +81,10 @@ SKIPCOURSE:
 				}
 			}
 			//if none overlap, section is good, add to selectedSections
-			//fmt.Println(selectedSections)
 			selectedSections = append(selectedSections, *section)
-			//fmt.Println(selectedSections)
 			findGoodSchedulesRecursive(courses, selectedSections, goodSchedules)
 			selectedSections = selectedSections[:len(selectedSections)-1]
 		}
-		//fmt.Println("none worked")
 		return
 	}
 	return
@@ -160,9 +144,9 @@ func setCoursesGPA(courses []*Course) {
 				avgGPA := (getAvgGPA(instructors[0], *course) + getAvgGPA(instructors[1], *course)) / 2
 				section.AverageGPA = avgGPA
 			} else {
-				fmt.Println(getAvgGPA(instructor, *course))
+				//	fmt.Println(getAvgGPA(instructor, *course))
 				section.AverageGPA = getAvgGPA(instructor, *course)
-				fmt.Printf("setCourse avg gpa is: %v", section.AverageGPA)
+				//	fmt.Printf("setCourse avg gpa is: %v", section.AverageGPA)
 			}
 		}
 	}
@@ -172,7 +156,7 @@ func getAvgGPA(instructor string, course Course) float64 {
 	var avgGPA = 0.0
 	var divideBy = 0.0
 	instructor = strings.TrimSpace(instructor)
-	fmt.Printf("instructor:%v.\n", instructor)
+	//	fmt.Printf("instructor:%v.\n", instructor)
 	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
@@ -187,7 +171,7 @@ func getAvgGPA(instructor string, course Course) float64 {
 		divideBy++
 		var gpa float64
 		err = rows.Scan(&gpa)
-		fmt.Printf("in loop gpa: %v", gpa)
+		//		fmt.Printf("in loop gpa: %v", gpa)
 		avgGPA += gpa
 		handleError(err)
 	}
@@ -195,7 +179,10 @@ func getAvgGPA(instructor string, course Course) float64 {
 	handleError(err)
 	avgGPA = (avgGPA / divideBy)
 	avgGPA = float64(int(avgGPA*100)) / 100
-	fmt.Printf("avg gpa is: %v", avgGPA)
+	if avgGPA < 0 || avgGPA > 4 || math.IsNaN(avgGPA) {
+		avgGPA = 0.0
+	}
+	//	fmt.Printf("avg gpa is: %v", avgGPA)
 	return avgGPA
 
 }
