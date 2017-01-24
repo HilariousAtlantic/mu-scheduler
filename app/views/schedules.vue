@@ -1,32 +1,30 @@
 <template>
 
-  <div class="schedules-view">
+  <div v-if="length" class="schedules-view">
 
     <double-header>
 
-      <span slot="left">Generated Schedules</span>
+      <span slot="left">Filtered Schedules</span>
 
-      <span slot="right">{{numSchedules}} Schedules</span>
+      <span slot="right">Schedule {{index+1}} of {{length}}</span>
 
     </double-header>
 
-    <schedule-list></schedule-list>
+    <schedule-list :index="index" @next="increaseIndex" @prev="decreaseIndex"></schedule-list>
 
-    <router-link v-if="numSchedules === 0" to="courses">
-
-      <button class="courses-select">Select Courses</button>
-
-    </router-link>
-
-    <router-link v-else to="filters">
+    <router-link to="filters">
 
       <button class="filters-change">Change Filters</button>
 
     </router-link>
 
-    </div>
-
   </div>
+
+  <router-link v-else to="courses">
+
+    <button class="courses-select">Select Courses</button>
+
+  </router-link>
 
 </template>
 
@@ -41,11 +39,45 @@
 
     components: {DoubleHeader, ScheduleList},
 
+    data() {
+
+      return {
+
+        index: 0
+
+      }
+
+    },
+
     computed: {
 
-      numSchedules() {
+      length() {
 
-        return this.$store.state.schedules.length;
+        return this.$store.getters.filteredSchedules.length;
+
+      }
+
+    },
+
+    methods: {
+
+      increaseIndex() {
+
+        if (this.index < this.length-1) {
+
+          this.index++;
+
+        }
+
+      },
+
+      decreaseIndex() {
+
+        if (this.index > 0) {
+
+          this.index--;
+
+        }
 
       }
 

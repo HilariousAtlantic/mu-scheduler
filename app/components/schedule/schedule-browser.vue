@@ -2,25 +2,9 @@
 
   <div class="schedule-browser">
 
-    <div class="browser-group">
+    <button @click="$emit('prev')">Previous Schedule</button>
 
-      <button @click="decreaseIndex"><i class="fa fa-angle-left"></i></button>
-
-      <span>{{index+1}} of {{length}}</span>
-
-      <button @click="increaseIndex"><i class="fa fa-angle-right"></i></button>
-
-    </div>
-
-    <div class="browser-group">
-
-      <button class="schedule-details">Details</button>
-
-      <button class="schedule-select">Save</button>
-
-      <button class="schedule-export">Export</button>
-
-    </div>
+    <button @click="$emit('next')">Next Schedule</button>
 
   </div>
 
@@ -30,44 +14,7 @@
 
   export default {
 
-    name: 'schedule-browser',
-
-    props: ['index'],
-
-    computed: {
-
-      length() {
-
-        return this.$store.getters.filteredSchedules.length;
-
-      }
-
-    },
-
-    methods: {
-
-      increaseIndex() {
-
-        if (this.index < this.length-1) {
-
-          this.$emit('change', this.index+1);
-
-
-        }
-
-      },
-
-      decreaseIndex() {
-
-        if (this.index > 0) {
-
-          this.$emit('change', this.index-1);
-
-        }
-
-      }
-
-    }
+    name: 'schedule-browser'
 
   }
 
@@ -98,14 +45,6 @@
 
   }
 
-  span {
-
-    text-align: center;
-    border: 1px solid #ddd;
-    padding: 10px 75px;
-
-  }
-
   .schedule-details {
 
     background: #1565C0;
@@ -127,19 +66,6 @@
     &:hover {
 
       background: #43A047;
-
-    }
-
-  }
-
-  .schedule-export {
-
-    background: #fff;
-    color: #333;
-
-    &:hover {
-
-      background: #F5F5F5;
 
     }
 

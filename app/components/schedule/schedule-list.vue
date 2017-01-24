@@ -2,9 +2,25 @@
 
   <div class="schedule-list">
 
-    <schedule-browser :index="index" @change="updateIndex"></schedule-browser>
+    <double-header>
 
-    <schedule v-if="schedule" :schedule="schedule"></schedule>
+      <div slot="left">
+
+        <button class="schedule-select">Save Schedule</button>
+
+      </div>
+
+      <div slot="right">
+
+        <button @click="$emit('prev')">Prev</button>
+
+        <button @click="$emit('next')">Next</button>
+
+      </div>
+
+    </double-header>
+
+    <schedule :schedule="schedule"></schedule>
 
   </div>
 
@@ -12,40 +28,22 @@
 
 <script>
 
+  import DoubleHeader from '../common/double-header.vue';
   import Schedule from './schedule.vue';
-  import ScheduleBrowser from './schedule-browser.vue';
 
   export default {
 
     name: 'schedule-list',
 
-    components: {Schedule, ScheduleBrowser},
+    props: ['index'],
 
-    data() {
-
-      return {
-
-        index: 0
-
-      }
-
-    },
+    components: {DoubleHeader, Schedule},
 
     computed: {
 
       schedule() {
 
         return this.$store.getters.filteredSchedules[this.index];
-
-      }
-
-    },
-
-    methods: {
-
-      updateIndex(index) {
-
-        this.index = index;
 
       }
 
@@ -64,9 +62,38 @@
 
   }
 
-  .schedule-browser {
+  .double-header {
 
     margin-bottom: 10px;
+
+  }
+
+  button {
+
+    border: 1px solid #ddd;
+    padding: 10px 50px;
+    background: #eee;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+
+      background: #ddd;
+
+    }
+
+  }
+
+  .schedule-select {
+
+    background: #4CAF50;
+    color: #fff;
+
+    &:hover {
+
+      background: #43A047;
+
+    }
 
   }
 
