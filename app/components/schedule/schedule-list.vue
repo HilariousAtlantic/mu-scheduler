@@ -6,7 +6,9 @@
 
       <div slot="left">
 
-        <button class="schedule-select">Save Schedule</button>
+        <button class="schedule-save">Save Schedule</button>
+
+        <button class="schedule-more" @click="toggleDetails">More Details</button>
 
       </div>
 
@@ -19,6 +21,11 @@
       </div>
 
     </double-header>
+
+    <schedule-details v-if="showDetails"
+      :courses="schedule.courses"
+      :gpa="schedule.gpa"
+    ></schedule-details>
 
     <schedule-calendar
       :courses="schedule.courses"
@@ -33,6 +40,7 @@
 <script>
 
   import DoubleHeader from '../common/double-header.vue';
+  import ScheduleDetails from './schedule-details.vue';
   import ScheduleCalendar from './schedule-calendar.vue';
 
   export default {
@@ -41,13 +49,33 @@
 
     props: ['index'],
 
-    components: {DoubleHeader, ScheduleCalendar},
+    components: {DoubleHeader, ScheduleDetails, ScheduleCalendar},
+
+    data() {
+
+      return {
+
+        showDetails: false
+
+      }
+
+    },
 
     computed: {
 
       schedule() {
 
         return this.$store.getters.filteredSchedules[this.index];
+
+      }
+
+    },
+
+    methods: {
+
+      toggleDetails() {
+
+        this.showDetails = !this.showDetails;
 
       }
 
@@ -58,13 +86,6 @@
 </script>
 
 <style scoped>
-
-  .schedule-list {
-
-    display: flex;
-    flex-direction: column;
-
-  }
 
   .double-header {
 
@@ -88,7 +109,7 @@
 
   }
 
-  .schedule-select {
+  .schedule-save {
 
     background: #4CAF50;
     color: #fff;
@@ -101,9 +122,22 @@
 
   }
 
-  .schedule {
+  .schedule-more {
 
-    flex: 1;
+    background: #1565C0;
+    color: #fff;
+
+    &:hover {
+
+      background: #0D47A1;
+
+    }
+
+  }
+
+  .schedule-details {
+
+    margin-bottom: 10px;
 
   }
 

@@ -117,6 +117,8 @@ export default {
 
     state.requestingSchedules = false;
 
+    console.log(schedules);
+
     state.schedules = schedules.map(schedule => {
 
       let courses = [];
@@ -155,7 +157,7 @@ export default {
 
       });
 
-      return {courses, start, end, length: end-start, startTimes, endTimes, classLoads};
+      return {courses, gpa: schedule.average_gpa, start, end, length: end-start, startTimes, endTimes, classLoads};
 
     });
 

@@ -8,6 +8,14 @@ export const Days = {
 
 }
 
+export function sortDays(days) {
+
+  let order = 'MTWRF';
+
+  return days.split('').sort((a, b) => order.indexOf(a)-order.indexOf(b)).join('');
+
+}
+
 export function formatDay(day) {
 
   return Days[day];
