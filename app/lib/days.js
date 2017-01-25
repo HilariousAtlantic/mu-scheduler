@@ -1,4 +1,4 @@
-export const Abbreviations = {
+export const Days = {
 
   M: 'Monday',
   T: 'Tuesday',
@@ -10,7 +10,7 @@ export const Abbreviations = {
 
 export function formatDay(day) {
 
-  return Abbreviations[day];
+  return Days[day];
 
 }
 

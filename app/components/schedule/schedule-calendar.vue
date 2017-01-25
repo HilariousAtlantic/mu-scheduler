@@ -1,18 +1,18 @@
 <template>
 
-  <div class="schedule">
+  <div class="schedule-calendar">
 
     <div class="schedule-head">
 
-      <span v-for="day in days">{{day}}</span>
+      <span v-for="day in formattedDays">{{day}}</span>
 
     </div>
 
-    <div class="schedule-body" :style="{height: schedule.length+'px'}">
+    <div class="schedule-body" :style="{height: length+'px'}">
 
       <div class="day" v-for="day in days">
 
-          <div class="course" v-for="course in courses[day]" :style="course.style">
+          <div class="course" v-for="course in coursesByDay[day]" :style="course.style">
 
             <div class="course-meta">
 
@@ -34,13 +34,14 @@
 
 <script>
 
-  import {toTime} from '../../lib/time';
+  import {formatTime} from '../../lib/time';
+  import {formatDay} from '../../lib/days';
 
   export default {
 
-    name: 'schedule',
+    name: 'schedule-calendar',
 
-    props: ['schedule'],
+    props: ['courses', 'start', 'length'],
 
     data() {
 
@@ -56,14 +57,17 @@
 
     computed: {
 
-      courses() {
+      formattedDays() {
+
+        return this.days.map(formatDay);
+
+      },
+
+      coursesByDay() {
 
         let coursesByDay = {M: [], T: [], W: [], R: [], F: []};
 
-        let start = this.schedule.start;
-        let length = this.schedule.length;
-
-        this.schedule.courses.forEach(({name, meets}, i) => {
+        this.courses.forEach(({name, meets}, i) => {
 
             meets.forEach(({days, start_time, end_time, location, instructor}) => {
 
@@ -71,15 +75,18 @@
 
               let style = {
 
-                top: ((start_time-start)/length*100)+'%',
-                height: ((end_time-start_time)/length*100)+'%',
+                top: ((start_time-this.start)/this.length*100)+'%',
+                height: ((end_time-start_time)/this.length*100)+'%',
                 background: this.colors[i]
 
               };
 
               days.split('').forEach(day => {
 
-                coursesByDay[day].push({name, start: toTime(start_time, true), end: toTime(end_time, true), location, instructor: instructor.replace(' (P)', ''), style});
+                coursesByDay[day].push({location, instructor, style, name,
+                  start: formatTime(start_time, 'h:mm'),
+                  end: formatTime(end_time, 'h:mm')
+                });
 
               });
 
@@ -99,7 +106,7 @@
 
 <style scoped>
 
-  .schedule {
+  .schedule-calendar {
 
     border: 1px solid #ddd;
 
@@ -109,6 +116,7 @@
 
     display: flex;
     padding: 10px;
+    font-size: .8rem;
     background: #eee;
     text-align: center;
     border-bottom: 1px solid #ddd;
@@ -124,8 +132,8 @@
   .schedule-body {
 
     display: flex;
-    font-size: .7rem;
     padding: 5px 0;
+    font-size: .7rem;
 
   }
 

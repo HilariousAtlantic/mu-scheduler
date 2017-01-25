@@ -30,7 +30,44 @@ export function toTime(minutes, hidePeriod) {
 
     return h + ':' + ('00'+m).slice(-2) + ' ' + p;
 
-  }  
+  }
+
+}
+
+export function formatTime(minutes, format) {
+
+  let H = Math.floor(minutes/60);
+  let h = H;
+  let m = minutes - H*60;
+  let p = 'AM'
+
+  if (H >= 12) {
+
+    p = 'PM';
+
+  }
+
+  if (H > 12) {
+
+    h -= 12;
+
+  }
+
+  if (H === 0) {
+
+    h = 12;
+
+  }
+
+  return format
+    .replace(/HH/g, ('00'+H).slice(-2))
+    .replace(/H/g, H)
+    .replace(/hh/g, ('00'+h).slice(-2))
+    .replace(/h/g, h)
+    .replace(/mm/g, ('00'+m).slice(-2))
+    .replace(/m/g, m)
+    .replace(/P/g, p.toUpperCase())
+    .replace(/p/g, p.toLowerCase())
 
 }
 

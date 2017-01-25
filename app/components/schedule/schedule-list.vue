@@ -20,7 +20,11 @@
 
     </double-header>
 
-    <schedule :schedule="schedule"></schedule>
+    <schedule-calendar
+      :courses="schedule.courses"
+      :start="schedule.start"
+      :length="schedule.length"
+    ></schedule-calendar>
 
   </div>
 
@@ -29,7 +33,7 @@
 <script>
 
   import DoubleHeader from '../common/double-header.vue';
-  import Schedule from './schedule.vue';
+  import ScheduleCalendar from './schedule-calendar.vue';
 
   export default {
 
@@ -37,7 +41,7 @@
 
     props: ['index'],
 
-    components: {DoubleHeader, Schedule},
+    components: {DoubleHeader, ScheduleCalendar},
 
     computed: {
 
