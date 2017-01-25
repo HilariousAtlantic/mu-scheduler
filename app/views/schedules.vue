@@ -117,6 +117,12 @@
     outline: none;
     cursor: pointer;
 
+    &:hover {
+
+      background: #43A047;
+
+    }
+
   }
 
 </style>

@@ -56,11 +56,11 @@
     align-items: center;
     text-align: center;
     margin: 20px auto;
+    border-bottom: 3px solid #B61E2E;
 
     .router-link-active {
 
       background: #f5f5f5;
-      border-bottom: 4px solid #B61E2E;
 
     }
 
@@ -70,7 +70,6 @@
 
     flex: 1;
     padding: 10px;
-    border-bottom: 1px solid #B61E2E;
     text-decoration: none;
     color: inherit;
     cursor: pointer;
@@ -80,7 +79,7 @@
       background: #f5f5f5;
 
     }
-    
+
   }
 
 </style>

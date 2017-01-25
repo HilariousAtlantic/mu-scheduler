@@ -149,6 +149,12 @@
     outline: none;
     cursor: pointer;
 
+    &:hover {
+
+      background: #E53935;
+
+    }
+
   }
 
   .filter-enable {
@@ -160,6 +166,12 @@
     outline: none;
     cursor: pointer;
 
+    &:hover {
+
+      background: #43A047;
+
+    }
+
   }
 
   .filter-disable {
@@ -170,6 +182,12 @@
     padding: 10px 25px;
     outline: none;
     cursor: pointer;
+
+    &:hover {
+
+      background: #FB8C00;
+
+    }
 
   }
 

@@ -85,6 +85,12 @@
     cursor: pointer;
     font-weight: inherit;
 
+    &:hover {
+
+      border-bottom: 2px solid #333;
+
+    }
+
   }
 
 

@@ -73,10 +73,16 @@
     width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
-    background: #0D47A1;
+    background: #1565C0;
     color: #fff;
     outline: none;
     cursor: pointer;
+
+    &:hover {
+
+      background: #0D47A1;
+
+    }
 
   }
 

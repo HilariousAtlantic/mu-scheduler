@@ -94,9 +94,16 @@
 
   }
 
-  .selected {
+  button:not(.selected):hover {
 
     background: #f5f5f5;
+
+  }
+
+  .selected {
+
+    background: #1565C0;
+    color: #fff;
 
   }
 
