@@ -1,0 +1,17 @@
+0.0.0.0:80
+
+gzip
+
+proxy / go:8000 {
+    header_upstream Host {>Host}
+    header_upstream X-Real-IP {remote}
+    header_upstream X-Forwarded-For {remote}
+    header_upstream X-Forwarded-Proto {scheme}
+}
+
+proxy /dist node:9000 {
+    without /dist
+}
+
+log /var/log/caddy/access.log
+errors /var/log/caddy/error.log

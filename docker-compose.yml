@@ -28,11 +28,27 @@ services:
       service: base
 
   node:
+    command: node_modules/.bin/http-server dist -p 9000
     build:
       context: .
       dockerfile: Dockerfile-node
-    ports:
-      - 3000:3000
     volumes:
       - .:/home/mu-scheduler
-      - .:/home/mu-scheduler/node_modules
+    ports:
+      - "9000:9000"
+
+  caddy:
+    build:
+      context: .
+      dockerfile: Dockerfile-caddy
+    ports:
+      - "80:80"
+      - "443:433"
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile
+      - ./logs/caddy:/var/log/caddy
+    links:
+      - go
+      - node
+
+

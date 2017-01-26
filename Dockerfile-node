@@ -1,11 +1,8 @@
 FROM node:6.9.2
 
-ENV MU_SCHEDULER=/home/mu-scheduler
+COPY app /home/mu-scheduler/app
+COPY package.json npm-shrinkwrap.json webpack.config.js /home/mu-scheduler/
 
-COPY . MU_SCHEDULER
-
-WORKDIR MU_SCHEDULER
+WORKDIR /home/mu-scheduler
 
 RUN npm run setup-client
-
-# CMD ["npm run setup"]
