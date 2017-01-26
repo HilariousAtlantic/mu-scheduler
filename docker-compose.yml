@@ -1,0 +1,53 @@
+version: '2'
+
+services:
+  go:
+    build:
+      context: .
+      dockerfile: Dockerfile-go
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/go/src/github.com/hilariousatlantic/mu-scheduler
+    depends_on:
+      - database
+    extends:
+      file: base.yml
+      service: base
+
+  database:
+    build:
+      context: .
+      dockerfile: Dockerfile-postgres
+    ports:
+      - "5432"
+    volumes:
+      - /var/lib/postgresql/data
+    extends:
+      file: base.yml
+      service: base
+
+  node:
+    command: node_modules/.bin/http-server dist -p 9000
+    build:
+      context: .
+      dockerfile: Dockerfile-node
+    volumes:
+      - .:/home/mu-scheduler
+    ports:
+      - "9000:9000"
+
+  caddy:
+    build:
+      context: .
+      dockerfile: Dockerfile-caddy
+    ports:
+      - "80:80"
+      - "443:433"
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile
+      - ./logs/caddy:/var/log/caddy
+    links:
+      - go
+      - node
+
