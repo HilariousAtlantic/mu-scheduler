@@ -7,7 +7,6 @@ export default {
 
     selectedTerm: {},
     selectedCourses: [],
-    selectedSchedules: [],
 
     coursesCache: {},
     detailedCourseCache: {},
