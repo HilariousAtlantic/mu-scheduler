@@ -14,8 +14,6 @@ import (
 )
 
 const (
-	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
-
 	createStagingTable = `
 	CREATE TABLE staging(
 		type TEXT,
@@ -173,19 +171,28 @@ var insertStatements = [...]string{
 	insertTests,
 }
 
+var dbContext = new(DBContext)
+
 type DBContext struct {
 	db *sql.DB
 }
 
-var dbContext = new(DBContext)
+func (d *DBContext) path() string {
+	if !docker {
+		return "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
+	}
+
+	return fmt.Sprintf("user=%v dbname=%v password=%v host=database sslmode=disable",
+		os.Getenv("POSTGRES_DB"),
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"))
+}
 
 func (d *DBContext) open() *sql.DB {
 	if d.db == nil {
 		var err error
-		d.db, err = sql.Open("postgres", databasePath)
-		if err != nil {
-			handleError(err)
-		}
+		d.db, err = sql.Open("postgres", d.path())
+		handleError(err)
 	}
 	return d.db
 }
@@ -200,11 +207,15 @@ func createDatabase() {
 		fmt.Println("Database created")
 	}
 
+	createTables()
+}
+
+func createTables() {
 	db := dbContext.open()
 	defer db.Close()
 
 	for _, createTableStatement := range createTableStatements {
-		_, err = db.Exec(createTableStatement)
+		_, err := db.Exec(createTableStatement)
 		if err != nil {
 			log.Fatalf("%q: %s\n", err, createTableStatement)
 		}
