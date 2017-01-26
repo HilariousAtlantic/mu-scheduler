@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 )
 
@@ -134,12 +135,24 @@ func main() {
 		case "import":
 			importDatabase()
 		case "createdb":
-			createTables()
+			if docker {
+				createTables()
+			} else {
+				createDatabase()
+			}
 		case "dropdb":
-			deleteDatabase()
+			if docker {
+				fmt.Println("Not available in docker, please delete database manually")
+			} else {
+				deleteDatabase()
+			}
 		case "resetdb":
-			deleteDatabase()
-			createDatabase()
+			if docker {
+				fmt.Println(`Not available in docker, please delete and create the database manually`)
+			} else {
+				deleteDatabase()
+				createDatabase()
+			}
 		case "gpas":
 			importGPAs()
 		default:
