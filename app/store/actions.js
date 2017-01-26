@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-import {getFilter} from '../lib/filter';
-
 export default {
 
   fetchTerms({commit}) {
@@ -114,18 +112,7 @@ export default {
 
   createFilter({commit}, type) {
 
-    let defaults = {
-
-      time: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']},
-
-      class: {operator: 'Exactly', amount: 3, days: ['T', 'R']}
-
-    }
-
-    let options = defaults[type];
-    let test = getFilter(type, options);
-
-    commit('CREATE_FILTER', {type, options, test, active: false});
+    commit('CREATE_FILTER', type);
 
   },
 

@@ -1,3 +1,17 @@
+const defaultOptions = {
+
+  time: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']},
+
+  class: {operator: 'Exactly', amount: 3, days: ['T', 'R']}
+
+}
+
+export function getDefaultOptions(type) {
+
+  return defaultOptions[type];
+
+}
+
 export function getFilter(type, options) {
 
   switch (type) {
@@ -81,7 +95,7 @@ export function getClassFilter({operator, amount, days}) {
           if (classLoads[day] > amount) return false;
 
           break;
-          
+
       }
 
     }

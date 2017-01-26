@@ -1,4 +1,4 @@
-import {getFilter} from '../lib/filter';
+import {getDefaultOptions, getFilter} from '../lib/filter';
 
 export default {
 
@@ -169,11 +169,13 @@ export default {
 
   },
 
-  CREATE_FILTER(state, filter) {
+  CREATE_FILTER(state, type) {
 
     let id = Math.max(0, ...state.filters.map(filter => filter.id))+1;
+    let options = getDefaultOptions(type);
+    let test = getFilter(type, options);
 
-    state.filters.push(Object.assign({}, filter, {id}))
+    state.filters.push({id, type, options, active: false});
 
   },
 
