@@ -24,7 +24,11 @@
 
     </div>
 
-    <router-view></router-view>
+    <div class="view">
+
+      <router-view></router-view>
+
+    </div>
 
   </div>
 
@@ -42,25 +46,16 @@
 
 <style>
 
-  .generator {
-
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-
-  }
-
   .tab-list {
 
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 20px auto;
-    border-bottom: 3px solid #B61E2E;
+    background: #A91121;
 
     .router-link-active {
 
-      background: #f5f5f5;
+      background: #B61E2E;
 
     }
 
@@ -69,16 +64,24 @@
   .tab {
 
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     text-decoration: none;
-    color: inherit;
+    color: #fff;
     cursor: pointer;
 
-    &:hover {
+    &:not(.router-link-active):hover {
 
-      background: #f5f5f5;
+      background: #9D0515;
 
     }
+
+  }
+
+  .view {
+
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
 
   }
 
