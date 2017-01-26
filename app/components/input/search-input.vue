@@ -2,7 +2,7 @@
 
   <div class="search-input">
 
-    <input type="text" v-model="term" @focus="focused = true" @blur="focused = false">
+    <input type="text" :placeholder="placeholder" v-model="term" @focus="focused = true" @blur="focused = false">
 
     <ul v-if="showSearchResults" class="search-results">
 
@@ -20,7 +20,7 @@
 
     name: 'search-input',
 
-    props: ['options', 'limit'],
+    props: ['options', 'limit', 'placeholder'],
 
     data() {
 
