@@ -110,19 +110,33 @@ export default {
 
   },
 
-  toggleScheduleFilter({commit}, id) {
+  createFilter({commit}, type) {
 
-    commit('TOGGLE_SCHEDULE_FILTER', id);
+    let defaults = {
 
-    commit('UPDATE_SCHEDULE_FILTER', id);
+      time: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']},
+
+      class: {operator: 'Exactly', amount: 3, days: ['T', 'R']}
+
+    }
+
+    commit('CREATE_FILTER', {type, options: defaults[type], active: false});
 
   },
 
-  changeScheduleFilter({commit}, {id, changes}) {
+  toggleFilter({commit}, id) {
 
-    commit('CHANGE_SCHEDULE_FILTER', {id, changes});
+    commit('TOGGLE_FILTER', id);
 
-    commit('UPDATE_SCHEDULE_FILTER', id);
+    commit('UPDATE_FILTER', id);
+
+  },
+
+  changeFilter({commit}, {id, changes}) {
+
+    commit('CHANGE_FILTER', {id, changes});
+
+    commit('UPDATE_FILTER', id);
 
   }
 

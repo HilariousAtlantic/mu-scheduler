@@ -6,7 +6,7 @@
 
       <span slot="left">Time Filters</span>
 
-      <button type="button" slot="right">
+      <button type="button" slot="right" @click="createTimeFilter">
 
         <i class="fa fa-plus"></i> Add Filter
 
@@ -20,7 +20,7 @@
 
       <span slot="left">Class Filters</span>
 
-      <button type="button" slot="right">
+      <button type="button" slot="right" @click="createClassFilter">
 
         <i class="fa fa-plus"></i> Add Filter
 
@@ -50,13 +50,29 @@
 
       timeFilters() {
 
-        return this.$store.state.scheduleFilters.filter(({type}) => type === 'time');
+        return this.$store.state.filters.filter(({type}) => type === 'time');
 
       },
 
       classFilters() {
 
-        return this.$store.state.scheduleFilters.filter(({type}) => type === 'class');
+        return this.$store.state.filters.filter(({type}) => type === 'class');
+
+      }
+
+    },
+
+    methods: {
+
+      createTimeFilter() {
+
+        this.$store.dispatch('createFilter', 'time');
+
+      },
+
+      createClassFilter() {
+
+        this.$store.dispatch('createFilter', 'class');
 
       }
 
@@ -73,6 +89,12 @@
     margin-top: 20px;
     margin-bottom: 10px;
     font-weight: 900;
+
+    span {
+
+      padding-bottom: 2px;
+
+    }
 
   }
 

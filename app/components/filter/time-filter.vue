@@ -104,7 +104,7 @@
         let id = this.filter.id;
         let changes = Object.assign({}, this.filter.options, change);
 
-        this.$store.dispatch('changeScheduleFilter', {id, changes});
+        this.$store.dispatch('changeFilter', {id, changes});
 
       }
 

@@ -76,7 +76,7 @@
 
       toggleActive() {
 
-        this.$store.dispatch('toggleScheduleFilter', this.id);
+        this.$store.dispatch('toggleFilter', this.id);
 
       }
 

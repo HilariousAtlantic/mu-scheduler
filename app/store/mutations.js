@@ -171,25 +171,33 @@ export default {
 
   },
 
-  TOGGLE_SCHEDULE_FILTER(state, id) {
+  CREATE_FILTER(state, filter) {
 
-    let filter = state.scheduleFilters.find(filter => filter.id === id);
+    let id = Math.max(...state.filters.map(filter => filter.id))+1;
+
+    state.filters.push(Object.assign({}, filter, {id}))
+
+  },
+
+  TOGGLE_FILTER(state, id) {
+
+    let filter = state.filters.find(filter => filter.id === id);
 
     Object.assign(filter, {active: !filter.active});
 
   },
 
-  CHANGE_SCHEDULE_FILTER(state, {id, changes}) {
+  CHANGE_FILTER(state, {id, changes}) {
 
-    let filter = state.scheduleFilters.find(filter => filter.id === id);
+    let filter = state.filters.find(filter => filter.id === id);
 
     Object.assign(filter, {options: changes});
 
   },
 
-  UPDATE_SCHEDULE_FILTER(state, id) {
+  UPDATE_FILTER(state, id) {
 
-    let filter = state.scheduleFilters.find(filter => filter.id === id);
+    let filter = state.filters.find(filter => filter.id === id);
 
     Object.assign(filter, {test: getFilter(filter.type, filter.options)});
 
