@@ -6,8 +6,6 @@
 
       <div slot="left">
 
-        <button class="schedule-save">Save Schedule</button>
-
         <button class="schedule-more" @click="toggleDetails">More Details</button>
 
       </div>
@@ -104,19 +102,6 @@
     &:hover {
 
       background: #ddd;
-
-    }
-
-  }
-
-  .schedule-save {
-
-    background: #4CAF50;
-    color: #fff;
-
-    &:hover {
-
-      background: #43A047;
 
     }
 
