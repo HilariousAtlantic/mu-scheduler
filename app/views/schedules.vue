@@ -14,22 +14,61 @@
 
     <router-link to="filters">
 
-      <button class="filters-change">Change Filters</button>
+      <button class="schedules-button">Change Filters</button>
 
     </router-link>
 
   </div>
 
-  <router-link v-else to="courses">
+  <div v-else-if="!$store.state.selectedCourses.length">
 
-    <button class="courses-select">Select Courses</button>
+    <instruction>
 
-  </router-link>
+      <div>
+
+        <h3>Viewing Schedules</h3>
+
+        <p>You have not selected any courses.</p>
+
+      </div>
+
+    </instruction>
+
+    <router-link to="courses">
+
+      <button class="schedules-button">Select Courses</button>
+
+    </router-link>
+
+  </div>
+
+  <div v-else-if="!$store.getters.filteredSchedules.length">
+
+    <instruction>
+
+      <div>
+
+        <h3>Viewing Schedules</h3>
+
+        <p>Your filters are eliminating every possible schedule. You will need to edit or remove some in order to find a schedule.</p>
+
+      </div>
+
+    </instruction>
+
+    <router-link to="filters">
+
+      <button class="schedules-button">Change Filters</button>
+
+    </router-link>
+
+  </div>
 
 </template>
 
 <script>
 
+  import Instruction from '../components/common/instruction.vue';
   import DoubleHeader from '../components/common/double-header.vue';
   import ScheduleList from '../components/schedule/schedule-list.vue';
 
@@ -37,7 +76,7 @@
 
     name: 'schedules-view',
 
-    components: {DoubleHeader, ScheduleList},
+    components: {Instruction, DoubleHeader, ScheduleList},
 
     data() {
 
@@ -89,8 +128,28 @@
 
 <style scoped>
 
-  .schedules-view {
+  .instruction {
 
+    margin-bottom: 10px;
+
+    h3 {
+
+      margin-top: 0;
+
+    }
+
+    p {
+
+      margin-top: 0;
+      margin-bottom: 10px;
+
+      &:last-of-type {
+
+        margin-bottom: 0;
+
+      }
+
+    }
 
   }
 
@@ -107,7 +166,7 @@
 
   }
 
-  .courses-select, .filters-change {
+  .schedules-button {
 
     width: 100%;
     padding: 15px;
