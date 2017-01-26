@@ -117,8 +117,6 @@ export default {
 
     state.requestingSchedules = false;
 
-    console.log(schedules);
-
     state.schedules = schedules.map(schedule => {
 
       let courses = [];
@@ -173,7 +171,7 @@ export default {
 
   CREATE_FILTER(state, filter) {
 
-    let id = Math.max(...state.filters.map(filter => filter.id))+1;
+    let id = Math.max(0, ...state.filters.map(filter => filter.id))+1;
 
     state.filters.push(Object.assign({}, filter, {id}))
 
@@ -183,7 +181,7 @@ export default {
 
     let filter = state.filters.find(filter => filter.id === id);
 
-    Object.assign(filter, {active: !filter.active});
+    filter.active = !filter.active;
 
   },
 
@@ -191,7 +189,7 @@ export default {
 
     let filter = state.filters.find(filter => filter.id === id);
 
-    Object.assign(filter, {options: changes});
+    filter.options = changes;
 
   },
 
@@ -199,7 +197,7 @@ export default {
 
     let filter = state.filters.find(filter => filter.id === id);
 
-    Object.assign(filter, {test: getFilter(filter.type, filter.options)});
+    filter.test = getFilter(filter.type, filter.options);
 
   }
 

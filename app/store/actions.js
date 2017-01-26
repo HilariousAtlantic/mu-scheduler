@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import {getFilter} from '../lib/filter';
+
 export default {
 
   fetchTerms({commit}) {
@@ -120,7 +122,10 @@ export default {
 
     }
 
-    commit('CREATE_FILTER', {type, options: defaults[type], active: false});
+    let options = defaults[type];
+    let test = getFilter(type, options);
+
+    commit('CREATE_FILTER', {type, options, test, active: false});
 
   },
 
