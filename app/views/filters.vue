@@ -2,20 +2,6 @@
 
   <div class="filters-view">
 
-    <instruction>
-
-      <div>
-
-        <h3>Creating Filters</h3>
-
-        <p>There is a good chance that the number of possible schedules to choose from is too high to work with. Filters will help narrow down the choices to schedules that fit your needs.</p>
-
-        <p>To create a filter, click the add filter button next to the type of filter you would like to create. You can edit the filter by clicking on it. Make sure to enable the filter, as they are disabled by default.</p>
-
-      </div>
-
-    </instruction>
-
     <double-header>
 
       <span slot="left">Schedule Filters</span>
@@ -38,7 +24,6 @@
 
 <script>
 
-  import Instruction from '../components/common/instruction.vue';
   import DoubleHeader from '../components/common/double-header.vue';
   import FilterList from '../components/filter/filter-list.vue';
 
@@ -46,7 +31,7 @@
 
     name: 'filters-view',
 
-    components: {Instruction, DoubleHeader, FilterList},
+    components: {DoubleHeader, FilterList},
 
     computed: {
 
@@ -67,31 +52,6 @@
 </script>
 
 <style scoped>
-
-  .instruction {
-
-    margin-bottom: 10px;
-
-    h3 {
-
-      margin-top: 0;
-
-    }
-
-    p {
-
-      margin-top: 0;
-      margin-bottom: 10px;
-
-      &:last-of-type {
-
-        margin-bottom: 0;
-
-      }
-
-    }
-
-  }
 
   .double-header {
 
