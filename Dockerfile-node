@@ -1,8 +1,0 @@
-FROM node:6.9.2
-
-COPY app /home/mu-scheduler/app
-COPY package.json npm-shrinkwrap.json webpack.config.js /home/mu-scheduler/
-
-WORKDIR /home/mu-scheduler
-
-RUN npm run setup-client

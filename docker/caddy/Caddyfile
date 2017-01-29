@@ -1,0 +1,12 @@
+0.0.0.0:80
+
+gzip
+
+proxy /dist node:9000 {
+    without /dist
+}
+
+proxy / go:8000
+
+log /var/log/caddy/access.log
+errors /var/log/caddy/error.log
