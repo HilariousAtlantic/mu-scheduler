@@ -2,7 +2,7 @@
 
   <div class="option-input">
 
-    <button @click="toggleDropdown">
+    <button @click="toggleDropdown" @blur="showDropdown = false">
 
       {{selectedOption.text}} <i class="fa fa-angle-down"></i>
 
@@ -10,7 +10,7 @@
 
     <ul v-if="showDropdown" class="option-list">
 
-      <li v-for="option in options" @click="selectOption(option)">
+      <li v-for="option in options" @mousedown="selectOption(option)">
 
         <span>{{option.text}}</span>
 
@@ -102,6 +102,7 @@
     border-top: none;
     background: #fff;
     cursor: pointer;
+    z-index: 10;
 
   }
 
