@@ -10,9 +10,7 @@ import (
 func startServer() {
 	e := echo.New()
 
-	e.File("/", "index.html")
-	e.File("/courses", "index.html")
-	e.File("/schedules", "index.html")
+	e.File("*", "index.html")
 	e.Static("/dist", "dist")
 
 	api := e.Group("/api")

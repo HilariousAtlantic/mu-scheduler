@@ -25,9 +25,9 @@ let router = new VueRouter({
 
   routes: [
 
-    {path: '/', redirect: '/generator/courses', component: App, children: [
+    {path: '/', redirect: '/generator', component: App, children: [
 
-      {path: '/generator', component: Generator, children: [
+      {path: '/generator', redirect: '/generator/courses', component: Generator, children: [
 
         {name: 'courses', path: '/generator/courses', component: Courses},
 
@@ -37,7 +37,9 @@ let router = new VueRouter({
 
       ]}
 
-    ]}
+    ]},
+
+    {path: '*', redirect: '/generator'}
 
   ]
 
