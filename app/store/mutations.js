@@ -157,7 +157,7 @@ export default {
 
       return {courses, gpa: schedule.average_gpa, start, end, length: end-start, startTimes, endTimes, classLoads};
 
-    });
+    }).sort((a,b) => b.gpa - a.gpa);
 
     state.schedulesCache[courses] = state.schedules;
 
