@@ -2,7 +2,7 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
+	//	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -44,7 +44,7 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 		goodScheduleAvgGPA := 0.0
 		divideBy := 0.0
 		for _, selectedSection := range selectedSections {
-			fmt.Println(selectedSection.AverageGPA)
+			//	fmt.Println(selectedSection.AverageGPA)
 			if !(selectedSection.AverageGPA == 0.0) {
 				goodScheduleAvgGPA += (selectedSection.AverageGPA * selectedSection.Credits)
 				divideBy += selectedSection.Credits
