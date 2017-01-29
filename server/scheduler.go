@@ -2,7 +2,7 @@ package main
 
 import (
 	"database/sql"
-	//	"fmt"
+	//"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -17,12 +17,16 @@ func findGoodSchedules(ids string) []Schedule {
 	//courses cannot be a pointer due to recursion, so convert
 	coursesPointer := getCourseTree(ids)
 	setCoursesGPA(coursesPointer)
+
 	courses := make([]Course, 0)
 	for _, coursePointer := range coursesPointer {
 		courses = append(courses, *coursePointer)
 	}
+
 	selectedSections := make([]Section, 0)
 	findGoodSchedulesRecursive(courses, selectedSections, &goodSchedules)
+
+	//fmt.Println(goodSchedules)
 	//fmt.Println("good schedules")
 
 	return goodSchedules
@@ -43,7 +47,7 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 			if !(selectedSection.AverageGPA == 0.0) {
 				goodScheduleAvgGPA += (selectedSection.AverageGPA * selectedSection.Credits)
 				divideBy += selectedSection.Credits
-				//fmt.Println("goodSchedGPA is now : %v, divideBy is now: %v", goodScheduleAvgGPA, divideBy)
+				//fmt.Printf("goodSchedGPA is now : %v, divideBy is now: %v", goodScheduleAvgGPA, divideBy)
 			}
 			var scheduledCourse = ScheduledCourse{
 				CourseID:  selectedSection.CourseID,
@@ -51,10 +55,13 @@ func findGoodSchedulesRecursive(courses []Course, selectedSections []Section, go
 			}
 			sections = append(sections, scheduledCourse)
 		}
-
+		avgGPA := 0.0
+		if divideBy != 0 {
+			avgGPA = goodScheduleAvgGPA / divideBy
+		}
 		var goodSchedule = Schedule{
 			Sections:   sections,
-			AverageGPA: (goodScheduleAvgGPA / divideBy),
+			AverageGPA: (avgGPA),
 		}
 
 		//fmt.Printf("sched gpa is: %v", goodSchedule.AverageGPA)
@@ -117,6 +124,7 @@ func getCourseTree(ids string) []*Course {
 	}
 	return courses
 }
+
 func setCoursesGPA(courses []*Course) {
 	for _, course := range courses {
 		for _, section := range course.Sections {

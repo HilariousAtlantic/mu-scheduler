@@ -57,7 +57,6 @@ func scheduleIndex(c echo.Context) error {
 
 	courses := c.QueryParam("courses")
 	schedules := findGoodSchedules(courses)
-
 	return c.JSON(http.StatusOK, schedules)
 
 }
