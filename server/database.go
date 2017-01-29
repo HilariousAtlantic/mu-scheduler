@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"database/sql"
 	"encoding/csv"
 	"fmt"
@@ -14,8 +15,6 @@ import (
 )
 
 const (
-	databasePath = "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
-
 	createStagingTable = `
 	CREATE TABLE staging(
 		type TEXT,
@@ -122,15 +121,22 @@ const (
 	SELECT sec.id,days,start_time,end_time,location,instructor,start_date,end_date FROM staging s
 	JOIN sections sec ON sec.crn = s.crn
 	WHERE type = 'meet' OR type = 'section';
-				`
+	`
 	insertTests = `
 	INSERT INTO tests (section_id,start_time,end_time,location,date)
 	SELECT sec.id,start_time,end_time,location,start_date FROM staging s
 	JOIN sections sec ON sec.crn = s.crn
 	WHERE type = 'test';
 	`
+
+	insertStaging = `INSERT INTO staging
+	(type, term, crn, subject, number, title, name, credits,
+	days, start_time, end_time, location, instructor,start_date,end_date)
+	VALUES `
+
 	insertGrades = `
-	INSERT INTO grades (gpa,instructor,season,year,subject,number) VALUES(;	`
+	INSERT INTO grades (gpa, instructor, subject, number, year, season, section) VALUES
+	`
 
 	selectGrades = `
 	SELECT * FROM grades
@@ -173,19 +179,28 @@ var insertStatements = [...]string{
 	insertTests,
 }
 
+var dbContext = new(DBContext)
+
 type DBContext struct {
 	db *sql.DB
 }
 
-var dbContext = new(DBContext)
+func (d *DBContext) path() string {
+	if !docker {
+		return "user=schedule_buddy dbname=schedule_buddy sslmode=disable"
+	}
+
+	return fmt.Sprintf("user=%v dbname=%v password=%v host=postgres sslmode=disable",
+		os.Getenv("POSTGRES_DB"),
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"))
+}
 
 func (d *DBContext) open() *sql.DB {
 	if d.db == nil {
 		var err error
-		d.db, err = sql.Open("postgres", databasePath)
-		if err != nil {
-			handleError(err)
-		}
+		d.db, err = sql.Open("postgres", d.path())
+		handleError(err)
 	}
 	return d.db
 }
@@ -200,11 +215,15 @@ func createDatabase() {
 		fmt.Println("Database created")
 	}
 
+	createTables()
+}
+
+func createTables() {
 	db := dbContext.open()
 	defer db.Close()
 
 	for _, createTableStatement := range createTableStatements {
-		_, err = db.Exec(createTableStatement)
+		_, err := db.Exec(createTableStatement)
 		if err != nil {
 			log.Fatalf("%q: %s\n", err, createTableStatement)
 		}
@@ -212,91 +231,95 @@ func createDatabase() {
 }
 
 func importDatabase() {
-
 	fmt.Println("Importing database...")
+
 	f, err := os.Open("import/courses.csv")
-	if err != nil {
-		handleError(err)
-	}
+	handleError(err)
 	defer f.Close()
 
 	lines, err := csv.NewReader(f).ReadAll()
-	if err != nil {
-		log.Fatal(err)
-	}
+	handleError(err)
 
 	db := dbContext.open()
 	defer db.Close()
 
-	for _, line := range lines {
-		var insertStaging = "INSERT INTO staging (type,term,crn,subject,number,title,name,credits,days,start_time,end_time,location,instructor,start_date,end_date) VALUES ("
-		for _, value := range line {
-			insertStaging += "'" + strings.Replace(value, "'", "''", -1) + "',"
+	debug("Building insert statement")
+
+	insert := bytes.NewBufferString(insertStaging)
+	for i, line := range lines {
+		insert.WriteString("(")
+		for j, value := range line {
+			insert.WriteString(fmt.Sprintf(`'%v'`, strings.Replace(value, "'", "''", -1)))
+			if j == len(line)-1 {
+				insert.WriteString(")")
+			} else {
+				insert.WriteString(",")
+			}
 		}
-		insertStaging = insertStaging[0:len(insertStaging)-1] + ")"
-		_, err = db.Exec(insertStaging)
-		if err != nil {
-			handleError(err)
-			fmt.Println(insertStaging)
+
+		if i == len(lines)-1 {
+			insert.WriteString(";")
+		} else {
+			insert.WriteString(",")
 		}
 	}
 
+	debug("Inserting into staging")
+
+	_, err = db.Exec(insert.String())
+	if ok := handleError(err); !ok {
+		fmt.Println(insert)
+	}
+
+	debug("Inserting from staging")
+
 	for _, insertStatement := range insertStatements {
 		_, err := db.Exec(insertStatement)
-		if err != nil {
-			handleError(err)
-		}
+		handleError(err)
 	}
 
 	fmt.Println("Database imported")
 
 	importGradesDatabase()
-	//fmt.Println("Testing Scheduler")
-	//findGoodSchedules("404,717")
-	/*
-		goodSchedules := make([][]Section, 0)
-		coursesPointer := getCourseTree("2035,789,717,738,732")
-		courses := make([]Course, 0)
-		for _, coursePointer := range coursesPointer {
-			courses = append(courses, *coursePointer)
-		}
-		fmt.Println("courses:")
-		fmt.Println(Courses)
-		selectedSections := make([]Section, 0)
-		findGoodSchedules(courses, selectedSections, &goodSchedules)
-		fmt.Println("good schedules: ")
-		for _, goodSchedule := range goodSchedules {
-			fmt.Println(goodSchedule)
-		}
-	*/
 }
+
 func importGradesDatabase() {
 	fmt.Println("Importing grades...")
+
 	f, err := os.Open("import/grades.csv")
-	if err != nil {
-		handleError(err)
-	}
+	handleError(err)
 	defer f.Close()
+
 	lines, err := csv.NewReader(f).ReadAll()
-	if err != nil {
-		log.Fatal(err)
-	}
+	handleError(err)
+
 	db := dbContext.open()
 	defer db.Close()
 
-	for _, line := range lines {
-		var insertGrades = "INSERT INTO grades (gpa,instructor,subject,number,year,season,section) VALUES("
-
-		for _, value := range line {
-			insertGrades += "'" + strings.Replace(value, "'", "''", -1) + "',"
+	insert := bytes.NewBufferString(insertGrades)
+	for i, line := range lines {
+		insert.WriteString("(")
+		for j, value := range line {
+			insert.WriteString(fmt.Sprintf(`'%v'`, strings.Replace(value, "'", "''", -1)))
+			if j == len(line)-1 {
+				insert.WriteString(")")
+			} else {
+				insert.WriteString(",")
+			}
 		}
-		insertGrades = insertGrades[0:len(insertGrades)-1] + ")"
-		_, err = db.Exec(insertGrades)
-		if err != nil {
-			handleError(err)
-			fmt.Println(insertGrades)
+
+		if i == len(lines)-1 {
+			insert.WriteString(";")
+		} else {
+			insert.WriteString(",")
 		}
 	}
+
+	_, err = db.Exec(insert.String())
+	if ok := handleError(err); !ok {
+		fmt.Println(insertGrades)
+	}
+
 	fmt.Println("Grades Imported")
 }
 

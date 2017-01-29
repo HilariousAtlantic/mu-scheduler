@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+  go:
+    build:
+      context: go
+    ports:
+      - 8000:8000
+    volumes:
+      - ../:/go/src/github.com/hilariousatlantic/mu-scheduler
+      - /go/src/github.com/hilariousatlantic/mu-scheduler/vendor
+    depends_on:
+      - postgres
+    extends:
+      file: base.yml
+      service: base
+
+  postgres:
+    build:
+      context: postgres
+    ports:
+      - "5432"
+    volumes:
+      - /var/lib/postgresql/data
+    extends:
+      file: base.yml
+      service: base
+
+  node:
+    build:
+      context: node
+    volumes:
+      - ../:/home/mu-scheduler
+    ports:
+      - "9000:9000"
+
+  caddy:
+    build:
+      context: caddy
+    ports:
+      - "80:80"
+      - "443:433"
+    volumes:
+      - ./caddy/Caddyfile:/etc/Caddyfile
+      - ./caddy/logs/caddy:/var/log/caddy
+    links:
+      - go
+      - node
+
