@@ -16,19 +16,21 @@
 
     <div v-if="expanded" class="course-body">
 
-      <div class="course-sections">
+      <double-header>
 
-        <span v-for="section in sections">{{section}}</span>
+        <div slot="left">
 
-      </div>
+          <span>{{course.credits}} Credits</span>
 
-      <div class="course-actions">
+          <span>&middot;</span>
 
-        <span>{{course.credits}} Credits</span>
+          <span>{{course.sections.length}} Sections</span>
 
-        <button class="course-deselect" type="button" @click="deselectCourse">Remove Course</button>
+        </div>
 
-      </div>
+        <button class="course-deselect" slot="right" @click="deselectCourse">Remove Course</button>
+
+      </double-header>
 
     </div>
 
@@ -38,11 +40,15 @@
 
 <script>
 
+  import DoubleHeader from '../common/double-header.vue';
+
   export default {
 
     name: 'course',
 
     props: ['course'],
+
+    components: {DoubleHeader},
 
     data() {
 
@@ -65,24 +71,6 @@
       toggleExpanded() {
 
         this.expanded = !this.expanded;
-
-      }
-
-    },
-
-    computed: {
-
-      sections() {
-
-        return this.course.sections.sort((sectionA, sectionB) => {
-
-          return sectionA.name.localeCompare(sectionB.name);
-
-        }).map(({name, meets}) => {
-
-          return 'Section ' + name + ' - ' + meets.map(({instructor}) => instructor).join(',');
-
-        });
 
       }
 
@@ -111,43 +99,6 @@
 
   }
 
-  .course-body {
-
-    display: flex;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-top: none;
-
-  }
-
-  .course-sections {
-
-    flex: 1;
-
-    span {
-
-      display: block;
-
-    }
-
-  }
-
-  .course-actions {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    span {
-
-      font-weight: 900;
-      margin-bottom: 10px;
-
-    }
-
-  }
-
   .course-name {
 
     flex: 1;
@@ -159,6 +110,20 @@
     background: #eee;
     border: none;
     outline: none;
+
+  }
+
+  .course-body {
+
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+
+  }
+
+  .double-header {
+
+    align-items: center;
 
   }
 
