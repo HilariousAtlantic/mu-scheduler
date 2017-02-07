@@ -6,7 +6,7 @@
 
       <div slot="left">
 
-        <button class="schedule-more" @click="toggleDetails">More Details</button>
+        <button class="schedule-more" @click="toggleDetails">{{showHide}} Details</button>
 
       </div>
 
@@ -64,6 +64,12 @@
       schedule() {
 
         return this.$store.getters.filteredSchedules[this.index];
+
+      },
+
+      showHide() {
+
+        return this.showDetails ? 'Hide' : 'More';
 
       }
 
