@@ -10,11 +10,15 @@ export default {
 
     let schedules = state.schedules;
 
-    let activeFilters = state.filters.filter(({active}) => active);
+    console.log('dsdf');
 
-    activeFilters.forEach(({test}) => {
+    state.filters.forEach(({active, test}) => {
 
-      schedules = schedules.filter(test);
+      if (active) {
+
+        schedules = schedules.filter(test);
+
+      }
 
     });
 

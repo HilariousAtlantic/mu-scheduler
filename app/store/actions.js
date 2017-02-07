@@ -120,15 +120,11 @@ export default {
 
     commit('TOGGLE_FILTER', id);
 
-    commit('UPDATE_FILTER', id);
-
   },
 
   changeFilter({commit}, {id, changes}) {
 
     commit('CHANGE_FILTER', {id, changes});
-
-    commit('UPDATE_FILTER', id);
 
   }
 

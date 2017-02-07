@@ -182,25 +182,33 @@ export default {
 
   TOGGLE_FILTER(state, id) {
 
-    let filter = state.filters.find(filter => filter.id === id);
+    state.filters = state.filters.map(filter => {
 
-    filter.active = !filter.active;
+      if (filter.id === id) {
+
+        return Object.assign({}, filter, {active: !filter.active});
+
+      } else return filter;
+
+    });
 
   },
 
   CHANGE_FILTER(state, {id, changes}) {
 
-    let filter = state.filters.find(filter => filter.id === id);
+    state.filters = state.filters.map(filter => {
 
-    filter.options = changes;
+      if (filter.id === id) {
 
-  },
+        return Object.assign({}, filter,
 
-  UPDATE_FILTER(state, id) {
+          {options: changes, test: getFilter(filter.type, changes)}
 
-    let filter = state.filters.find(filter => filter.id === id);
+        );
 
-    filter.test = getFilter(filter.type, filter.options);
+      } else return filter;
+
+    });
 
   }
 
