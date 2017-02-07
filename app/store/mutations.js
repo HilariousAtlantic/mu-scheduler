@@ -121,11 +121,10 @@ export default {
 
       let courses = [];
 
-      let start = 1440;
-      let end = 0;
-      let startTimes = {};
-      let endTimes = {};
-      let classLoads = {};
+      let timesByDay = {M: [], T: [], W: [], R: [], F: []};
+      let startTimes = {M: 1440, T: 1440, W: 1440, R: 1440, F: 1440};
+      let endTimes = {M: 0, T: 0, W: 0, R: 0, F: 0};
+      let classLoads = {M: 0, T: 0, W: 0, R: 0, F: 0};
 
       schedule.sections.forEach(({course_id, section_id}) => {
 
@@ -134,28 +133,30 @@ export default {
 
         section.meets.forEach(({days, start_time, end_time}) => {
 
-          start = Math.min(start, start_time);
-          end = Math.max(end, end_time);
-
           days.split('').forEach(day => {
 
-            startTimes[day] = Math.min(startTimes[day] || 1440, start_time);
-            endTimes[day] = Math.max(endTimes[day] || 0, end_time);
-
-
-
-            if (!classLoads[day]) classLoads[day] = 1;
-            else classLoads[day]++;
+            timesByDay[day].push({start: start_time, end: end_time});
+            startTimes[day] = Math.min(startTimes[day], start_time);
+            endTimes[day] = Math.max(endTimes[day], end_time);
+            classLoads[day]++;
 
           });
 
         });
 
-        courses.push({name: course.subject + ' ' + course.number + ' ' + section.name, meets: section.meets});
+        courses.push({
+          name: course.subject + ' ' + course.number + ' ' + section.name,
+          meets: section.meets
+        });
 
       });
 
-      return {courses, gpa: schedule.average_gpa, start, end, length: end-start, startTimes, endTimes, classLoads};
+      let start = Math.min(...Object.values(startTimes));
+      let end = Math.max(...Object.values(endTimes));
+      let length = end-start;
+      let gpa = schedule.average_gpa;
+
+      return {courses, gpa, start, end, length, timesByDay, startTimes, endTimes, classLoads};
 
     }).sort((a,b) => b.gpa - a.gpa);
 

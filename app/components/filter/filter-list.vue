@@ -30,6 +30,20 @@
 
     <class-filter v-for="filter in classFilters" :filter="filter"></class-filter>
 
+    <double-header>
+
+      <span slot="left">Break Filters</span>
+
+      <button type="button" slot="right" @click="createBreakFilter">
+
+        <i class="fa fa-plus"></i> Add Filter
+
+      </button>
+
+    </double-header>
+
+    <break-filter v-for="filter in breakFilters" :filter="filter"></break-filter>
+
   </div>
 
 </template>
@@ -39,12 +53,13 @@
   import DoubleHeader from '../common/double-header.vue'
   import TimeFilter from './time-filter.vue';
   import ClassFilter from './class-filter.vue';
+  import BreakFilter from './break-filter.vue';
 
   export default {
 
     name: 'filter-list',
 
-    components: {DoubleHeader, TimeFilter, ClassFilter},
+    components: {DoubleHeader, TimeFilter, ClassFilter, BreakFilter},
 
     computed: {
 
@@ -57,6 +72,12 @@
       classFilters() {
 
         return this.$store.state.filters.filter(({type}) => type === 'class');
+
+      },
+
+      breakFilters() {
+
+        return this.$store.state.filters.filter(({type}) => type === 'break');
 
       }
 
@@ -73,6 +94,12 @@
       createClassFilter() {
 
         this.$store.dispatch('createFilter', 'class');
+
+      },
+
+      createBreakFilter() {
+
+        this.$store.dispatch('createFilter', 'break');
 
       }
 

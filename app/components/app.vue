@@ -25,6 +25,7 @@
       this.$store.dispatch('fetchTerms');
       this.$store.dispatch('createFilter', 'time');
       this.$store.dispatch('createFilter', 'class');
+      this.$store.dispatch('createFilter', 'break');
 
     }
 

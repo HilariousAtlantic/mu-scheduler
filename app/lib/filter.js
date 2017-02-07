@@ -2,7 +2,9 @@ const defaultOptions = {
 
   time: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']},
 
-  class: {operator: 'Exactly', amount: 3, days: ['T', 'R']}
+  class: {operator: 'Exactly', amount: 3, days: ['T', 'R']},
+
+  break: {start: 720, finish: 780, days: ['T', 'W', 'R']}
 
 }
 
@@ -23,6 +25,10 @@ export function getFilter(type, options) {
     case 'class':
 
       return getClassFilter(options);
+
+    case 'break':
+
+      return getBreakFilter(options);
 
   }
 
@@ -95,6 +101,34 @@ export function getClassFilter({operator, amount, days}) {
           if (classLoads[day] > amount) return false;
 
           break;
+
+      }
+
+    }
+
+    return true;
+
+  }
+
+}
+
+export function getBreakFilter({start, finish, days}) {
+
+  return function({timesByDay}) {
+
+    for (let day of days) {
+
+      let times = timesByDay[day];
+
+      for (let time of times) {
+
+        console.log(time, start, finish);
+
+        if (time.start < finish && time.end > start) {
+
+          return false;
+
+        }
 
       }
 
