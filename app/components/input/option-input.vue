@@ -28,13 +28,25 @@
 
     name: 'option-input',
 
-    props: ['options', 'selectedOption', 'renderOption'],
+    props: ['options', 'defaultOption', 'renderOption'],
 
     data() {
 
       return {
 
+        selected: null,
+
         showDropdown: false
+
+      }
+
+    },
+
+    computed: {
+
+      selectedOption() {
+
+        return this.selected || this.defaultOption;
 
       }
 
@@ -44,7 +56,7 @@
 
       selectOption(option) {
 
-        this.selectedOption = option;
+        this.selected = option;
         this.showDropdown = false;
         this.$emit('select', option);
 

@@ -6,7 +6,7 @@
 
       <option-input
         :options="$store.state.terms"
-        :selectedOption="$store.state.selectedTerm"
+        :defaultOption="$store.state.selectedTerm"
         :renderOption="term => term.name || 'Select a Term'"
         @select="selectTerm"
       ></option-input>
