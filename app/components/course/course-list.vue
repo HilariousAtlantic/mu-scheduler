@@ -6,7 +6,7 @@
 
       <option-input
         :options="$store.state.terms"
-        :defaultOption="$store.state.selectedTerm"
+        :selectedOption="$store.state.selectedTerm"
         :renderOption="term => term.name || 'Select a Term'"
         @select="selectTerm"
       ></option-input>
@@ -15,7 +15,7 @@
         :placeholder="'Search Courses'"
         :options="$store.state.courses"
         :limit="5"
-        :renderResult="({subject, number, title}) => subject + ' ' + number + ' - ' + title"
+        :renderResult="course => course.searchableName"
         @select="selectCourse"
       ></search-input>
 

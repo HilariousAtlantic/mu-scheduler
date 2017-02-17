@@ -40,13 +40,11 @@
 
         let trim = (text) => text.toLowerCase().replace(/\W+/g, '');
 
-        let results = this.options.filter(({subject, number, title}) => {
+        let results = this.options.filter(option =>
 
-          let trimmed = trim(subject + ' ' + number + ' - ' + title);
+          trim(this.renderResult(option)).indexOf(trim(this.term)) != -1
 
-          return trimmed.indexOf(trim(this.term)) != -1;
-
-        });
+        );
 
         return results.slice(0, this.limit || 10);
 

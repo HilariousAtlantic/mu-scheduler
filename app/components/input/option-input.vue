@@ -2,7 +2,7 @@
 
   <div class="option-input">
 
-    <button @click="toggleDropdown" @blur="showDropdown = false">
+    <button @click="showDropdown = true" @blur="showDropdown = false">
 
       {{renderOption(selectedOption)}} <i class="fa fa-angle-down"></i>
 
@@ -28,13 +28,11 @@
 
     name: 'option-input',
 
-    props: ['options', 'defaultOption', 'renderOption'],
+    props: ['options', 'selectedOption', 'renderOption'],
 
     data() {
 
       return {
-
-        selectedOption: this.defaultOption || this.options[0],
 
         showDropdown: false
 
@@ -49,12 +47,6 @@
         this.selectedOption = option;
         this.showDropdown = false;
         this.$emit('select', option);
-
-      },
-
-      toggleDropdown() {
-
-        this.showDropdown = !this.showDropdown;
 
       }
 
