@@ -4,7 +4,8 @@
 
       <option-input
         :options="operators"
-        :defaultOption="{text: filter.options.operator}"
+        :defaultOption="filter.options.operator"
+        :renderOption="option => option"
         @select="handleOperatorChange"
       ></option-input>
 
@@ -46,17 +47,7 @@
 
       return {
 
-        operators: [
-
-          {text: 'Start Before'},
-
-          {text: 'Start After'},
-
-          {text: 'Finish Before'},
-
-          {text: 'Finish After'},
-
-        ]
+        operators: ['Start Before', 'Start After', 'Finish Before', 'Finish After'],
 
       }
 
@@ -82,7 +73,7 @@
 
       handleOperatorChange(operator) {
 
-        this.submitChanges({operator: operator.text});
+        this.submitChanges({operator});
 
       },
 

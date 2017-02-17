@@ -6,7 +6,7 @@
 
     <ul v-if="showSearchResults" class="search-results">
 
-      <li v-for="result in searchResults" @mousedown="selectResult(result)">{{result.text}}</li>
+      <li v-for="result in searchResults" @mousedown="selectResult(result)">{{renderResult(result)}}</li>
 
     </ul>
 
@@ -20,7 +20,7 @@
 
     name: 'search-input',
 
-    props: ['options', 'limit', 'placeholder'],
+    props: ['options', 'limit', 'placeholder', 'renderResult'],
 
     data() {
 
@@ -40,7 +40,13 @@
 
         let trim = (text) => text.toLowerCase().replace(/\W+/g, '');
 
-        let results = this.options.filter(({text}) => trim(text).indexOf(trim(this.term)) != -1);
+        let results = this.options.filter(({subject, number, title}) => {
+
+          let trimmed = trim(subject + ' ' + number + ' - ' + title);
+
+          return trimmed.indexOf(trim(this.term)) != -1;
+
+        });
 
         return results.slice(0, this.limit || 10);
 

@@ -4,7 +4,7 @@
 
     <button @click="toggleDropdown" @blur="showDropdown = false">
 
-      {{selectedOption.text}} <i class="fa fa-angle-down"></i>
+      {{renderOption(selectedOption)}} <i class="fa fa-angle-down"></i>
 
     </button>
 
@@ -12,7 +12,7 @@
 
       <li v-for="option in options" @mousedown="selectOption(option)">
 
-        <span>{{option.text}}</span>
+        <span>{{renderOption(option)}}</span>
 
       </li>
 
@@ -28,7 +28,7 @@
 
     name: 'option-input',
 
-    props: ['options', 'defaultOption'],
+    props: ['options', 'defaultOption', 'renderOption'],
 
     data() {
 

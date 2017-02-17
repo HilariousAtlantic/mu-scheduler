@@ -10,8 +10,6 @@ export default {
 
     let schedules = state.schedules;
 
-    console.log('dsdf');
-
     state.filters.forEach(({active, test}) => {
 
       if (active) {
