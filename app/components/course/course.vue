@@ -28,7 +28,7 @@
 
         </div>
 
-        <button class="course-deselect" slot="right" @click="deselectCourse">Remove Course</button>
+        <button class="course-deselect" slot="right" @click="deselectCourse">Deselect Course</button>
 
       </double-header>
 
