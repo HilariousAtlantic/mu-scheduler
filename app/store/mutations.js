@@ -152,6 +152,12 @@ export default {
 
     });
 
+  },
+
+  DELETE_FILTER(state, id) {
+
+    state.filters = state.filters.filter(filter => filter.id !== id);
+
   }
 
 }

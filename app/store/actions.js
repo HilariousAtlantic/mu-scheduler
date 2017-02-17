@@ -53,7 +53,7 @@ export default {
 
         let courses = response.data.map(course =>
           Object.assign({}, course, {searchableName: course.subject + ' ' + course.number + ' - ' + course.title})
-        ).sort((a, b) => 
+        ).sort((a, b) =>
           a.searchableName.localeCompare(b.searchableName)
         );
 
@@ -185,6 +185,12 @@ export default {
   changeFilter({commit}, {id, changes}) {
 
     commit('CHANGE_FILTER', {id, changes});
+
+  },
+
+  deleteFilter({commit}, id) {
+
+    commit('DELETE_FILTER', id);
 
   }
 

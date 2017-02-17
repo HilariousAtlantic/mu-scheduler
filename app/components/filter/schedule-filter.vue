@@ -24,11 +24,11 @@
 
       <div class="filter-actions">
 
-        <button v-if="active" type="button" class="filter-disable" @click="toggleActive">Disable</button>
+        <button v-if="active" type="button" class="filter-disable" @click="toggleActive">Disable Filter</button>
 
-        <button v-else type="button" class="filter-enable" @click="toggleActive">Enable</button>
+        <button v-else type="button" class="filter-enable" @click="toggleActive">Enable Filter</button>
 
-        <button type="button" class="filter-delete">Remove</button>
+        <button type="button" class="filter-delete" @click="deleteFilter">Delete Filter</button>
 
       </div>
 
@@ -77,6 +77,12 @@
       toggleActive() {
 
         this.$store.dispatch('toggleFilter', this.id);
+
+      },
+
+      deleteFilter() {
+
+        this.$store.dispatch('deleteFilter', this.id);
 
       }
 
