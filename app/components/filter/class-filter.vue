@@ -4,7 +4,8 @@
 
       <option-input
         :options="operators"
-        :defaultOption="{text: filter.options.operator}"
+        :defaultOption="filter.options.operator"
+        :renderOption="option => option"
         @select="handleOperatorChange"
       ></option-input>
 
@@ -45,16 +46,7 @@
 
       return {
 
-        operators: [
-
-          {text: 'At Least'},
-
-          {text: 'At Most'},
-
-          {text: 'Exactly'}
-
-        ]
-
+        operators: ['At Least' ,'At Most', 'Exactly']
 
       }
 
