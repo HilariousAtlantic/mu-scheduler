@@ -4,6 +4,8 @@
 
   {"id": 1, "name": "Winter Term 2017", "file": "winter-2017"},
 
-  {"id": 2, "name": "Spring Semester 2017", "file": "spring-2017"}
+  {"id": 2, "name": "Spring Semester 2017", "file": "spring-2017"},
+
+  {"id": 2, "name": "Fall Semester 2018", "file": "fall-2018"}
 
 ]
