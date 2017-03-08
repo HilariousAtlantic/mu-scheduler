@@ -68,6 +68,8 @@ function formatTime(time) {
 
   let [start, end] = time.split('-');
 
+  if (!end) console.log(time);
+
   let [startTime, startPeriod] = start.split(' ');
   let [endTime, endPeriod] = end.split(' ');
 
