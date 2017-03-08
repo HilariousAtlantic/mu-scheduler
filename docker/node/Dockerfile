@@ -1,4 +1,4 @@
-FROM node:7.7.1
+FROM node:6.9.1
 
 WORKDIR /home/mu-scheduler
 
