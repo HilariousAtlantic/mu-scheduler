@@ -2,24 +2,7 @@
 
   <div class="courses-view">
 
-    <double-header>
-
-      <span slot="left">Selected Courses {{selectedTerm}}</span>
-
-      <span slot="right">{{totalCredits}} Credits</span>
-
-    </double-header>
-
     <course-list></course-list>
-
-    <router-link to="filters">
-
-      <button type="button"
-        class="schedules-generate"
-        @click="generateSchedules"
-      >Generate Schedules</button>
-
-    </router-link>
 
   </div>
 

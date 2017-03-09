@@ -2,25 +2,31 @@
 
   <div class="generator">
 
-    <div class="tab-list">
+    <div class="tabnav">
 
-      <router-link class="tab" to="courses">
+      <button class="btn btn-sm btn-primary right">Generate Schedules</button>
 
-        <span>Courses</span>
+      <nav class="tabnav-tabs">
 
-      </router-link>
+        <router-link active-class="selected" class="tabnav-tab" to="courses">
 
-      <router-link class="tab" to="filters">
+          <span>Courses</span>
 
-        <span>Filters</span>
+        </router-link>
 
-      </router-link>
+        <router-link active-class="selected" class="tabnav-tab" to="filters">
 
-      <router-link class="tab" to="schedules">
+          <span>Filters</span>
 
-        <span>Schedules</span>
+        </router-link>
 
-      </router-link>
+        <router-link active-class="selected" class="tabnav-tab" to="schedules">
+
+          <span>Schedules</span>
+
+        </router-link>
+
+      </nav>
 
     </div>
 
@@ -46,42 +52,18 @@
 
 <style>
 
-  .tab-list {
-
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background: #A91121;
-
-    .router-link-active {
-
-      background: #B61E2E;
-
-    }
-
-  }
-
-  .tab {
-
-    flex: 1;
-    padding: 15px;
-    text-decoration: none;
-    color: #fff;
-    cursor: pointer;
-
-    &:not(.router-link-active):hover {
-
-      background: #9D0515;
-
-    }
-
-  }
-
-  .view {
+  .generator {
 
     width: 90%;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 20px auto;
+
+  }
+
+  .btn-sm.btn-primary {
+
+    font-weight: normal;
+    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
 
   }
 

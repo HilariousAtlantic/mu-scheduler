@@ -4,7 +4,7 @@
 
     <navbar></navbar>
 
-    <router-view></router-view>
+    <generator></generator>
 
   </div>
 
@@ -13,12 +13,13 @@
 <script>
 
   import Navbar from './navbar.vue';
+  import Generator from './generator.vue';
 
   export default {
 
     name: 'app',
 
-    components: {Navbar},
+    components: {Navbar, Generator},
 
     mounted() {
 

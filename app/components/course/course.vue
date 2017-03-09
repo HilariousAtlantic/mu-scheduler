@@ -2,37 +2,16 @@
 
   <div class="course">
 
-    <div class="course-head" @click="toggleExpanded">
+    <div class="course-info">
 
-      <span class="course-name">{{course.subject}} {{course.number}} - {{course.title}}</span>
-
-      <button type="button" class="course-expand">
-
-        <i class="fa" :class="{'fa-chevron-down': !expanded, 'fa-chevron-up': expanded}"></i>
-
-      </button>
+      <h2>{{course.subject}} {{course.number}}</h2>
+      <p>{{course.title}}</p>
+      <span>{{course.credits}} Credits</span>
+      <span>{{course.sections.length}} Sections</span>
 
     </div>
 
-    <div v-if="expanded" class="course-body">
-
-      <double-header>
-
-        <div slot="left">
-
-          <span>{{course.credits}} Credits</span>
-
-          <span>&middot;</span>
-
-          <span>{{course.sections.length}} Sections</span>
-
-        </div>
-
-        <button class="course-deselect" slot="right" @click="deselectCourse">Deselect Course</button>
-
-      </double-header>
-
-    </div>
+    <button class="btn">Remove</button>
 
   </div>
 
@@ -40,37 +19,17 @@
 
 <script>
 
-  import DoubleHeader from '../common/double-header.vue';
-
   export default {
 
     name: 'course',
 
     props: ['course'],
 
-    components: {DoubleHeader},
-
-    data() {
-
-      return {
-
-        expanded: false
-
-      }
-
-    },
-
     methods: {
 
       deselectCourse() {
 
         this.$store.dispatch('deselectCourse', this.course);
-
-      },
-
-      toggleExpanded() {
-
-        this.expanded = !this.expanded;
 
       }
 
@@ -84,57 +43,28 @@
 
   .course {
 
-    margin-bottom: 10px;
-
-  }
-
-  .course-head {
-
     display: flex;
-    align-items: center;
-    padding: 10px;
-    background: #eee;
-    border: 1px solid #ddd;
-    cursor: pointer;
+    align-items: flex-start;
+    border-top: 1px #e1e4e8 solid;
+    padding: 25px 10px;
 
   }
 
-  .course-name {
+  .course-info {
 
     flex: 1;
 
-  }
+    span + span {
 
-  .course-expand {
+      margin-left: 10px;
 
-    background: #eee;
-    border: none;
-    outline: none;
+    }
 
   }
 
-  .course-body {
+  .course:last-of-type {
 
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-top: none;
-
-  }
-
-  .double-header {
-
-    align-items: center;
-
-  }
-
-  .course-deselect {
-
-    background: #F44336;
-    color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px 25px;
-    outline: none;
-    cursor: pointer;
+    border-bottom: 1px #e1e4e8 solid;
 
   }
 
