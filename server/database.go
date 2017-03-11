@@ -249,7 +249,7 @@ func importDatabase() {
 
 	_, err = db.Exec(insert.String())
 	if ok := handleError(err); !ok {
-		fmt.Println(insert)
+		debug(insert)
 	}
 
 	debug("Inserting data from staging")
@@ -259,7 +259,7 @@ func importDatabase() {
 		handleError(err)
 	}
 
-	fmt.Println("Database imported")
+	debug("Database imported")
 }
 
 func importGradesDatabase() {
@@ -304,13 +304,17 @@ func importGradesDatabase() {
 
 func getCoursesFromIDString(ids string) []*Course {
 	var courses []*Course
-	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
+
 	where := "SELECT * FROM courses WHERE ID IN ("
 	where += ids + ")"
+
+	db := dbContext.open()
 	rows, err = db.Query(where)
-	fmt.Println(where)
+
+	debug(where)
+
 	defer rows.Close()
 	for rows.Next() {
 		course := &Course{}
@@ -323,24 +327,29 @@ func getCoursesFromIDString(ids string) []*Course {
 		handleError(err)
 		courses = append(courses, course)
 	}
+
 	err = rows.Err()
 	handleError(err)
-	return courses
 
+	return courses
 }
 
 func getMeetsFromSections(sections []*Section) []*Meet {
 	var meets []*Meet
-	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
+
+	db := dbContext.open()
 	where := "SELECT * FROM meets WHERE section_id IN ("
+
 	for _, section := range sections {
 		where += strconv.Itoa(section.ID) + ","
 	}
+
 	where = where[0 : len(where)-1]
 	where += ")"
 	rows, err = db.Query(where)
+
 	defer rows.Close()
 	for rows.Next() {
 		meet := &Meet{}
@@ -358,29 +367,31 @@ func getMeetsFromSections(sections []*Section) []*Meet {
 		}
 		meets = append(meets, meet)
 	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
+
+	handleError(rows.Err())
+
 	return meets
 }
+
 func getSectionsFromCourses(courses []*Course) []*Section {
 	var sections []*Section
-	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
+
+	db := dbContext.open()
 	where := "SELECT * FROM sections WHERE course_id IN ("
+
 	for _, course := range courses {
 		where += strconv.Itoa(course.ID) + ","
 	}
+
 	where = where[0 : len(where)-1]
 	where += ")"
 	rows, err = db.Query(where)
+	handleError(err)
 
-	if err != nil {
-		handleError(err)
-	}
-	fmt.Println(rows)
+	debug(rows)
+
 	defer rows.Close()
 	for rows.Next() {
 		section := &Section{}
@@ -388,23 +399,22 @@ func getSectionsFromCourses(courses []*Course) []*Section {
 			&section.CourseID,
 			&section.CRN,
 			&section.Name)
-		if err != nil {
-			handleError(err)
-		}
+		handleError(err)
 		sections = append(sections, section)
 	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
+
+	handleError(rows.Err())
+
 	return sections
 }
 
 func getCoursesFromDB(term string) []*Course {
 	var courses []*Course
-	db := dbContext.open()
 	var rows *sql.Rows
 	var err error
+
+	db := dbContext.open()
+
 	if term == "" {
 		rows, err = db.Query(selectCourses)
 		handleError(err)
@@ -412,6 +422,7 @@ func getCoursesFromDB(term string) []*Course {
 		rows, err = db.Query("SELECT * FROM courses WHERE term_id = $1", term)
 		handleError(err)
 	}
+
 	defer rows.Close()
 	for rows.Next() {
 		course := &Course{}
@@ -424,18 +435,19 @@ func getCoursesFromDB(term string) []*Course {
 		handleError(err)
 		courses = append(courses, course)
 	}
-	err = rows.Err()
-	handleError(err)
+
+	handleError(rows.Err())
+
 	return courses
 }
 
 func getTermsFromDB() []*Term {
 	var terms []*Term
+
 	db := dbContext.open()
 	rows, err := db.Query(selectTerms)
-	if err != nil {
-		handleError(err)
-	}
+	handleError(err)
+
 	defer rows.Close()
 	for rows.Next() {
 		term := &Term{}
@@ -447,10 +459,9 @@ func getTermsFromDB() []*Term {
 		}
 		terms = append(terms, term)
 	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
+
+	handleError(rows.Err())
+
 	return terms
 }
 
