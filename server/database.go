@@ -245,14 +245,14 @@ func importDatabase() {
 		}
 	}
 
-	debug("Inserting into staging")
+	debug("Inserting staging data")
 
 	_, err = db.Exec(insert.String())
 	if ok := handleError(err); !ok {
 		fmt.Println(insert)
 	}
 
-	debug("Inserting from staging")
+	debug("Inserting data from staging")
 
 	for _, insertStatement := range insertStatements {
 		_, err := db.Exec(insertStatement)
@@ -260,8 +260,6 @@ func importDatabase() {
 	}
 
 	fmt.Println("Database imported")
-
-	importGradesDatabase()
 }
 
 func importGradesDatabase() {
@@ -330,6 +328,7 @@ func getCoursesFromIDString(ids string) []*Course {
 	return courses
 
 }
+
 func getMeetsFromSections(sections []*Section) []*Meet {
 	var meets []*Meet
 	db := dbContext.open()

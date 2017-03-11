@@ -10,6 +10,7 @@ func main() {
 		switch os.Args[1] {
 		case "import":
 			importDatabase()
+			importGradesDatabase()
 		case "createdb":
 			if docker {
 				createTables()
