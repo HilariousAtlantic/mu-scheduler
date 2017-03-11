@@ -135,30 +135,11 @@ const (
 	VALUES `
 
 	insertGrades = `
-	INSERT INTO grades (gpa, instructor, subject, number, year, season, section) VALUES
-	`
+	INSERT INTO grades (gpa, instructor, subject, number, year, season, section) VALUES`
 
-	selectGrades = `
-	SELECT * FROM grades
-	`
-	selectTests = `
-	SELECT * FROM tests
-	`
-	selectMeets = `
-	SELECT * FROM meets
-	`
-	selectSections = `
-	SELECT * FROM sections
-	`
-	selectCourses = `
-	SELECT * FROM courses
-	`
-	selectTerms = `
-	SELECT * FROM terms
-	`
-	selectSubjects = `
-	SELECT DISTINCT subject FROM courses ORDER BY subject
-	`
+	selectCourses = `SELECT * FROM courses`
+
+	selectTerms = `SELECT * FROM terms`
 )
 
 var createTableStatements = [...]string{
