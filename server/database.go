@@ -449,32 +449,6 @@ func getCoursesFromDB(term string) []*Course {
 	return courses
 }
 
-func getSectionsFromDB() []*Section {
-	var sections []*Section
-	db := dbContext.open()
-	rows, err := db.Query(selectSections)
-	if err != nil {
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		section := &Section{}
-		err = rows.Scan(&section.ID,
-			&section.CourseID,
-			&section.CRN,
-			&section.Name)
-		if err != nil {
-			handleError(err)
-		}
-		sections = append(sections, section)
-	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
-	return sections
-}
-
 func getTermsFromDB() []*Term {
 	var terms []*Term
 	db := dbContext.open()
@@ -498,83 +472,6 @@ func getTermsFromDB() []*Term {
 		handleError(err)
 	}
 	return terms
-}
-
-func getMeetsFromDB() []*Meet {
-	var meets []*Meet
-	db := dbContext.open()
-	rows, err := db.Query(selectMeets)
-	if err != nil {
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		meet := &Meet{}
-		err = rows.Scan(&meet.ID,
-			&meet.SectionID,
-			&meet.Days,
-			&meet.StartTime,
-			&meet.EndTime,
-			&meet.Instructor,
-			&meet.Location,
-			&meet.StartDate,
-			&meet.EndDate)
-		if err != nil {
-			handleError(err)
-		}
-		meets = append(meets, meet)
-	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
-	return meets
-}
-
-func getTestsFromDB() []*Test {
-	var tests []*Test
-	db := dbContext.open()
-	rows, err := db.Query(selectTests)
-	if err != nil {
-		handleError(err)
-	}
-	defer rows.Close()
-	for rows.Next() {
-		test := &Test{}
-		err = rows.Scan(&test.ID,
-			&test.SectionID,
-			&test.Date,
-			&test.StartTime,
-			&test.EndTime)
-		if err != nil {
-			handleError(err)
-		}
-		tests = append(tests, test)
-	}
-	err = rows.Err()
-	if err != nil {
-		handleError(err)
-	}
-	return tests
-}
-
-func getSubjectsFromDB() []string {
-	var subjects []string
-
-	db := dbContext.open()
-	rows, err := db.Query(selectSubjects)
-	handleError(err)
-
-	defer rows.Close()
-	for rows.Next() {
-		var subject string
-		err = rows.Scan(&subject)
-		handleError(err)
-		subjects = append(subjects, subject)
-	}
-	err = rows.Err()
-	handleError(err)
-	return subjects
 }
 
 func deleteDatabase() {
