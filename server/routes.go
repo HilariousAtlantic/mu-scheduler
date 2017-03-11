@@ -26,35 +26,24 @@ func startServer() {
 }
 
 func termsIndex(c echo.Context) error {
-
 	terms := getTermsFromDB()
-
 	return c.JSON(http.StatusOK, terms)
-
 }
 
 func coursesIndex(c echo.Context) error {
-
 	term := c.QueryParam("term")
 	courses := getCoursesFromDB(term)
-
 	return c.JSON(http.StatusOK, courses)
-
 }
 
 func courseIndex(c echo.Context) error {
-
 	id := c.Param("id")
 	course := getCourseTree(id)[0]
-
 	return c.JSON(http.StatusOK, course)
-
 }
 
 func scheduleIndex(c echo.Context) error {
-
 	courses := c.QueryParam("courses")
 	schedules := findGoodSchedules(courses)
 	return c.JSON(http.StatusOK, schedules)
-
 }
