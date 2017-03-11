@@ -2,47 +2,73 @@
 
   <div class="filter-list">
 
-    <double-header>
+    <filter-group
+      label="Start Time"
+      filtertype="start"
+      :index="0/4"
+      :editing="editing == 'start'"
+      @edit="selectEditor('start')">
 
-      <span slot="left">Time Filters</span>
+      <start-filter
+        v-for="filter in getFilters('start')"
+        :active="filter.active"
+        :options="filter.options"
+      ></start-filter>
 
-      <button type="button" slot="right" @click="createTimeFilter">
+    </filter-group>
 
-        <i class="fa fa-plus"></i> Add Filter
+    <filter-group
+      label="Finish Time"
+      filtertype="finish"
+      :index="1/4"
+      :editing="editing == 'finish'"
+      @edit="selectEditor('finish')">
 
-      </button>
+      <finish-filter
+        v-for="filter in getFilters('finish')"
+        :active="filter.active"
+        :options="filter.options"
+      ></finish-filter>
 
-    </double-header>
+    </filter-group>
 
-    <time-filter v-for="filter in timeFilters" :filter="filter"></time-filter>
+    <filter-group
+      label="Break Time"
+      filtertype="break"
+      :index="2/4"
+      :editing="editing == 'break'"
+      @edit="selectEditor('break')">
 
-    <double-header>
+      <break-filter
+        v-for="filter in getFilters('break')"
+        :active="filter.active"
+        :options="filter.options"
+      ></break-filter>
 
-      <span slot="left">Class Filters</span>
+    </filter-group>
 
-      <button type="button" slot="right" @click="createClassFilter">
+    <filter-group
+      label="Class Load"
+      filtertype="class"
+      :index="3/4"
+      :editing="editing == 'class'"
+      @edit="selectEditor('class')">
 
-        <i class="fa fa-plus"></i> Add Filter
+      <class-filter
+        v-for="filter in getFilters('class')"
+        :active="filter.active"
+        :options="filter.options"
+      ></class-filter>
 
-      </button>
+    </filter-group>
 
-    </double-header>
+    <filter-group
+      label="Sections"
+      :index="4/4"
+      :editing="editing == 'section'"
+      @edit="selectEditor('section')">
 
-    <class-filter v-for="filter in classFilters" :filter="filter"></class-filter>
-
-    <double-header>
-
-      <span slot="left">Break Filters</span>
-
-      <button type="button" slot="right" @click="createBreakFilter">
-
-        <i class="fa fa-plus"></i> Add Filter
-
-      </button>
-
-    </double-header>
-
-    <break-filter v-for="filter in breakFilters" :filter="filter"></break-filter>
+    </filter-group>
 
   </div>
 
@@ -50,34 +76,23 @@
 
 <script>
 
-  import DoubleHeader from '../common/double-header.vue'
-  import TimeFilter from './time-filter.vue';
-  import ClassFilter from './class-filter.vue';
+  import StartFilter from './start-filter.vue';
+  import FinishFilter from './finish-filter.vue';
   import BreakFilter from './break-filter.vue';
+  import ClassFilter from './class-filter.vue';
+  import FilterGroup from './filter-group.vue';
 
   export default {
 
     name: 'filter-list',
 
-    components: {DoubleHeader, TimeFilter, ClassFilter, BreakFilter},
+    components: {StartFilter, FinishFilter, BreakFilter, ClassFilter, FilterGroup},
 
-    computed: {
+    data() {
 
-      timeFilters() {
+      return {
 
-        return this.$store.state.filters.filter(({type}) => type === 'time');
-
-      },
-
-      classFilters() {
-
-        return this.$store.state.filters.filter(({type}) => type === 'class');
-
-      },
-
-      breakFilters() {
-
-        return this.$store.state.filters.filter(({type}) => type === 'break');
+        editing: ''
 
       }
 
@@ -85,21 +100,15 @@
 
     methods: {
 
-      createTimeFilter() {
+      selectEditor(type) {
 
-        this.$store.dispatch('createFilter', 'time');
-
-      },
-
-      createClassFilter() {
-
-        this.$store.dispatch('createFilter', 'class');
+        this.editing = this.editing == type ? '' : type;
 
       },
 
-      createBreakFilter() {
+      getFilters(type) {
 
-        this.$store.dispatch('createFilter', 'break');
+        return this.$store.state.filters.filter(filter => filter.type === type);
 
       }
 
@@ -111,36 +120,16 @@
 
 <style scoped>
 
-  .double-header {
-
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: 900;
-
-    span {
-
-      padding-bottom: 2px;
-
-    }
-
+  .filter-list {
+    display: flex;
   }
 
-  button {
-
-    padding: 0;
-    background: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-weight: inherit;
-
-    &:hover {
-
-      border-bottom: 2px solid #333;
-
-    }
-
+  .filter-group {
+    flex: 1;
   }
 
+  .filter-group + .filter-group {
+    margin-left: 5px;
+  }
 
 </style>

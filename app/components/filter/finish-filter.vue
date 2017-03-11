@@ -1,20 +1,22 @@
 <template>
 
-  <div class="break-filter">
+  <div class="finish-filter">
 
     <input
       type="checkbox"
       class="form-checkbox"
     >
 
-    <time-input
-      :defaultValue="changes.start"
-      @change="handleStartChange"
-    ></time-input>
+    <option-input
+      :options="operators"
+      :defaultValue="changes.operator"
+      :renderOption="option => option"
+      @change="handleOperatorChange"
+    ></option-input>
 
     <time-input
-      :defaultValue="changes.finish"
-      @change="handleFinishChange"
+      :defaultValue="changes.time"
+      @change="handleTimeChange"
     ></time-input>
 
     <days-input
@@ -28,20 +30,23 @@
 
 <script>
 
+  import OptionInput from '../common/option-input.vue';
   import TimeInput from '../common/time-input.vue';
   import DaysInput from '../common/days-input.vue';
 
   export default {
 
-    name: 'break-filter',
+    name: 'finish-filter',
 
     props: ['active', 'options'],
 
-    components: {TimeInput, DaysInput},
+    components: {OptionInput, TimeInput, DaysInput},
 
     data() {
 
       return {
+
+        operators: ['Before', 'Exactly', 'After'],
 
         changes: {...this.options}
 
@@ -51,19 +56,20 @@
 
     methods: {
 
-      handleStartChange(start) {
+      handleOperatorChange(operator) {
 
-        this.changes.start = start;
+        this.changes.operator = operator;
         this.$emit('change', this.changes);
 
       },
 
-      handleFinishChange(finish) {
+      handleTimeChange(time) {
 
-        this.changes.finish = finish;
+        this.changes.time = time;
         this.$emit('change', this.changes);
 
       },
+
 
       handleDaysChange(days) {
 
@@ -80,12 +86,12 @@
 
 <style scoped>
 
-  .break-filter {
+  .finish-filter {
     display: flex;
     align-items: center;
   }
 
-  .break-filter > * + * {
+  .finish-filter > * + * {
     margin-left: 10px;
   }
 

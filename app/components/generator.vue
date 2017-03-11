@@ -2,31 +2,9 @@
 
   <div class="generator">
 
-    <div class="tabnav">
+    <div class="navbar">
 
-      <button class="btn btn-sm btn-primary right">Generate Schedules</button>
-
-      <nav class="tabnav-tabs">
-
-        <router-link active-class="selected" class="tabnav-tab" to="courses">
-
-          <span>Courses</span>
-
-        </router-link>
-
-        <router-link active-class="selected" class="tabnav-tab" to="filters">
-
-          <span>Filters</span>
-
-        </router-link>
-
-        <router-link active-class="selected" class="tabnav-tab" to="schedules">
-
-          <span>Schedules</span>
-
-        </router-link>
-
-      </nav>
+      <a href="/">Course Scheduler for Miami University</a>
 
     </div>
 
@@ -44,7 +22,17 @@
 
   export default {
 
-    name: 'generator'
+    name: 'generator',
+
+    mounted() {
+
+      this.$store.dispatch('fetchTerms');
+      this.$store.dispatch('createFilter', 'start');
+      this.$store.dispatch('createFilter', 'finish');
+      this.$store.dispatch('createFilter', 'break');
+      this.$store.dispatch('createFilter', 'class');
+
+    }
 
   }
 
@@ -52,19 +40,23 @@
 
 <style>
 
-  .generator {
+  .navbar {
 
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
+    background: #B61E2E;
+    padding: 20px;
+
+    a {
+      font-size: 1.25rem;
+      text-decoration: none;
+      color: #f5f5f5;
+    }
 
   }
 
-  .btn-sm.btn-primary {
-
-    font-weight: normal;
-    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
-
+  .view {
+    width: 90%;
+    max-width: 950px;
+    margin: 20px auto;
   }
 
 </style>

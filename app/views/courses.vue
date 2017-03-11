@@ -2,7 +2,14 @@
 
   <div class="courses-view">
 
+    <course-search></course-search>
+
     <course-list></course-list>
+
+    <router-link
+      to="schedules"
+      class="generate-button btn btn-block btn-primary"
+    >Generate Schedules</router-link>
 
   </div>
 
@@ -10,45 +17,14 @@
 
 <script>
 
-  import DoubleHeader from '../components/common/double-header.vue';
+  import CourseSearch from '../components/course/course-search.vue';
   import CourseList from '../components/course/course-list.vue';
 
   export default {
 
     name: 'courses-view',
 
-    components: {DoubleHeader, CourseList},
-
-    computed: {
-
-      selectedTerm() {
-
-        let term = this.$store.state.selectedTerm.name;
-
-        return term ? 'for ' + term : '';
-
-      },
-
-      totalCredits() {
-
-        let minTotal = 0;
-        let maxTotal = 0;
-
-        this.$store.getters.selectedCourses.forEach(({credits}) => {
-
-          let [min, max] = credits.split('-');
-
-          minTotal += parseInt(min);
-
-          maxTotal += parseInt(max ? max : min);
-
-        });
-
-        return minTotal === maxTotal ? minTotal : minTotal + '-' + maxTotal;
-
-      }
-
-    },
+    components: {CourseSearch, CourseList},
 
     methods: {
 
@@ -66,41 +42,12 @@
 
 <style scoped>
 
-  .double-header {
-
-    font-weight: 900;
-    font-size: 1.25rem;
-
-  }
-
   .course-list {
-
-    margin: 20px 0;
-
+    margin: 10px 0;
   }
 
-  .selected-courses {
-
-    margin-bottom: 20px;
-
-  }
-
-  .schedules-generate {
-
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background: #4CAF50;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-
-    &:hover {
-
-      background: #43A047;
-
-    }
-
+  .generate-button {
+    font-weight: normal;
   }
 
 </style>

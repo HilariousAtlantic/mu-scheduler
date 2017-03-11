@@ -1,10 +1,12 @@
 const defaultOptions = {
 
-  time: {operator: 'Start After', time: 600, days: ['M', 'W', 'F']},
+  start: {operator: 'After', time: 600, days: ['M', 'W', 'F']},
 
-  class: {operator: 'Exactly', amount: 3, days: ['T', 'R']},
+  finish: {operator: 'Before', time: 600, days: ['M', 'W', 'F']},
 
-  break: {start: 720, finish: 780, days: ['T', 'W', 'R']}
+  break: {start: 660, finish: 780, days: ['T', 'W', 'R']},
+
+  class: {operator: 'At Most', amount: 3, days: ['T', 'R']}
 
 }
 
@@ -18,51 +20,85 @@ export function getFilter(type, options) {
 
   switch (type) {
 
-    case 'time':
+    case 'start':
 
-      return getTimeFilter(options);
+      return getStartFilter(options);
 
-    case 'class':
+    case 'finish':
 
-      return getClassFilter(options);
+      return getFinishFilter(options);
 
     case 'break':
 
       return getBreakFilter(options);
 
+    case 'class':
+
+      return getClassFilter(options);
+
   }
 
 }
 
-export function getTimeFilter({operator, time, days}) {
+export function getStartFilter({operator, time, days}) {
 
-  return function({startTimes, endTimes}) {
+  return function({startTimes}) {
 
     for (let day of days) {
 
       switch (operator.toLowerCase()) {
 
-        case 'start before':
+        case 'before':
 
           if (startTimes[day] > time) return false;
 
           break;
 
-        case 'start after':
+        case 'after':
 
           if (startTimes[day] < time) return false;
 
           break;
 
-        case 'finish before':
+        case 'exactly':
+
+          if (startTimes[day] != time) return false;
+
+          break;
+
+      }
+
+    }
+
+    return true;
+
+  }
+
+}
+
+export function getFinishFilter({operator, time, days}) {
+
+  return function({endTimes}) {
+
+    for (let day of days) {
+
+      switch (operator.toLowerCase()) {
+
+        case 'before':
 
           if (endTimes[day] > time) return false;
 
           break;
 
-        case 'finish after':
+        case 'after':
 
           if (endTimes[day] < time) return false;
+
+          break;
+
+        case 'exactly':
+
+          if (endTimes[day] != time) return false;
 
           break;
 

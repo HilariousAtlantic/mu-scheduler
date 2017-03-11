@@ -2,25 +2,8 @@
 
   <div class="schedule-list">
 
-    <double-header>
-
-      <div slot="left">
-
-        <button class="schedule-more" @click="toggleDetails">{{showHide}} Details</button>
-
-      </div>
-
-      <div slot="right">
-
-        <button @click="$emit('prev')">Prev</button>
-
-        <button @click="$emit('next')">Next</button>
-
-      </div>
-
-    </double-header>
-
-    <schedule-details v-if="showDetails"
+    <!---<schedule-details
+      v-if="showDetails"
       :courses="schedule.courses"
       :gpa="schedule.gpa"
     ></schedule-details>
@@ -29,7 +12,7 @@
       :courses="schedule.courses"
       :start="schedule.start"
       :length="schedule.length"
-    ></schedule-calendar>
+    ></schedule-calendar>-->
 
   </div>
 
@@ -37,7 +20,6 @@
 
 <script>
 
-  import DoubleHeader from '../common/double-header.vue';
   import ScheduleDetails from './schedule-details.vue';
   import ScheduleCalendar from './schedule-calendar.vue';
 
@@ -47,7 +29,7 @@
 
     props: ['index'],
 
-    components: {DoubleHeader, ScheduleDetails, ScheduleCalendar},
+    components: {ScheduleDetails, ScheduleCalendar},
 
     data() {
 
@@ -90,46 +72,5 @@
 </script>
 
 <style scoped>
-
-  .double-header {
-
-    margin-bottom: 10px;
-
-  }
-
-  button {
-
-    border: 1px solid #ddd;
-    padding: 10px 50px;
-    background: #eee;
-    outline: none;
-    cursor: pointer;
-
-    &:hover {
-
-      background: #ddd;
-
-    }
-
-  }
-
-  .schedule-more {
-
-    background: #1565C0;
-    color: #fff;
-
-    &:hover {
-
-      background: #0D47A1;
-
-    }
-
-  }
-
-  .schedule-details {
-
-    margin-bottom: 10px;
-
-  }
 
 </style>

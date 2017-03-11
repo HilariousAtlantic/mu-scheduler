@@ -7,11 +7,8 @@ import getters from './store/getters';
 import mutations from './store/mutations';
 import actions from './store/actions';
 
-import App from './components/app.vue';
 import Generator from './components/generator.vue';
-
 import Courses from './views/courses.vue';
-import Filters from './views/filters.vue';
 import Schedules from './views/schedules.vue';
 
 Vue.use(Vuex);
@@ -25,17 +22,15 @@ let router = new VueRouter({
 
   routes: [
 
-    {path: '/', redirect: 'courses', component: App, children: [
+    {path: '/', redirect: 'courses', component: Generator, children: [
 
       {name: 'courses', path: '/courses', component: Courses},
-
-      {name: 'filters', path: '/filters', component: Filters},
 
       {name: 'schedules', path: '/schedules', component: Schedules}
 
     ]},
 
-    {path: '*', redirect: '/courses'}
+    {path: '*', redirect: 'courses'}
 
   ]
 

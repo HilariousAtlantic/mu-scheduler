@@ -1,28 +1,27 @@
 <template>
 
-  <div class="class-filter">
+  <div class="start-filter">
 
     <input
       type="checkbox"
-      class="form-checkbox"
-    >
+      class="form-checkbox">
 
     <option-input
       :options="operators"
       :defaultValue="changes.operator"
       :renderOption="option => option"
-      @change="handleOperatorChange"
-    ></option-input>
+      @change="handleOperatorChange">
+    </option-input>
 
-    <number-input
-      :defaultValue="changes.amount"
-      @change="handleAmountChange"
-    ></number-input>
+    <time-input
+      :defaultValue="changes.time"
+      @change="handleTimeChange">
+    </time-input>
 
     <days-input
       :defaultValue="changes.days"
-      @change="handleDaysChange"
-    ></days-input>
+      @change="handleDaysChange">
+    </days-input>
 
   </div>
 
@@ -31,22 +30,22 @@
 <script>
 
   import OptionInput from '../common/option-input.vue';
-  import NumberInput from '../common/number-input.vue';
+  import TimeInput from '../common/time-input.vue';
   import DaysInput from '../common/days-input.vue';
 
   export default {
 
-    name: 'class-filter',
+    name: 'start-filter',
 
     props: ['active', 'options'],
 
-    components: {OptionInput, NumberInput, DaysInput},
+    components: {OptionInput, TimeInput, DaysInput},
 
     data() {
 
       return {
 
-        operators: ['At Least', 'Exactly', 'At Most'],
+        operators: ['Before', 'Exactly', 'After'],
 
         changes: {...this.options}
 
@@ -59,14 +58,14 @@
       handleOperatorChange(operator) {
 
         this.changes.operator = operator;
-        this.$emit('change', this.changes);
+        this.$emit('update', this.changes);
 
       },
 
-      handleAmountChange(amount) {
+      handleTimeChange(time) {
 
-        this.changes.amount = amount;
-        this.$emit('change', this.changes);
+        this.changes.time = time;
+        this.$emit('update', this.changes);
 
       },
 
@@ -74,7 +73,7 @@
       handleDaysChange(days) {
 
         this.changes.days = days;
-        this.$emit('change', this.changes);
+        this.$emit('update', this.changes);
 
       }
 
@@ -86,12 +85,12 @@
 
 <style scoped>
 
-  .class-filter {
+  .start-filter {
     display: flex;
     align-items: center;
   }
 
-  .class-filter > * + * {
+  .start-filter > * + * {
     margin-left: 10px;
   }
 
