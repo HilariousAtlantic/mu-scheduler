@@ -30,7 +30,7 @@ func main() {
 				createDatabase()
 			}
 		case "gpas":
-			importGPAs()
+			importGradesDatabase()
 		default:
 			startServer()
 		}
