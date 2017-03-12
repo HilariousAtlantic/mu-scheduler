@@ -56,14 +56,14 @@
       handleOperatorChange(operator) {
 
         this.changes.operator = operator;
-        this.$emit('change', this.changes);
+        this.submitChanges();
 
       },
 
       handleTimeChange(time) {
 
         this.changes.time = time;
-        this.$emit('change', this.changes);
+        this.submitChanges();
 
       },
 
@@ -71,7 +71,16 @@
       handleDaysChange(days) {
 
         this.changes.days = days;
-        this.$emit('change', this.changes);
+        this.submitChanges();
+
+      },
+
+      submitChanges() {
+
+        let changes = {...this.changes};
+        let id = this.id;
+
+        this.$store.dispatch('changeFilter', {id, changes});
 
       },
 

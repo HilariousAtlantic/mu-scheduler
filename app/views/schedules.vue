@@ -97,6 +97,10 @@
 
 <style scoped>
 
+  .blankslate {
+    padding: 50px 30px;
+  }
+
   .filter-list, .schedule-toolbar, .schedule-list, .blankslate  {
     margin-bottom: 10px;
   }

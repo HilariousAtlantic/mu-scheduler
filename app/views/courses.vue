@@ -4,16 +4,24 @@
 
     <course-search></course-search>
 
-    <course-list></course-list>
+    <div v-if="showInstructions" class="blankslate">
+      <h2>No Courses Selected</h2>
+      <p>Use the search bar to select the classes you would like to take</p>
+    </div>
 
-    <button
-      class="btn btn-block btn-primary"
-      :class="{disabled: !canGenerateSchedules}"
-      @click="generateSchedules">
+    <div v-else>
 
-      <span>Generate Schedules</span>
+      <course-list></course-list>
 
-    </button>
+      <button
+        class="btn btn-block btn-primary"
+        @click="generateSchedules">
+
+        <span>Generate Schedules</span>
+
+      </button>
+
+    </div>
 
   </div>
 
@@ -32,9 +40,9 @@
 
     computed: {
 
-      canGenerateSchedules() {
+      showInstructions() {
 
-        return this.$store.state.selectedCourses.length > 0;
+        return this.$store.state.selectedCourses.length === 0;
 
       }
 
@@ -44,15 +52,11 @@
 
       generateSchedules() {
 
-        if (this.canGenerateSchedules) {
+        this.$store.dispatch('generateSchedules').then(schedules => {
 
-          this.$store.dispatch('generateSchedules').then(schedules => {
+          if (schedules) this.$router.push('schedules');
 
-            if (schedules) this.$router.push('schedules');
-
-          });
-
-        }
+        });
 
       }
 
@@ -64,8 +68,12 @@
 
 <style scoped>
 
-  .course-list {
-    margin: 10px 0;
+  .blankslate {
+    padding: 50px 30px;
+  }
+
+  .course-search, .course-list {
+    margin-bottom: 10px;
   }
 
   .btn-primary {
