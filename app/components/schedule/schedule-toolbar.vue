@@ -4,7 +4,8 @@
 
     <div class="schedule-options">
 
-      <div class="btn-group">
+      <div class="btn-group tooltipped tooltipped-n"
+        aria-label="Display options coming soon!">
 
         <button class="btn"><span class="fa fa-square"></span></button>
 
