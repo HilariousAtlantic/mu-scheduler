@@ -8,6 +8,12 @@
 
     <schedule-list :index="index"></schedule-list>
 
+    <router-link to="courses" class="btn btn-block btn-primary">
+
+      <span>Select Courses</span>
+
+    </router-link>
+
   </div>
 
 </template>
@@ -64,8 +70,20 @@
 
 <style scoped>
 
+  .filter-list  {
+    margin-bottom: 10px;
+  }
+
   .schedule-toolbar {
-    margin: 10px 0;
+    margin-bottom: 10px;
+  }
+
+  .schedule-list {
+    margin-bottom: 10px;
+  }
+
+  .btn-primary {
+    font-weight: normal;
   }
 
 </style>
