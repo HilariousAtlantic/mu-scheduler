@@ -2,11 +2,28 @@
 
   <div class="schedules-view">
 
-    <filter-list></filter-list>
+    <div v-if="scheduleCount == 0" class="blankslate">
 
-    <schedule-toolbar :index="index" @dec="decreaseIndex" @inc="increaseIndex"></schedule-toolbar>
+      <h2>No Schedules</h2>
 
-    <schedule-list :index="index"></schedule-list>
+      <p>You may have chosen courses that do not have any valid schedules</p>
+
+    </div>
+
+    <div v-else>
+
+      <filter-list></filter-list>
+
+      <schedule-toolbar
+        :index="index"
+        :length="scheduleCount"
+        @details="showDetails = !showDetails"
+        @change="handleIndexChange"
+      ></schedule-toolbar>
+
+      <schedule-list :index="index"></schedule-list>
+
+    </div>
 
     <router-link to="courses" class="btn btn-block btn-primary">
 
@@ -34,7 +51,19 @@
 
       return {
 
-        index: 0
+        index: 0,
+
+        showDetails: false
+
+      }
+
+    },
+
+    computed: {
+
+      scheduleCount() {
+
+        return this.$store.getters.filteredSchedules.length;
 
       }
 
@@ -42,21 +71,19 @@
 
     methods: {
 
-      decreaseIndex() {
+      handleIndexChange(index) {
 
-        if (this.index > 0) {
+        if (index < 0) {
 
-          this.index--;
+          this.index = 0;
 
-        }
+        } else if (index > this.scheduleCount-1) {
 
-      },
+          this.index = this.scheduleCount-1;
 
-      increaseIndex() {
+        } else {
 
-        if (this.index < this.$store.state.schedules.length-1) {
-
-          this.index++;
+          this.index = index;
 
         }
 

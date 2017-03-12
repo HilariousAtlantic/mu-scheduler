@@ -1,20 +1,6 @@
 <template>
 
-  <div v-if="$store.getters.filteredSchedules.length === 0" class="blankslate">
-
-    <h2>No Schedules</h2>
-
-    <p>You may have chosen courses that do not have any valid schedules</p>
-
-  </div>
-
   <div v-else class="schedule-list">
-
-    <schedule-details
-      v-if="showDetails"
-      :courses="schedule.courses"
-      :gpa="schedule.gpa"
-    ></schedule-details>
 
     <schedule-calendar
       :courses="schedule.courses"
@@ -28,48 +14,21 @@
 
 <script>
 
-  import ScheduleDetails from './schedule-details.vue';
   import ScheduleCalendar from './schedule-calendar.vue';
 
   export default {
 
     name: 'schedule-list',
 
-    props: ['index'],
+    props: ['index', 'showDetails'],
 
-    components: {ScheduleDetails, ScheduleCalendar},
-
-    data() {
-
-      return {
-
-        showDetails: false
-
-      }
-
-    },
+    components: {ScheduleCalendar},
 
     computed: {
 
       schedule() {
 
         return this.$store.getters.filteredSchedules[this.index];
-
-      },
-
-      showHide() {
-
-        return this.showDetails ? 'Hide' : 'More';
-
-      }
-
-    },
-
-    methods: {
-
-      toggleDetails() {
-
-        this.showDetails = !this.showDetails;
 
       }
 
