@@ -15,6 +15,13 @@
 
       <slot></slot>
 
+      <button class="create-button btn" @click="createFilter">
+
+        <span class="fa fa-plus"></span>
+        <span> Add Filter</span>
+
+      </button>
+
     </div>
 
   </div>
@@ -46,6 +53,12 @@
         let type = this.editing ? '' : this.filterType;
 
         this.$store.dispatch('selectEditor', type);
+
+      },
+
+      createFilter() {
+
+        this.$store.dispatch('createFilter', this.filterType);
 
       }
 

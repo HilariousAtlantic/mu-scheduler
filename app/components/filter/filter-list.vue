@@ -4,74 +4,41 @@
 
     <filter-group filterType="start" label="Start Time">
 
-      <start-filter
-        v-for="filter in getFilters('start')"
+      <start-filter v-for="filter in getFilters('start')"
         :id="filter.id"
         :options="filter.options"
       ></start-filter>
-
-      <button class="create-button btn" @click="$store.dispatch('createFilter', 'start')">
-
-        <span class="fa fa-plus"></span>
-        <span> Add Filter</span>
-
-      </button>
 
     </filter-group>
 
     <filter-group filterType="finish" label="Finish Time">
 
-      <finish-filter
-        v-for="filter in getFilters('finish')"
+      <finish-filter v-for="filter in getFilters('finish')"
         :id="filter.id"
         :options="filter.options"
       ></finish-filter>
-
-      <button class="create-button btn" @click="$store.dispatch('createFilter', 'finish')">
-
-        <span class="fa fa-plus"></span>
-        <span> Add Filter</span>
-
-      </button>
 
     </filter-group>
 
     <filter-group filterType="break" label="Break Time">
 
-      <break-filter
-        v-for="filter in getFilters('break')"
+      <break-filter v-for="filter in getFilters('break')"
         :id="filter.id"
         :options="filter.options"
       ></break-filter>
-
-      <button class="create-button btn" @click="$store.dispatch('createFilter', 'break')">
-
-        <span class="fa fa-plus"></span>
-        <span> Add Filter</span>
-
-      </button>
 
     </filter-group>
 
     <filter-group filterType="class" label="Class Load">
 
-      <class-filter
-        v-for="filter in getFilters('class')"
+      <class-filter v-for="filter in getFilters('class')"
         :id="filter.id"
         :options="filter.options"
       ></class-filter>
 
-      <button class="create-button btn" @click="$store.dispatch('createFilter', 'class')">
-
-        <span class="fa fa-plus"></span>
-        <span> Add Filter</span>
-
-      </button>
-
     </filter-group>
 
-    <button
-      class="filter-button btn btn-danger"
+    <button class="filter-button btn btn-danger"
       :class="{disabled: !canClearFilters}"
       @click="clearFilters">
 
@@ -79,8 +46,7 @@
 
     </button>
 
-    <button
-      class="filter-button btn btn-primary"
+    <button class="filter-button btn btn-primary"
       :class="{disabled: !canApplyFilters}"
       @click="applyFilters">
 
