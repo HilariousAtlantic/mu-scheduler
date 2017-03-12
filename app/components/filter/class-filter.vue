@@ -1,11 +1,6 @@
 <template>
 
-  <div class="class-filter">
-
-    <input
-      type="checkbox"
-      class="form-checkbox"
-    >
+  <div class="class-filter filter">
 
     <option-input
       :options="operators"
@@ -24,6 +19,8 @@
       @change="handleDaysChange"
     ></days-input>
 
+    <button class="btn btn-danger" @click="handleFilterDelete">Remove</button>
+
   </div>
 
 </template>
@@ -38,7 +35,7 @@
 
     name: 'class-filter',
 
-    props: ['active', 'options'],
+    props: ['id', 'options'],
 
     components: {OptionInput, NumberInput, DaysInput},
 
@@ -59,14 +56,14 @@
       handleOperatorChange(operator) {
 
         this.changes.operator = operator;
-        this.$emit('change', this.changes);
+        this.submitChanges();
 
       },
 
       handleAmountChange(amount) {
 
         this.changes.amount = amount;
-        this.$emit('change', this.changes);
+        this.submitChanges();
 
       },
 
@@ -74,7 +71,22 @@
       handleDaysChange(days) {
 
         this.changes.days = days;
-        this.$emit('change', this.changes);
+        this.submitChanges();
+
+      },
+
+      submitChanges() {
+
+        let changes = {...this.changes};
+        let id = this.id;
+
+        this.$store.dispatch('changeFilter', {id, changes});
+
+      },
+
+      handleFilterDelete() {
+
+        this.$store.dispatch('deleteFilter', this.id);
 
       }
 

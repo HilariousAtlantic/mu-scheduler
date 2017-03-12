@@ -1,11 +1,6 @@
 <template>
 
-  <div class="finish-filter">
-
-    <input
-      type="checkbox"
-      class="form-checkbox"
-    >
+  <div class="finish-filter filter">
 
     <option-input
       :options="operators"
@@ -24,6 +19,8 @@
       @change="handleDaysChange"
     ></days-input>
 
+    <button class="btn btn-danger" @click="handleFilterDelete">Remove</button>
+
   </div>
 
 </template>
@@ -38,7 +35,7 @@
 
     name: 'finish-filter',
 
-    props: ['active', 'options'],
+    props: ['id', 'options'],
 
     components: {OptionInput, TimeInput, DaysInput},
 
@@ -75,6 +72,12 @@
 
         this.changes.days = days;
         this.$emit('change', this.changes);
+
+      },
+
+      handleFilterDelete() {
+
+        this.$store.dispatch('deleteFilter', this.id);
 
       }
 

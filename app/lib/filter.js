@@ -50,15 +50,21 @@ export function getStartFilter({operator, time, days}) {
 
         case 'before':
 
-          return startTimes[day] < time;
+          if (startTimes[day] >= time) return false;
+
+          break;
 
         case 'after':
 
-          return startTimes[day] > time;
+          if (startTimes[day] <= time) return false;
+
+          break;
 
         case 'exactly':
 
-          return startTimes[day] == time;
+          if (startTimes[day] != time) return false;
+
+          break;
 
       }
 
@@ -80,15 +86,21 @@ export function getFinishFilter({operator, time, days}) {
 
         case 'before':
 
-          return endTimes[day] > time;
+          if (endTimes[day] >= time) return false;
+
+          break;
 
         case 'after':
 
-          return endTimes[day] < time;
+          if (endTimes[day] <= time) return false;
+
+          break;
 
         case 'exactly':
 
-          return endTimes[day] == time;
+          if (endTimes[day] != time) return false;
+
+          break;
 
       }
 

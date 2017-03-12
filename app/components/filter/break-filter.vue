@@ -1,11 +1,6 @@
 <template>
 
-  <div class="break-filter">
-
-    <input
-      type="checkbox"
-      class="form-checkbox"
-    >
+  <div class="break-filter filter">
 
     <time-input
       :defaultValue="changes.start"
@@ -22,6 +17,8 @@
       @change="handleDaysChange"
     ></days-input>
 
+    <button class="btn btn-danger" @click="handleFilterDelete">Remove</button>
+
   </div>
 
 </template>
@@ -35,7 +32,7 @@
 
     name: 'break-filter',
 
-    props: ['active', 'options'],
+    props: ['id', 'options'],
 
     components: {TimeInput, DaysInput},
 
@@ -54,21 +51,36 @@
       handleStartChange(start) {
 
         this.changes.start = start;
-        this.$emit('change', this.changes);
+        this.submitChanges();
 
       },
 
       handleFinishChange(finish) {
 
         this.changes.finish = finish;
-        this.$emit('change', this.changes);
+        this.submitChanges();
 
       },
 
       handleDaysChange(days) {
 
         this.changes.days = days;
-        this.$emit('change', this.changes);
+        this.submitChanges();
+
+      },
+
+      submitChanges() {
+
+        let changes = {...this.changes};
+        let id = this.id;
+
+        this.$store.dispatch('changeFilter', {id, changes});
+
+      },
+
+      handleFilterDelete() {
+
+        this.$store.dispatch('deleteFilter', this.id);
 
       }
 

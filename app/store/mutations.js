@@ -117,21 +117,7 @@ export default {
     let id = Math.max(0, ...state.filters.map(filter => filter.id))+1;
     let options = getDefaultOptions(type);
 
-    state.filters.push({id, type, options, active: false});
-
-  },
-
-  TOGGLE_FILTER(state, id) {
-
-    state.filters = state.filters.map(filter => {
-
-      if (filter.id === id) {
-
-        return {...filter, active: !filter.active}
-
-      } else return filter;
-
-    });
+    state.filters.push({id, type, options, changes: options});
 
   },
 
@@ -161,9 +147,9 @@ export default {
 
       if (filter.changes) {
 
-        let {id, type, active, changes} = filter;
+        let {id, type, changes} = filter;
 
-        return {id, type, active, options: changes, test: getFilter(type, changes)};
+        return {id, type, options: changes, test: getFilter(type, changes)};
 
       }
 

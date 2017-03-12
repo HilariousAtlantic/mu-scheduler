@@ -1,11 +1,6 @@
 <template>
 
-  <div class="start-filter">
-
-    <input
-      type="checkbox"
-      class="form-checkbox"
-      @change="handleActiveToggle">
+  <div class="start-filter filter">
 
     <option-input
       :options="operators"
@@ -24,6 +19,8 @@
       @change="handleDaysChange">
     </days-input>
 
+    <button class="btn btn-danger" @click="handleFilterDelete">Remove</button>
+
   </div>
 
 </template>
@@ -38,7 +35,7 @@
 
     name: 'start-filter',
 
-    props: ['id', 'active', 'options'],
+    props: ['id', 'options'],
 
     components: {OptionInput, TimeInput, DaysInput},
 
@@ -55,12 +52,6 @@
     },
 
     methods: {
-
-      handleActiveToggle() {
-
-        this.$store.dispatch('toggleFilter', this.id);
-
-      },
 
       handleOperatorChange(operator) {
 
@@ -90,6 +81,12 @@
         let id = this.id;
 
         this.$store.dispatch('changeFilter', {id, changes});
+
+      },
+
+      handleFilterDelete() {
+
+        this.$store.dispatch('deleteFilter', this.id);
 
       }
 

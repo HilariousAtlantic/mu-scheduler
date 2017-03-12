@@ -2,6 +2,8 @@
 
   <div class="schedules-view">
 
+    <filter-list></filter-list>
+
     <div v-if="scheduleCount == 0" class="blankslate">
 
       <h2>No Schedules</h2>
@@ -11,8 +13,6 @@
     </div>
 
     <div v-else>
-
-      <filter-list></filter-list>
 
       <schedule-toolbar
         :index="index"
@@ -97,15 +97,7 @@
 
 <style scoped>
 
-  .filter-list  {
-    margin-bottom: 10px;
-  }
-
-  .schedule-toolbar {
-    margin-bottom: 10px;
-  }
-
-  .schedule-list {
+  .filter-list, .schedule-toolbar, .schedule-list, .blankslate  {
     margin-bottom: 10px;
   }
 

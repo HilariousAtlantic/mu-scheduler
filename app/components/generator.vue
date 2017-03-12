@@ -27,10 +27,6 @@
     mounted() {
 
       this.$store.dispatch('fetchTerms');
-      this.$store.dispatch('createFilter', 'start');
-      this.$store.dispatch('createFilter', 'finish');
-      this.$store.dispatch('createFilter', 'break');
-      this.$store.dispatch('createFilter', 'class');
 
     }
 

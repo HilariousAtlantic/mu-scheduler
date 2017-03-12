@@ -4,14 +4,13 @@
 
     <filter-group
       label="Start Time"
-      :index="0/4"
+      :index="0/3"
       :editing="editing == 'start'"
       @edit="selectEditor('start')">
 
       <start-filter
         v-for="filter in getFilters('start')"
         :id="filter.id"
-        :active="filter.active"
         :options="filter.options"
       ></start-filter>
 
@@ -26,13 +25,13 @@
 
     <filter-group
       label="Finish Time"
-      :index="1/4"
+      :index="1/3"
       :editing="editing == 'finish'"
       @edit="selectEditor('finish')">
 
       <finish-filter
         v-for="filter in getFilters('finish')"
-        :active="filter.active"
+        :id="filter.id"
         :options="filter.options"
       ></finish-filter>
 
@@ -47,13 +46,13 @@
 
     <filter-group
       label="Break Time"
-      :index="2/4"
+      :index="2/3"
       :editing="editing == 'break'"
       @edit="selectEditor('break')">
 
       <break-filter
         v-for="filter in getFilters('break')"
-        :active="filter.active"
+        :id="filter.id"
         :options="filter.options"
       ></break-filter>
 
@@ -68,13 +67,13 @@
 
     <filter-group
       label="Class Load"
-      :index="3/4"
+      :index="3/3"
       :editing="editing == 'class'"
       @edit="selectEditor('class')">
 
       <class-filter
         v-for="filter in getFilters('class')"
-        :active="filter.active"
+        :id="filter.id"
         :options="filter.options"
       ></class-filter>
 
@@ -87,20 +86,14 @@
 
     </filter-group>
 
-    <filter-group
-      label="Sections"
-      :index="4/4"
-      :editing="editing == 'section'"
-      @edit="selectEditor('section')">
-
-      <section-filter></section-filter>
-
-    </filter-group>
-
     <button
       class="apply-button btn btn-primary"
-      @click="$store.dispatch('applyFilters')"
-    >Apply Changes</button>
+      :class="{disabled: !canApplyChanges}"
+      @click="$store.dispatch('applyFilters')">
+
+      <span>Apply Changes</span>
+
+    </button>
 
   </div>
 
@@ -126,6 +119,22 @@
       return {
 
         editing: ''
+
+      }
+
+    },
+
+    computed: {
+
+      canApplyChanges() {
+
+        for (let filter of this.$store.state.filters) {
+
+          if (filter.changes) return true;
+
+        }
+
+        return false;
 
       }
 
@@ -165,8 +174,8 @@
     margin-left: 5px;
   }
 
-  .create-button {
-    margin-top: 10px;
+  .filter {
+    margin-bottom: 10px;
   }
 
 </style>

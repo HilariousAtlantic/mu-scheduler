@@ -3,7 +3,7 @@
   <input
     type="number"
     class="number-input form-control"
-    v-model="number"
+    v-model.number="number"
     @change="handleNumberChange"
   />
 
@@ -45,6 +45,7 @@
 
   input {
     width: 50px;
+    text-align: center;
   }
 
 </style>

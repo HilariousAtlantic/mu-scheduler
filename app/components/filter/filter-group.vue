@@ -71,7 +71,7 @@
 
   .group-editor {
     position: absolute;
-    width: 450px;
+    width: 520px;
     padding: 20px;
     background: #fff;
     border: 1px solid #ddd;
