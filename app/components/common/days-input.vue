@@ -5,6 +5,7 @@
     <button
       class="btn"
       v-for="day in days"
+      :class="{selected: isSelected(day)}"
       @click="handleDayChange(day)"
     >{{day}}</button>
 
@@ -50,6 +51,12 @@
         }
 
         this.$emit('change', this.selectedDays);
+
+      },
+
+      isSelected(day) {
+
+        return this.selectedDays.indexOf(day) !== -1;
 
       }
 

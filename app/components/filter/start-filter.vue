@@ -4,7 +4,8 @@
 
     <input
       type="checkbox"
-      class="form-checkbox">
+      class="form-checkbox"
+      @change="handleActiveToggle">
 
     <option-input
       :options="operators"
@@ -37,7 +38,7 @@
 
     name: 'start-filter',
 
-    props: ['active', 'options'],
+    props: ['id', 'active', 'options'],
 
     components: {OptionInput, TimeInput, DaysInput},
 
@@ -55,17 +56,23 @@
 
     methods: {
 
+      handleActiveToggle() {
+
+        this.$store.dispatch('toggleFilter', this.id);
+
+      },
+
       handleOperatorChange(operator) {
 
         this.changes.operator = operator;
-        this.$emit('update', this.changes);
+        this.submitChanges();
 
       },
 
       handleTimeChange(time) {
 
         this.changes.time = time;
-        this.$emit('update', this.changes);
+        this.submitChanges();
 
       },
 
@@ -73,7 +80,16 @@
       handleDaysChange(days) {
 
         this.changes.days = days;
-        this.$emit('update', this.changes);
+        this.submitChanges();
+
+      },
+
+      submitChanges() {
+
+        let changes = {...this.changes};
+        let id = this.id;
+
+        this.$store.dispatch('changeFilter', {id, changes});
 
       }
 

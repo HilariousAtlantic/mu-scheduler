@@ -116,7 +116,6 @@ export default {
 
     let id = Math.max(0, ...state.filters.map(filter => filter.id))+1;
     let options = getDefaultOptions(type);
-    let test = getFilter(type, options);
 
     state.filters.push({id, type, options, active: false});
 
@@ -128,7 +127,7 @@ export default {
 
       if (filter.id === id) {
 
-        return Object.assign({}, filter, {active: !filter.active});
+        return {...filter, active: !filter.active}
 
       } else return filter;
 
@@ -142,11 +141,7 @@ export default {
 
       if (filter.id === id) {
 
-        return Object.assign({}, filter,
-
-          {options: changes, test: getFilter(filter.type, changes)}
-
-        );
+        return {...filter, changes};
 
       } else return filter;
 
@@ -157,6 +152,24 @@ export default {
   DELETE_FILTER(state, id) {
 
     state.filters = state.filters.filter(filter => filter.id !== id);
+
+  },
+
+  APPLY_FILTERS(state) {
+
+    state.filters = state.filters.map(filter => {
+
+      if (filter.changes) {
+
+        let {id, type, active, changes} = filter;
+
+        return {id, type, active, options: changes, test: getFilter(type, changes)};
+
+      }
+
+      return filter;
+
+    });
 
   }
 

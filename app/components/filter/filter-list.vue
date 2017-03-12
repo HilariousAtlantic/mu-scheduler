@@ -4,22 +4,28 @@
 
     <filter-group
       label="Start Time"
-      filtertype="start"
       :index="0/4"
       :editing="editing == 'start'"
       @edit="selectEditor('start')">
 
       <start-filter
         v-for="filter in getFilters('start')"
+        :id="filter.id"
         :active="filter.active"
         :options="filter.options"
       ></start-filter>
+
+      <button class="create-button btn" @click="$store.dispatch('createFilter', 'start')">
+
+        <span class="fa fa-plus"></span>
+        <span> Add Filter</span>
+
+      </button>
 
     </filter-group>
 
     <filter-group
       label="Finish Time"
-      filtertype="finish"
       :index="1/4"
       :editing="editing == 'finish'"
       @edit="selectEditor('finish')">
@@ -30,11 +36,17 @@
         :options="filter.options"
       ></finish-filter>
 
+      <button class="create-button btn" @click="$store.dispatch('createFilter', 'finish')">
+
+        <span class="fa fa-plus"></span>
+        <span> Add Filter</span>
+
+      </button>
+
     </filter-group>
 
     <filter-group
       label="Break Time"
-      filtertype="break"
       :index="2/4"
       :editing="editing == 'break'"
       @edit="selectEditor('break')">
@@ -45,11 +57,17 @@
         :options="filter.options"
       ></break-filter>
 
+      <button class="create-button btn" @click="$store.dispatch('createFilter', 'break')">
+
+        <span class="fa fa-plus"></span>
+        <span> Add Filter</span>
+
+      </button>
+
     </filter-group>
 
     <filter-group
       label="Class Load"
-      filtertype="class"
       :index="3/4"
       :editing="editing == 'class'"
       @edit="selectEditor('class')">
@@ -60,6 +78,13 @@
         :options="filter.options"
       ></class-filter>
 
+      <button class="create-button btn" @click="$store.dispatch('createFilter', 'class')">
+
+        <span class="fa fa-plus"></span>
+        <span> Add Filter</span>
+
+      </button>
+
     </filter-group>
 
     <filter-group
@@ -68,7 +93,14 @@
       :editing="editing == 'section'"
       @edit="selectEditor('section')">
 
+      <section-filter></section-filter>
+
     </filter-group>
+
+    <button
+      class="apply-button btn btn-primary"
+      @click="$store.dispatch('applyFilters')"
+    >Apply Changes</button>
 
   </div>
 
@@ -80,13 +112,14 @@
   import FinishFilter from './finish-filter.vue';
   import BreakFilter from './break-filter.vue';
   import ClassFilter from './class-filter.vue';
+  import SectionFilter from './section-filter.vue';
   import FilterGroup from './filter-group.vue';
 
   export default {
 
     name: 'filter-list',
 
-    components: {StartFilter, FinishFilter, BreakFilter, ClassFilter, FilterGroup},
+    components: {StartFilter, FinishFilter, BreakFilter, ClassFilter, SectionFilter, FilterGroup},
 
     data() {
 
@@ -128,8 +161,12 @@
     flex: 1;
   }
 
-  .filter-group + .filter-group {
+  .filter-group + .filter-group, .apply-button {
     margin-left: 5px;
+  }
+
+  .create-button {
+    margin-top: 10px;
   }
 
 </style>

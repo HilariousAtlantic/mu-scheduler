@@ -15,17 +15,6 @@
 
       <slot></slot>
 
-      <div class="editor-actions">
-
-        <button class="btn" @click="$store.dispatch('createFilter', filtertype)">
-          <span class="fa fa-plus"></span>
-          <span> Add Filter</span>
-        </button>
-
-        <button class="btn btn-primary">Apply Changes</button>
-
-      </div>
-
     </div>
 
   </div>
@@ -38,7 +27,7 @@
 
     name: 'filter-group',
 
-    props: ['label', 'filtertype', 'index', 'editing'],
+    props: ['label', 'index', 'editing'],
 
     computed: {
 
@@ -82,7 +71,7 @@
 
   .group-editor {
     position: absolute;
-    min-width: 500px;
+    width: 450px;
     padding: 20px;
     background: #fff;
     border: 1px solid #ddd;
@@ -90,12 +79,6 @@
     box-shadow: 0 3px 12px rgba(27,31,35,0.15);
     top: calc(100% + 5px);
     z-index: 10;
-  }
-
-  .editor-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
   }
 
 </style>

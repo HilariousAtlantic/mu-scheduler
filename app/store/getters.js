@@ -10,9 +10,9 @@ export default {
 
     let schedules = state.schedules;
 
-    state.filters.forEach(({active, test}) => {
+    state.filters.forEach(({test}) => {
 
-      if (active) {
+      if (test) {
 
         schedules = schedules.filter(test);
 

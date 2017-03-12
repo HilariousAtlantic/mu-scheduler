@@ -8,7 +8,7 @@
 
     </div>
 
-    <div class="schedule-body" :style="{height: length+'px'}">
+    <div class="schedule-body" :style="{height: length*1.1+'px'}">
 
       <div class="day" v-for="day in days">
 
@@ -107,58 +107,43 @@
 <style scoped>
 
   .schedule-calendar {
-
     border: 1px solid #ddd;
-
+    border-radius: 3px;
   }
 
   .schedule-head {
 
     display: flex;
-    padding: 10px;
+    padding: 8px;
     font-size: .8rem;
-    background: #eee;
+    font-weight: bold;
+    background: linear-gradient(#fcfcfc, #eee);
     text-align: center;
     border-bottom: 1px solid #ddd;
 
     span {
-
       flex: 1;
-
     }
 
   }
 
   .schedule-body {
-
     display: flex;
     padding: 5px 0;
     font-size: .7rem;
-
   }
 
   .day {
-
     flex: 1;
     position: relative;
-    border-right: 1px solid #eee;
-
-    &:last-of-type {
-
-      border: none;
-
-    }
-
   }
 
   .course {
-
     position: absolute;
     left: 5px;
     right: 5px;
     background: #333;
     color: #fff;
-
   }
 
   .course-meta {
@@ -167,16 +152,11 @@
     margin-left: 5px;
 
     span {
-
       display: block;
-      margin-bottom: 3px;
-
     }
 
     span:first-of-type {
-
       font-weight: 900;
-
     }
 
   }

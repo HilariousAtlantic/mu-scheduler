@@ -1,8 +1,16 @@
 <template>
 
-  <div class="schedule-list">
+  <div v-if="$store.getters.filteredSchedules.length === 0" class="blankslate">
 
-    <!---<schedule-details
+    <h2>No Schedules</h2>
+
+    <p>You may have chosen courses that do not have any valid schedules</p>
+
+  </div>
+
+  <div v-else class="schedule-list">
+
+    <schedule-details
       v-if="showDetails"
       :courses="schedule.courses"
       :gpa="schedule.gpa"
@@ -12,7 +20,7 @@
       :courses="schedule.courses"
       :start="schedule.start"
       :length="schedule.length"
-    ></schedule-calendar>-->
+    ></schedule-calendar>
 
   </div>
 

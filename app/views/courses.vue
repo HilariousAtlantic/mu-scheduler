@@ -6,10 +6,10 @@
 
     <course-list></course-list>
 
-    <router-link
-      to="schedules"
-      class="generate-button btn btn-block btn-primary"
-    >Generate Schedules</router-link>
+    <button
+      class="btn btn-block btn-primary"
+      @click="generateSchedules"
+    >Generate Schedules</button>
 
   </div>
 
@@ -30,7 +30,11 @@
 
       generateSchedules() {
 
-        this.$store.dispatch('generateSchedules');
+        this.$store.dispatch('generateSchedules').then(schedules => {
+
+          if (schedules) this.$router.push('schedules');
+
+        });
 
       }
 

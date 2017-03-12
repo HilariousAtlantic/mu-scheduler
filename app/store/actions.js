@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
 
-  fetchTerms({commit}) {
+  fetchTerms({commit, dispatch}) {
 
     commit('REQUEST_TERMS');
 
@@ -29,7 +29,7 @@ export default {
 
       commit('RECEIVE_TERMS', terms);
 
-      return terms[0];
+      dispatch('selectTerm', terms[0]);
 
     });
 
@@ -81,7 +81,13 @@ export default {
 
       axios.get('/api/courses/'+course.id).then(response => {
 
-        let detailedCourse = response.data;
+        let detailedCourse = {...response.data,
+
+          sections: response.data.sections.sort((a,b) =>
+            a.name.localeCompare(b.name)
+          )
+
+        };
 
         commit('RECEIVE_DETAILED_COURSE', detailedCourse);
 
@@ -105,6 +111,8 @@ export default {
 
   generateSchedules({commit, state}) {
 
+    if (state.selectedCourses.length === 0) return Promise.resolve(false);
+
     let courses = state.selectedCourses.join(',');
 
     let schedules = state.schedulesCache[courses];
@@ -113,7 +121,7 @@ export default {
 
       commit('REQUEST_SCHEDULES');
 
-      axios.get('/api/schedules?courses='+courses).then(response => {
+      return axios.get('/api/schedules?courses='+courses).then(response => {
 
           let schedules = response.data.map(schedule => {
 
@@ -160,11 +168,15 @@ export default {
 
           commit('RECEIVE_SCHEDULES', {courses, schedules});
 
+          return true;
+
       });
 
     } else {
 
       commit('RECEIVE_CACHED_SCHEDULES', schedules);
+
+      return Promise.resolve(true);
 
     }
 
@@ -191,6 +203,12 @@ export default {
   deleteFilter({commit}, id) {
 
     commit('DELETE_FILTER', id);
+
+  },
+
+  applyFilters({commit}) {
+
+    commit('APPLY_FILTERS');
 
   }
 

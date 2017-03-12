@@ -2,7 +2,7 @@ const defaultOptions = {
 
   start: {operator: 'After', time: 600, days: ['M', 'W', 'F']},
 
-  finish: {operator: 'Before', time: 600, days: ['M', 'W', 'F']},
+  finish: {operator: 'Before', time: 960, days: ['M', 'W', 'F']},
 
   break: {start: 660, finish: 780, days: ['T', 'W', 'R']},
 
@@ -50,21 +50,15 @@ export function getStartFilter({operator, time, days}) {
 
         case 'before':
 
-          if (startTimes[day] > time) return false;
-
-          break;
+          return startTimes[day] < time;
 
         case 'after':
 
-          if (startTimes[day] < time) return false;
-
-          break;
+          return startTimes[day] > time;
 
         case 'exactly':
 
-          if (startTimes[day] != time) return false;
-
-          break;
+          return startTimes[day] == time;
 
       }
 
@@ -86,21 +80,15 @@ export function getFinishFilter({operator, time, days}) {
 
         case 'before':
 
-          if (endTimes[day] > time) return false;
-
-          break;
+          return endTimes[day] > time;
 
         case 'after':
 
-          if (endTimes[day] < time) return false;
-
-          break;
+          return endTimes[day] < time;
 
         case 'exactly':
 
-          if (endTimes[day] != time) return false;
-
-          break;
+          return endTimes[day] == time;
 
       }
 
@@ -157,8 +145,6 @@ export function getBreakFilter({start, finish, days}) {
       let times = timesByDay[day];
 
       for (let time of times) {
-
-        console.log(time, start, finish);
 
         if (time.start < finish && time.end > start) {
 

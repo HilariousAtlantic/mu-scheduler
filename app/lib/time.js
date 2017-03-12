@@ -1,7 +1,7 @@
 export function formatTime(minutes, format) {
 
   let H = Math.floor(minutes/60);
-  let h = H > 12 ? h-12 : H;
+  let h = H > 12 ? H-12 : H;
   let m = minutes - H*60;
   let p = H >= 12 ? 'PM' : 'AM';
 
