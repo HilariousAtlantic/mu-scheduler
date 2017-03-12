@@ -119,13 +119,17 @@ const (
 	insertMeets = `
 	INSERT INTO meets (section_id,days,start_time,end_time,location,instructor,start_date,end_date)
 	SELECT sec.id,days,start_time,end_time,location,instructor,start_date,end_date FROM staging s
-	JOIN sections sec ON sec.crn = s.crn
+	JOIN terms t ON t.name = s.term
+	JOIN courses c ON c.term_id = t.id AND c.subject = s.subject AND c.number = s.number
+	JOIN sections sec ON sec.crn = s.crn AND sec.course_id = c.id
 	WHERE type = 'meet' OR type = 'section';
 	`
 	insertTests = `
 	INSERT INTO tests (section_id,start_time,end_time,location,date)
 	SELECT sec.id,start_time,end_time,location,start_date FROM staging s
-	JOIN sections sec ON sec.crn = s.crn
+	JOIN terms t ON t.name = s.term
+	JOIN courses c ON c.term_id = t.id AND c.subject = s.subject AND c.number = s.number
+	JOIN sections sec ON sec.crn = s.crn AND sec.course_id = c.id
 	WHERE type = 'test';
 	`
 
