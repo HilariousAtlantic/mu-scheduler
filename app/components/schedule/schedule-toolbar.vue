@@ -87,7 +87,7 @@
       handleIndexChange(event) {
 
         let input = event.target;
-        let index = parseInt(input.value)+1 || 0;
+        let index = parseInt(input.value)-1 || 0;
 
         this.$emit('change', index);
         input.blur();

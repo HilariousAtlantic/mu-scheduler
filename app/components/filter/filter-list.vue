@@ -83,7 +83,7 @@
     </filter-group>
 
     <button
-      class="btn btn-danger"
+      class="filter-button btn btn-danger"
       :class="{disabled: !canClearFilters}"
       @click="clearFilters">
 
@@ -92,7 +92,7 @@
     </button>
 
     <button
-      class="btn btn-primary"
+      class="filter-button btn btn-primary"
       :class="{disabled: !canApplyFilters}"
       @click="applyFilters">
 
@@ -201,7 +201,7 @@
     flex: 1;
   }
 
-  .filter-group + .filter-group, .btn {
+  .filter-group + .filter-group, .filter-button {
     margin-left: 5px;
   }
 
