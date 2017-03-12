@@ -112,6 +112,12 @@ export default {
 
   },
 
+  SELECT_EDITOR(state, type) {
+
+    state.selectedEditor = type;
+
+  },
+
   CREATE_FILTER(state, type) {
 
     let id = Math.max(0, ...state.filters.map(filter => filter.id))+1;

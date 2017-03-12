@@ -1,6 +1,6 @@
 <template>
 
-  <div class="generator">
+  <div class="generator" @click="$store.dispatch('selectEditor', '')">
 
     <div class="navbar">
 

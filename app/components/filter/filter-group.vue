@@ -1,8 +1,8 @@
 <template>
 
-  <div class="filter-group">
+  <div class="filter-group" @click.stop>
 
-    <button class="group-header btn btn-block" @click="$emit('edit')">
+    <button class="group-header btn btn-block" @click="toggleEditing">
 
       <span>{{label}}</span>
 
@@ -27,7 +27,29 @@
 
     name: 'filter-group',
 
-    props: ['label', 'index', 'editing']
+    props: ['filterType', 'label'],
+
+    computed: {
+
+      editing() {
+
+        return this.$store.state.selectedEditor == this.filterType;
+
+      }
+
+    },
+
+    methods: {
+
+      toggleEditing() {
+
+        let type = this.editing ? '' : this.filterType;
+
+        this.$store.dispatch('selectEditor', type);
+
+      }
+
+    }
 
   }
 

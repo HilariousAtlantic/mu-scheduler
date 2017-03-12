@@ -2,10 +2,7 @@
 
   <div class="filter-list">
 
-    <filter-group
-      label="Start Time"
-      :editing="editing == 'start'"
-      @edit="selectEditor('start')">
+    <filter-group filterType="start" label="Start Time">
 
       <start-filter
         v-for="filter in getFilters('start')"
@@ -22,10 +19,7 @@
 
     </filter-group>
 
-    <filter-group
-      label="Finish Time"
-      :editing="editing == 'finish'"
-      @edit="selectEditor('finish')">
+    <filter-group filterType="finish" label="Finish Time">
 
       <finish-filter
         v-for="filter in getFilters('finish')"
@@ -42,10 +36,7 @@
 
     </filter-group>
 
-    <filter-group
-      label="Break Time"
-      :editing="editing == 'break'"
-      @edit="selectEditor('break')">
+    <filter-group filterType="break" label="Break Time">
 
       <break-filter
         v-for="filter in getFilters('break')"
@@ -62,10 +53,7 @@
 
     </filter-group>
 
-    <filter-group
-      label="Class Load"
-      :editing="editing == 'class'"
-      @edit="selectEditor('class')">
+    <filter-group filterType="class" label="Class Load">
 
       <class-filter
         v-for="filter in getFilters('class')"

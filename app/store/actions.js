@@ -182,6 +182,12 @@ export default {
 
   },
 
+  selectEditor({commit}, type) {
+
+    commit('SELECT_EDITOR', type);
+
+  },
+
   createFilter({commit}, type) {
 
     commit('CREATE_FILTER', type);
