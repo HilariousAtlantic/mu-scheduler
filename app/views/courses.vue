@@ -8,8 +8,12 @@
 
     <button
       class="btn btn-block btn-primary"
-      @click="generateSchedules"
-    >Generate Schedules</button>
+      :class="{disabled: !canGenerateSchedules}"
+      @click="generateSchedules">
+
+      <span>Generate Schedules</span>
+
+    </button>
 
   </div>
 
@@ -26,15 +30,29 @@
 
     components: {CourseSearch, CourseList},
 
+    computed: {
+
+      canGenerateSchedules() {
+
+        return this.$store.state.selectedCourses.length > 0;
+
+      }
+
+    },
+
     methods: {
 
       generateSchedules() {
 
-        this.$store.dispatch('generateSchedules').then(schedules => {
+        if (this.canGenerateSchedules) {
 
-          if (schedules) this.$router.push('schedules');
+          this.$store.dispatch('generateSchedules').then(schedules => {
 
-        });
+            if (schedules) this.$router.push('schedules');
+
+          });
+
+        }
 
       }
 
@@ -50,8 +68,8 @@
     margin: 10px 0;
   }
 
-  .generate-button {
-    font-weight: normal;
+  .btn-primary {
+    padding: 10px;
   }
 
 </style>

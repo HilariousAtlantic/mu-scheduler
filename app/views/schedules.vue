@@ -102,7 +102,7 @@
   }
 
   .btn-primary {
-    font-weight: normal;
+    padding: 10px;
   }
 
 </style>

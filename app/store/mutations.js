@@ -141,6 +141,12 @@ export default {
 
   },
 
+  CLEAR_FILTERS(state) {
+
+    state.filters = [];
+
+  },
+
   APPLY_FILTERS(state) {
 
     state.filters = state.filters.map(filter => {

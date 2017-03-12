@@ -11,7 +11,7 @@
 
     </button>
 
-    <div v-if="editing" class="group-editor" :style="editorPosition">
+    <div v-if="editing" class="group-editor">
 
       <slot></slot>
 
@@ -27,31 +27,7 @@
 
     name: 'filter-group',
 
-    props: ['label', 'index', 'editing'],
-
-    computed: {
-
-      editorPosition() {
-
-        let percent = this.index*100;
-
-        if (percent < 50) {
-
-          return {left: -percent + '%'};
-
-        } else if (percent > 50) {
-
-          return {right: percent-100 + '%'};
-
-        } else {
-
-          return {left: '50%', right: '50%', transform: 'translateX(-50%)'};
-
-        }
-
-      }
-
-    }
+    props: ['label', 'index', 'editing']
 
   }
 

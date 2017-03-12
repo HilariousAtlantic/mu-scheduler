@@ -4,7 +4,6 @@
 
     <filter-group
       label="Start Time"
-      :index="0/3"
       :editing="editing == 'start'"
       @edit="selectEditor('start')">
 
@@ -25,7 +24,6 @@
 
     <filter-group
       label="Finish Time"
-      :index="1/3"
       :editing="editing == 'finish'"
       @edit="selectEditor('finish')">
 
@@ -46,7 +44,6 @@
 
     <filter-group
       label="Break Time"
-      :index="2/3"
       :editing="editing == 'break'"
       @edit="selectEditor('break')">
 
@@ -67,7 +64,6 @@
 
     <filter-group
       label="Class Load"
-      :index="3/3"
       :editing="editing == 'class'"
       @edit="selectEditor('class')">
 
@@ -87,9 +83,18 @@
     </filter-group>
 
     <button
-      class="apply-button btn btn-primary"
-      :class="{disabled: !canApplyChanges}"
-      @click="$store.dispatch('applyFilters')">
+      class="btn btn-danger"
+      :class="{disabled: !canClearFilters}"
+      @click="clearFilters">
+
+      <span>Remove Filters</span>
+
+    </button>
+
+    <button
+      class="btn btn-primary"
+      :class="{disabled: !canApplyFilters}"
+      @click="applyFilters">
 
       <span>Apply Changes</span>
 
@@ -126,7 +131,13 @@
 
     computed: {
 
-      canApplyChanges() {
+      canClearFilters() {
+
+        return this.$store.state.filters.length > 0;
+
+      },
+
+      canApplyFilters() {
 
         for (let filter of this.$store.state.filters) {
 
@@ -152,6 +163,26 @@
 
         return this.$store.state.filters.filter(filter => filter.type === type);
 
+      },
+
+      clearFilters() {
+
+        if (this.canClearFilters) {
+
+          this.$store.dispatch('clearFilters');
+
+        }
+
+      },
+
+      applyFilters() {
+
+        if (this.canApplyFilters) {
+
+          this.$store.dispatch('applyFilters');
+
+        }
+
       }
 
     }
@@ -170,7 +201,7 @@
     flex: 1;
   }
 
-  .filter-group + .filter-group, .apply-button {
+  .filter-group + .filter-group, .btn {
     margin-left: 5px;
   }
 

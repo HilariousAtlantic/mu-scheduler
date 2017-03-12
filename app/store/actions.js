@@ -206,6 +206,12 @@ export default {
 
   },
 
+  clearFilters({commit}) {
+
+    commit('CLEAR_FILTERS');
+
+  },
+
   applyFilters({commit}) {
 
     commit('APPLY_FILTERS');
