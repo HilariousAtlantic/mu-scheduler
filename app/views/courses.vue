@@ -2,6 +2,20 @@
 
   <div class="courses-view">
 
+    <div class="flash mb-3">
+
+      <p>
+
+        This is an early version of the application, so there will be some
+        problems and not all of the features are added or completed. If you run
+        into any issues, feel free to email us at
+
+        <strong>hilariousatlantic@gmail.com</strong>
+
+      </p>
+
+    </div>
+
     <course-search></course-search>
 
     <div v-if="showInstructions" class="blankslate">
