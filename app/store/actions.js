@@ -137,16 +137,20 @@ export default {
               let course = state.detailedCourseCache[course_id];
               let section = course.sections.find(({id}) => id === section_id);
 
-              section.meets.forEach(({days, start_time, end_time}) => {
+              section.meets.forEach(({days, start_time, end_time, location}) => {
 
-                days.split('').forEach(day => {
+                if (location !== 'WEB') {
 
-                  timesByDay[day].push({start: start_time, end: end_time});
-                  startTimes[day] = Math.min(startTimes[day], start_time);
-                  endTimes[day] = Math.max(endTimes[day], end_time);
-                  classLoads[day]++;
+                  days.split('').forEach(day => {
 
-                });
+                    timesByDay[day].push({start: start_time, end: end_time});
+                    startTimes[day] = Math.min(startTimes[day], start_time);
+                    endTimes[day] = Math.max(endTimes[day], end_time);
+                    classLoads[day]++;
+
+                  });
+
+                }
 
               });
 
