@@ -1,9 +1,21 @@
 72288,ACC,211,A,3,Acctg for Non-Bus Major,MW,11:40 am-01:00 pm,Katherine Anne Tew (P),08/28-12/16,LWS 304
 72289,ACC,211,B,3,Acctg for Non-Bus Major,MW,01:15 pm-02:35 pm,Katherine Anne Tew (P),08/28-12/16,LWS 304
 10101,ACC,221,A,3,Intro To Financial Accounting,MW,08:30 am-09:50 am,Elizabeth Marie Killy (P),08/28-12/16,FSB 1000
+,,,,,,M,07:30 pm-09:30 pm,TBA,09/25-09/25,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,10/23-10/23,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,11/13-11/13,TBA
 10111,ACC,221,B,3,Intro To Financial Accounting,MW,10:05 am-11:25 am,Elizabeth Marie Killy (P),08/28-12/16,FSB 1000
+,,,,,,M,07:30 pm-09:30 pm,TBA,09/25-09/25,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,10/23-10/23,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,11/13-11/13,TBA
 54072,ACC,221,C,3,Intro To Financial Accounting,MW,11:40 am-01:00 pm,Elizabeth Marie Killy (P),08/28-12/16,FSB 1000
+,,,,,,M,07:30 pm-09:30 pm,TBA,09/25-09/25,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,10/23-10/23,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,11/13-11/13,TBA
 55005,ACC,221,D,3,Intro To Financial Accounting,MW,01:15 pm-02:35 pm,Elizabeth Marie Killy (P),08/28-12/16,FSB 1000
+,,,,,,M,07:30 pm-09:30 pm,TBA,09/25-09/25,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,10/23-10/23,TBA
+,,,,,,M,07:30 pm-09:30 pm,TBA,11/13-11/13,TBA
 10130,ACC,222,A,3,Intro To Managerial Accounting,TR,01:15 pm-02:35 pm,Ronald G. Collins (P),08/28-12/16,FSB 1000
 10131,ACC,222,B,3,Intro To Managerial Accounting,TR,02:50 pm-04:10 pm,Ronald G. Collins (P),08/28-12/16,FSB 1000
 65881,ACC,222,C,3,Intro To Managerial Accounting,TR,04:25 pm-05:45 pm,Ronald G. Collins (P),08/28-12/16,FSB 1000
@@ -15,11 +27,11 @@
 10139,ACC,321,B,3,Intermed Financial Accounting,MW,02:50 pm-04:10 pm,Timothy Vance Eaton (P),08/28-12/16,FSB 0027
 10140,ACC,321,C,3,Intermed Financial Accounting,MW,04:25 pm-05:45 pm,Timothy Vance Eaton (P),08/28-12/16,FSB 0027
 10141,ACC,321,D,3,Intermed Financial Accounting,TR,08:30 am-09:50 am,Po-Chang Chen (P),08/28-12/16,FSB 0026
-,,,,,,T,06:00 pm-08:00 pm,TBA,10/03-10/03,TBA
-,,,,,,T,06:00 pm-08:00 pm,TBA,11/07-11/07,TBA
+,,,,,,T,05:30 pm-08:30 pm,TBA,10/03-10/03,FSB 0025
+,,,,,,T,05:30 pm-08:30 pm,TBA,11/07-11/07,FSB 0025
 10142,ACC,321,E,3,Intermed Financial Accounting,TR,10:05 am-11:25 am,Po-Chang Chen (P),08/28-12/16,FSB 0026
-,,,,,,T,06:00 pm-08:00 pm,TBA,10/03-10/03,TBA
-,,,,,,T,06:00 pm-08:00 pm,TBA,11/07-11/07,TBA
+,,,,,,T,05:30 pm-08:30 pm,TBA,10/03-10/03,FSB 0025
+,,,,,,T,05:30 pm-08:30 pm,TBA,11/07-11/07,FSB 0025
 66185,ACC,321,F,3,Intermed Financial Accounting,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,FSB 0026
 66193,ACC,321,G,3,Intermed Financial Accounting,TR,04:25 pm-05:45 pm,TBA,08/28-12/16,FSB 0026
 68149,ACC,321,H,3,Intermed Financial Accounting,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,FSB 0028
@@ -98,7 +110,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 65054,ACE,112,C,5,Advanced Comm Strategies,MWF,11:40 am-12:55 pm,TBA,08/28-12/16,BAC 108
 65055,ACE,112,D,5,Advanced Comm Strategies,MWF,11:40 am-12:55 pm,TBA,08/28-12/16,TBA
 65056,ACE,112,E,5,Advanced Comm Strategies,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,KRG 213
-65057,ACE,112,F,5,Advanced Comm Strategies,MWF,04:25 pm-05:40 pm,TBA,08/28-12/16,UPH 339
+65057,ACE,112,F,5,Advanced Comm Strategies,MWF,04:25 pm-05:40 pm,TBA,08/28-12/16,UPH 167
 65059,ACE,112,H,5,Advanced Comm Strategies,MWF,10:05 am-11:20 am,TBA,08/28-12/16,BAC 154
 65060,ACE,112,I,5,Advanced Comm Strategies,MWF,01:15 pm-02:30 pm,TBA,08/28-12/16,BAC 151
 66753,ACE,112,K,5,Advanced Comm Strategies,MWF,04:25 pm-05:40 pm,TBA,08/28-12/16,BAC 151
@@ -138,7 +150,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 71957,ACE,212,B,3,Adv Comm Strategies II,TR,11:40 am-01:00 pm,TBA,08/28-12/16,PBD 031
 71959,ACE,212,C,3,Adv Comm Strategies II,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,BAC 151
 71960,ACE,212,D,3,Adv Comm Strategies II,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,PBD 029
-71974,ACE,310,UR,1.000-3.000,Critical Reading & Discussion,MWF,04:25 pm-05:50 pm,TBA,10/25-12/16,BAC 143
+71974,ACE,310,UR,2,Critical Reading & Discussion,MWF,04:25 pm-05:50 pm,TBA,10/25-12/16,BAC 143
 69812,ACE,310G,WA,3,Practical English Grammar,MWF,11:40 am-01:15 pm,TBA,10/11-12/16,TBA
 65493,ACE,619,A,2,Adv Speaking and Presenting,MW,01:15 pm-02:10 pm,TBA,08/28-12/16,TBA
 ,,,,,,,,,,
@@ -157,7 +169,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 67083,AMS,207,D,3,America: Global-Intercultural,TR,10:05 am-11:25 am,Oana Godeanu-Kenworthy (P),08/28-12/16,UPH 312
 67084,AMS,207,E,3,America: Global-Intercultural,TR,11:40 am-01:00 pm,Oana Godeanu-Kenworthy (P),08/28-12/16,EGB 165
 69608,AMS,207H,A,3,America - A Global Context-Hon,WF,02:50 pm-04:10 pm,Sandra Lee Garner (P),08/28-12/16,UPH 131
-64648,AMS,211,A,3,Writing with Purpose,TR,10:05 am-11:00 am,TBA,08/28-12/16,BAC 143
+64648,AMS,211,A,3,Writing with Purpose,TR,10:05 am-11:25 am,TBA,08/28-12/16,BAC 143
 69562,AMS,216,A,3,Introduction to Public History,MW,10:05 am-11:25 am,Helen Diana Sheumaker (P),08/28-12/16,UPH 312
 69643,AMS,222,A,3,Italian American Culture,TR,02:50 pm-04:10 pm,Daniele Fioretti (P),08/28-12/16,KRG 221
 ,,,,,,R,06:30 pm-09:30 pm,Daniele Fioretti,08/28-12/16,IRV 040
@@ -196,7 +208,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 66641,ATH,206,C,3,Introduction to Latin America,TR,11:40 am-01:00 pm,TBA,08/28-12/16,UPH 312
 71438,ATH,219,A,3,Introduction to Linguistics,TR,08:30 am-09:50 am,John M. Jeep (P),08/28-12/16,IRV 142
 71746,ATH,219,B,3,Introduction to Linguistics,MW,10:05 am-11:25 am,TBA,08/28-12/16,BEN 206
-71750,ATH,219,C,3,Introduction to Linguistics,MW,11:40 am-01:00 pm,TBA,08/28-12/16,BAC 346
+71750,ATH,219,C,3,Introduction to Linguistics,MW,11:40 am-01:00 pm,Galina Shleykina (P),08/28-12/16,BAC 346
 58366,ATH,231,A,4,Foundations of Cultural Anthro,TR,10:05 am-11:25 am,Neringa Klumbyte (P),08/28-12/16,UPH 226
 ,,,,,,T,11:40 am-12:35 pm,TBA,08/28-12/16,UPH 226
 63936,ATH,231,B,4,Foundations of Cultural Anthro,TR,10:05 am-11:25 am,Neringa Klumbyte (P),08/28-12/16,UPH 226
@@ -367,13 +379,13 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69255,ART,165,UD,1.5,Beginning Metals,M,12:10 pm-02:00 pm,Micah Lee Henderson (P),10/25-12/16,PHI 103
 64877,ART,170,TA,1.5,Basic Woodworking,M,04:25 pm-06:15 pm,Teddy W. Wong (P),09/05-10/23,ALU 010
 64891,ART,170,UA,1.5,Basic Woodworking,M,04:25 pm-06:15 pm,Teddy W. Wong (P),10/25-12/16,ALU 010
-19020,ART,187,A,3,Hst Of West Art/Prehis-Gothic,MW,02:50 pm-03:45 pm,TBA,08/28-12/16,ART 100
+19020,ART,187,A,3,Hst Of West Art/Prehis-Gothic,MWF,02:50 pm-03:45 pm,TBA,08/28-12/16,ART 100
 63834,ART,188,A,3,Hst Of West Art/Renais-Modern,MWF,10:05 am-11:00 am,Andrew R. Casper (P),08/28-12/16,ART 100
 63472,ART,188,B,3,Hst Of West Art/Renais-Modern,T,11:40 am-01:00 pm,Lauren C. Tate (P),08/28-12/16,HUG 100
 18284,ART,188,C,3,Hst Of West Art/Renais-Modern,TR,01:15 pm-02:35 pm,Ann Boehling Dell'Aria (P),08/28-12/16,ART 100
 65003,ART,188H,A,3,Hst Of West Art/Renais-Modern,MWF,10:05 am-11:00 am,Andrew R. Casper (P),08/28-12/16,ART 100
 54676,ART,189,A,3,History Of Western Dress,MW,10:05 am-11:25 am,Melanie Gail Mortimore (P),08/28-12/16,ART 136
-70498,ART,189,B,3,History Of Western Dress,TR,08:30 am-09:50 am,Lisa Bess Martin-Stuart (P),08/28-12/16,ART 136
+70498,ART,189,B,3,History Of Western Dress,TR,10:05 am-11:25 am,Lisa Bess Martin-Stuart (P),08/28-12/16,ART 136
 72457,ART,194,A,3,Introduction to Art Therapy,T,04:25 pm-07:05 pm,TBA,08/28-12/16,ART 148
 57709,ART,195,A,3,Introduction to Art Education,TR,10:05 am-11:25 am,Stephanie Danker (P),08/28-12/16,ART 148
 71299,ART,195,B,3,Introduction to Art Education,MW,04:25 pm-05:45 pm,Stephanie Danker (P),08/28-12/16,ART 148
@@ -393,7 +405,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69306,ART,255,B,3,Introduction: Digital Imaging,MWF,08:00 am-09:50 am,TBA,08/28-12/16,ART 017
 65734,ART,257,A,3,Photography I,MWF,02:15 pm-04:05 pm,Jon M. Yamashiro (P),08/28-12/16,ART 017
 10288,ART,257,B,3,Photography I,TR,02:50 pm-05:35 pm,Ron Stevens (P),08/28-12/16,ART 017
-58542,ART,259,A,3,Art and Digital Tools I,M,05:00 pm-07:15 pm,Sherri Ann Krazl (P); Kristin Marie Kieffer,08/28-12/16,HUG 100
+58542,ART,259,A,3,Art and Digital Tools I,M,05:00 pm-07:15 pm,Sherri Ann Krazl (P); Kristin Marie Kieffer,08/28-12/16,UPH 001
 ,,,,,,R,05:00 pm-07:00 pm,TBA,08/28-12/16,KNG 027
 70530,ART,259,B,3,Art and Digital Tools I,T,05:00 pm-07:15 pm,TBA,08/28-12/16,HUG 100
 ,,,,,,R,05:00 pm-07:00 pm,TBA,08/28-12/16,KNG 027
@@ -439,8 +451,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 15068,ART,442,A,3,Printmaking V,MWF,12:10 pm-02:00 pm,Ellen J. Price (P),08/28-12/16,HIS 119
 61844,ART,450,A,3,Alternative Design Media,TR,04:25 pm-07:10 pm,Erin Marie Beckloff (P),08/28-12/16,HIS 215
 53354,ART,451,A,3,The Professional Portfolio,TR,11:40 am-02:25 pm,Ray Anthony Claxton (P),08/28-12/16,HIS 218
-10322,ART,453,A,4,Highwire Brand Studio,MW,09:35 am-11:25 am,TBA,08/28-12/16,HIS 218
-62371,ART,453H,A,4,Highwire Brand Studio,MW,09:35 am-11:25 am,Ray Anthony Claxton (P),08/28-12/16,HIS 218
+10322,ART,453,A,4,Highwire Brand Studio,MW,09:35 am-11:25 am,Ryan Carlson Bitzegaio (P),08/28-12/16,HIS 218
+62371,ART,453H,A,4,Highwire Brand Studio,MW,09:35 am-11:25 am,Ryan Carlson Bitzegaio (P),08/28-12/16,HIS 218
 71883,ART,455,A,3,Design History & Cultural Cont,MW,11:40 am-02:25 pm,Dennis Matthew Cheatham (P),08/28-12/16,HIS 221
 71635,ART,457,A,3,Photography IV,MW,04:25 pm-07:10 pm,Jon M. Yamashiro (P),08/28-12/16,ART 011
 10324,ART,458,A,3,Photography V,MW,04:25 pm-07:10 pm,Jon M. Yamashiro (P),08/28-12/16,ART 011
@@ -463,6 +475,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 10339,ART,564,A,3,Jewelry Design & Metals IV,TR,11:40 am-02:25 pm,Geoffrey William Riggle (P),08/28-12/16,HIS 002
 10340,ART,571,A,3,Sculpture IV,TR,05:50 pm-08:35 pm,Rodney W. Northcutt (P),08/28-12/16,HIS 023
 50967,ART,572,A,3,Sculpture V,TR,05:50 pm-08:35 pm,Rodney W. Northcutt (P),08/28-12/16,HIS 023
+72645,ART,588,0,3,Art in the Age of Revolution,TR,01:15 pm-02:35 pm,Pepper Stetler (P),08/28-12/16,ART 103
 57734,ART,596,A,3,Theory for Visual Artists,W,06:30 pm-09:10 pm,Dana Saulnier (P),08/28-12/16,ART 220
 67116,ART,600,A,1.000-3.000,Advanced Research Problems,,TBA,Mark Harald Jensen (P),08/28-12/16,HIS
 10344,ART,601,A,3,Teaching Assistant Seminar,M,04:25 pm-07:05 pm,Robert Wilbur Mullenix (P),08/28-12/16,ART 220
@@ -589,7 +602,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,R,01:15 pm-02:10 pm,Alfredo J. Huerta,08/28-12/16,PSN 320
 64355,BIO,131,N,3,Plants Humanity & Environment,MW,01:15 pm-02:10 pm,Alfredo J. Huerta (P),08/28-12/16,PSN 128
 ,,,,,,R,02:50 pm-03:45 pm,Alfredo J. Huerta,08/28-12/16,PSN 320
-68537,BIO,147,QA,1,Introductory Seminar,T,04:25 pm-05:20 pm,Douglas Meikle (P),09/11-12/16,LWS 100
+68537,BIO,147,A,1,Introductory Seminar,T,04:25 pm-05:20 pm,Douglas Meikle (P),08/28-12/16,TBA
 64356,BIO,155,VA,3,Field Botany,MW,08:30 am-11:20 am,TBA,09/05-11/06,PSN 320
 64357,BIO,155,VB,3,Field Botany,MW,11:40 am-02:30 pm,TBA,09/05-11/06,PSN 320
 64358,BIO,155,VC,3,Field Botany,TR,08:30 am-11:20 am,TBA,09/05-11/06,BOY 133
@@ -655,6 +668,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,TR,04:25 pm-06:15 pm,TBA,08/28-12/16,PSN 133
 ,,,,,,F,11:40 am-12:50 pm,TBA,09/01-09/01,HUG 158
 ,,,,,,F,11:40 am-12:50 pm,TBA,10/06-10/06,HUG 158
+,,,,,,F,11:40 am-12:50 pm,TBA,11/03-11/03,HUG 158
 64486,BIO,203,A,3,Intro to Cell Biology,TR,10:05 am-11:25 am,Tracy Haynes (P),08/28-12/16,PSN 116
 64905,BIO,203,B,3,Intro to Cell Biology,TR,01:15 pm-02:35 pm,Paul F. James (P),08/28-12/16,PSN 116
 71932,BIO,203,C,3,Intro to Cell Biology,WF,01:15 pm-02:35 pm,Jack C. Vaughn (P),08/28-12/16,PSN 218
@@ -665,7 +679,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 66721,BIO,209W,A,3,Fundamentals of Ecology,TR,11:40 am-01:00 pm,Melany C. Fisk (P),08/28-12/16,UPH 002
 64492,BIO,241,B,3,Bot Princ Landscape Gardening,MW,10:05 am-11:00 am,John F. Keegan (P),08/28-12/16,BOY 133
 ,,,,,,F,10:05 am-11:55 am,John F. Keegan,08/28-12/16,BOY 133
-64493,BIO,244,A,3,Viticulture And Enology,T,06:30 pm-09:50 pm,John F. Keegan (P),08/28-12/16,HRN 204
+64493,BIO,244,A,3,Viticulture And Enology,T,06:00 pm-09:20 pm,John F. Keegan (P),08/28-12/16,HRN 204
 69407,BIO,302,A,4,Plant Taxonomy,TR,10:05 am-12:55 pm,Michael A. Vincent (P),08/28-12/16,PSN 306
 64497,BIO,305,BA,4,Human Physiology,TR,08:30 am-09:50 am,Dawn Marie Blitz (P),08/28-12/16,PSN 112
 ,,,,,,T,02:15 pm-05:05 pm,Dawn Marie Blitz,08/28-12/16,PSN 206
@@ -673,15 +687,15 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,W,02:15 pm-05:05 pm,Dawn Marie Blitz,08/28-12/16,PSN 206
 64508,BIO,305,BC,4,Human Physiology,TR,08:30 am-09:50 am,Dawn Marie Blitz (P),08/28-12/16,PSN 112
 ,,,,,,R,02:15 pm-05:05 pm,Dawn Marie Blitz,08/28-12/16,PSN 206
-68451,BIO,305W,AA,4,Human Physiology,MWF,08:30 am-09:50 am,Paul J. Schaeffer (P),08/28-12/16,PSN 112
-,,,,,,M,02:15 pm-05:05 pm,TBA,08/28-12/16,PSN 206
-68452,BIO,305W,AB,4,Human Physiology,MWF,08:30 am-09:50 am,Paul J. Schaeffer (P),08/28-12/16,PSN 112
-,,,,,,T,10:05 am-12:55 pm,TBA,08/28-12/16,PSN 206
+68451,BIO,305W,AA,4,Human Physiology,M,02:15 pm-05:05 pm,TBA,08/28-12/16,PSN 206
+,,,,,,WF,08:30 am-09:50 am,Paul J. Schaeffer (P),08/28-12/16,PSN 112
+68452,BIO,305W,AB,4,Human Physiology,T,10:05 am-12:55 pm,TBA,08/28-12/16,PSN 206
+,,,,,,WF,08:30 am-09:50 am,Paul J. Schaeffer (P),08/28-12/16,PSN 112
 72535,BIO,305W,CA,4,Human Physiology,WF,11:40 am-01:00 pm,Paul J. Schaeffer (P),08/28-12/16,TBA
 ,,,,,,R,10:05 am-12:55 pm,TBA,08/28-12/16,PSN 206
 72536,BIO,305W,CB,4,Human Physiology,M,10:05 am-12:55 pm,TBA,08/28-12/16,PSN 206
 ,,,,,,WF,11:40 am-01:00 pm,Paul J. Schaeffer (P),08/28-12/16,TBA
-71944,BIO,333,A,3,Field Ecology,T,10:00 am-11:25 am,David L. Gorchov (P),08/28-12/16,HUG 143
+71944,BIO,333,A,3,Field Ecology,T,10:05 am-11:25 am,David L. Gorchov (P),08/28-12/16,HUG 143
 ,,,,,,T,01:15 pm-04:05 pm,TBA,08/28-12/16,PSN 103
 71946,BIO,333,B,3,Field Ecology,T,10:05 am-11:25 am,Craig E. Williamson (P),08/28-12/16,HUG 143
 ,,,,,,R,01:15 pm-04:05 pm,TBA,08/28-12/16,PSN 103
@@ -799,7 +813,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 17414,BWS,151,B,4,Intro To Black World Studies,MW,02:50 pm-04:05 pm,TBA,08/28-12/16,UPH 298
 64853,BWS,151,D,4,Intro To Black World Studies,MW,04:25 pm-06:15 pm,TBA,08/28-12/16,UPH 298
 69678,BWS,151,F,4,Intro To Black World Studies,,TBA,Tammy Lynn Brown (P),08/28-12/16,WEB
-72045,BWS,203,A,3,Intro to Crit. Youth Studies,TR,01:15 pm-02:35 pm,Durell Maurice Callier (P),08/28-12/16,MCG 118
+72045,BWS,203,A,3,Intro to Crit. Youth Studies,TR,02:50 pm-04:10 pm,Durell Maurice Callier (P),08/28-12/16,HRN 109
 69649,BWS,204,B,3,Brazil through Music,WF,02:50 pm-04:10 pm,Paula Alexandra Gandara (P),08/28-12/16,IRV 142
 64650,BWS,211,A,3,Writing with Purpose,TR,10:05 am-11:25 am,TBA,08/28-12/16,BAC 143
 70586,BWS,221,A,3,African American History,TR,10:05 am-11:25 am,Nishani Frazier (P),08/28-12/16,UPH 298
@@ -1040,6 +1054,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72159,CHM,411,A,3,Learning Theories in Chemistry,T,04:25 pm-07:25 pm,Ellen J. Yezierski (P),08/28-12/16,HUG 142
 10501,CHM,417,A,3,Advanced Inorganic Chemistry,MWF,10:05 am-11:00 am,David L. Tierney (P),08/28-12/16,HUG 004
 72155,CHM,430P,A,2,Protein Trafficking,MW,08:30 am-09:25 am,Amanda Carole Smith (P),08/28-12/16,HUG 006
+72632,CHM,430V,A,2,EPR Methods & Instrumentation,MW,08:35 pm-09:30 pm,Robert M. McCarrick (P),08/28-12/16,HUG 142
 17127,CHM,432,A,4,Fundamentals of Biochemistry,MWF,08:30 am-09:45 am,Heeyoung Tai (P),08/28-12/16,HUG 141
 ,,,,,,M,06:30 pm-07:59 pm,TBA,09/25-09/25,TBA
 ,,,,,,M,06:30 pm-07:59 pm,TBA,10/23-10/23,TBA
@@ -1084,6 +1099,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 59837,CHM,730,A,1,Seminar Chemistry Education,R,04:25 pm-05:20 pm,Stacey Lowery Bretz (P),08/28-12/16,HUG 142
 72156,CHM,740P,A,3,Protein Trafficking,MWF,08:30 am-09:25 am,Amanda Carole Smith (P),08/28-12/16,HUG 006
 50592,CHM,750,A,1,First Year Graduate Seminar,W,06:30 pm-08:30 pm,Michael W. Crowder (P),08/28-12/16,HUG 142
+72633,CHM,770V,A,3,EPR Methods & Instrumentation,MWF,08:35 pm-09:30 pm,Robert M. McCarrick (P),08/28-12/16,HUG 142
 10520,CHM,780,A,1,Analytical Inorganic & Phy Chm,R,04:25 pm-05:20 pm,TBA,08/28-12/16,HUG 004
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
@@ -1147,7 +1163,6 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 67794,CCA,111H,A,3,Innov; Creat.; & Des Thinking,TR,08:30 am-09:50 am,Michael Bailey-Van Kuren (P); Todd Stuart,08/28-12/16,EGB 270
 70133,CCA,182,UA,1.000-2.000,Experiencing the Arts,T,04:25 pm-06:30 pm,Chad Christopher Reynolds (P),10/25-12/16,CPA 101
 70319,CCA,182,UB,1.000-2.000,Experiencing the Arts,W,04:25 pm-06:30 pm,Chad Christopher Reynolds (P),10/25-12/16,CPA 101
-72455,CCA,182,UC,1.000-2.000,Experiencing the Arts,M,04:25 pm-06:30 pm,TBA,10/25-12/16,CPA 101
 68321,CCA,201,B,3,Intro to Arts Management,TR,10:05 am-11:25 am,Todd Stuart (P),08/28-12/16,ART 154
 68390,CCA,222,A,3,Museums and Collections,MW,01:15 pm-02:35 pm,TBA,08/28-12/16,UPH 106
 69662,CCA,302,TA,1.5,Arts Marketing,M,06:30 pm-09:10 pm,TBA,09/05-10/23,ART 154
@@ -1335,7 +1350,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72162,CMS,350C,A,3,New Media and Psychoanalysis,MW,01:15 pm-02:35 pm,Andrea Righi (P),08/28-12/16,IRV 040
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
-65532,DST,101,A,4,Beginning ASL I,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,UPH 163
+65532,DST,101,A,4,Beginning ASL I,TR,06:30 pm-08:20 pm,TBA,08/28-12/16,BAC 045
 65533,DST,101,B,4,Beginning ASL I,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,ART 136
 67054,DST,101,C,4,Beginning ASL I,MW,06:30 pm-08:20 pm,TBA,08/28-12/16,BAC 055
 68673,DST,101,D,4,Beginning ASL I,TR,06:30 pm-08:20 pm,TBA,08/28-12/16,BAC 055
@@ -1425,12 +1440,12 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 60299,EHS,667,A,3,Behavior Statistics,R,04:25 pm-07:05 pm,Jason T. Abbitt (P),08/28-12/16,MCG 416
-68045,EHS,668,A,3,Behavior Statistics II,TR,10:05 am-11:25 am,Rose Marie Ward (P),08/28-12/16,MCG 317
+68045,EHS,668,A,3,Behavior Statistics II,MW,10:05 am-11:25 am,Rose Marie Ward (P),08/28-12/16,PHI 202H
 65455,EHS,710,A,1.000-6.000,Interdiscip. Doctoral Lab,,TBA,Sherrill L. Sellers (P),08/28-12/16,TBA
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 71637,EDL,115,A,1,Miami Tribe Contemp. Issues 1,T,05:40 pm-06:35 pm,George Michael Ironstrack (P),08/28-12/16,MCG 122
-69465,EDL,203,A,3,Intro to Crit. Youth Studies,TR,01:15 pm-02:35 pm,Durell Maurice Callier (P),08/28-12/16,MCG 118
+69465,EDL,203,A,3,Intro to Crit. Youth Studies,TR,02:50 pm-04:10 pm,Durell Maurice Callier (P),08/28-12/16,HRN 109
 10678,EDL,204,A,3,Sociocultural Studies In Educ,TR,08:30 am-09:50 am,Kate Rousmaniere (P),08/28-12/16,MCG 215
 10679,EDL,204,B,3,Sociocultural Studies In Educ,TR,10:05 am-11:25 am,Kate Rousmaniere (P),08/28-12/16,GAR 153
 10681,EDL,204,C,3,Sociocultural Studies In Educ,MW,10:05 am-11:25 am,Kate Rousmaniere (P),08/28-12/16,MCG 317
@@ -1475,17 +1490,12 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 14212,EDL,318E,C,3,Teacher Ldrshp:Early Childhood,R,08:30 am-11:10 am,Thomas S. Poetter (P),08/28-12/16,MCG 117
 18732,EDL,318M,A,3,Teacher Leadrshp/Mid Childhood,TR,11:40 am-01:00 pm,Thomas S. Poetter (P),08/28-12/16,MCG 218
 64897,EDL,318M,B,3,Teacher Leadrshp/Mid Childhood,TR,10:05 am-11:25 am,Thomas S. Poetter (P),08/28-12/16,MCG 218
-60225,EDL,334,A,3,Transnational Youth Cultures,TR,10:05 am-11:25 am,Lisa D. Weems (P),08/28-12/16,HRN 109
-71662,EDL,369,A,3,Sexuality; Youth; Education,TR,01:15 pm-02:35 pm,Lisa D. Weems (P),08/28-12/16,MCG 218
-69472,EDL,601,A,3,Educational Leadership Theory,M,06:30 pm-08:15 pm,Kathleen Mecoli (P),08/28-12/16,OFF
+60225,EDL,334,A,3,Transnational Youth Cultures,TR,11:40 am-01:00 pm,Lisa D. Weems (P),08/28-12/16,HRN 109
+71662,EDL,369,A,3,Sexuality; Youth; Education,TR,10:05 am-11:25 am,Lisa D. Weems (P),08/28-12/16,MCG 217
 71663,EDL,607,A,3,School Law,M,04:25 pm-07:05 pm,Dustin Wade Miller (P),08/28-12/16,OFF
 71664,EDL,607,B,3,School Law,W,04:25 pm-07:10 pm,Andrew M. Smith (P),08/28-12/16,OFF
 71665,EDL,609,A,3,Politics In Education,M,07:15 pm-09:30 pm,Mary Helen Moorhead (P),08/28-12/16,OFF
-71666,EDL,609,B,3,Politics In Education,W,07:15 pm-09:30 pm,Mary Helen Moorhead (P),08/28-12/16,OFF
-69474,EDL,645,A,3,Supervision Of Teaching,M,06:30 pm-08:15 pm,Mary Helen Moorhead (P),08/28-12/16,OFF
-69476,EDL,645,B,3,Supervision Of Teaching,W,06:30 pm-08:15 pm,Andrew M. Smith (P),08/28-12/16,OFF
-69470,EDL,648,A,3,Data-Informed Decision Making,M,04:25 pm-07:10 pm,Dustin Wade Miller (P),08/28-12/16,OFF
-69475,EDL,648,B,3,Data-Informed Decision Making,W,04:25 pm-07:25 pm,Lucian August Szlizewski (P),08/28-12/16,OFF
+71666,EDL,609,B,3,Politics In Education,W,07:15 pm-09:30 pm,Lucian August Szlizewski (P),08/28-12/16,OFF
 59822,EDL,654,A,3,Research in Higher Education,T,04:25 pm-07:05 pm,Kathleen M. Goodman (P),08/28-12/16,MCG 311
 67872,EDL,654,B,3,Research in Higher Education,R,04:25 pm-07:05 pm,Kathleen M. Goodman (P),08/28-12/16,MCG 119
 64938,EDL,656F,A,3,Field Experience-Ownership,W,04:25 pm-07:05 pm,Mahauganee Dawn Shaw (P),08/28-12/16,MCG 317
@@ -1495,8 +1505,9 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 71713,EDL,671,A,3,Crisis Management Seminar,R,04:25 pm-07:05 pm,Mahauganee Dawn Shaw (P),08/28-12/16,MCG 224
 71714,EDL,676,A,3,Foundations of Student Affairs,M,10:05 am-12:45 pm,David Perez (P),08/28-12/16,TBA
 66308,EDL,683,A,3,Qualitative Research in Ed,W,01:15 pm-03:55 pm,Stephen John Quaye (P),08/28-12/16,MCG 121
-69593,EDL,683,B,3,Qualitative Research in Ed,T,04:25 pm-07:05 pm,Durell Maurice Callier (P),08/28-12/16,OFF
+69593,EDL,683,B,3,Qualitative Research in Ed,T,04:25 pm-07:05 pm,Durell Maurice Callier (P),08/28-12/16,TBA
 68408,EDL,696,A,3,Student Success in Higher Educ,M,04:25 pm-07:05 pm,David Perez (P),08/28-12/16,MCG 218
+72635,EDL,710,A,3,Intern Educational Leadership,,TBA,Kathleen Mecoli (P),08/28-12/16,OFF
 69594,EDL,710S,A,3,Superintendent's Internship,R,04:25 pm-06:55 pm,Lucian August Szlizewski (P),08/28-12/16,OFF
 71739,EDL,721,A,1.000-3.000,Pupil Personnel Services,,TBA,Kathleen Mecoli (P),08/28-12/16,OFF
 71742,EDL,721,B,1.000-3.000,Pupil Personnel Services,,TBA,TBA,08/28-12/16,OFF
@@ -1569,7 +1580,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 10755,EDP,666,A,3,Consultation and Collaboration,T,04:25 pm-07:05 pm,Erin A. Harper (P),08/28-12/16,MCG 226
 61371,EDP,672,A,3,Counseling Theories And Issues,W,04:25 pm-07:05 pm,Erin A. Harper (P),08/28-12/16,MCG 118
 68644,EDP,695A,A,1,Spvsd Pub Sch Exp/Sch Psy Stu,M,01:15 pm-02:10 pm,TBA,08/28-12/16,MCG 225
-68645,EDP,695B,A,1,Spvsd Pub Sch Exp/Sch Psy Stu,M,01:15 pm-02:10 pm,TBA,08/28-12/16,MCG 225
+68645,EDP,695B,A,1,Spvsd Pub Sch Exp/Sch Psy Stu,M,02:15 pm-03:10 pm,TBA,08/28-12/16,MCG 225
 68646,EDP,695C,A,1,Spvsd Pub Sch Exp/Sch Psy Stu,M,02:50 pm-03:45 pm,TBA,08/28-12/16,MCG 225
 72350,EDP,795,A,7,Suprvsd Fld Exp in School Psyc,,TBA,Raymond Witte (P),08/28-12/16,TBA
 ,,,,,,,,,,
@@ -1630,13 +1641,19 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,T,08:00 am-09:50 am,Jeffrey L. Peterson,08/28-12/16,EGB 168
 50263,ECE,448,A,2,Senior Design Project,M,06:30 pm-07:50 pm,Dmitriy Garmatyuk (P),08/28-12/16,GAR 156
 58822,ECE,449,A,2,Senior Design Project,M,06:30 pm-07:50 pm,Dmitriy Garmatyuk (P),08/28-12/16,GAR 156
-69720,ECE,453,A,3,Communication Systems,MW,05:30 pm-06:50 pm,Donald R. Ucci (P),08/28-12/16,BEN 100
-69681,ECE,491,A,3,Power Systems Engineering,WF,10:05 am-11:25 am,Mark John Scott (P),08/28-12/16,BEN 100
+69720,ECE,453,A,3,Communication Systems,MW,05:30 pm-06:50 pm,Donald R. Ucci (P),08/28-12/16,BEN 207
+72618,ECE,497,A,3,Electric Vehicle Technology,T,12:00 pm-02:00 pm,Mark John Scott,08/28-12/16,BEN 100
+,,,,,,WF,10:05 am-11:00 am,Mark John Scott (P),08/28-12/16,EGB 168
+72619,ECE,497,B,3,Electric Vehicle Technology,T,02:00 pm-04:00 pm,Mark John Scott,08/28-12/16,EGB 168
+,,,,,,WF,10:05 am-11:00 am,Mark John Scott (P),08/28-12/16,BEN 100
+72620,ECE,497,C,3,Electric Vehicle Technology,T,04:00 pm-06:00 pm,Mark John Scott,08/28-12/16,EGB 168
+,,,,,,WF,10:05 am-11:00 am,Mark John Scott (P),08/28-12/16,BEN 100
 72460,ECE,529,A,3,Digital Image Processing,MW,01:15 pm-02:35 pm,Chi-Hao Cheng (P),08/28-12/16,GAR 156
 72282,ECE,536,A,3,Control of Dynamic Systems,MWF,04:25 pm-06:15 pm,James Robert Chagdes (P),08/28-12/16,EGB 270
 ,,,,,,T,08:00 am-09:50 am,Jeffrey L. Peterson,08/28-12/16,EGB 168
-69724,ECE,553,A,3,Communication Systems,MW,05:30 pm-06:50 pm,Donald R. Ucci (P),08/28-12/16,BEN 100
-70535,ECE,591,A,3,Power Systems Engineering,WF,10:05 am-11:25 am,Mark John Scott (P),08/28-12/16,BEN 100
+69724,ECE,553,A,3,Communication Systems,MW,05:30 pm-06:50 pm,Donald R. Ucci (P),08/28-12/16,BEN 207
+72621,ECE,597,B,3,Electric Vehicle Technology,T,02:00 pm-04:00 pm,Mark John Scott,08/28-12/16,EGB 168
+,,,,,,WF,10:05 am-11:00 am,Mark John Scott (P),08/28-12/16,BEN 100
 60226,ECE,610,A,1,Graduate Seminar,M,11:40 am-12:35 pm,Chi-Hao Cheng (P),08/28-12/16,BEN 100
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
@@ -1650,7 +1667,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 56924,ENG,104,B,1,Writing Studio,T,10:05 am-11:25 am,TBA,08/28-12/16,BAC 338
 56688,ENG,104,C,1,Writing Studio,M,11:40 am-01:00 pm,TBA,08/28-12/16,BAC 338
 71540,ENG,104,D,1,Writing Studio,M,01:15 pm-02:35 pm,TBA,08/28-12/16,BAC 338
-67309,ENG,104,E,1,Writing Studio,W,02:15 pm-03:35 pm,TBA,08/28-12/16,BAC 338
+67309,ENG,104,E,1,Writing Studio,W,01:15 pm-02:35 pm,TBA,08/28-12/16,BAC 338
 70361,ENG,104,F,1,Writing Studio,W,02:50 pm-04:10 pm,TBA,08/28-12/16,BAC 151
 71541,ENG,104,G,1,Writing Studio,W,04:25 pm-05:45 pm,TBA,08/28-12/16,BAC 338
 69736,ENG,108,AA,4,U.S. Cult & Comp L2 Writers,MW,08:00 am-09:50 am,TBA,08/28-12/16,BOY 228
@@ -1661,7 +1678,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 57111,ENG,108,EA,4,U.S. Cult & Comp L2 Writers,MWF,11:40 am-12:55 pm,TBA,08/28-12/16,BAC 341
 57112,ENG,108,GA,4,U.S. Cult & Comp L2 Writers,MWF,01:15 pm-02:30 pm,TBA,08/28-12/16,PBD 029
 69730,ENG,108,HA,4,U.S. Cult & Comp L2 Writers,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,PBD 029
-68697,ENG,108,PA,4,U.S. Cult & Comp L2 Writers,MW,04:25 pm-06:15 pm,Cher Cornett Uhl (P),08/28-12/16,BAC 346
+68697,ENG,108,PA,4,U.S. Cult & Comp L2 Writers,MW,04:25 pm-06:15 pm,TBA,08/28-12/16,BAC 346
 67191,ENG,109,AA,4,Composition & Rhet L2 Writers,MW,08:00 am-09:50 am,TBA,08/28-12/16,UPH 343
 56879,ENG,109,BA,4,Composition & Rhet L2 Writers,MWF,08:30 am-09:45 am,TBA,08/28-12/16,BAC 337
 69753,ENG,109,CA,4,Composition & Rhet L2 Writers,MWF,10:05 am-11:20 am,TBA,08/28-12/16,BAC 337
@@ -1685,7 +1702,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 56800,ENG,111,BD,3,Composition and Rhetoric,TR,08:30 am-09:50 am,TBA,08/28-12/16,BAC 346
 14433,ENG,111,BE,3,Composition and Rhetoric,TR,08:30 am-09:50 am,TBA,08/28-12/16,BAC 143
 50805,ENG,111,BF,3,Composition and Rhetoric,TR,08:30 am-09:50 am,TBA,08/28-12/16,UPH 167
-10884,ENG,111,DA,3,Composition and Rhetoric,MWF,10:05 am-11:00 am,TBA,08/28-12/16,TBA
+10884,ENG,111,DA,3,Composition and Rhetoric,MWF,10:05 am-11:00 am,TBA,08/28-12/16,BAC 134
 10885,ENG,111,DB,3,Composition and Rhetoric,TR,10:05 am-11:25 am,TBA,08/28-12/16,BAC 252
 10883,ENG,111,DC,3,Composition and Rhetoric,TR,10:05 am-11:25 am,TBA,08/28-12/16,BAC 250
 14070,ENG,111,DD,3,Composition and Rhetoric,TR,10:05 am-11:25 am,TBA,08/28-12/16,PBD 021
@@ -1720,8 +1737,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 60171,ENG,119,C,3,ENG for Int'l Grad Students,WF,02:50 pm-04:10 pm,Anthony Joseph Cimasko (P),08/28-12/16,BAC 254
 72074,ENG,121,A,3,Literature for ESL Learners,MW,02:50 pm-04:10 pm,TBA,08/28-12/16,IRV 002
 52069,ENG,124,A,3,Introduction To Fiction,TR,10:05 am-11:25 am,TBA,08/28-12/16,MCG 118
-72496,ENG,129,A,3,Books You Need To Read,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,BAC 055
-72494,ENG,131,A,3,Life&Thought In English Lit,MW,11:40 am-01:00 pm,TBA,08/28-12/16,TBA
+72496,ENG,129,A,3,Books You Need To Read,TR,01:15 pm-02:35 pm,Andrew Hebard (P),08/28-12/16,BAC 055
 70168,ENG,163,A,3,Literature And Travel,WF,01:15 pm-02:35 pm,TBA,08/28-12/16,HRN 111
 71923,ENG,169,A,3,Disability and Literature,TR,10:05 am-11:25 am,TBA,08/28-12/16,BAC 108
 63216,ENG,171,A,3,Humanities and Technology,MW,11:40 am-01:00 pm,TBA,08/28-12/16,BAC 264
@@ -1732,7 +1748,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 68228,ENG,213,C,3,Writing for Media,M,04:25 pm-07:05 pm,Robin Boston Hinton (P),08/28-12/16,WIH 130
 71439,ENG,219,A,3,Introduction to Linguistics,TR,08:30 am-09:50 am,John M. Jeep (P),08/28-12/16,IRV 142
 71747,ENG,219,B,3,Introduction to Linguistics,MW,10:05 am-11:25 am,TBA,08/28-12/16,BEN 206
-71751,ENG,219,C,3,Introduction to Linguistics,MW,11:40 am-01:00 pm,TBA,08/28-12/16,BAC 346
+71751,ENG,219,C,3,Introduction to Linguistics,MW,11:40 am-01:00 pm,Galina Shleykina (P),08/28-12/16,BAC 346
 68189,ENG,220,A,3,Literature & Film,TR,11:40 am-01:00 pm,Kathleen N. Johnson (P),08/28-12/16,ART 100
 71027,ENG,221,A,3,Shakespeare And Film,TR,10:05 am-11:25 am,Kaara L. Peterson (P),08/28-12/16,BAC 346
 64830,ENG,222,A,3,Rhetoric of Info & Data Visual,TR,01:15 pm-02:35 pm,James E. Porter (P),08/28-12/16,LWS 205
@@ -1747,16 +1763,11 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 70380,ENG,225,A,3,Advanced Composition,MW,08:30 am-09:50 am,TBA,08/28-12/16,IRV 238
 70379,ENG,225,B,3,Advanced Composition,WF,08:30 am-09:50 am,Gabriele Bechtel (P),08/28-12/16,BAC 254
 69101,ENG,225,C,3,Advanced Composition,MW,10:05 am-11:25 am,Nalin Asoka Jayasena (P),08/28-12/16,BAC 250
-70564,ENG,225,D,3,Advanced Composition,MW,10:05 am-11:25 am,TBA,08/28-12/16,UPH 131
 61618,ENG,225,E,3,Advanced Composition,TR,10:05 am-11:25 am,TBA,08/28-12/16,UPH 343
-70570,ENG,225,F,3,Advanced Composition,TR,10:05 am-11:25 am,TBA,08/28-12/16,UPH 167
-70572,ENG,225,G,3,Advanced Composition,TR,10:05 am-11:25 am,TBA,08/28-12/16,BAC 254
 69102,ENG,225,H,3,Advanced Composition,MW,11:40 am-01:00 pm,TBA,08/28-12/16,BAC 250
-68435,ENG,225,I,3,Advanced Composition,MW,11:40 am-01:00 pm,TBA,08/28-12/16,UPH 167
 69107,ENG,225,J,3,Advanced Composition,WF,11:40 am-01:00 pm,TBA,08/28-12/16,UPH 343
 70378,ENG,225,K,3,Advanced Composition,TR,11:40 am-01:00 pm,TBA,08/28-12/16,UPH 343
 68449,ENG,225,L,3,Advanced Composition,MW,01:15 pm-02:35 pm,TBA,08/28-12/16,BAC 143
-69106,ENG,225,M,3,Advanced Composition,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,IRV 238
 70571,ENG,225,N,3,Advanced Composition,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,SHD 052
 69104,ENG,225,O,3,Advanced Composition,MW,02:50 pm-04:10 pm,TBA,08/28-12/16,BAC 250
 69590,ENG,225,P,3,Advanced Composition,WF,02:50 pm-04:10 pm,Gabriele Bechtel (P),08/28-12/16,UPH 235
@@ -1770,15 +1781,15 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 10961,ENG,226,D,3,Intro to Creative Writing,WF,10:05 am-11:25 am,TBA,08/28-12/16,BAC 346
 10963,ENG,226,E,3,Intro to Creative Writing,TR,01:15 pm-02:35 pm,Margaret M. Luongo (P),08/28-12/16,BAC 250
 60440,ENG,226,F,3,Intro to Creative Writing,WF,02:50 pm-04:10 pm,TBA,08/28-12/16,IRV 126
-70404,ENG,226,G,3,Intro to Creative Writing,TR,04:25 pm-05:45 pm,TBA,08/28-12/16,BAC 108
 69570,ENG,231,A,3,The Short Story,TR,11:40 am-01:00 pm,TBA,08/28-12/16,BAC 108
 10964,ENG,231,B,3,The Short Story,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,BAC 134
 71772,ENG,248,A,3,Asian American Literature,WF,01:15 pm-02:35 pm,TBA,08/28-12/16,UPH 163
 72495,ENG,251,A,3,Life&Thought In European Lit,MW,08:30 am-09:50 am,TBA,08/28-12/16,BAC 346
+72631,ENG,272,A,3,English Lit to 1660,MW,11:40 am-01:00 pm,Katharine M. Gillespie (P),08/28-12/16,TBA
 72492,ENG,276,A,3,American Lit 1900-Present,MW,11:40 am-01:00 pm,TBA,08/28-12/16,UPH 298
 16724,ENG,298,A,3,Intro:Literary&Cultural Study,TR,10:05 am-11:25 am,Andrew Hebard (P),08/28-12/16,BAC 256
 59931,ENG,298,B,3,Intro:Literary&Cultural Study,MW,02:50 pm-04:10 pm,Mary Jean Corbett (P),08/28-12/16,BAC 346
-60287,ENG,301,A,3,History Of English Language,MW,02:50 pm-04:10 pm,TBA,08/28-12/16,UPH 258
+60287,ENG,301,A,3,History Of English Language,MW,02:50 pm-04:10 pm,Karim Hesham Shaker Ibrahim (P),08/28-12/16,UPH 258
 68207,ENG,301,B,3,History Of English Language,TR,02:50 pm-04:10 pm,Patrick Joseph Murphy (P),08/28-12/16,UPH 167
 18540,ENG,302,A,3,Structure Of Modern English,MW,01:15 pm-02:35 pm,Vincent John Palozzi (P),08/28-12/16,UPH 167
 69156,ENG,302,B,3,Structure Of Modern English,TR,01:15 pm-02:35 pm,Vincent John Palozzi (P),08/28-12/16,BAC 346
@@ -1816,7 +1827,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 66349,ENG,412,A,3,Print and Digital Editing,TR,01:15 pm-02:35 pm,Timothy A. Lockridge (P),08/28-12/16,BAC 264
 64846,ENG,413,A,3,Grant and Proposal Writing,TR,08:30 am-09:50 am,TBA,08/28-12/16,BAC 252
 66348,ENG,415,A,3,Capstone: Professional Writing,TR,02:50 pm-04:10 pm,James E. Porter (P),08/28-12/16,LWS 201
-71019,ENG,417,A,3,L2 Writing & Reading,WF,11:40 am-01:00 pm,Anthony Joseph Cimasko (P),08/28-12/16,BAC 254
+71019,ENG,417,A,3,L2 Writing & Reading,WF,11:40 am-01:00 pm,Anthony Joseph Cimasko (P),08/28-12/16,SHD 009
 11007,ENG,420,A,3,Adv Creat Wrtng:Fiction Wrkshp,MW,01:15 pm-02:35 pm,Brian Roley (P),08/28-12/16,BAC 254
 11006,ENG,420,B,3,Adv Creat Wrtng:Fiction Wrkshp,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,BAC 254
 66727,ENG,429,A,3,Environmental Communication,TR,10:05 am-11:25 am,W. Michele Simmons (P),08/28-12/16,BAC 264
@@ -1832,7 +1843,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 14325,ENG,511,B,3,Visual Rhetoric,MW,02:50 pm-04:10 pm,Adam Wayne Strantz (P),08/28-12/16,BAC 264
 66350,ENG,512,A,3,Print and Digital Editing,TR,01:15 pm-02:35 pm,Timothy A. Lockridge (P),08/28-12/16,BAC 264
 64847,ENG,513,A,3,Grant and Proposal Writing,TR,08:30 am-09:50 am,TBA,08/28-12/16,BAC 252
-71020,ENG,517,A,3,L2 Writing & Reading,WF,11:40 am-01:00 pm,Anthony Joseph Cimasko (P),08/28-12/16,BAC 254
+71020,ENG,517,A,3,L2 Writing & Reading,WF,11:40 am-01:00 pm,Anthony Joseph Cimasko (P),08/28-12/16,SHD 009
 66728,ENG,529,A,3,Environmental Communication,TR,10:05 am-11:25 am,W. Michele Simmons (P),08/28-12/16,BAC 264
 69240,ENG,535,A,3,Queer Theory,MW,10:05 am-11:25 am,Anita Mannur (P),08/28-12/16,SHD 052
 11016,ENG,603,A,4,Theories And Their Histories,T,04:25 pm-07:15 pm,Madelyn M. Detloff (P),08/28-12/16,BAC 343
@@ -1878,7 +1889,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,W,11:40 am-01:00 pm,Thomas M. Heuer,08/28-12/16,FSB 2046
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
-70559,IES,127,A,1,Environmental/Justice Films,M,02:50 pm-05:50 pm,Jonathan Levy (P); Stephen Lippmann ; Ronald B. Scott,08/28-12/16,KRG 221
+70559,IES,127,A,1,Environmental/Justice Films,M,02:50 pm-05:50 pm,Jonathan Levy (P); Stephen Lippmann ; Ronald B. Scott,08/28-12/16,IRV 030
 63398,IES,274,A,3,Environment and Sustainability,TR,10:05 am-11:25 am,Scott A. Johnston (P),08/28-12/16,SHD 053
 70242,IES,278,A,4,Food Studies & Food Systems,MW,10:05 am-11:50 am,Marguerite S. Shaffer (P),08/28-12/16,UPH 163
 ,,,,,,W,02:15 pm-04:05 pm,Alfredo J. Huerta,08/28-12/16,MCG 422
@@ -1904,7 +1915,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 61611,IES,550,A,3,Environmental Law,,TBA,Sarah Lynn Dumyahn (P),08/28-12/16,WEB
 69652,IES,550,B,3,Environmental Law,,TBA,Sarah Lynn Dumyahn (P),08/28-12/16,WEB
 63463,IES,598,TA,1,IES Env Orientation Field Trip,,TBA,Suzanne Zazycki (P),09/05-10/23,SHD 200
-56044,IES,610,A,2,Professional Service Project,WF,08:30 am-09:25 am,Suzanne Zazycki (P),08/28-12/16,SHD 237
+56044,IES,610,A,2,Professional Service Project,WF,08:30 am-09:25 am,Suzanne Zazycki (P),08/28-12/16,UPH 226
 11349,IES,611,VA,1,Environmental Problem Solving,M,11:30 am-01:05 pm,TBA,09/05-11/06,SHD 200
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
@@ -1946,6 +1957,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 70220,FSW,481,D,3,Adolescnt Development,,TBA,Anthony G. James (P),08/28-12/16,WEB
 70415,FSW,481,E,3,Adolescnt Development,,TBA,Jane Ellen Newell (P),08/28-12/16,WEB
 72223,FSW,491,A,3,Seminar in Family & Child Stds,TR,01:15 pm-02:10 pm,Anthony G. James (P),08/28-12/16,MCG 122
+72634,FSW,491G,A,1,Nonviolent Crisis Intervention,S,09:00 am-05:00 pm,Sharon Lilah Custer (P),09/09-09/09,TBA
+,,,,,,S,09:00 am-05:00 pm,Sharon Lilah Custer (P),09/16-12/16,TBA
 72127,FSW,494,A,3,Internship w/Fam&Children,,TBA,Carolyn Theresa Slotten (P),08/28-12/16,TBA
 51423,FSW,551,A,3,Family Violence,TR,04:25 pm-05:45 pm,Carolyn Theresa Slotten (P),08/28-12/16,MCG 217
 68397,FSW,551,B,3,Family Violence,TR,02:50 pm-04:10 pm,Carolyn Theresa Slotten (P),08/28-12/16,MCG 217
@@ -1955,8 +1968,10 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 65250,FSW,575,A,3,Family Theories,MF,10:05 am-11:25 am,Karleah Harris (P),08/28-12/16,MCG 418
 71614,FSW,581,F,3,Adolescent Development,,TBA,Anthony G. James (P),08/28-12/16,WEB
 72247,FSW,591,B,3,Seminar in Family & Child Stds,TR,01:15 pm-02:10 pm,Anthony G. James (P),08/28-12/16,MCG 122
-65133,FSW,762,A,2,Social Work Field Education II,,TBA,TBA,08/28-12/16,TBA
-66743,FSW,765,A,1,SW Field Education Seminar II,F,02:50 pm-04:10 pm,TBA,08/28-12/16,MCG 224
+72636,FSW,591G,B,1,Nonviolent Crisis Intervention,S,09:00 am-05:00 pm,Sharon Lilah Custer (P),09/09-09/09,TBA
+,,,,,,S,09:00 am-05:00 pm,Sharon Lilah Custer (P),09/16-09/16,TBA
+65133,FSW,762,A,2,Social Work Field Education II,,TBA,Lindsey Grey Houlihan (P),08/28-12/16,TBA
+66743,FSW,765,A,1,SW Field Education Seminar II,F,02:50 pm-04:10 pm,Lindsey Grey Houlihan (P),08/28-12/16,MCG 224
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69682,FAS,101,A,3,Intro to Fashion Industry,M,06:30 pm-09:10 pm,Kelly K. Collison (P),08/28-12/16,BOY 107
@@ -1985,6 +2000,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72096,FST,262,A,3,Italian Cinema,TR,01:15 pm-02:35 pm,Daniele Fioretti (P),08/28-12/16,IRV 040
 71716,FST,264,A,3,Chinese Cinema & Culture,MW,01:15 pm-02:35 pm,Haosheng Yang (P),08/28-12/16,IRV 034
 ,,,,,,M,03:00 pm-06:00 pm,Haosheng Yang,08/28-12/16,IRV 034
+72652,FST,350A,A,3,Mafia and Cinema,TR,10:05 am-11:25 am,Daniele Fioretti (P),08/28-12/16,IRV 040
 69243,FST,350B,A,3,Women In Film,TR,02:50 pm-04:10 pm,Kathleen N. Johnson (P),08/28-12/16,IRV 040
 ,,,,,,T,04:25 pm-06:25 pm,TBA,08/28-12/16,IRV 040
 72436,FST,350R,A,3,Latin American Film,T,05:30 pm-07:30 pm,TBA,08/28-12/16,KRG
@@ -2040,33 +2056,30 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 11102,FRE,101,E,4,Elementary French,MTWR,11:40 am-12:35 pm,TBA,08/28-12/16,IRV 002
 14438,FRE,101,F,4,Elementary French,MTWR,11:40 am-12:35 pm,TBA,08/28-12/16,IRV 009
 58593,FRE,102,A,4,Elementary French,TWRF,08:30 am-09:25 am,TBA,08/28-12/16,IRV 034
-58319,FRE,102,B,4,Elementary French,TWRF,08:30 am-09:25 am,TBA,08/28-12/16,IRV 024
-11107,FRE,102,C,4,Elementary French,TWRF,10:05 am-11:00 am,TBA,08/28-12/16,IRV 124
-11108,FRE,102,D,4,Elementary French,TWRF,10:05 am-11:00 am,TBA,08/28-12/16,IRV 002
-63632,FRE,102,E,4,Elementary French,TWRF,11:40 am-12:35 pm,TBA,08/28-12/16,IRV 242
+58319,FRE,102,B,4,Elementary French,TWRF,10:05 am-11:00 am,TBA,08/28-12/16,IRV 002
+11107,FRE,102,C,4,Elementary French,TWRF,10:05 am-11:00 am,TBA,08/28-12/16,MCG 422
+11108,FRE,102,D,4,Elementary French,TWRF,11:40 am-12:35 pm,TBA,08/28-12/16,IRV 242
 16017,FRE,201,A,3,Intermediate French,MWF,08:30 am-09:25 am,Anna Vendla Keefe (P),08/28-12/16,IRV 026
 11109,FRE,201,B,3,Intermediate French,MWF,10:05 am-11:00 am,Anna Vendla Keefe (P),08/28-12/16,IRV 242
 16018,FRE,201,C,3,Intermediate French,MWF,10:05 am-11:00 am,TBA,08/28-12/16,IRV 034
 11110,FRE,201,D,3,Intermediate French,MWF,11:40 am-12:35 pm,TBA,08/28-12/16,IRV 046
 11111,FRE,201,E,3,Intermediate French,TR,10:05 am-11:25 am,Jeremie Charles Korta (P),08/28-12/16,MCG 416
 66964,FRE,201,G,3,Intermediate French,TR,01:15 pm-02:35 pm,Jeremie Charles Korta (P),08/28-12/16,IRV 002
-66965,FRE,202,A,3,Critical Anlys/French Culture,MWF,08:30 am-09:25 am,Lindsey Rae Scott (P),08/28-12/16,MCG 218
+66965,FRE,202,A,3,Critical Anlys/French Culture,TR,10:05 am-11:25 am,Elisabeth D. Hodges (P),08/28-12/16,IRV 220
 65112,FRE,202,B,3,Critical Anlys/French Culture,MW,11:40 am-01:00 pm,Mark Keith McKinney (P),08/28-12/16,IRV 034
-11122,FRE,202,C,3,Critical Anlys/French Culture,TR,01:15 pm-02:35 pm,Elisabeth D. Hodges (P),08/28-12/16,IRV 026
+11122,FRE,202,C,3,Critical Anlys/French Culture,TR,01:15 pm-02:35 pm,Anna M. Klosowska (P),08/28-12/16,IRV 026
 11123,FRE,202,D,3,Critical Anlys/French Culture,MWF,10:05 am-11:00 am,Lindsey Rae Scott (P),08/28-12/16,IRV 124
 11124,FRE,301,A,3,Culture & Interpretation,MWF,10:05 am-11:00 am,Audrey Catherine Wasser (P),08/28-12/16,IRV 142
 59963,FRE,301,B,3,Culture & Interpretation,MWF,11:40 am-12:35 pm,Audrey Catherine Wasser (P),08/28-12/16,IRV 224
-11126,FRE,301,C,3,Culture & Interpretation,MWF,01:15 pm-02:10 pm,Lindsey Rae Scott (P),08/28-12/16,IRV 224
-69438,FRE,302,A,3,Pre-Revolution Lit & Life,TR,11:40 am-01:00 pm,Jeremie Charles Korta (P),08/28-12/16,IRV 220
+11126,FRE,301,C,3,Culture & Interpretation,MWF,11:40 am-01:00 pm,Jonathan A. Strauss (P),08/28-12/16,IRV 220
+69438,FRE,302,A,3,Pre-Revolution Lit & Life,TR,02:50 pm-04:10 pm,Jeremie Charles Korta (P),08/28-12/16,IRV 238
 66742,FRE,303,A,3,Mod and Contemp Lit & Life,TR,01:15 pm-02:35 pm,Jonathan A. Strauss (P),08/28-12/16,IRV 220
 61720,FRE,341,A,3,French Converstn&Current Event,MWF,10:05 am-11:00 am,Michel Jean Pactat (P),08/28-12/16,IRV 009
 62808,FRE,361,A,3,French Pronunciation,MWF,11:40 am-12:35 pm,Anna Vendla Keefe (P),08/28-12/16,IRV 220
 69441,FRE,366,A,3,French Cinema,TR,02:50 pm-04:10 pm,Elisabeth D. Hodges (P),08/28-12/16,IRV 040
 72049,FRE,411,A,3,French Civilization,MW,02:50 pm-04:10 pm,Mark Keith McKinney (P),08/28-12/16,IRV 220
-72054,FRE,442,A,3,Literary Innovation; 16-18 C,TR,01:15 pm-02:35 pm,Anna M. Klosowska (P),08/28-12/16,IRV 242
 72059,FRE,462,A,3,20 C Novel: Beyond Existential,WF,01:15 pm-02:35 pm,Audrey Catherine Wasser (P),08/28-12/16,IRV 220
 72052,FRE,511,A,3,French Civilization,MW,02:50 pm-04:10 pm,Mark Keith McKinney (P),08/28-12/16,IRV 220
-72057,FRE,542,A,3,Literary Innovation; 16-18 C,TR,01:15 pm-02:35 pm,Anna M. Klosowska (P),08/28-12/16,IRV 242
 72061,FRE,562,A,3,20 C Novel: Beyond Existential,WF,01:15 pm-02:35 pm,Audrey Catherine Wasser (P),08/28-12/16,IRV 220
 72053,FRE,614,A,3,Intro to French Lit. Theory,T,04:00 pm-06:40 pm,Anna M. Klosowska (P),08/28-12/16,IRV 220
 11138,FRE,691,A,2,Wksp Teaching 1st Year French,,TBA,Michel Jean Pactat (P),08/28-12/16,TBA
@@ -2192,7 +2205,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 59869,GER,202,B,3,Second Year German,TR,10:05 am-11:25 am,Mila M. Ganeva (P),08/28-12/16,IRV 118
 71437,GER,219,A,3,Introduction to Linguistics,TR,08:30 am-09:50 am,John M. Jeep (P),08/28-12/16,IRV 142
 71748,GER,219,B,3,Introduction to Linguistics,MW,10:05 am-11:25 am,TBA,08/28-12/16,BEN 206
-71752,GER,219,C,3,Introduction to Linguistics,MW,11:40 am-01:00 pm,TBA,08/28-12/16,BAC 346
+71752,GER,219,C,3,Introduction to Linguistics,MW,11:40 am-01:00 pm,Galina Shleykina (P),08/28-12/16,BAC 346
 72324,GER,219H,A,3,Introduction to Linguistics,TR,08:30 am-09:50 am,John M. Jeep (P),08/28-12/16,IRV 142
 71434,GER,231,A,3,Folk & Literary Fairy Tales,MW,11:40 am-12:35 pm,Nicole A. Thesz (P),08/28-12/16,UPH 002
 ,,,,,,F,11:40 am-12:35 pm,Nicole A. Thesz,08/28-12/16,IRV 034
@@ -2206,16 +2219,17 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 67571,GER,471,A,3,Linguistic Persp Contemp Germn,TR,01:15 pm-02:35 pm,John M. Jeep (P),08/28-12/16,IRV 120
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
-69945,GTY,110,A,1,OMA Volunteer Experience,M,10:05 am-12:35 pm,TBA,08/28-12/16,OFF
-,,,,,,M,10:05 am-11:35 am,Elizabeth J. Lokon (P),08/28-12/16,UPH 328
-69951,GTY,110,B,1,OMA Volunteer Experience,M,01:15 pm-03:45 pm,TBA,08/28-12/16,OFF
-,,,,,,M,01:15 pm-02:45 pm,Elizabeth J. Lokon (P),08/28-12/16,UPH 226
-69952,GTY,110,C,1,OMA Volunteer Experience,R,08:30 am-10:30 am,TBA,08/28-12/16,OFF
-,,,,,,R,08:30 am-10:00 am,Elizabeth J. Lokon (P),08/28-12/16,ALU 200
-69954,GTY,110,D,1,OMA Volunteer Experience,R,08:30 am-10:00 am,Elizabeth J. Lokon (P),08/28-12/16,ALU 200
-,,,,,,F,08:30 am-12:30 pm,TBA,08/28-12/16,OFF
-69955,GTY,110,E,1,OMA Volunteer Experience,F,02:50 pm-04:50 pm,TBA,08/28-12/16,OFF
-,,,,,,F,02:50 pm-04:20 pm,Elizabeth J. Lokon (P),08/28-12/16,TBA
+69945,GTY,110,A,1,OMA Volunteer Experience,M,10:00 am-11:20 am,Elizabeth J. Lokon (P),08/28-09/22,UPH 351
+,,,,,,M,10:00 am-12:30 pm,TBA,09/23-12/16,OFF
+69951,GTY,110,B,1,OMA Volunteer Experience,M,01:15 pm-02:45 pm,Elizabeth J. Lokon (P),08/28-09/22,UPH 226
+,,,,,,M,01:00 pm-03:30 pm,TBA,09/23-12/16,OFF
+69952,GTY,110,C,1,OMA Volunteer Experience,R,09:30 am-11:00 am,Elizabeth J. Lokon (P),08/28-09/22,TBA
+,,,,,,R,09:15 am-11:15 am,TBA,09/23-12/16,OFF
+69954,GTY,110,D,1,OMA Volunteer Experience,M,02:30 pm-03:55 pm,Elizabeth J. Lokon (P),08/28-09/22,UPH 351
+,,,,,,M,02:30 pm-04:00 pm,TBA,09/23-12/16,OFF
+69955,GTY,110,E,1,OMA Volunteer Experience,F,02:30 pm-04:00 pm,Elizabeth J. Lokon (P),08/28-09/22,TBA
+,,,,,,F,02:15 pm-04:15 pm,TBA,09/23-12/16,OFF
+72646,GTY,110,F,1,OMA Volunteer Experience,F,08:30 am-12:30 pm,Elizabeth J. Lokon (P),08/28-09/22,OFF
 52935,GTY,154,A,3,Big Ideas in Aging,TR,11:40 am-01:00 pm,Linda L. Barrett (P),08/28-12/16,GAR 156
 54974,GTY,154,B,3,Big Ideas in Aging,WF,11:40 am-01:00 pm,TBA,08/28-12/16,UPH 275
 60511,GTY,154,C,3,Big Ideas in Aging,TR,08:30 am-09:50 am,TBA,08/28-12/16,UPH 297
@@ -2252,8 +2266,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 66670,GHS,301,TA,1,Seminar in Global Health,F,03:00 pm-10:00 pm,Christopher Sutter (P),09/29-10/01,FSB 0020
-,,,,,,S,08:00 am-10:00 pm,TBA,09/29-10/01,TBA
-,,,,,,U,08:00 am-07:00 pm,TBA,09/29-10/01,TBA
+,,,,,,S,08:00 am-10:00 pm,Christopher Sutter,09/29-10/01,TBA
+,,,,,,U,08:00 am-07:00 pm,Janet Marshall,09/29-10/01,TBA
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 52205,GSC,601,A,1,College Teaching Enhancement,T,06:30 pm-07:30 pm,Jennifer Marie Blue (P),08/28-12/16,LWS 320
@@ -2359,6 +2373,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 71470,ISA,205,B,4,Business Statistics,MWF,01:15 pm-02:30 pm,TBA,08/28-12/16,LWS 301
 71471,ISA,205,C,4,Business Statistics,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,LWS 301
 71474,ISA,205,D,4,Business Statistics,MWF,10:05 am-11:20 am,TBA,08/28-12/16,FSB 1036
+72641,ISA,205,E,4,Business Statistics,MWF,10:05 am-11:20 am,TBA,08/28-12/16,TBA
 71476,ISA,225,A,3,Business Analytics,WF,11:40 am-01:00 pm,Patrick John Schur (P),08/28-12/16,FSB 0021
 71487,ISA,225,B,3,Business Analytics,MW,04:25 pm-05:45 pm,TBA,08/28-12/16,FSB 0012
 71488,ISA,225,C,3,Business Analytics,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,FSB 0024
@@ -2391,7 +2406,6 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 71557,ISA,235,L,3,IT & Intelligent Enterprise,WF,10:05 am-11:25 am,TBA,08/28-12/16,LWS 301
 71558,ISA,235,M,3,IT & Intelligent Enterprise,TR,04:25 pm-05:45 pm,TBA,08/28-12/16,FSB 0024
 71559,ISA,235,N,3,IT & Intelligent Enterprise,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,FSB 0021
-71560,ISA,235,O,3,IT & Intelligent Enterprise,MW,04:25 pm-05:45 pm,TBA,08/28-12/16,LWS 301
 72326,ISA,235H,A,3,IT & Intelligent Enterprise,TR,01:15 pm-02:35 pm,John H. Benamati (P),08/28-12/16,FSB 1036
 62569,ISA,245,A,3,Database Systems,MW,02:50 pm-04:10 pm,Joseph Kelechi Nwankpa (P),08/28-12/16,FSB 2050
 62570,ISA,245,B,3,Database Systems,MW,04:25 pm-05:45 pm,Joseph Kelechi Nwankpa (P),08/28-12/16,FSB 2050
@@ -2455,7 +2469,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 68099,IMS,257,B,3,Web Interaction Programming,TR,10:05 am-11:25 am,TBA,08/28-12/16,LWS 205
 70392,IMS,257,C,3,Web Interaction Programming,WF,08:30 am-09:50 am,Younghwa Lee (P),08/28-12/16,LWS 201
 70393,IMS,257,D,3,Web Interaction Programming,WF,10:05 am-11:25 am,Younghwa Lee (P),08/28-12/16,LWS 201
-58346,IMS,259,A,3,Art and Digital Tools I,M,05:00 pm-07:15 pm,Sherri Ann Krazl (P); Kristin Marie Kieffer,08/28-12/16,HUG 100
+58346,IMS,259,A,3,Art and Digital Tools I,M,05:00 pm-07:15 pm,Sherri Ann Krazl (P); Kristin Marie Kieffer,08/28-12/16,UPH 001
 ,,,,,,R,05:00 pm-07:00 pm,TBA,08/28-12/16,KNG 027
 70582,IMS,259,B,3,Art and Digital Tools I,T,05:00 pm-07:15 pm,Neal Aaron Brown (P),08/28-12/16,HUG 100
 ,,,,,,R,05:00 pm-07:00 pm,TBA,08/28-12/16,KNG 027
@@ -2471,14 +2485,14 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72434,IMS,390I,A,3,Topics in IMS: Twich/Streaming,R,02:50 pm-04:10 pm,Phill Michael Alexander (P),08/28-12/16,KNG 027
 66618,IMS,390S,A,3,Adv 3D Modeling & Animation,MW,02:50 pm-04:10 pm,Eric Paul Hodgson (P),08/28-12/16,HIS 200
 72433,IMS,390S,B,3,Topics in IMS: Cyber Security,MW,04:25 pm-05:45 pm,Micah James Cooper (P),08/28-12/16,LWS 205
-70229,IMS,390V,A,3,Intro to Architecture in Games,,TBA,Jerald Daniel Belich (P),08/28-12/16,WEB
+72647,IMS,390S,C,3,Burn the Keyboard,TR,01:15 pm-02:35 pm,Jerald Daniel Belich (P),08/28-12/16,HIS 200
 66564,IMS,404,A,3,Advanced Data Visualization,TR,08:30 am-09:50 am,TBA,08/28-12/16,SHD 134
 69969,IMS,404,B,3,Advanced Data Visualization,TR,10:05 am-11:25 am,TBA,08/28-12/16,SHD 134
 66345,IMS,411,A,3,Visual Rhetoric,MW,01:15 pm-02:35 pm,Adam Wayne Strantz (P),08/28-12/16,BAC 264
 61887,IMS,411,B,3,Visual Rhetoric,MW,02:50 pm-04:10 pm,Adam Wayne Strantz (P),08/28-12/16,BAC 264
 72389,IMS,413,A,4,Usability and Digital Media,,TBA,TBA,08/28-12/16,WEB
-66566,IMS,413,B,4,Usability and Digital Media,TR,10:05 am-11:25 am,James R. Coyle (P),08/28-12/16,LWS 201
-66567,IMS,413,C,4,Usability and Digital Media,TR,11:40 am-01:00 pm,James R. Coyle (P),08/28-12/16,LWS 201
+66566,IMS,413,B,4,Usability and Digital Media,TR,10:05 am-11:25 am,James R. Coyle (P),08/28-12/16,UPH 262
+66567,IMS,413,C,4,Usability and Digital Media,TR,11:40 am-01:00 pm,James R. Coyle (P),08/28-12/16,BAC 131
 70451,IMS,413,D,4,Usability and Digital Media,,TBA,Shaelyn Nicole Clements (P),08/28-12/16,WEB
 63021,IMS,418,A,3,Social Media Marketing,MW,01:15 pm-02:35 pm,Glenn J. Platt (P),08/28-12/16,LWS 100
 65323,IMS,419,A,3,Digital Branding,TR,10:05 am-11:25 am,Paul Edward Hunter (P),08/28-12/16,FSB 1035
@@ -2488,8 +2502,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 68403,IMS,422,A,3,Advanced Web Design,F,11:40 am-01:30 pm,Jacob Patrick Berding (P),08/28-12/16,LWS 205
 56038,IMS,440,A,4,Interactive Media Studies Prac,TR,04:25 pm-05:45 pm,Jerald Daniel Belich (P),08/28-12/16,HIS 200
 61733,IMS,440,B,4,Interactive Media Studies Prac,TR,02:50 pm-04:10 pm,James E. Porter (P),08/28-12/16,LWS 201
-67255,IMS,440,C,4,Interactive Media Studies Prac,TR,01:15 pm-02:35 pm,Arthur R. Kuhn (P),08/28-12/16,LWS 201
-68719,IMS,440,D,4,Interactive Media Studies Prac,MW,11:40 am-01:00 pm,Jacqueline Rae Vance (P),08/28-12/16,LWS 202
+67255,IMS,440,C,4,Interactive Media Studies Prac,MW,04:25 pm-05:45 pm,Robert W. Black (P),08/28-12/16,LWS 201
 72316,IMS,445,A,3,Game Design,TR,02:50 pm-04:10 pm,Jerald Daniel Belich (P),08/28-12/16,HIS 200
 72361,IMS,445,B,3,Game Design,TR,11:40 am-01:00 pm,Bob De Schutter (P),08/28-12/16,KNG 027
 65499,IMS,452,A,3,Senior Degree Project,TR,02:50 pm-04:10 pm,Arthur R. Kuhn (P),08/28-12/16,LWS 201
@@ -2500,20 +2513,21 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69970,IMS,504,B,3,Advanced Data Visualization,TR,10:05 am-11:25 am,TBA,08/28-12/16,SHD 134
 66347,IMS,511,A,3,Visual Rhetoric,MW,01:15 pm-02:35 pm,Adam Wayne Strantz (P),08/28-12/16,BAC 264
 61888,IMS,511,B,3,Visual Rhetoric,MW,02:50 pm-04:10 pm,Adam Wayne Strantz (P),08/28-12/16,BAC 264
-66568,IMS,513,B,4,Usability and Digital Media,TR,10:05 am-11:25 am,James R. Coyle (P),08/28-12/16,LWS 201
-66569,IMS,513,C,4,Usability and Digital Media,TR,11:40 am-01:00 pm,James R. Coyle (P),08/28-12/16,LWS 201
+66568,IMS,513,B,4,Usability and Digital Media,TR,10:05 am-11:25 am,James R. Coyle (P),08/28-12/16,UPH 262
+66569,IMS,513,C,4,Usability and Digital Media,TR,11:40 am-01:00 pm,James R. Coyle (P),08/28-12/16,BAC 131
 63025,IMS,518,A,3,Social Media Marketing,MW,01:15 pm-02:35 pm,Glenn J. Platt (P),08/28-12/16,LWS 100
 66705,IMS,519,A,3,Digital Branding,TR,10:05 am-11:25 am,Paul Edward Hunter (P),08/28-12/16,FSB 1035
 63026,IMS,519,B,3,Digital Branding,,TBA,James R. Coyle (P),08/28-12/16,WEB
 68404,IMS,522,A,3,Advanced Web Design,F,11:40 am-01:30 pm,Jacob Patrick Berding (P),08/28-12/16,LWS 205
-68798,IMS,540,C,4,Interactive Media Studies Prac,TR,01:15 pm-02:35 pm,Arthur R. Kuhn (P),08/28-12/16,LWS 201
+68798,IMS,540,C,4,Interactive Media Studies Prac,MW,04:25 pm-05:45 pm,Robert W. Black (P),08/28-12/16,LWS 201
 68402,IMS,566,A,3,Critical Game Development,TR,01:15 pm-02:35 pm,Bob De Schutter (P),08/28-12/16,MCG 214
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
+72639,IDS,154,VA,2,Introduction to Study Abroad,TR,04:00 pm-05:35 pm,TBA,09/05-11/06,UPH 255
 61021,IDS,156,QA,1,Study Abroad Reentry,T,04:25 pm-05:30 pm,Jacqueline Del Carmen Rioja Velarde (P),09/11-12/16,MMH 114
-11330,IDS,159,QA,3,Strength Thru Culturl Diversty,MWF,11:40 am-12:45 pm,Fatima Emlemdi (P),09/11-12/16,KRG 207
-11331,IDS,159,QB,3,Strength Thru Culturl Diversty,MWF,01:15 pm-02:20 pm,Fatima Emlemdi (P),09/11-12/16,UPH 365
-70131,IDS,159,QC,3,Strength Thru Culturl Diversty,MWF,02:50 pm-03:55 pm,Fatima Emlemdi (P),09/11-12/16,UPH 361
+11330,IDS,159,QA,3,Strength Thru Culturl Diversty,MWF,11:40 am-12:45 pm,TBA,09/11-12/16,KRG 207
+11331,IDS,159,QB,3,Strength Thru Culturl Diversty,MWF,01:15 pm-02:20 pm,TBA,09/11-12/16,UPH 365
+70131,IDS,159,QC,3,Strength Thru Culturl Diversty,MWF,02:50 pm-03:55 pm,TBA,09/11-12/16,UPH 361
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 11360,ITS,201,A,3,Intro To International Studies,MW,08:30 am-09:50 am,TBA,08/28-12/16,UPH 249
@@ -2546,17 +2560,18 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 11355,ITL,101,B,4,Beginners Italian,MWF,10:05 am-11:20 am,Nicoletta Pazzaglia (P),08/28-12/16,IRV
-15487,ITL,101,C,4,Beginners Italian,MWF,01:15 pm-02:30 pm,Nicoletta Pazzaglia (P),08/28-12/16,IRV 046
+15487,ITL,101,C,4,Beginners Italian,MWF,02:50 pm-04:05 pm,Nicoletta Pazzaglia (P),08/28-12/16,IRV
 50338,ITL,101,E,4,Beginners Italian,MWF,02:50 pm-04:05 pm,Anna Rosa Gray (P),08/28-12/16,IRV 120
-18336,ITL,102,A,4,Beginners Italian,MWF,10:05 am-11:20 am,Anna Rosa Gray (P),08/28-12/16,TBA
+18336,ITL,102,A,4,Beginners Italian,MTWR,01:15 pm-02:30 pm,Anna Rosa Gray (P),08/28-12/16,IRV 046
 65911,ITL,201,A,3,Second Year Italian,TR,10:05 am-11:25 am,TBA,08/28-12/16,IRV 026
 11357,ITL,201,B,3,Second Year Italian,TR,11:40 am-01:00 pm,TBA,08/28-12/16,IRV 026
-18337,ITL,202,A,3,Second Year Italian,TR,10:05 am-11:25 am,Daniele Fioretti (P),08/28-12/16,IRV 009
+18337,ITL,202,A,3,Second Year Italian,TR,10:05 am-11:25 am,TBA,08/28-12/16,IRV 009
 17199,ITL,221,A,3,Italy; Matrix of Civilization,MW,10:05 am-11:25 am,Andrea Righi (P),08/28-12/16,IRV 220
 69531,ITL,222,A,3,Italian American Culture,TR,02:50 pm-04:10 pm,Daniele Fioretti (P),08/28-12/16,KRG 221
 ,,,,,,R,06:30 pm-09:30 pm,Daniele Fioretti,08/28-12/16,IRV 040
 72095,ITL,262,A,3,Italian Cinema,TR,01:15 pm-02:35 pm,Daniele Fioretti (P),08/28-12/16,IRV 040
 11358,ITL,301,A,3,Intro To Italian Literature,MW,08:30 am-09:50 am,Nicoletta Pazzaglia (P),08/28-12/16,IRV 220
+72651,ITL,350A,A,3,Mafia and Cinema,TR,10:05 am-11:25 am,TBA,08/28-12/16,IRV 040
 72094,ITL,350C,A,3,New Media and Psychoanalysis,MW,01:15 pm-02:35 pm,Andrea Righi (P),08/28-12/16,IRV 040
 71031,ITL,364,A,3,From Marco Polo to Machiavelli,MW,11:40 am-01:00 pm,Cynthia Klestinec (P),08/28-12/16,UPH 389
 72092,ITL,401,A,3,Dantes Divine Comedy,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,IRV 124
@@ -2564,7 +2579,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 65821,JPN,101,A,4,Elementary Japanese,MWF,08:30 am-09:45 am,Ayako Hotchi Reiff (P),08/28-12/16,IRV 120
 11368,JPN,101,B,4,Elementary Japanese,MWF,10:05 am-11:20 am,TBA,08/28-12/16,KRG 227
-59880,JPN,101,C,4,Elementary Japanese,MW,11:40 am-12:55 pm,TBA,08/28-12/16,KRG 222
+59880,JPN,101,C,4,Elementary Japanese,MWF,11:40 am-12:55 pm,TBA,08/28-12/16,KRG 222
 62758,JPN,101,D,4,Elementary Japanese,MTWR,01:15 pm-02:10 pm,Kazue Harada (P),08/28-12/16,KRG 222
 66954,JPN,101,E,4,Elementary Japanese,MTWR,02:50 pm-03:45 pm,Kazue Harada (P),08/28-12/16,IRV 009
 69060,JPN,201,A,3,Second Year Japanese,MWF,08:30 am-09:25 am,TBA,08/28-12/16,IRV 030
@@ -2607,7 +2622,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 50513,JRN,318,B,3,Advanced Storytelling in Journ,TR,11:40 am-01:00 pm,Dianne G. Gebhardt-French (P),08/28-12/16,WIH 227
 65039,JRN,318,C,3,Advanced Storytelling in Journ,TR,02:50 pm-04:10 pm,Dianne G. Gebhardt-French (P),08/28-12/16,WIH 227
 72616,JRN,350,A,3,Specialized Journalism,M,04:25 pm-05:45 pm,Terence Lee Moore (P),08/28-12/16,WIH 123
-,,,,,,W,04:25 pm-05:45 pm,Terence Lee Moore (P),08/28-12/16,WEB
+,,,,,,W,04:25 pm-05:45 pm,TBA,08/28-12/16,WEB
 70098,JRN,350P,A,3,Photojournalism,R,06:30 pm-09:10 pm,Glenn Moore Hartong (P),08/28-12/16,WIH 227
 64635,JRN,412,A,3,Public Affairs Reporting,TR,01:15 pm-02:35 pm,Stephen Siff (P),08/28-12/16,WIH 123
 72612,JRN,412,B,3,Public Affairs Reporting,TR,10:05 am-11:25 am,Stephen Siff (P),08/28-12/16,WIH 123
@@ -2633,7 +2648,6 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 65271,KNH,102,E,3,Fundamentals of Nutrition,,TBA,Gretchen Matuszak (P),08/28-12/16,WEB
 66741,KNH,102,F,3,Fundamentals of Nutrition,MW,08:30 am-09:50 am,Nancy Zwick (P),08/28-12/16,PHI 116
 67181,KNH,102,G,3,Fundamentals of Nutrition,,TBA,Sharman Empson Willmore (P),08/28-12/16,WEB
-70058,KNH,102,J,3,Fundamentals of Nutrition,R,05:00 pm-07:40 pm,Nancy S. Parkinson (P),08/28-12/16,PHI 210
 61001,KNH,103,A,2,Intro to Dietetics,R,08:00 am-09:50 am,Jennifer Marie Pate (P),08/28-12/16,EGB 165
 65270,KNH,103,B,2,Intro to Dietetics,TR,01:15 pm-02:10 pm,Gretchen Matuszak (P),08/28-12/16,PHI 127
 60264,KNH,104,A,3,Intro Food Science/Meal Mgt.,T,08:00 am-11:40 am,Jennifer Marie Pate,08/28-12/16,PHI 102
@@ -2650,6 +2664,18 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 55836,KNH,110T,A,2,Social Dance- Women,TR,10:05 am-11:00 am,Michael E. Scoggins (P),08/28-12/16,PHI 033
 71867,KNH,110T,B,2,Social Dance- Women,TR,11:40 am-12:35 pm,Michael E. Scoggins (P),08/28-12/16,PHI 033
 68289,KNH,110T,C,2,Social Dance- Women,TR,01:15 pm-02:10 pm,Michael E. Scoggins (P),08/28-12/16,PHI 033
+61957,KNH,112,A,2,Transit. for College Students,M,07:00 pm-07:55 pm,Craig Jason Bennett (P),08/28-12/16,SHD 152
+,,,,,,W,08:30 am-09:25 am,Jennifer Anne Gilbert,08/28-12/16,SHD 052
+72150,KNH,112,B,2,Transit. for College Students,M,02:00 pm-02:55 pm,Jennifer Lyn Seabaugh (P),08/28-12/16,SDC 106
+,,,,,,M,07:00 pm-07:55 pm,Craig Jason Bennett,08/28-12/16,SHD 152
+61959,KNH,112,C,2,Transit. for College Students,M,07:00 pm-07:55 pm,Craig Jason Bennett (P),08/28-12/16,SHD 152
+,,,,,,T,01:15 pm-02:10 pm,Thomas J. Stork,08/28-12/16,MMH 114
+63548,KNH,112,D,2,Transit. for College Students,M,07:00 pm-07:55 pm,Craig Jason Bennett (P),08/28-12/16,SHD 152
+,,,,,,T,11:40 am-12:35 pm,Nancy Rebecca Stewart,08/28-12/16,MCG 122
+65104,KNH,112,E,2,Transit. for College Students,M,07:00 pm-07:55 pm,Craig Jason Bennett (P),08/28-12/16,SHD 152
+,,,,,,R,01:15 pm-02:10 pm,Katherine Lawrence,08/28-12/16,UPH 258
+65105,KNH,112,F,2,Transit. for College Students,M,07:00 pm-07:55 pm,Craig Jason Bennett (P),08/28-12/16,SHD 152
+,,,,,,R,11:40 am-12:35 pm,Bradly W. Corbin,08/28-12/16,UPH 226
 70117,KNH,120C,QA,2,Individual Exercise,MW,01:15 pm-02:20 pm,TBA,09/11-12/16,PHI 113
 55808,KNH,120C,QB,2,Individual Exercise,MW,10:05 am-11:10 am,TBA,09/11-12/16,PHI 113
 70118,KNH,120C,QC,2,Individual Exercise,MW,02:50 pm-03:55 pm,TBA,09/11-12/16,PHI 113
@@ -2743,7 +2769,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72552,KNH,194L,D,1,Standard First Aid & CPR Lab,W,08:00 pm-09:40 pm,Warren H. Mandrell (P),08/28-12/16,PHI 116
 61003,KNH,203,A,3,Nutr in Disease Prevention Mgt,MW,08:30 am-10:20 am,Sharman Empson Willmore (P),08/28-12/16,PHI 102
 72075,KNH,203,B,3,Nutr in Disease Prevention Mgt,MW,01:15 pm-03:05 pm,Nancy S. Parkinson (P),08/28-12/16,PHI 102
-64544,KNH,205,A,3,U'stng Drugs Health Prom Prof,,TBA,Lauren Aimee Bartsch (P),08/28-12/16,WEB
+64544,KNH,205,A,3,U'stng Drugs Health Prom Prof,MWF,01:15 pm-02:10 pm,Lauren Aimee Bartsch (P),08/28-12/16,PHI 210
 66809,KNH,209,TA,3,Medical Terminology,,TBA,Nancy Justine Malay (P),09/05-10/23,WEB
 66962,KNH,209,TB,3,Medical Terminology,,TBA,Nancy Justine Malay (P),09/05-10/23,WEB
 68531,KNH,209,TC,3,Medical Terminology,,TBA,Roberta Pohlman (P),09/05-10/23,WEB
@@ -2765,13 +2791,12 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 70919,KNH,209,UH,3,Medical Terminology,,TBA,Mary Carol Bonham-Richardson (P),10/25-12/16,WEB
 70930,KNH,209,UI,3,Medical Terminology,,TBA,Jessica Francesca Wilhelm (P),10/25-12/16,WEB
 70937,KNH,209,UJ,3,Medical Terminology,,TBA,Mary R Brooks (P),10/25-12/16,WEB
-72084,KNH,209,UL,3,Medical Terminology,,TBA,Helaine Alessio (P),10/25-12/16,WEB
-63160,KNH,212,A,3,Sport Management,WF,11:40 am-01:00 pm,Tanisha Marie Strickland (P),08/28-12/16,TBA
+63160,KNH,212,A,3,Sport Management,WF,08:30 am-09:50 am,Tanisha Marie Strickland (P),08/28-12/16,MCG 415
 65175,KNH,212,B,3,Sport Management,WF,02:50 pm-04:10 pm,Tanisha Marie Strickland (P),08/28-12/16,PHI 123
 69976,KNH,212,D,3,Sport Management,WF,10:05 am-11:25 am,Tanisha Marie Strickland (P),08/28-12/16,MCG 419
 67140,KNH,212,E,3,Sport Management,TR,10:05 am-11:25 am,Brody James Ruihley (P),08/28-12/16,MCG 121
-66488,KNH,213,A,3,Global and Community Nutrition,MW,10:05 am-11:25 am,Mary Elizabeth Miller (P),08/28-12/16,UPH 258
-68170,KNH,213,B,3,Global and Community Nutrition,MW,02:50 pm-04:10 pm,Mary Elizabeth Miller (P),08/28-12/16,PHI 215
+66488,KNH,213,A,3,Global and Community Nutrition,TR,10:05 am-11:25 am,Mary Elizabeth Miller (P),08/28-12/16,TBA
+68170,KNH,213,B,3,Global and Community Nutrition,TR,08:30 am-09:50 am,Mary Elizabeth Miller (P),08/28-12/16,TBA
 72082,KNH,225,A,3,Ethics in Sport,TR,02:50 pm-04:10 pm,Samuel P. Morris (P),08/28-12/16,PHI 215
 65402,KNH,242,A,3,Personal Health,MWF,10:20 am-11:15 am,Lauren Aimee Bartsch (P),08/28-12/16,PHI 210
 67190,KNH,242,B,3,Personal Health,MW,11:40 am-01:00 pm,Jennifer Sliger (P),08/28-12/16,PHI 123
@@ -2804,7 +2829,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72073,KNH,288,A,3,Therapeutic Modalities,MW,11:40 am-01:00 pm,Eric Kent Brooks (P),08/28-12/16,PHI 029
 61002,KNH,303,A,3,Food Systems Mgt.,M,04:25 pm-07:05 pm,Nancy S. Parkinson (P),08/28-12/16,PHI 123
 60999,KNH,304,A,3,Advanced Nutrition,,TBA,Sara M. Tamsukhin (P),08/28-12/16,WEB
-65269,KNH,304,B,3,Advanced Nutrition,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,BEN 114
+65269,KNH,304,B,3,Advanced Nutrition,R,05:00 pm-07:40 pm,Nancy S. Parkinson (P),08/28-12/16,PHI 210
 63161,KNH,313,A,3,Sport Economics and Finance,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,HRN 109
 68239,KNH,313,B,3,Sport Economics and Finance,TR,11:40 am-01:00 pm,Christopher Joseph Henderson (P),08/28-12/16,MCG 217
 72081,KNH,313,C,3,Sport Economics and Finance,TR,11:40 am-01:00 pm,TBA,08/28-12/16,BEN 114
@@ -2812,7 +2837,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 65134,KNH,337,A,3,Fdtns&Fitness Training Coaches,TR,01:15 pm-02:35 pm,Paul Andrew Harker (P),08/28-12/16,SDC 100
 69188,KNH,338,A,3,Psychosocial Aspects Coaching,MW,10:05 am-11:25 am,Robin S. Vealey (P),08/28-12/16,PHI 116
 61029,KNH,362,A,3,Public Health Communication,MW,04:25 pm-05:45 pm,Karly Scott-Hillis Geller (P),08/28-12/16,PHI 215
-70698,KNH,362,B,3,Public Health Communication,MWF,01:15 pm-02:10 pm,Lauren Aimee Bartsch (P),08/28-12/16,PHI 210
+70698,KNH,362,B,3,Public Health Communication,MWF,08:30 am-09:50 am,Lauren Aimee Bartsch (P),08/28-12/16,TBA
 55522,KNH,375,A,3,Psych Persp. in Sport&Exerc.,MW,10:05 am-11:25 am,Robert S. Weinberg (P),08/28-12/16,PHI 123
 55523,KNH,378,A,3,Sport; Power and Inequality,WF,08:30 am-09:50 am,Callie Elizabeth Maddox (P),08/28-12/16,PHI 215
 63049,KNH,378,B,3,Sport; Power and Inequality,TR,01:15 pm-02:35 pm,Matthew Ross Hodler (P),08/28-12/16,MCG 418
@@ -2857,15 +2882,14 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 63167,KNH,416,A,3,Sport Marketing,TR,08:30 am-09:50 am,Brody James Ruihley (P),08/28-12/16,PHI 215
 70144,KNH,416,B,3,Sport Marketing,TR,01:15 pm-02:25 pm,Christopher Joseph Henderson (P),08/28-12/16,GAR 153
 60366,KNH,432,A,3,Life Span Nutrition,,TBA,Sara M. Tamsukhin (P),08/28-12/16,WEB
-72077,KNH,432,B,3,Life Span Nutrition,TR,11:40 am-01:00 pm,TBA,08/28-12/16,PSYC 127
-72076,KNH,432,C,3,Life Span Nutrition,TR,01:15 pm-02:35 pm,Susan Harlow Cameron (P),08/28-12/16,HRN 302
+72077,KNH,432,B,3,Life Span Nutrition,TR,02:50 pm-04:10 pm,Sharman Empson Willmore (P),08/28-12/16,TBA
+72076,KNH,432,C,3,Life Span Nutrition,TR,01:15 pm-02:10 pm,Susan Harlow Cameron (P),08/28-12/16,HRN 302
 69802,KNH,432,D,3,Life Span Nutrition,TR,10:05 am-11:25 am,Susan Harlow Cameron (P),08/28-12/16,MCG 215
 69806,KNH,453B,A,3,Nutrition & Physical Activity,TR,08:30 am-09:50 am,Randal P. Claytor (P),08/28-12/16,MCG 225
 72078,KNH,453H,A,3,Nutrition Education,R,01:15 pm-03:50 pm,Nancy S. Parkinson (P),08/28-12/16,KRG 227
 72088,KNH,453K,A,3,Mchncs of MuscSkel Injury,TR,11:40 am-12:55 pm,Mark Stephen Walsh (P),08/28-12/16,PHI 123
 69251,KNH,453O,A,3,Sport Law,,TBA,Michelle Bohan (P),08/28-12/16,WEB
 70437,KNH,453O,B,3,Sport Law,,TBA,Michelle Bohan (P),08/28-12/16,WEB
-64755,KNH,453R,A,1,Career Devt Nutrition&Dietetic,T,11:40 am-12:35 pm,Gretchen Matuszak (P),08/28-12/16,MCG 122
 72348,KNH,453W,A,3,Environmental Public Health,R,06:00 pm-08:40 pm,Edwin F. Barth (P),08/28-12/16,PHI 123
 69827,KNH,453X,A,3,Current Studies in Exer Sci,F,10:05 am-12:50 pm,Kyle Lee Timmerman (P),08/28-12/16,PHI 123
 69127,KNH,462,B,3,Public Health Planning & Eval,TR,08:30 am-09:50 am,TBA,08/28-12/16,PHI 116
@@ -2936,10 +2960,10 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 71002,MGT,211,A,3,Introduction to Management,MW,10:05 am-11:25 am,Alicia Jo Revely (P),08/28-12/16,FSB 0038
 71003,MGT,211,B,3,Introduction to Management,MW,01:15 pm-02:35 pm,Alicia Jo Revely (P),08/28-12/16,LWS 302
 71004,MGT,211,C,3,Introduction to Management,MW,02:50 pm-04:10 pm,Alicia Jo Revely (P),08/28-12/16,LWS 302
-71005,MGT,211,D,3,Introduction to Management,MW,04:25 pm-05:45 pm,Alicia Jo Revely (P),08/28-12/16,LWS 302
-60985,MGT,291,A,3,Intro to Management&Leadership,TR,10:05 am-11:25 am,Joseph C. Rode (P),08/28-12/16,FSB 2049
-16796,MGT,291,B,3,Intro to Management&Leadership,TR,11:40 am-01:00 pm,Joseph C. Rode (P),08/28-12/16,FSB 2049
-16797,MGT,291,C,3,Intro to Management&Leadership,TR,01:15 pm-02:35 pm,Joseph C. Rode (P),08/28-12/16,FSB 2049
+71005,MGT,211,D,3,Introduction to Management,MW,04:25 pm-05:45 pm,Alicia Jo Revely (P),08/28-12/16,FSB 1036
+60985,MGT,291,A,3,Intro to Management&Leadership,TR,10:05 am-11:25 am,Cynthia M. Oakenfull (P),08/28-12/16,FSB 2049
+16796,MGT,291,B,3,Intro to Management&Leadership,TR,11:40 am-01:00 pm,Cynthia M. Oakenfull (P),08/28-12/16,FSB 2049
+16797,MGT,291,C,3,Intro to Management&Leadership,TR,01:15 pm-02:35 pm,Cynthia M. Oakenfull (P),08/28-12/16,FSB 2049
 16798,MGT,291,D,3,Intro to Management&Leadership,WF,10:05 am-11:25 am,Michelle Renee Scarpino-Johns (P),08/28-12/16,FSB 0014
 60987,MGT,291,E,3,Intro to Management&Leadership,WF,11:40 am-01:00 pm,Michelle Renee Scarpino-Johns (P),08/28-12/16,FSB 0014
 65779,MGT,291,F,3,Intro to Management&Leadership,WF,02:50 pm-04:10 pm,Michelle Renee Scarpino-Johns (P),08/28-12/16,FSB 2049
@@ -2964,8 +2988,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 59351,MGT,302,L,3,Intro Operatns &Supply Chain M,TR,02:50 pm-04:10 pm,Thomas John Farnbacher (P),08/28-12/16,FSB 0038
 63842,MGT,302,M,3,Intro Operatns &Supply Chain M,M,06:30 pm-09:10 pm,Rodney Dale Baker (P),08/28-12/16,FSB 0014
 61730,MGT,302,N,3,Intro Operatns &Supply Chain M,TR,01:15 pm-02:35 pm,R. Bruce Hearn (P),08/28-12/16,FSB 0039
-59352,MGT,303,A,3,Human Resource Management,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,FSB 0014
-11492,MGT,303,B,3,Human Resource Management,TR,04:25 pm-05:45 pm,TBA,08/28-12/16,FSB 0014
+59352,MGT,303,A,3,Human Resource Management,TR,02:50 pm-04:10 pm,Mark A. Wesolowski (P),08/28-12/16,FSB 0014
+11492,MGT,303,B,3,Human Resource Management,TR,04:25 pm-05:45 pm,Mark A. Wesolowski (P),08/28-12/16,FSB 0014
 11493,MGT,303,C,3,Human Resource Management,TR,08:30 am-09:50 am,Mark A. Wesolowski (P),08/28-12/16,FSB 0039
 71561,MGT,303,D,3,Human Resource Management,TR,11:40 am-01:00 pm,TBA,08/28-12/16,FSB 0003
 51452,MGT,304,A,3,Cross Cultural Management,WF,08:30 am-09:50 am,Peng Wang (P),08/28-12/16,FSB 0038
@@ -2975,8 +2999,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 60989,MGT,402,A,3,Employment Law,TR,08:30 am-09:50 am,David J. Walsh (P),08/28-12/16,FSB 2049
 62614,MGT,404,A,3,Compensation Management,MW,08:30 am-09:50 am,Rocco Anthony Manzo (P),08/28-12/16,FSB 0014
 65899,MGT,405,A,3,Negotiations and Conflict,TR,11:40 am-01:00 pm,David J. Walsh (P),08/28-12/16,FSB 0024
-11499,MGT,414,A,3,Employee Engagement and Motiva,TR,10:05 am-11:25 am,Mark A. Wesolowski (P),08/28-12/16,FSB 0039
-11500,MGT,414,B,3,Employee Engagement and Motiva,TR,11:40 am-01:00 pm,Mark A. Wesolowski (P),08/28-12/16,FSB 0039
+11499,MGT,414,A,3,Employee Engagement and Motiva,TR,10:05 am-11:25 am,Joseph C. Rode (P),08/28-12/16,FSB 0039
+11500,MGT,414,B,3,Employee Engagement and Motiva,TR,11:40 am-01:00 pm,Joseph C. Rode (P),08/28-12/16,FSB 0039
 11503,MGT,415,A,3,Leadership and Learning,WF,10:05 am-11:25 am,Megan Margaret Gerhardt (P),08/28-12/16,FSB 0039
 11504,MGT,415,B,3,Leadership and Learning,WF,11:40 am-01:00 pm,Megan Margaret Gerhardt (P),08/28-12/16,FSB 0039
 57737,MGT,415,C,3,Leadership and Learning,WF,01:15 pm-02:35 pm,Megan Margaret Gerhardt (P),08/28-12/16,FSB 0039
@@ -3244,6 +3268,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 50427,MTH,482,A,3,Great Theorems Of Mathematics,TR,04:25 pm-05:45 pm,Douglas E. Ward (P),08/28-12/16,BAC 114
 71247,MTH,483,A,3,Intro to Mathematical Logic,MWF,04:25 pm-05:20 pm,Trevor Miles Wilson (P),08/28-12/16,BAC 118
 11702,MTH,491,A,3,Introduction To Topology,TR,11:40 am-01:00 pm,Tetsuya Ishiu (P),08/28-12/16,BAC 118
+72630,MTH,507,A,3,Mathematical Structres-Inquiry,MW,10:00 am-11:25 am,Suzanne Rushton Harper (P),08/28-12/16,BAC 112
 55975,MTH,508,A,3,Problem Solvng With Technology,TR,11:40 am-01:00 pm,Dana Christine Cox (P),08/28-12/16,BAC 245
 11703,MTH,511,A,3,Foundations Of Geometry,MWF,02:50 pm-03:35 pm,Dennis S. Keeler (P),08/28-12/16,BAC 110
 11705,MTH,521,A,4,Intro To Abstract Algebra,MWF,10:05 am-11:20 am,Caleb Eckhardt (P),08/28-12/16,BAC 201
@@ -3286,10 +3311,10 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 55655,MME,213,C,3,Computation MethodsEngineering,MW,01:15 pm-02:10 pm,Ryan James Clark (P),08/28-12/16,EGB 270
 ,,,,,,F,12:10 pm-02:00 pm,Ryan James Clark,08/28-12/16,GAR 145
 64255,MME,213,D,3,Computation MethodsEngineering,TR,11:40 am-12:35 pm,Ryan James Clark (P),08/28-12/16,EGB 270
-,,,,,,T,01:00 pm-02:50 pm,Ryan James Clark,08/28-12/16,GAR 145
+,,,,,,T,02:15 pm-04:05 pm,Ryan James Clark,08/28-12/16,GAR 145
 67032,MME,213,E,3,Computation MethodsEngineering,TR,11:40 am-12:35 pm,Ryan James Clark (P),08/28-12/16,EGB 270
 ,,,,,,T,08:00 am-09:50 am,Ryan James Clark,08/28-12/16,GAR 145
-67033,MME,213,F,3,Computation MethodsEngineering,M,02:50 pm-04:40 pm,Ryan James Clark,08/28-12/16,GAR 145
+67033,MME,213,F,3,Computation MethodsEngineering,M,02:15 pm-04:05 pm,Ryan James Clark,08/28-12/16,GAR 145
 ,,,,,,TR,11:40 am-12:35 pm,Ryan James Clark (P),08/28-12/16,EGB 270
 18773,MME,223,A,3,Engineering Materials,MW,10:05 am-11:25 am,Benjamin Carter Hamilton (P),08/28-12/16,EGB 270
 ,,,,,,R,08:00 am-09:50 am,Benjamin Carter Hamilton,08/28-12/16,GAR 052B
@@ -3306,7 +3331,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 67044,MME,223,G,3,Engineering Materials,MW,04:25 pm-05:45 pm,Zhijiang Ye (P),08/28-12/16,BEN 114
 ,,,,,,F,02:15 pm-04:05 pm,Zhijiang Ye,08/28-12/16,GAR 052B
 72050,MME,223,H,3,Engineering Materials,MW,04:25 pm-05:45 pm,Zhijiang Ye (P),08/28-12/16,BEN 114
-,,,,,,W,11:40 am-01:30 pm,Zhijiang Ye,08/28-12/16,GAR 052B
+,,,,,,W,12:10 pm-02:00 pm,Zhijiang Ye,08/28-12/16,GAR 052B
 10851,MME,231,A,3,Manufacturing Processes,MW,11:40 am-12:35 pm,Fazeel J. Khan (P),08/28-12/16,EGB 270
 ,,,,,,T,02:15 pm-04:05 pm,Karl Robert Reiff,08/28-12/16,GAR 053
 50797,MME,231,B,3,Manufacturing Processes,MW,11:40 am-12:35 pm,Fazeel J. Khan (P),08/28-12/16,EGB 270
@@ -3705,7 +3730,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69440,MUS,206,A,3,History of Film Music,MW,11:40 am-01:00 pm,Elizabeth Ann Hoover (P),08/28-12/16,CPA 114
 63207,MUS,211,A,3,History Of Western Music,MWF,10:05 am-11:00 am,Elizabeth Ann Hoover (P),08/28-12/16,PRS 222
 64398,MUS,216,A,1,Applied Voice for Music Theatr,,TBA,Audrey B. Luna (P),08/28-12/16,TBA
-67281,MUS,216,D,1,Applied Voice for Music Theatr,,TBA,Laura Alison Acord (P); Tatiana N. Davis,08/28-12/16,TBA
+67281,MUS,216,D,1,Applied Voice for Music Theatr,,TBA,Laura Alison Acord (P),08/28-12/16,TBA
 67285,MUS,216,E,1,Applied Voice for Music Theatr,,TBA,Tatiana N. Davis (P),08/28-12/16,TBA
 64758,MUS,218,A,1,Beginning Guitar,T,08:30 am-09:25 am,James R. McCutcheon (P),08/28-12/16,PBD 121
 64759,MUS,218,B,1,Beginning Guitar,T,10:05 am-11:00 am,James R. McCutcheon (P),08/28-12/16,PBD 121
@@ -3726,7 +3751,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 65503,MUS,242A,F,2,Voice - Soph,R,11:40 am-12:35 pm,Linda L McAlister (P),08/28-12/16,CPA 150
 13406,MUS,242B,A,2,Piano - Soph,R,04:25 pm-05:20 pm,Frank Huang (P),08/28-12/16,CPA 150
 13407,MUS,242B,B,2,Piano - Soph,R,04:25 pm-05:20 pm,Siok Lian Tan (P),08/28-12/16,PRS 008
-68810,MUS,242C,A,2,Applied Guitar,T,11:40 am-12:35 pm,James R. McCutcheon (P),08/28-12/16,TBA
+68810,MUS,242C,A,2,Applied Guitar,T,11:40 am-12:35 pm,James R. McCutcheon (P),08/28-12/16,PRS 106
 14736,MUS,242D,A,2,Flute - Soph,T,11:40 am-12:35 pm,Rebecca Tryon Andres (P),08/28-12/16,TBA
 59320,MUS,242D,B,2,Flute - Soph,T,11:40 am-12:35 pm,Morrigan O'Brien Kane (P),08/28-12/16,TBA
 13408,MUS,242E,A,2,Clarinet - Soph,T,11:40 am-12:35 pm,TBA,08/28-12/16,PRS 008
@@ -3922,7 +3947,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,W,06:25 pm-09:25 pm,TBA,08/28-12/16,PRS 222
 71311,MUS,551,A,1,Advcd Sight Singng & Dictation,WF,11:40 am-12:35 pm,TBA,08/28-12/16,CPA 101
 14093,MUS,556,A,2,Vocal Pedagogy,WF,01:15 pm-02:10 pm,Laura Alison Acord (P),08/28-12/16,PRS 100
-64376,MUS,621,A,3,Graduate Research In Music,MW,10:05 am-11:25 am,Thomas G. Garcia (P),08/28-12/16,CPA 114
+64376,MUS,621,A,3,Graduate Research In Music,TR,10:05 am-11:25 am,Thomas G. Garcia (P),08/28-12/16,PRS 222
 11857,MUS,630A,A,1.000-2.000,Collegiate Chorale,M,04:25 pm-05:45 pm,Jeremy Jones (P),08/28-12/16,PRS 222
 ,,,,,,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,PRS 222
 11858,MUS,630B,A,1.000-2.000,Men's Glee Club,M,06:15 pm-07:35 pm,Jeremy Jones (P),08/28-12/16,PRS 222
@@ -4012,9 +4037,10 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72248,PHL,273,A,4,Formal Logic,MWF,10:05 am-11:20 am,Michael Robert Hicks (P),08/28-12/16,HRN 111
 11900,PHL,301,A,4,Ancient Philosophy,TR,10:05 am-11:55 am,Pascal Massie (P),08/28-12/16,KRG 221
 63977,PHL,335,A,4,Philosophy Of Law,MWF,11:40 am-12:55 pm,Christopher Stewart King (P),08/28-12/16,TBA
-64059,PHL,360A,A,4,Confronting Death,MWF,08:30 am-09:50 am,TBA,08/28-12/16,BEN 206
+64059,PHL,360A,A,4,Confronting Death,TR,02:50 pm-04:40 pm,TBA,08/28-12/16,BEN 206
 72261,PHL,373,A,4,Symbolic Logic,MWF,01:15 pm-02:30 pm,Michael Robert Hicks (P),08/28-12/16,TBA
 72275,PHL,376,A,4,Environmental Philosophy,MWF,02:50 pm-04:05 pm,Suzanne McCullagh (P),08/28-12/16,HRN 012
+72629,PHL,394,A,3,Existentialism,WF,01:15 pm-02:35 pm,Elaine P. Miller (P),08/28-12/16,TBA
 72370,PHL,420W,A,4,Wittgenstein,W,02:50 pm-06:30 pm,Gaile Pohlhaus (P),08/28-12/16,HAL 203
 72544,PHL,440E,A,4,Early Modern Cosmopolitanism,M,02:50 pm-06:30 pm,Keith G. Fennen (P),08/28-12/16,HAL 203
 72334,PHL,459,A,4,Political Philosophy Seminar,R,02:50 pm-06:10 pm,Emily A. Zakin (P),08/28-12/16,HAL 203
@@ -4094,15 +4120,15 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 12124,PHY,400,A,1,Physics Seminar,W,04:25 pm-05:50 pm,Paul Kenji Urayama (P),08/28-12/16,KRG 221
 56510,PHY,437,A,4,Thermodynamcs&Intro Stat Physc,MWF,08:30 am-09:45 am,Paul Kenji Urayama (P),08/28-12/16,KRG 224
 12125,PHY,451,A,4,Classical Mechanics,TR,01:15 pm-03:05 pm,Burcin S. Bayram (P),08/28-12/16,KRG 224
-72540,PHY,471,A,3,Advanced Electronics,M,04:25 pm-05:15 pm,Herbert Jaeger,08/28-12/16,KRG 224
-,,,,,,TR,12:10 pm-02:00 pm,Herbert Jaeger (P),08/28-12/16,KRG 234
+72540,PHY,471,A,3,Advanced Electronics,M,04:25 pm-05:15 pm,Herbert Jaeger,08/28-12/16,KRG 234
+,,,,,,TR,10:05 am-11:55 am,Herbert Jaeger (P),08/28-12/16,KRG 234
 63062,PHY,483,A,4,Mathematical Methods In Physic,MWF,11:40 am-12:55 pm,James P. Clemens (P),08/28-12/16,KRG 227
 70890,PHY,488A,A,3,Research Capstone In Physics,M,08:00 am-08:55 am,Burcin S. Bayram (P),08/28-12/16,HUG 004
 12126,PHY,500,A,1,Physics Seminar,W,04:25 pm-05:50 pm,Paul Kenji Urayama (P),08/28-12/16,KRG 319
 56511,PHY,537,A,4,Thermodynamcs&Intro Stat Physc,MWF,08:30 am-09:45 am,Paul Kenji Urayama (P),08/28-12/16,KRG 224
 12127,PHY,551,A,4,Classical Mechanics,TR,01:15 pm-03:05 pm,Burcin S. Bayram (P),08/28-12/16,KRG 224
 72541,PHY,571,A,3,Advanced Electronics,M,04:25 pm-05:15 pm,Herbert Jaeger,08/28-12/16,KRG 224
-,,,,,,TR,12:10 pm-02:00 pm,Herbert Jaeger (P),08/28-12/16,KRG 234
+,,,,,,TR,10:05 am-11:55 am,Herbert Jaeger (P),08/28-12/16,KRG 234
 63279,PHY,583,A,4,Mathematical Methods In Physic,MWF,11:40 am-12:55 pm,James P. Clemens (P),08/28-12/16,KRG 227
 72349,PHY,623,A,3,Solid State Physics,MWF,01:15 pm-02:10 pm,Mahmud Khan (P),08/28-12/16,KRG 319
 64388,PHY,689,A,1,Teaching Assistant Seminar,,TBA,Jennifer Marie Blue (P),08/14-08/26,TBA
@@ -4305,7 +4331,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 70686,REL,101,UA,3,Introduction to Religion,,TBA,Kathleen Mahoney Hladky Grant (P),10/25-12/16,WEB
 66786,REL,101H,B,3,Introduction to Religion,TR,01:15 pm-02:35 pm,Hillel Charles Gray (P),08/28-12/16,UPH 364
 68324,REL,133,A,3,Imagining Russia,MWF,10:05 am-11:00 am,Scott Kenworthy (P),08/28-12/16,UPH 235
-63991,REL,201,A,3,Methods for Study of Religion,WF,01:15 pm-02:35 pm,Elizabeth Wilson (P),08/28-12/16,OMN 110
+63991,REL,201,A,3,Methods for Study of Religion,WF,01:15 pm-02:35 pm,Elizabeth Wilson (P),08/28-12/16,HUG 006
 66248,REL,286,A,3,Global Jewish Civilization,MW,11:40 am-01:00 pm,Hillel Charles Gray (P),08/28-12/16,BEN 206
 69785,REL,313,A,3,Marriage Across Cultures,WF,10:05 am-11:25 am,Elizabeth Wilson (P),08/28-12/16,UPH 258
 72379,REL,316,A,3,The Age Of The Reformation,MW,01:15 pm-02:35 pm,Wietse T. de Boer (P),08/28-12/16,UPH 258
@@ -4333,7 +4359,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72422,SJS,487,A,3,Globalization & Social Justice,TR,11:40 am-01:00 pm,Rodney D. Coates (P),08/28-12/16,UPH 298
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
-70561,SOC,127,A,1,Environmental/Justice Films,M,02:50 pm-05:50 pm,Jonathan Levy (P); Stephen Lippmann ; Ronald B. Scott,08/28-12/16,KRG 221
+70561,SOC,127,A,1,Environmental/Justice Films,M,02:50 pm-05:50 pm,Jonathan Levy (P); Stephen Lippmann ; Ronald B. Scott,08/28-12/16,IRV 030
 63116,SOC,153,A,3,Sociology in a Global Context,MW,10:05 am-11:25 am,Othello Harris (P),08/28-12/16,UPH 361
 63117,SOC,153,B,3,Sociology in a Global Context,MW,04:25 pm-05:45 pm,Othello Harris (P),08/28-12/16,UPH 297
 63118,SOC,153,C,3,Sociology in a Global Context,TR,10:05 am-11:25 am,Ronald E. Bulanda (P),08/28-12/16,UPH 297
@@ -4343,7 +4369,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 68307,SOC,165,C,3,Introduction to Social Justice,TR,01:15 pm-02:35 pm,Ryan Michael Gunderson (P),08/28-12/16,HUG 141
 12292,SOC,201,A,4,Social Problems,MTWR,01:15 pm-02:10 pm,William C. Flint (P),08/28-12/16,UPH 389
 72547,SOC,202,A,4,Social Deviance,TR,04:25 pm-05:45 pm,Glenn Walter Muschert (P),08/28-12/16,UPH 298
-61688,SOC,203,A,3,Sociology Of Gender,M,04:25 pm-07:05 pm,Fauzia E. Ahmed (P),08/28-12/16,UPH 365
+61688,SOC,203,A,3,Sociology Of Gender,M,06:00 pm-08:40 pm,Fauzia E. Ahmed (P),08/28-12/16,UPH 365
 72557,SOC,208,A,3,Rise - Industrialsm/East Asia,TR,02:50 pm-04:10 pm,Stanley W. Toops (P),08/28-12/16,SHD 001
 12297,SOC,262,A,3,Research Methods,TR,11:40 am-01:00 pm,Ryan Michael Gunderson (P),08/28-12/16,UPH 255
 59060,SOC,272,A,3,Intro to Disability Studies,TR,11:40 am-01:00 pm,Molly D. Kelly (P),08/28-12/16,UPH 389
@@ -4351,7 +4377,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69510,SOC,272,C,3,Intro to Disability Studies,WF,10:05 am-11:25 am,Ashley Elizabeth Johnson (P),08/28-12/16,UPH 389
 69513,SOC,272,D,3,Intro to Disability Studies,T,06:30 pm-09:10 pm,Rosemary Rotuno-Johnson (P),08/28-12/16,UPH 163
 70424,SOC,272,E,3,Intro to Disability Studies,M,06:30 pm-09:10 pm,TBA,08/28-12/16,MCG 121
-72309,SOC,305,A,3,Sociology of Globalization,MW,01:15 pm-02:35 pm,Fauzia E. Ahmed (P),08/28-12/16,UPH 312
+72309,SOC,305,A,3,Sociology of Globalization,MW,04:25 pm-05:45 pm,Fauzia E. Ahmed (P),08/28-12/16,UPH
 17151,SOC,318,A,3,Social Forces and Aging,MF,02:50 pm-04:10 pm,Jennifer Roebuck Bulanda (P),08/28-12/16,UPH 364
 69739,SOC,323,A,3,Social Justice and Change,TR,10:05 am-11:25 am,C. Lee Harrington (P),08/28-12/16,UPH 167
 58537,SOC,348,A,3,Race and Ethnic Relations,MW,11:40 am-01:00 pm,Othello Harris (P),08/28-12/16,UPH 226
@@ -4393,9 +4419,9 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 70629,SPN,111,K,4,Intensive Basic Spanish,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,IRV 040
 12323,SPN,201,B,3,Second Year Spanish,MWF,01:15 pm-02:10 pm,Francisco Javier Ayo-Cuesta (P),08/28-12/16,UPH 364
 12324,SPN,201,C,3,Second Year Spanish,MWF,10:05 am-11:00 am,Victor Matthew Blocher (P),08/28-12/16,MCG 118
-12325,SPN,201,D,3,Second Year Spanish,MWF,11:40 am-12:35 pm,TBA,08/28-12/16,IRV 142
+12325,SPN,201,D,3,Second Year Spanish,MWF,11:40 am-12:35 pm,Francisco Javier Ayo-Cuesta (P),08/28-12/16,IRV 142
 12326,SPN,201,E,3,Second Year Spanish,MWF,02:50 pm-03:45 pm,Nohelia Rojas-Miesse (P),08/28-12/16,IRV 224
-64191,SPN,201,F,3,Second Year Spanish,TR,11:40 am-01:00 pm,Manuel Dorado Budia (P),08/28-12/16,IRV 124
+64191,SPN,201,F,3,Second Year Spanish,TR,11:40 am-01:00 pm,Imix Hernandez De la Rosa (P),08/28-12/16,IRV 124
 12328,SPN,201,H,3,Second Year Spanish,MWF,04:25 pm-05:10 pm,Nohelia Rojas-Miesse (P),08/28-12/16,IRV 124
 12329,SPN,201,I,3,Second Year Spanish,MWF,08:30 am-09:25 am,Victor Matthew Blocher (P),08/28-12/16,IRV 224
 59771,SPN,201,J,3,Second Year Spanish,TR,10:05 am-11:25 am,Imix Hernandez De la Rosa (P),08/28-12/16,IRV 224
@@ -4411,8 +4437,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 12339,SPN,202,D,3,Second Year Spanish,MWF,10:05 am-11:00 am,Christa Susanne Gould (P),08/28-12/16,MCG 121
 12340,SPN,202,E,3,Second Year Spanish,MWF,02:50 pm-03:45 pm,Tamise Renee Ironstrack (P),08/28-12/16,UPH 365
 64192,SPN,202,G,3,Second Year Spanish,TR,08:30 am-09:50 am,Katherine M. Fowler-Cordova (P),08/28-12/16,IRV 224
-12342,SPN,202,H,3,Second Year Spanish,MWF,01:15 pm-02:10 pm,Tamise Renee Ironstrack (P),08/28-12/16,TBA
-12343,SPN,202,I,3,Second Year Spanish,TR,11:40 am-01:00 pm,Imix Hernandez De la Rosa (P),08/28-12/16,IRV 224
+12342,SPN,202,H,3,Second Year Spanish,MWF,11:40 am-12:35 pm,Tamise Renee Ironstrack (P),08/28-12/16,MCG 221
+12343,SPN,202,I,3,Second Year Spanish,TR,11:40 am-01:00 pm,Manuel Dorado Budia (P),08/28-12/16,IRV 224
 12345,SPN,202,L,3,Second Year Spanish,TR,01:15 pm-02:35 pm,Manuel Dorado Budia (P),08/28-12/16,IRV 142
 12346,SPN,202,M,3,Second Year Spanish,TR,02:50 pm-04:10 pm,Manuel Dorado Budia (P),08/28-12/16,IRV 142
 12347,SPN,202,N,3,Second Year Spanish,TR,04:25 pm-05:45 pm,Manuel Dorado Budia (P),08/28-12/16,IRV 242
@@ -4421,35 +4447,37 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 64194,SPN,204,A,1,Second Year Spanish Lab,,TBA,Christa Susanne Gould (P),08/28-12/16,TBA
 64196,SPN,204,B,1,Second Year Spanish Lab,,TBA,Christa Susanne Gould (P),08/28-12/16,TBA
 64197,SPN,204,C,1,Second Year Spanish Lab,,TBA,Christa Susanne Gould (P),08/28-12/16,TBA
-12353,SPN,311,A,3,Grammar Rvw& Intro Composition,MWF,02:50 pm-03:45 pm,Susana Madinabeitia (P),08/28-12/16,IRV 026
-53702,SPN,311,B,3,Grammar Rvw& Intro Composition,MWF,11:40 am-12:55 pm,Susana Madinabeitia (P),08/28-12/16,MCG 221
+72638,SPN,241,A,2,Intermediate Conversatnal Spn,MW,08:30 am-09:25 am,Susana Madinabeitia (P),08/28-12/16,TBA
+12353,SPN,311,A,3,Grammar Rvw& Intro Composition,TR,04:25 pm-05:45 pm,TBA,08/28-12/16,IRV 224
+53702,SPN,311,B,3,Grammar Rvw& Intro Composition,TR,11:40 am-12:55 pm,TBA,08/28-12/16,IRV 142
 12355,SPN,311,C,3,Grammar Rvw& Intro Composition,MWF,01:15 pm-02:10 pm,Susana Madinabeitia (P),08/28-12/16,IRV 026
-12356,SPN,311,D,3,Grammar Rvw& Intro Composition,TR,10:05 am-11:25 am,TBA,08/28-12/16,MMH 114
-12357,SPN,311,E,3,Grammar Rvw& Intro Composition,TR,08:30 am-09:50 am,TBA,08/28-12/16,IRV 238
-53703,SPN,311,F,3,Grammar Rvw& Intro Composition,TR,11:40 am-01:00 pm,Raul Ianes (P),08/28-12/16,IRV 238
-55163,SPN,311,G,3,Grammar Rvw& Intro Composition,MWF,10:05 am-11:00 am,Susana Madinabeitia (P),08/28-12/16,TBA
+12357,SPN,311,E,3,Grammar Rvw& Intro Composition,TR,08:30 am-09:50 am,Elizabeth Ann Gielau (P),08/28-12/16,IRV 238
+53703,SPN,311,F,3,Grammar Rvw& Intro Composition,TR,11:40 am-01:00 pm,Elizabeth Ann Gielau (P),08/28-12/16,IRV 238
+55163,SPN,311,G,3,Grammar Rvw& Intro Composition,MW,10:05 am-11:25 am,Ricardo Antonio Sosa (P),08/28-12/16,IRV 240
 69867,SPN,311,H,3,Grammar Rvw& Intro Composition,MW,04:25 pm-05:45 pm,Ricardo Antonio Sosa (P),08/28-12/16,IRV 238
 61999,SPN,311,I,3,Grammar Rvw& Intro Composition,MW,01:15 pm-02:35 pm,Ricardo Antonio Sosa (P),08/28-12/16,IRV 238
+72640,SPN,311,J,3,Grammar Rvw& Intro Composition,WF,11:40 am-01:00 pm,Susana Madinabeitia (P),08/28-12/16,TBA
 69872,SPN,312,A,3,Intro to Spanish Lang/Lit,WF,01:15 pm-02:35 pm,Maria Del Sol Del Teso Craviotto (P),08/28-12/16,MCG 224
 17263,SPN,312,B,3,Intro to Spanish Lang/Lit,TR,10:05 am-11:25 am,Elizabeth Ann Gielau (P),08/28-12/16,IRV 238
-63613,SPN,312,C,3,Intro to Spanish Lang/Lit,TR,11:40 am-01:00 pm,Elizabeth Ann Gielau (P),08/28-12/16,IRV 126
+63613,SPN,312,C,3,Intro to Spanish Lang/Lit,WF,02:50 pm-04:10 pm,Maria Del Sol Del Teso Craviotto (P),08/28-12/16,IRV 030
 68249,SPN,312,E,3,Intro to Spanish Lang/Lit,MWF,11:40 am-12:35 pm,Kenneth J. Wireback (P),08/28-12/16,BEN 204
 72602,SPN,313,A,2,Individualized Instruction,TR,01:15 pm-02:10 pm,Katherine M. Fowler-Cordova (P),08/28-12/16,IRV 118
 72610,SPN,313L,A,1,Individualized Instruction Lab,,TBA,Francisco Javier Ayo-Cuesta (P),08/28-12/16,TBA
 51837,SPN,315,A,3,Intro to Hispanic Literatures,MW,02:50 pm-04:10 pm,TBA,08/28-12/16,IRV 046
-51838,SPN,315,B,3,Intro to Hispanic Literatures,MW,11:40 am-01:00 pm,Ann Michelle Jarrett Bromberg (P),08/28-12/16,MCG 418
+51838,SPN,315,B,3,Intro to Hispanic Literatures,MW,01:15 pm-02:35 pm,Ann Michelle Jarrett Bromberg (P),08/28-12/16,IRV 242
 72445,SPN,315,C,3,Intro to Hispanic Literatures,TR,08:30 am-09:50 am,Dorothy R. Donahue (P),08/28-12/16,IRV 046
 66117,SPN,315,D,3,Intro to Hispanic Literatures,MW,04:25 pm-05:45 pm,TBA,08/28-12/16,IRV 224
 63080,SPN,315,E,3,Intro to Hispanic Literatures,TR,10:05 am-11:25 am,Dorothy R. Donahue (P),08/28-12/16,IRV 240
-68250,SPN,317,A,3,Business Spanish,MWF,10:05 am-11:00 am,Francisco Javier Ayo-Cuesta (P),08/28-12/16,TBA
+72637,SPN,316,A,3,Intermediate Spanish Comp,TR,10:05 am-11:25 am,Raul Ianes (P),08/28-12/16,TBA
+68250,SPN,317,A,3,Business Spanish,MW,02:50 pm-04:10 pm,Francisco Javier Ayo-Cuesta (P),08/28-12/16,IRV 026
 64069,SPN,331,A,3,Spanish for Community Work,TR,10:05 am-11:25 am,Katherine M. Fowler-Cordova (P),08/28-12/16,IRV 034
 12365,SPN,341,A,3,Advancd Conversational Spanish,TR,11:40 am-01:00 pm,Nohelia Rojas-Miesse (P),08/28-12/16,IRV 118
 69878,SPN,341,B,3,Advancd Conversational Spanish,MW,04:25 pm-05:45 pm,Nohelia Rojas-Miesse (P),08/28-12/16,IRV 046
 51856,SPN,351,A,3,Cultural History of Spain I,TR,11:40 am-01:00 pm,Jose Manuel Dominguez-Burdalo (P),08/28-12/16,IRV 046
 51858,SPN,351,B,3,Cultural History of Spain I,TR,10:05 am-11:25 am,Jose Manuel Dominguez-Burdalo (P),08/28-12/16,IRV 126
 72417,SPN,352,A,3,Cultural History of Spain II,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,IRV 046
-51859,SPN,361,A,3,Spanish Amer Cultural Hist I,WF,10:00 am-11:25 am,Maria Auxiliadora Alvarez (P),08/28-12/16,IRV 040
-51860,SPN,361,B,3,Spanish Amer Cultural Hist I,WF,11:40 am-01:00 pm,Maria Auxiliadora Alvarez (P),08/28-12/16,TBA
+51859,SPN,361,A,3,Spanish Amer Cultural Hist I,WF,10:05 am-11:25 am,Maria Auxiliadora Alvarez (P),08/28-12/16,IRV 040
+51860,SPN,361,B,3,Spanish Amer Cultural Hist I,WF,11:40 am-01:00 pm,Maria Auxiliadora Alvarez (P),08/28-12/16,MCG 418
 53126,SPN,362,A,3,Span Amer Cultural Hist II,TR,02:50 pm-04:10 pm,Raul Ianes (P),08/28-12/16,IRV 040
 53875,SPN,362,B,3,Span Amer Cultural Hist II,TR,01:15 pm-02:35 pm,Raul Ianes (P),08/28-12/16,IRV 009
 64057,SPN,381,B,3,Language and Culture I,MW,04:25 pm-05:45 pm,Kenneth J. Wireback (P),08/28-12/16,IRV 026
@@ -4465,7 +4493,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72438,SPN,584,A,3,2nd Language Acquisition: Spn,TR,11:40 am-01:00 pm,David Joseph Beard (P),08/28-12/16,UPH 262
 ,,,,,,,,,,
 CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
-64685,SPA,101,A,4,Beginning ASL I,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,UPH 163
+64685,SPA,101,A,4,Beginning ASL I,TR,06:30 pm-08:20 pm,TBA,08/28-12/16,BAC 045
 64686,SPA,101,B,4,Beginning ASL I,MWF,02:50 pm-04:05 pm,TBA,08/28-12/16,ART 136
 67053,SPA,101,C,4,Beginning ASL I,MW,06:30 pm-08:20 pm,TBA,08/28-12/16,BAC 055
 68597,SPA,101,D,4,Beginning ASL I,TR,06:30 pm-08:20 pm,TBA,08/28-12/16,BAC 055
@@ -4481,7 +4509,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 18384,SPA,293,A,1,Soph Sem-Speech Path&Audiology,R,01:15 pm-02:10 pm,Cheryl M. Stewart (P),08/28-12/16,BAC 045
 68158,SPA,312,A,3,Deaf Culture: Global; National,MW,10:05 am-11:25 am,Aaron Michael Shield (P),08/28-12/16,KRG 207
 69941,SPA,312,B,3,Deaf Culture: Global; National,MW,11:40 am-01:00 pm,Megan E. Gross (P),08/28-12/16,BAC 134
-62464,SPA,316,A,3,Introduction to Audiology,WF,08:30 am-09:50 am,Laura Jean Kelly (P),08/28-12/16,MCG 415
+62464,SPA,316,A,3,Introduction to Audiology,WF,08:30 am-09:50 am,Laura Jean Kelly (P),08/28-12/16,HRN 012
 18385,SPA,334,A,3,Clin. Phonetics & Art. Disorde,MW,02:50 pm-04:10 pm,Aaron Michael Shield (P),08/28-12/16,BOY 217
 16963,SPA,393,A,1,Jr Sem in Speech Path & Audiol,R,02:50 pm-03:45 pm,Cheryl M. Stewart (P),08/28-12/16,BAC 045
 59317,SPA,402,A,3,Counseling Strategies,TR,04:25 pm-05:45 pm,Laura Jean Kelly (P),08/28-12/16,BAC 055
@@ -4570,7 +4598,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69798,STA,301,G,3,Applied Statistics,MWF,04:25 pm-05:20 pm,TBA,08/28-12/16,UPH 127
 69797,STA,333,A,3,Nonparametric Statistics,TR,11:40 am-01:00 pm,TBA,08/28-12/16,UPH 316
 12386,STA,363,A,3,Intro to Statistical Modeling,TR,08:30 am-09:50 am,TBA,08/28-12/16,UPH 316
-69793,STA,363,B,3,Intro to Statistical Modeling,TR,10:05 am-11:25 am,TBA,08/28-12/16,UPH 316
+69793,STA,363,B,3,Intro to Statistical Modeling,TR,10:05 am-11:25 am,TBA,08/28-12/16,IRV 046
 53174,STA,365,A,3,Monitoring/Design,WF,11:40 am-01:00 pm,TBA,08/28-12/16,FSB 0024
 18424,STA,401,A,3,Probability,MWF,10:05 am-11:00 am,TBA,08/28-12/16,UPH 209
 18427,STA,401,B,3,Probability,MWF,02:50 pm-03:45 pm,TBA,08/28-12/16,UPH 229
@@ -4649,8 +4677,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 10770,EDT,110,D,2,Learning Strategy/Coll Success,TR,02:50 pm-03:45 pm,Ana E. Baratta (P),08/28-12/16,CAB 013
 18169,EDT,110,E,2,Learning Strategy/Coll Success,MW,01:15 pm-02:10 pm,Ana E. Baratta (P),08/28-12/16,CAB 013
 10771,EDT,181,A,4,Physical Science,M,02:15 pm-03:55 pm,TBA,08/28-12/16,MCG 315
-,,,,,,TR,04:25 pm-05:45 pm,Scott Allen Sander (P),08/28-12/16,MCG 322
-17520,EDT,181,B,4,Physical Science,TR,04:25 pm-05:45 pm,Scott Allen Sander (P),08/28-12/16,MCG 322
+,,,,,,TR,04:25 pm-05:45 pm,TBA,08/28-12/16,MCG 322
+17520,EDT,181,B,4,Physical Science,TR,04:25 pm-05:45 pm,TBA,08/28-12/16,MCG 322
 ,,,,,,T,10:05 am-11:45 am,TBA,08/28-12/16,MCG 315
 10773,EDT,181,C,4,Physical Science,MW,04:25 pm-05:45 pm,TBA,08/28-12/16,MCG 322
 ,,,,,,T,12:10 pm-01:50 pm,TBA,08/28-12/16,MCG 315
@@ -4659,7 +4687,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 10778,EDT,181,E,4,Physical Science,MW,04:25 pm-05:45 pm,TBA,08/28-12/16,MCG 322
 ,,,,,,R,12:10 pm-01:50 pm,TBA,08/28-12/16,MCG 315
 72161,EDT,188,A,3,Innovation in STEM Education,MW,01:15 pm-02:35 pm,Ann Haley Mackenzie (P),08/28-12/16,MCG 217
-71956,EDT,190,A,3,Introduction to Education,TR,11:40 am-01:00 pm,TBA,08/28-12/16,MCG 316
+71956,EDT,190,A,3,Introduction to Education,TR,11:40 am-01:00 pm,Scott Allen Sander (P),08/28-12/16,MCG 316
 71958,EDT,190,B,3,Introduction to Education,M,04:25 pm-07:05 pm,Rachel Michelle Radina (P),08/28-12/16,MCG 316
 71967,EDT,190,C,3,Introduction to Education,MF,01:15 pm-02:35 pm,Ganiva Reyes (P),08/28-12/16,MCG 221
 71969,EDT,190,D,3,Introduction to Education,MW,10:05 am-11:25 am,Ganiva Reyes (P),08/28-12/16,MCG 315
@@ -4699,22 +4727,25 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 62665,EDT,323,A,3,TELLs: Instructional Practices,TR,11:40 am-01:00 pm,Martha E. Castaneda (P),08/28-12/16,MCG 118
 69494,EDT,323,B,3,TELLs: Instructional Practices,TR,11:40 am-01:00 pm,Jeannie Marie Lise Ducher (P),08/28-12/16,MCG 418
 69495,EDT,323,C,3,TELLs: Instructional Practices,TR,11:40 am-01:00 pm,Xiang Shen (P),08/28-12/16,MCG 223
-70249,EDT,323,D,3,TELLs: Instructional Practices,T,04:25 pm-07:05 pm,Xiang Shen (P),08/28-12/16,MCG 221
+70249,EDT,323,D,3,TELLs: Instructional Practices,T,04:25 pm-07:05 pm,Xiang Shen (P),08/28-12/16,MCG 419
 72017,EDT,346A,A,3,Reading Methods/Teachers/Adol,TR,08:30 am-09:50 am,Marc Nachowitz (P),08/28-12/16,MCG 223
 72206,EDT,346A,B,3,Reading Methods/Teachers/Adol,MW,08:30 am-09:50 am,Marc Nachowitz (P),08/28-12/16,MCG 223
-72019,EDT,346E,A,3,Teaching Language and Literacy,MW,02:50 pm-04:10 pm,TBA,08/28-12/16,MCG 221
-72021,EDT,346E,B,3,Teaching Language and Literacy,MF,11:40 am-01:00 pm,TBA,08/28-12/16,MCG 224
-72022,EDT,346E,C,3,Teaching Language and Literacy,MW,01:15 pm-02:35 pm,TBA,08/28-12/16,MCG 118
+72019,EDT,346E,A,3,Teaching Language and Literacy,MW,02:50 pm-04:10 pm,Karen Bachman (P),08/28-12/16,MCG 221
+72021,EDT,346E,B,3,Teaching Language and Literacy,MF,11:40 am-01:00 pm,Karen Bachman (P),08/28-12/16,MCG 224
+72022,EDT,346E,C,3,Teaching Language and Literacy,MW,01:15 pm-02:35 pm,Karen Bachman (P),08/28-12/16,MCG 118
 72023,EDT,346M,A,3,Reading Instr: Middle Grades,MF,08:30 am-09:50 am,Irene Lang Kleiman (P),08/28-12/16,MCG 117
 72026,EDT,346M,B,3,Reading Instr: Middle Grades,MF,10:05 am-11:25 am,Irene Lang Kleiman (P),08/28-12/16,MCG 117
 72027,EDT,346M,C,3,Reading Instr: Middle Grades,MF,11:40 am-01:00 pm,Irene Lang Kleiman (P),08/28-12/16,MCG 122
 72029,EDT,346M,D,3,Reading Instr: Middle Grades,MF,01:15 pm-02:35 pm,TBA,08/28-12/16,MCG 120
-62742,EDT,362,A,4,Social Sciences for TeachersII,M,06:30 pm-10:05 pm,TBA,08/28-12/16,MCG 224
-10804,EDT,362,B,4,Social Sciences for TeachersII,W,06:30 pm-10:05 pm,TBA,08/28-12/16,MCG 419
+62742,EDT,362,A,4,Social Sciences for TeachersII,M,06:30 pm-10:05 pm,Christine Underwood (P),08/28-12/16,MCG 224
+10804,EDT,362,B,4,Social Sciences for TeachersII,W,06:30 pm-10:05 pm,Christine Underwood (P),08/28-12/16,MCG 419
 17109,EDT,415,A,3,Inquiring Life Science,MW,11:40 am-01:00 pm,Ann Haley Mackenzie (P),08/28-12/16,MCG 316
 72031,EDT,417E,A,3,Teach Soc Studies/Early Chldhd,TR,11:40 am-01:00 pm,James M. Shiveley (P),08/28-12/16,MCG 224
 72034,EDT,417E,B,3,Teach Soc Studies/Early Chldhd,TR,11:40 am-01:00 pm,Thomas J. Misco (P),08/28-12/16,MCG 225
 72229,EDT,417E,C,3,Teach Soc Studies/Early Chldhd,T,06:00 pm-08:40 pm,TBA,08/28-12/16,MCG 223
+72650,EDT,419A,A,1.000-16.000,Teaching Internship-Adolescent,,TBA,Amy L. Emery (P),08/28-12/16,TBA
+72648,EDT,419E,A,15,Teaching Internship-Early Chil,,TBA,Amy L. Emery (P),08/28-12/16,TBA
+72649,EDT,419M,A,15,Teaching Internship-MCE,,TBA,Amy L. Emery (P),08/28-12/16,TBA
 70251,EDT,419O,A,15,Teaching Intern - Out of area,,TBA,Amy L. Emery (P),08/28-12/16,TBA
 70294,EDT,419U,A,15,Teaching Internship - Urban,,TBA,Amy L. Emery (P),08/28-12/16,TBA
 63622,EDT,420B,A,2,Urban Teacher Cohort Sem. I,W,06:30 pm-08:20 pm,Malaika Huey (P),08/28-12/16,MCG 119
@@ -4730,15 +4761,15 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 63950,EDT,425,A,3,TELLs: Literacy,M,04:25 pm-07:05 pm,Jeannie Marie Lise Ducher (P),08/28-12/16,MCG 119
 72044,EDT,427,A,3,Adolescent Language Arts I,TR,10:05 am-11:25 am,Tom S. Romano (P),08/28-12/16,MCG 120
 ,,,,,,F,10:00 am-10:55 am,Tom S. Romano,08/28-12/16,MCG 322
-72046,EDT,427,B,3,Adolescent Language Arts I,TR,11:40 am-01:00 pm,TBA,08/28-12/16,MCG 121
-,,,,,,F,10:00 am-10:55 am,TBA,08/28-12/16,MCG 322
+72046,EDT,427,B,3,Adolescent Language Arts I,TR,11:40 am-01:00 pm,Angela M. Faulhaber (P),08/28-12/16,MCG 121
+,,,,,,F,10:00 am-10:55 am,Angela M. Faulhaber,08/28-12/16,MCG 322
 72055,EDT,429A,A,3,Adolescent Mathematics I,MW,10:05 am-11:25 am,Michael Todd Edwards (P),08/28-12/16,MCG 226
 ,,,,,,F,10:00 am-10:55 am,Michael Todd Edwards,08/28-12/16,MCG 226
 72058,EDT,429M,A,3,Middle Childhood Mathematics,MF,01:15 pm-02:35 pm,Michael Todd Edwards (P),08/28-12/16,MCG 418
 72062,EDT,431,B,3,Adolescent Science Methods I,TR,11:40 am-01:00 pm,Ann Haley Mackenzie (P),08/28-12/16,MCG 221
 72064,EDT,433,A,3,Adol Social Studies Methods I,TR,10:05 am-11:25 am,Thomas J. Misco (P),08/28-12/16,MCG 221
 72065,EDT,436,A,3,Middle Childhood Language Arts,TR,11:40 am-01:00 pm,Catherine A. Haerr (P),08/28-12/16,MCG 222
-72066,EDT,436,B,3,Middle Childhood Language Arts,TR,01:15 pm-02:35 pm,Catherine A. Haerr (P),08/28-12/16,MCG 224
+72066,EDT,436,B,3,Middle Childhood Language Arts,TR,01:15 pm-02:35 pm,TBA,08/28-12/16,MCG 224
 72103,EDT,436,C,3,Middle Childhood Language Arts,MF,01:15 pm-02:35 pm,Eva E. Howard (P),08/28-12/16,MCG 415
 72104,EDT,439,A,3,Middle Childhd Social Studies,TR,10:05 am-11:25 am,James M. Shiveley (P),08/28-12/16,MCG 418
 14411,EDT,441,A,3,Middle Childhood Science,MF,11:40 am-01:00 pm,Nazan Uludag Bautista (P),08/28-12/16,MCG 316
@@ -4758,10 +4789,10 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 ,,,,,,R,11:40 am-02:20 pm,Sheri Leafgren (P),08/28-12/16,MCG
 15525,EDT,474E,A,3,ECE Mgmt./Guidance,T,02:50 pm-05:35 pm,TBA,08/28-12/16,MCG 121
 ,,,,,,R,09:00 am-09:55 am,TBA,08/28-12/16,MCG 322
-55664,EDT,474E,B,3,ECE Mgmt./Guidance,R,09:00 am-09:55 am,TBA,08/28-12/16,MCG 322
-,,,,,,R,02:50 pm-05:35 pm,TBA,08/28-12/16,MCG 215
-72241,EDT,474E,C,3,ECE Mgmt./Guidance,R,09:00 am-09:55 am,TBA,08/28-12/16,MCG 322
-,,,,,,R,11:40 am-02:20 pm,TBA,08/28-12/16,MCG 322
+55664,EDT,474E,B,3,ECE Mgmt./Guidance,R,09:00 am-09:55 am,Dianne C. Suiter,08/28-12/16,MCG 322
+,,,,,,R,04:25 pm-07:05 pm,Dianne C. Suiter (P),08/28-12/16,MCG 215
+72241,EDT,474E,C,3,ECE Mgmt./Guidance,R,09:00 am-09:55 am,Dianne C. Suiter,08/28-12/16,MCG 322
+,,,,,,R,01:15 pm-03:55 pm,Dianne C. Suiter (P),08/28-12/16,MCG 322
 68395,EDT,495,A,3,Writing Info Books/Children,W,06:00 pm-08:40 pm,Brenda L. Dales (P),08/28-12/16,MCG 222
 18662,EDT,515,A,3,Inquiring Life Science,MW,11:40 am-01:00 pm,Ann Haley Mackenzie (P),08/28-12/16,MCG 316
 70357,EDT,519A,A,12,Teaching Internship-Adolescent,,TBA,Amy L. Emery (P),08/28-12/16,TBA
@@ -4770,8 +4801,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72048,EDT,523,A,3,Lit & Other Media For Adolscnt,T,06:00 pm-08:40 pm,Brenda L. Dales (P),08/28-12/16,MCG 221
 72141,EDT,527,A,3,Adolescent Language Arts I,TR,10:05 am-11:25 am,Tom S. Romano (P),08/28-12/16,MCG 120
 ,,,,,,F,10:00 am-10:55 am,Tom S. Romano,08/28-12/16,MCG 322
-72148,EDT,527,B,3,Adolescent Language Arts I,TR,11:40 am-01:00 pm,TBA,08/28-12/16,MCG 121
-,,,,,,F,10:00 am-10:55 am,TBA,08/28-12/16,MCG 322
+72148,EDT,527,B,3,Adolescent Language Arts I,TR,11:40 am-01:00 pm,Angela M. Faulhaber (P),08/28-12/16,MCG 121
+,,,,,,F,10:00 am-10:55 am,Angela M. Faulhaber,08/28-12/16,MCG 322
 72151,EDT,529A,A,3,Adolescent Mathematics I,MW,10:05 am-11:25 am,Michael Todd Edwards (P),08/28-12/16,MCG 226
 ,,,,,,F,10:00 am-10:55 am,Michael Todd Edwards,08/28-12/16,MCG 226
 72152,EDT,531,B,3,Adolescent Science Methods I,TR,11:40 am-01:00 pm,Ann Haley Mackenzie (P),08/28-12/16,MCG 221
@@ -4851,11 +4882,11 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 17149,THE,291,A,3,World Stages & Performances I,TR,08:30 am-09:50 am,TBA,08/28-12/16,ART 103
 69684,THE,394,A,3,Topics in Dramatic Literature,TR,02:50 pm-04:10 pm,TBA,08/28-12/16,ART 136
 68510,THE,421,A,3,Fundamental of Directing,MWF,04:25 pm-06:15 pm,Wayne Lewis Magruder (P),08/28-12/16,HIS 100
-72277,THE,422,A,3,Theatre: Politics and Ethics,TR,10:05 am-11:25 am,Ann Elizabeth Armstrong (P),08/28-12/16,ART 136
+72277,THE,422,A,3,Theatre: Politics and Ethics,TR,10:05 am-11:25 am,Ann Elizabeth Armstrong (P),08/28-12/16,ART 220
 72278,THE,432,A,3,Acting Shakespeare,MWF,12:10 pm-02:00 pm,Wayne Lewis Magruder (P),08/28-12/16,HIS 100
 72281,THE,451,A,3,Scenic Design,TR,01:15 pm-02:35 pm,Gion A. DeFrancesco (P),08/28-12/16,HIS 203
 68511,THE,521,A,3,Fundamental of Directing,MWF,04:25 pm-06:15 pm,Wayne Lewis Magruder (P),08/28-12/16,HIS 100
-72283,THE,522,A,3,Theatre: Politics and Ethics,TR,10:05 am-11:25 am,Ann Elizabeth Armstrong (P),08/28-12/16,ART 136
+72283,THE,522,A,3,Theatre: Politics and Ethics,TR,10:05 am-11:25 am,Ann Elizabeth Armstrong (P),08/28-12/16,ART 220
 72284,THE,532,A,3,Acting Shakespeare,MWF,12:10 pm-02:00 pm,Wayne Lewis Magruder (P),08/28-12/16,HIS 100
 72359,THE,601,A,3,Research and Methodology,R,01:15 pm-04:10 pm,Ann Elizabeth Armstrong (P),08/28-12/16,ART 220
 60282,THE,703,A,1,Graduate Colloquium in Theatre,W,02:50 pm-04:10 pm,Ann Elizabeth Armstrong (P),08/28-12/16,CPA 114
@@ -4874,8 +4905,8 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69447,UNV,101,BI,1,I Am Miami,W,08:30 am-09:25 am,Jaymee Lewis-Flenaugh (P),08/28-12/16,MCG 117
 69448,UNV,101,BJ,1,I Am Miami,W,04:25 pm-05:10 pm,Mary Elizabeth Barnes (P),08/28-12/16,KRG 227
 69449,UNV,101,BK,1,I Am Miami,W,04:25 pm-05:10 pm,Jennifer L. McLaughlin (P),08/28-12/16,LWS 302
-69450,UNV,101,BL,1,I Am Miami,W,04:25 pm-05:20 pm,Timothy Wasserman (P),08/28-12/16,LWS 303
-69451,UNV,101,BM,1,I Am Miami,W,04:25 pm-05:20 pm,Molly DePew (P),08/28-12/16,LWS 302
+69450,UNV,101,BL,1,I Am Miami,W,04:25 pm-05:20 pm,Timothy Wasserman (P),08/28-12/16,UPH 163
+69451,UNV,101,BM,1,I Am Miami,W,04:25 pm-05:20 pm,Molly DePew (P),08/28-12/16,UPH 389
 69452,UNV,101,BN,1,I Am Miami,R,08:30 am-09:25 am,Ashley Kathleen Lillie (P),08/28-12/16,KRG 213
 69453,UNV,101,BO,1,I Am Miami,R,08:30 am-09:25 am,Rebecca Marie Baudry Young (P); Kyle Carpenter Ashlee,08/28-12/16,HUG 143
 69454,UNV,101,BP,1,I Am Miami,R,04:25 pm-05:10 pm,Matthew M. Benzing (P),08/28-12/16,KRG 222
@@ -4938,7 +4969,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 72291,UNV,101,ME,1,I Am Miami,F,08:30 am-09:25 am,David Michael Sauter (P),08/28-12/16,MCG 224
 68486,UNV,101,PA,1,I Am Miami,M,11:40 am-12:35 pm,Larisa Marie Wright (P),08/28-12/16,TBA
 68487,UNV,101,PB,1,I Am Miami,T,01:15 pm-02:10 pm,Larisa Marie Wright (P),08/28-12/16,MCG 117
-67990,UNV,101,QB,1,I Am Miami,M,10:05 am-11:10 am,Anthony G. James (P),09/11-12/16,BAC 134
+67990,UNV,101,QB,1,I Am Miami,M,10:05 am-11:10 am,Anthony G. James (P),09/11-12/16,UPH 389
 68533,UNV,101,QC,1,I Am Miami,T,01:15 pm-02:20 pm,Stephen John Quaye (P),09/11-12/16,IRV 124
 68003,UNV,101,SA,1,I Am Miami,M,01:15 pm-02:10 pm,Chasity Mone't Dittmann (P),08/28-12/16,MCG 422
 68004,UNV,101,SB,1,I Am Miami,T,11:40 am-12:35 pm,Chasity Mone't Dittmann (P),08/28-12/16,MCG 416
@@ -4975,7 +5006,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 61586,WGS,201,C,3,Intro to Womens Studies,MW,10:05 am-11:25 am,Stefanie Kyle Dunning (P),08/28-12/16,BAC 108
 61587,WGS,201,D,3,Intro to Womens Studies,TR,10:05 am-11:25 am,Ann Fuehrer (P),08/28-12/16,BEN 100
 71844,WGS,201,E,3,Intro to Womens Studies,MW,02:50 pm-04:10 pm,TBA,08/28-12/16,MCG 118
-61824,WGS,203,A,3,Sociology Of Gender,M,04:25 pm-07:05 pm,Fauzia E. Ahmed (P),08/28-12/16,UPH 365
+61824,WGS,203,A,3,Sociology Of Gender,M,06:00 pm-08:40 pm,Fauzia E. Ahmed (P),08/28-12/16,UPH 365
 64647,WGS,211,A,3,Writing with Purpose,TR,10:05 am-11:25 am,TBA,08/28-12/16,BAC 143
 64834,WGS,301,A,3,Women & Difference,TR,01:15 pm-02:35 pm,Roxanne T. Ornelas (P),08/28-12/16,SHD 053
 69784,WGS,313,A,3,Marriage Across Cultures,WF,10:05 am-11:25 am,Elizabeth Wilson (P),08/28-12/16,UPH 258
@@ -4986,7 +5017,7 @@ CRN,Subj,Crse,Sec,Cred,Title,Days,Time,Instructor,Date (MM/DD),Location
 69242,WGS,350B,A,3,Women In Film,TR,02:50 pm-04:10 pm,Kathleen N. Johnson (P),08/28-12/16,IRV 040
 ,,,,,,T,04:25 pm-06:25 pm,TBA,08/28-12/16,IRV 040
 62915,WGS,361,A,3,Couple Relatnshps:Divrsty&Chng,TR,04:25 pm-05:45 pm,Jane Ellen Newell (P),08/28-12/16,SHD 032
-72115,WGS,369,A,3,Sexuality; Youth; Education,TR,01:15 pm-02:35 pm,Lisa D. Weems (P),08/28-12/16,MCG 218
+72115,WGS,369,A,3,Sexuality; Youth; Education,TR,10:05 am-11:25 am,Lisa D. Weems (P),08/28-12/16,MCG 217
 71901,WGS,370C,A,3,New Media and Psychoanalysis,MW,01:15 pm-02:35 pm,Andrea Righi (P),08/28-12/16,IRV 040
 71899,WGS,370N,A,3,Exploring Masculinities,TR,10:05 am-11:25 am,Kyle Carpenter Ashlee (P); Brandon Joseph Cash,08/28-12/16,UPH 163
 71973,WGS,370P,A,3,HIV/AIDS and Media,WF,11:40 am-01:00 pm,Matthew J. Jones (P),08/28-12/16,MMH 114
