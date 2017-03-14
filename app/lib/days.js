@@ -1,36 +1,40 @@
-export const Days = {
-
-  M: 'Monday',
-  T: 'Tuesday',
-  W: 'Wednesday',
-  R: 'Thursday',
-  F: 'Friday'
-
-}
-
-export function sortDays(days) {
-
-  let order = 'MTWRF';
-
-  return days.split('').sort((a, b) => order.indexOf(a)-order.indexOf(b)).join('');
-
-}
-
 export function formatDay(day) {
 
-  return Days[day];
+  switch (day.toUpperCase()) {
+
+    case 'M':
+
+      return 'Monday';
+
+    case 'T':
+
+      return 'Tuesday';
+
+    case 'W':
+
+      return 'Wednesday';
+
+    case 'R':
+
+      return 'Thursday';
+
+    case 'F':
+
+      return 'Friday';
+
+  }
 
 }
 
 export function formatDayList(days) {
 
+  let order = 'MTWRF';
+
+  days = days.sort((a, b) => order.indexOf(a)-order.indexOf(b));
+
   if (days.length === 0) {
 
-    return 'no day';
-
-  } else if (days.length === 6) {
-
-    return 'each day';
+    return 'None';
 
   } else if (days.length === 1) {
 

@@ -1,6 +1,6 @@
 <template>
 
-  <select class="option-input form-select" @change="handleOptionChange">
+  <select class="option-input form-select" :value="selectedOption" @change="handleOptionChange">
 
     <option v-for="option in options">{{renderOption(option)}}</option>
 

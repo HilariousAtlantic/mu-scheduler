@@ -1,6 +1,7 @@
 <template>
 
-  <div class="days-input btn-group">
+  <div class="days-input btn-group tooltipped tooltipped-n"
+    :aria-label="formattedDays">
 
     <button
       class="btn"
@@ -14,6 +15,8 @@
 </template>
 
 <script>
+
+  import {formatDayList} from '../../lib/days';
 
   export default {
 
@@ -33,6 +36,16 @@
 
     },
 
+    computed: {
+
+      formattedDays() {
+
+        return formatDayList(this.selectedDays);
+
+      }
+
+    },
+
     methods: {
 
       handleDayChange(day) {
@@ -41,8 +54,7 @@
 
         if (index === -1) {
 
-          this.selectedDays = this.selectedDays.concat(day)
-            .sort((a, b) => this.days.indexOf(a)-this.days.indexOf(b));
+          this.selectedDays = this.selectedDays.concat(day);
 
         } else {
 
