@@ -205,7 +205,6 @@ func createDatabase() {
 
 func createTables() {
 	db := dbContext.open()
-	defer db.Close()
 
 	for _, createTableStatement := range createTableStatements {
 		_, err := db.Exec(createTableStatement)
@@ -226,7 +225,6 @@ func importDatabase() {
 	handleError(err)
 
 	db := dbContext.open()
-	defer db.Close()
 
 	debug("Building insert statement")
 
@@ -277,7 +275,6 @@ func importGradesDatabase() {
 	handleError(err)
 
 	db := dbContext.open()
-	defer db.Close()
 
 	insert := bytes.NewBufferString(insertGrades)
 	for i, line := range lines {
