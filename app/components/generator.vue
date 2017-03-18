@@ -39,7 +39,7 @@
   .navbar {
 
     background: #B61E2E;
-    padding: 20px;
+    padding: 15px;
 
     a {
       font-size: 1.25rem;
