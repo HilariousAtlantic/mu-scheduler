@@ -13,6 +13,7 @@ type Course struct {
 	Number   string     `json:"number"`
 	Title    string     `json:"title"`
 	Credits  string     `json:"credits"`
+	Attribute  string   `json:"attribute"`
 }
 
 type Section struct {

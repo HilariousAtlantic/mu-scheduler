@@ -12,7 +12,7 @@ terms.forEach(term => {
   let lines = [];
 
   let reader = readline.createInterface({
-    input: fs.createReadStream(`./csv/${term.file}.csv`, {encoding: 'UTF-8'})
+    input: fs.createReadStream(`./courses/${term.file}.csv`, {encoding: 'UTF-8'})
   });
 
   reader.on('line', function(line) {
@@ -31,7 +31,7 @@ terms.forEach(term => {
 
     lines.map(function(line) {
 
-      let [crn, subject, number, name, credits, title, days, time, instructor, date, location] = line.split(',');
+      let [crn, subject, number, name, credits, title, days, time, instructor, date, location, attribute] = line.split(',');
 
       let type = 'section';
       let [start_time, end_time] = formatTime(time);
@@ -46,15 +46,15 @@ terms.forEach(term => {
 
         type = start_date == end_date ? 'test' : 'meet';
 
-        ({crn, subject, number, title, name, credits} = currentSection);
+        ({crn, subject, number, title, name, credits, attribute} = currentSection);
 
       } else {
 
-        currentSection = {crn, subject, number, title, name, credits};
+        currentSection = {crn, subject, number, title, name, credits, attribute};
 
       }
 
-      return [type, term.name, crn, subject, number, title, name, credits, days, start_time, end_time, location, instructor, start_date, end_date].join(',').replace(/,,/g, ',TBA,');s
+      return [type, term.name, crn, subject, number, title, name, credits, days, start_time, end_time, location, instructor, start_date, end_date, attribute].join(',').replace(/,,/g, ',TBA,');s
 
     }).forEach(line => writer.write(line + '\n'));
 

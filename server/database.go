@@ -31,7 +31,8 @@ const (
 		location TEXT,
 		instructor TEXT,
 		start_date TEXT,
-		end_date TEXT
+		end_date TEXT,
+		attribute TEXT
 	);
 	`
 
@@ -49,7 +50,8 @@ const (
 		subject TEXT NOT NULL,
 		number TEXT NOT NULL,
 		title TEXT NOT NULL,
-		credits TEXT NOT NULL
+		credits TEXT NOT NULL,
+		attribute TEXT NOT NULL
 	);
 	`
 
@@ -103,8 +105,8 @@ const (
 	`
 
 	insertCourses = `
-	INSERT INTO courses (term_id,subject,number,title,credits)
-	SELECT DISTINCT t.id,subject,number,title,credits FROM staging s
+	INSERT INTO courses (term_id,subject,number,title,credits,attribute)
+	SELECT DISTINCT t.id,subject,number,title,credits,attribute FROM staging s
 	JOIN terms t on t.name = s.term;
 	`
 
@@ -135,7 +137,7 @@ const (
 
 	insertStaging = `INSERT INTO staging
 	(type, term, crn, subject, number, title, name, credits,
-	days, start_time, end_time, location, instructor,start_date,end_date)
+	days, start_time, end_time, location, instructor,start_date,end_date,attribute)
 	VALUES `
 
 	insertGrades = `
@@ -324,7 +326,8 @@ func getCoursesFromIDString(ids string) []*Course {
 			&course.Subject,
 			&course.Number,
 			&course.Title,
-			&course.Credits)
+			&course.Credits,
+			&course.Attribute)
 		handleError(err)
 		courses = append(courses, course)
 	}
@@ -432,7 +435,8 @@ func getCoursesFromDB(term string) []*Course {
 			&course.Subject,
 			&course.Number,
 			&course.Title,
-			&course.Credits)
+			&course.Credits,
+			&course.Attribute)
 		handleError(err)
 		courses = append(courses, course)
 	}
