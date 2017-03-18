@@ -7,7 +7,8 @@
       <h2>{{course.subject}} {{course.number}}</h2>
       <p>{{course.title}}</p>
       <span><i class="fa fa-star"></i> {{course.credits}} Credits</span>
-      <span><i class="fa fa-circle"></i> {{course.sections.length}} Sections</span>
+      <span><i class="fa fa-cog"></i> {{course.sections.length}} Sections</span>
+      <span v-if="course.attribute"><i class="fa fa-info-circle"></i> {{course.attribute}}</span>
 
     </div>
 
@@ -48,16 +49,12 @@
     padding: 15px 10px;
   }
 
-  .fa {
-    margin-right: 3px;
-  }
-
   .course-info {
 
     flex: 1;
 
     span + span {
-      margin-left: 10px;
+      margin-left: 5px;
     }
 
   }
