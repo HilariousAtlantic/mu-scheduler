@@ -11,6 +11,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/jmoiron/sqlx"
+	"github.com/jmoiron/sqlx/reflectx"
 	_ "github.com/lib/pq"
 )
 
@@ -142,10 +144,6 @@ const (
 
 	insertGrades = `
 	INSERT INTO grades (gpa, instructor, subject, number, year, season, section) VALUES`
-
-	selectCourses = `SELECT * FROM courses`
-
-	selectTerms = `SELECT * FROM terms`
 )
 
 var createTableStatements = [...]string{
@@ -169,7 +167,7 @@ var insertStatements = [...]string{
 var dbContext = new(DBContext)
 
 type DBContext struct {
-	db *sql.DB
+	db *sqlx.DB
 }
 
 func (d *DBContext) path() string {
@@ -183,23 +181,24 @@ func (d *DBContext) path() string {
 		os.Getenv("POSTGRES_PASSWORD"))
 }
 
-func (d *DBContext) open() *sql.DB {
+func (d *DBContext) open() *sqlx.DB {
 	if d.db == nil {
-		var err error
-		d.db, err = sql.Open("postgres", d.path())
+		db, err := sql.Open("postgres", d.path())
 		handleError(err)
+		d.db = sqlx.NewDb(db, "postgres")
+		d.db.Mapper = reflectx.NewMapperFunc("json", strings.ToLower)
 	}
 	return d.db
 }
 
 func createDatabase() {
-	fmt.Println("Creating database...")
+	debug("Creating database...")
 	output, err := exec.Command("createdb", "schedule_buddy", "-U", "schedule_buddy").CombinedOutput()
 	if err != nil {
-		fmt.Println(string(output))
+		debug(string(output))
 		handleError(err)
 	} else {
-		fmt.Println("Database created")
+		debug("Database created")
 	}
 
 	createTables()
@@ -217,7 +216,7 @@ func createTables() {
 }
 
 func importDatabase() {
-	fmt.Println("Importing database...")
+	debug("Importing database...")
 
 	f, err := os.Open("import/courses.csv")
 	handleError(err)
@@ -267,7 +266,7 @@ func importDatabase() {
 }
 
 func importGradesDatabase() {
-	fmt.Println("Importing grades...")
+	debug("Importing grades...")
 
 	f, err := os.Open("import/grades.csv")
 	handleError(err)
@@ -299,184 +298,92 @@ func importGradesDatabase() {
 
 	_, err = db.Exec(insert.String())
 	if ok := handleError(err); !ok {
-		fmt.Println(insertGrades)
+		debug(insertGrades)
 	}
 
-	fmt.Println("Grades Imported")
+	debug("Grades Imported")
 }
 
-func getCoursesFromIDString(ids string) []*Course {
-	var courses []*Course
-	var rows *sql.Rows
-	var err error
-
-	where := "SELECT * FROM courses WHERE ID IN ("
-	where += ids + ")"
-
-	db := dbContext.open()
-	rows, err = db.Query(where)
-
-	debug(where)
-
-	defer rows.Close()
-	for rows.Next() {
-		course := &Course{}
-		err = rows.Scan(&course.ID,
-			&course.TermID,
-			&course.Subject,
-			&course.Number,
-			&course.Title,
-			&course.Credits,
-			&course.Attribute)
-		handleError(err)
-		courses = append(courses, course)
+func getCoursesFromIDs(strIds string) (courses []*Course) {
+	ids := make([]int, 0)
+	for _, s := range strings.Split(strIds, ",") {
+		id, _ := strconv.Atoi(s)
+		ids = append(ids, id)
 	}
 
-	err = rows.Err()
+	q, args, err := sqlx.In("SELECT * FROM courses WHERE id IN (?)", ids)
 	handleError(err)
 
-	return courses
-}
-
-func getMeetsFromSections(sections []*Section) []*Meet {
-	var meets []*Meet
-	var rows *sql.Rows
-	var err error
-
 	db := dbContext.open()
-	where := "SELECT * FROM meets WHERE section_id IN ("
-
-	for _, section := range sections {
-		where += strconv.Itoa(section.ID) + ","
-	}
-
-	where = where[0 : len(where)-1]
-	where += ")"
-	rows, err = db.Query(where)
-
-	defer rows.Close()
-	for rows.Next() {
-		meet := &Meet{}
-		err = rows.Scan(&meet.ID,
-			&meet.SectionID,
-			&meet.Days,
-			&meet.StartTime,
-			&meet.EndTime,
-			&meet.Location,
-			&meet.Instructor,
-			&meet.StartDate,
-			&meet.EndDate)
-		if err != nil {
-			handleError(err)
-		}
-		meets = append(meets, meet)
-	}
-
-	handleError(rows.Err())
-
-	return meets
-}
-
-func getSectionsFromCourses(courses []*Course) []*Section {
-	var sections []*Section
-	var rows *sql.Rows
-	var err error
-
-	db := dbContext.open()
-	where := "SELECT * FROM sections WHERE course_id IN ("
-
-	for _, course := range courses {
-		where += strconv.Itoa(course.ID) + ","
-	}
-
-	where = where[0 : len(where)-1]
-	where += ")"
-	rows, err = db.Query(where)
+	q = db.Rebind(q)
+	err = db.Select(&courses, q, args...)
 	handleError(err)
 
-	debug(rows)
-
-	defer rows.Close()
-	for rows.Next() {
-		section := &Section{}
-		err = rows.Scan(&section.ID,
-			&section.CourseID,
-			&section.CRN,
-			&section.Name)
-		handleError(err)
-		sections = append(sections, section)
-	}
-
-	handleError(rows.Err())
-
-	return sections
+	return
 }
 
-func getCoursesFromDB(term string) []*Course {
-	var courses []*Course
-	var rows *sql.Rows
-	var err error
+func getMeetsFromSections(sections []*Section) (meets []*Meet) {
+	ids := make([]int, len(sections))
+	for i, section := range sections {
+		ids[i] = section.ID
+	}
 
+	q, args, err := sqlx.In("SELECT * FROM meets WHERE section_id IN (?)", ids)
+	handleError(err)
+
+	db := dbContext.open()
+	q = db.Rebind(q)
+	err = db.Select(&meets, q, args...)
+	handleError(err)
+
+	return
+}
+
+func getSectionsFromCourses(courses []*Course) (sections []*Section) {
+	ids := make([]int, len(courses))
+	for i, course := range courses {
+		ids[i] = course.ID
+	}
+
+	q, args, err := sqlx.In("SELECT * FROM sections WHERE course_id IN (?)", ids)
+	handleError(err)
+
+	db := dbContext.open()
+	q = db.Rebind(q)
+	err = db.Select(&sections, q, args...)
+	handleError(err)
+
+	return
+}
+
+func getCoursesFromDB(term string) (courses []*Course) {
+	var err error
 	db := dbContext.open()
 
 	if term == "" {
-		rows, err = db.Query(selectCourses)
-		handleError(err)
+		err = db.Select(&courses, "SELECT * FROM courses")
 	} else {
-		rows, err = db.Query("SELECT * FROM courses WHERE term_id = $1", term)
-		handleError(err)
+		err = db.Select(&courses, "SELECT * FROM courses WHERE term_id = $1", term)
 	}
 
-	defer rows.Close()
-	for rows.Next() {
-		course := &Course{}
-		err = rows.Scan(&course.ID,
-			&course.TermID,
-			&course.Subject,
-			&course.Number,
-			&course.Title,
-			&course.Credits,
-			&course.Attribute)
-		handleError(err)
-		courses = append(courses, course)
-	}
-
-	handleError(rows.Err())
-
-	return courses
+	handleError(err)
+	return
 }
 
-func getTermsFromDB() []*Term {
-	var terms []*Term
-
+func getTermsFromDB() (terms []*Term) {
 	db := dbContext.open()
-	rows, err := db.Query(selectTerms)
+	err := db.Select(&terms, "SELECT * FROM terms")
 	handleError(err)
-
-	defer rows.Close()
-	for rows.Next() {
-		term := &Term{}
-		err = rows.Scan(
-			&term.ID,
-			&term.Name)
-		if err != nil {
-			handleError(err)
-		}
-		terms = append(terms, term)
-	}
-
-	handleError(rows.Err())
-
-	return terms
+	return
 }
 
 func deleteDatabase() {
-	fmt.Println("Deleting database...")
+	debug("Deleting database...")
 
 	output, err := exec.Command("dropdb", "schedule_buddy", "-U", "schedule_buddy").CombinedOutput()
 	if err != nil {
-		fmt.Println(err.Error(), string(output))
+		debug(err.Error(), string(output))
 	} else {
-		fmt.Println("Database deleted")
+		debug("Database deleted")
 	}
 }

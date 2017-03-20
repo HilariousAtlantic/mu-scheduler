@@ -104,7 +104,7 @@ SKIPCOURSE:
 //a tree means that the courses have sections and the sections have meets
 func getCourseTree(ids string) []*Course {
 
-	courses := getCoursesFromIDString(ids)
+	courses := getCoursesFromIDs(ids)
 	sections := getSectionsFromCourses(courses)
 	meets := getMeetsFromSections(sections)
 

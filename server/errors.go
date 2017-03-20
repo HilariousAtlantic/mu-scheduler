@@ -22,8 +22,10 @@ func handleError(v interface{}) bool {
 	}
 }
 
-func debug(v interface{}) {
+func debug(values ...interface{}) {
 	if isDebug {
-		fmt.Println(v)
+		for _, value := range values {
+			fmt.Println(value)
+		}
 	}
 }

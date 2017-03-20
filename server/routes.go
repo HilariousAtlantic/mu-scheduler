@@ -38,7 +38,7 @@ func coursesIndex(c echo.Context) error {
 
 func courseIndex(c echo.Context) error {
 	id := c.Param("id")
-	course := getCourseTree(id)[0]
+	course := getCourseTree(id)
 	return c.JSON(http.StatusOK, course)
 }
 
