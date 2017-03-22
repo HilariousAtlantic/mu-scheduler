@@ -66,9 +66,9 @@
 
       generateSchedules() {
 
-        this.$store.dispatch('generateSchedules').then(schedules => {
+        this.$store.dispatch('generateSchedules').then(success => {
 
-          if (schedules) this.$router.push('schedules');
+          if (success) this.$router.push('schedules');
 
         });
 
