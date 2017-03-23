@@ -1,12 +1,12 @@
 const defaultOptions = {
 
-  start: {operator: 'After', time: 600, days: ['M', 'W', 'F']},
+  start: {operator: 'After', time: 600, days: ['M', 'T', 'W', 'R', 'F']},
 
-  finish: {operator: 'Before', time: 960, days: ['M', 'W', 'F']},
+  finish: {operator: 'Before', time: 960, days: ['M', 'T', 'W', 'R', 'F']},
 
-  break: {start: 660, finish: 780, days: ['T', 'W', 'R']},
+  break: {start: 660, finish: 780, days: ['M', 'T', 'W', 'R', 'F']},
 
-  class: {operator: 'At Most', amount: 3, days: ['T', 'R']}
+  class: {operator: 'At Most', amount: 3, days: ['M', 'T', 'W', 'R', 'F']}
 
 }
 
