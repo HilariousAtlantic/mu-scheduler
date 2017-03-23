@@ -1,11 +1,16 @@
 <template>
 
-  <input
-    type="time"
-    class="time-input form-control"
-    v-model="time"
-    @change="handleTimeChange"
-  />
+  <div class="time-input">
+
+    <input
+      type="text"
+      class="form-control"
+      placeholder="HH:MM AM"
+      v-model="time"
+      @input="handleTimeChange"
+    />
+
+  </div>
 
 </template>
 
@@ -23,7 +28,7 @@
 
       return {
 
-        time: formatTime(this.defaultValue || 600, 'HH:mm')
+        time: formatTime(this.defaultValue, 'hh:mm P')
 
       }
 
@@ -31,9 +36,17 @@
 
     methods: {
 
-      handleTimeChange() {
+      handleTimeChange(event) {
 
-        this.$emit('change', getMinutes(this.time));
+        this.time = event.target.value.toUpperCase().substring(0, 8);
+
+        if (/\d+:\d+ (AM|PM)/.test(this.time)) {
+
+          console.log(this.time, getMinutes(this.time));
+
+          this.$emit('change', getMinutes(this.time));
+
+        }
 
       }
 
@@ -47,6 +60,8 @@
 
   input {
     height: 34px;
+    width: 75px;
+    text-align: center;
   }
 
 </style>

@@ -1,15 +1,9 @@
 export function formatTime(minutes, format) {
 
   let H = Math.floor(minutes/60);
-  let h = H > 12 ? H-12 : H;
+  let h = H == 0 ? 12 : (H > 12 ? H-12 : H);
   let m = minutes - H*60;
   let p = H >= 12 ? 'PM' : 'AM';
-
-  if (H === 0) {
-
-    h = 12;
-
-  }
 
   return format
     .replace(/HH/g, ('00'+H).slice(-2))
@@ -25,8 +19,21 @@ export function formatTime(minutes, format) {
 
 export function getMinutes(time) {
 
-  let [h, m] = time.split(':');
+  let [t, h, m, p] = time.match(/(\d+):(\d+) (AM|PM)/);
 
-  return parseInt(h)*60 + parseInt(m);
+  let hours = parseInt(h);
+  let minutes = parseInt(m);
+
+  switch (p) {
+
+    case 'AM':
+
+      return hours == 12 ? minutes : hours*60 + minutes;
+
+    case 'PM':
+
+      return hours*60 + minutes + (hours == 12 ? 0 : 720);
+
+  }
 
 }
