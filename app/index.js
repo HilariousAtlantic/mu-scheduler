@@ -7,7 +7,7 @@ import getters from './store/getters';
 import mutations from './store/mutations';
 import actions from './store/actions';
 
-import Generator from './components/generator.vue';
+import Generator from './views/generator.vue';
 import Courses from './views/courses.vue';
 import Schedules from './views/schedules.vue';
 
