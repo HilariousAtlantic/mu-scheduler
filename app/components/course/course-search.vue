@@ -1,6 +1,6 @@
 <template>
 
-  <form class="course-search">
+  <div class="course-search">
 
     <select class="form-select" @change="selectTerm">
 
@@ -34,7 +34,7 @@
 
     </div>
 
-  </form>
+  </div>
 
 </template>
 
