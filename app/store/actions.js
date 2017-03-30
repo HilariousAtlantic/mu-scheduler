@@ -132,8 +132,7 @@ export default {
             let endTimes = {M: 0, T: 0, W: 0, R: 0, F: 0};
             let classLoads = {M: 0, T: 0, W: 0, R: 0, F: 0};
 
-            let start = 1440;
-            let end = 0;
+            let start, end;
 
             schedule.sections.forEach(({course_id, section_id}) => {
 
@@ -142,10 +141,10 @@ export default {
 
               section.meets.forEach(({days, start_time, end_time, location}) => {
 
-                start = Math.min(start, start_time);
-                end = Math.max(end, end_time);
+                start = Math.min(start || 1440, start_time);
+                end = Math.max(end || 0, end_time);
 
-                if (location !== 'WEB') {
+                if (location !== 'WEB' && days !== 'TBA') {
 
                   days.split('').forEach(day => {
 

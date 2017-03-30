@@ -71,7 +71,7 @@
 
             meets.forEach(({days, start_time, end_time, location, instructor}) => {
 
-              if (location === 'WEB') return;
+              if (location === 'WEB' || days === 'TBA') return;
 
               let style = {
 

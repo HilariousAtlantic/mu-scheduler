@@ -17,7 +17,7 @@ terms.forEach(term => {
 
   reader.on('line', function(line) {
 
-    if (line != ',,,,,,,,,,' && !line.startsWith('CRN')) {
+    if (line != ',,,,,,,,,,,' && !line.startsWith('CRN')) {
 
       lines.push(line);
 
