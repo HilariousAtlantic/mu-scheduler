@@ -13,6 +13,16 @@
 
       </div>
 
+      <button class="btn" @click="showModal = true">Show CRNs</button>
+
+      <modal :show="showModal" @close="showModal = false">
+
+        <h3>Schedule CRNs</h3>
+
+        <span v-for="crn in crns" class="crn">{{crn}}</span>
+
+      </modal>
+
     </div>
 
     <div class="schedule-search">
@@ -45,17 +55,23 @@
 
 <script>
 
+  import Modal from '../common/modal.vue';
+
   export default {
 
     name: 'schedule-toolbar',
 
     props: ['index', 'length'],
 
+    components: {Modal},
+
     data() {
 
       return {
 
-        focused: false
+        focused: false,
+
+        showModal: false
 
       }
 
@@ -70,6 +86,13 @@
           return this.index+1;
 
         } else return (this.index+1) + ' of ' + this.length;
+
+      },
+
+      crns() {
+
+        let schedule = this.$store.getters.filteredSchedules[this.index];
+        return schedule.courses.map(course => course.crn);
 
       }
 
@@ -115,6 +138,28 @@
 
   .schedule-search input {
     text-align: center;
+  }
+
+  .modal h3 {
+    margin-bottom: 10px;
+  }
+
+  .crn {
+    height: 34px;
+    padding: 7px 8px;
+    font-size: 13px;
+    color: #333;
+    background-color: #fafafa;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+  }
+
+  .crn + .crn {
+    margin-left: 5px;
   }
 
 </style>

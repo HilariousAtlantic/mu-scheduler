@@ -160,6 +160,7 @@ export default {
               });
 
               courses.push({
+                crn: section.crn,
                 name: course.subject + ' ' + course.number + ' ' + section.name,
                 meets: section.meets
               });
