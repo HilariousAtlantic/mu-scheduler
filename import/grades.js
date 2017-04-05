@@ -1,6 +1,7 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 const util = require('util');
-const sleep = require('sleep');
 const readline = require('readline');
 const rq = require('request-promise-native');
 
@@ -16,9 +17,7 @@ let semesters = {
   "30": "Summer"
 };
 
-// importGrades();
-
-fixExistingProfessorNames();
+importGrades();
 
 function importGrades() {
   let reader = readline.createInterface({
@@ -42,12 +41,13 @@ function importGrades() {
 }
 
 function fetchGPAs(course) {
-  let url = `http://grdist.miamioh.edu/php/getClasses.php?sem=&loc=O&inst=&from=2000&to=2016&iid=-1&did=-1&dept=${course.subject}&num=${course.number}`;
+  let url = `http://10.36.0.48/php/getClasses.php?sem=&loc=O&inst=&from=2000&to=2016&iid=-1&did=-1&dept=${course.subject}&num=${course.number}`;
 
-  console.log(`Fetching grades for ${course.subject + course.number} from ${url}`);
+  process.stdout.write(`Fetching grades for ${course.subject + course.number}... `);
 
   rq({url: url, json: true})
-    .then(GPAs  => {
+    .then(GPAs => {
+      process.stdout.write("Done\n");
       saveGPAs(GPAs);
       if (courses.length > 0) {
         fetchGPAs(courses.pop());
@@ -59,7 +59,7 @@ function fetchGPAs(course) {
 }
 
 function saveGPAs(GPAs) {
-  let writer = fs.createWriteStream('./grades.csv');
+  let writer = fs.createWriteStream('./grades.csv', { flags: 'a' });
 
   GPAs.forEach(gpa => {
     if (gpa.campus != "O") return;
@@ -76,39 +76,9 @@ function saveGPAs(GPAs) {
   });
 }
 
-/**
- * Format a professor name as `first last MI` * instead of `last first MI`
- */
 function fixProfessorName(name) {
   [lastName, firstName, middleInitial] = name.trim().split(/\s+/);
 
   return [firstName, lastName].join(' ');
 }
 
-/**
- * Fix the incorrectly formatted professor names that are already in the CSV file.
- */
-function fixExistingProfessorNames() {
-  let lines = fs.readFileSync('./grades.csv').toString().split('\n');
-
-  lines = lines.map(line => {
-    if (line.trim().length == 0) return '';
-
-    let splitted = line.split(',');
-    splitted[1] = fixProfessorName(splitted[1]);
-
-    return splitted.join(',')
-  });
-
-  let fixed = lines.join('\n');
-
-  fs.truncate('./grades.csv', 0, () => {
-    fs.writeFile('./grades.csv', fixed, err => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('Professor names fixed');
-      }
-    });
-  });
-}
