@@ -105,13 +105,11 @@
 <style scoped>
 
   .course-search {
-
     display: flex;
-
+    flex-direction: column;
   }
 
   .search-results {
-
     position: absolute;
     top: calc(100% + 5px);
     width: 100%;
@@ -128,36 +126,41 @@
   }
 
   .results-header {
-
     padding: 8px 10px;
     line-height: 16px;
     background: #f6f8fa;
     border-bottom: 1px solid #e1e4e8;
-
   }
 
   .search-result {
-
     display: block;
     padding: 8px;
     overflow: hidden;
     color: inherit;
     cursor: pointer;
     border-bottom: 1px solid #eaecef;
-
   }
 
   .search {
-
     flex: 1;
     position: relative;
-
   }
 
   .form-select {
+    margin-bottom: 10px;
+  }
 
-    margin-right: 5px;
-    padding-right: 50px;
+  @media screen and (min-width: 500px) {
+
+    .course-search {
+      flex-direction: row;
+    }
+
+    .form-select {
+      margin-right: 5px;
+      margin-bottom: 10px;
+      padding-right: 50px;
+    }
 
   }
 

@@ -109,4 +109,12 @@
     padding: 10px;
   }
 
+  @media screen and (max-width: 750px) {
+
+    .filter-list {
+      display: none !important;
+    }
+
+  }
+
 </style>

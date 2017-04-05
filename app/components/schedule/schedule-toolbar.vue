@@ -4,7 +4,7 @@
 
     <div class="schedule-options">
 
-      <div class="btn-group tooltipped tooltipped-n"
+      <div class="display-options btn-group tooltipped tooltipped-n"
         aria-label="Display options coming soon!">
 
         <button class="btn"><span class="fa fa-square"></span></button>
@@ -160,6 +160,33 @@
 
   .crn + .crn {
     margin-left: 5px;
+  }
+
+  @media screen and (max-width: 500px) {
+
+    .schedule-options {
+      display: none;
+    }
+
+    .schedule-search {
+      display: flex;
+      width: 100%;
+    }
+
+    .schedule-search {
+
+      input {
+        flex: 1;
+        margin: 0 5px;
+      }
+
+      button {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+    }
+
   }
 
 </style>

@@ -4,7 +4,9 @@
 
     <div class="schedule-head">
 
-      <span v-for="day in formattedDays">{{day}}</span>
+      <span class="days-long" v-for="day in formattedDays">{{day}}</span>
+
+      <span class="days-short" v-for="day in formattedDays">{{day.substr(0, 3)}}</span>
 
     </div>
 
@@ -138,6 +140,10 @@
     position: relative;
   }
 
+  .days-short {
+    display: none;
+  }
+
   .course {
     position: absolute;
     left: 5px;
@@ -157,6 +163,18 @@
 
     span:first-of-type {
       font-weight: 900;
+    }
+
+  }
+
+  @media screen and (max-width: 500px) {
+
+    .days-long {
+      display: none;
+    }
+
+    .days-short {
+      display: inline-block !important;
     }
 
   }

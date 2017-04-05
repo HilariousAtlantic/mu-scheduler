@@ -4,7 +4,7 @@
 
     <div class="navbar">
 
-      <a href="/">Course Scheduler for Miami University</a>
+      <a href="/">Miami Scheduler</a>
 
     </div>
 
