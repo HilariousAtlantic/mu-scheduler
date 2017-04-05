@@ -35,6 +35,9 @@ services:
       - ../:/home/mu-scheduler
     ports:
       - "9000:9000"
+    environment:
+      - NODE_ENV=production
+
 
   caddy:
     build:
