@@ -29,9 +29,10 @@
 
       <button
         class="btn btn-block btn-primary"
-        @click="generateSchedules">
+        @click="generateSchedules"
+        :disabled="$store.state.requestingSchedules">
 
-        <span>Generate Schedules</span>
+        <span>{{buttonText}}</span>
 
       </button>
 
@@ -57,6 +58,14 @@
       showInstructions() {
 
         return this.$store.state.selectedCourses.length === 0;
+
+      },
+
+      buttonText() {
+
+        return this.$store.state.requestingSchedules
+          ? 'Generating Schedules...'
+          : 'Generate Schedules';
 
       }
 
