@@ -8,7 +8,7 @@
       <p>{{course.title}}</p>
       <span><i class="fa fa-star"></i> {{course.credits}} Credits</span>
       <span><i class="fa fa-cog"></i> {{course.sections.length}} Sections</span>
-      <span v-if="course.attribute"><i class="fa fa-info-circle"></i> {{course.attribute}}</span>
+      <span v-if="attributes.length"><i class="fa fa-info-circle"></i> {{attributes}}</span>
 
     </div>
 
@@ -25,6 +25,32 @@
     name: 'course',
 
     props: ['course'],
+
+    computed: {
+
+      attributes() {
+
+        let attributes = [];
+
+        this.course.sections.forEach(({attribute}) => {
+
+          attribute.split(' and ').forEach(a => {
+
+            if (attributes.indexOf(a) === -1) {
+
+              attributes.push(a);
+
+            }
+
+          });
+
+        });
+
+        return attributes.join(', ');
+
+      }
+
+    },
 
     methods: {
 

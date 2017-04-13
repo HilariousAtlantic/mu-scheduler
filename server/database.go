@@ -52,8 +52,7 @@ const (
 		subject TEXT NOT NULL,
 		number TEXT NOT NULL,
 		title TEXT NOT NULL,
-		credits TEXT NOT NULL,
-		attribute TEXT NOT NULL
+		credits TEXT NOT NULL
 	);
 	`
 
@@ -62,7 +61,8 @@ const (
 		id SERIAL PRIMARY KEY,
 		course_id INT NOT NULL REFERENCES courses,
 		crn TEXT NOT NULL,
-		name TEXT NOT NULL
+		name TEXT NOT NULL,
+		attribute TEXT NOT NULL
 	);
 	`
 
@@ -107,14 +107,14 @@ const (
 	`
 
 	insertCourses = `
-	INSERT INTO courses (term_id,subject,number,title,credits,attribute)
-	SELECT DISTINCT t.id,subject,number,title,credits,attribute FROM staging s
+	INSERT INTO courses (term_id,subject,number,title,credits)
+	SELECT DISTINCT t.id,subject,number,title,credits FROM staging s
 	JOIN terms t on t.name = s.term;
 	`
 
 	insertSections = `
-	INSERT INTO sections (course_id,crn,name)
-	SELECT c.id,crn,s.name FROM staging s
+	INSERT INTO sections (course_id,crn,name,attribute)
+	SELECT c.id,crn,s.name,attribute FROM staging s
 	JOIN terms t ON t.name = s.term
 	JOIN courses c ON c.term_id = t.id AND c.subject = s.subject AND c.number = s.number
 	WHERE type = 'section';

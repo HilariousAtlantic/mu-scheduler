@@ -13,7 +13,6 @@ type Course struct {
 	Number   string     `json:"number"`
 	Title    string     `json:"title"`
 	Credits  string     `json:"credits"`
-	Attribute  string   `json:"attribute"`
 }
 
 type Section struct {
@@ -24,6 +23,7 @@ type Section struct {
 	CRN        string  `json:"crn"`
 	Name       string  `json:"name"`
 	AverageGPA float64 `json:"average_gpa"`
+	Attribute  string  `json:"attribute"`
 	Credits    float64 //Only used for calculating average GPA
 }
 
