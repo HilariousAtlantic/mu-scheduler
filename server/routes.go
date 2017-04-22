@@ -10,6 +10,8 @@ import (
 func startServer() {
 	e := echo.New()
 
+	e.Use(middleware.CORS())
+
 	e.File("*", "dist/index.html")
 	e.Static("app.js", "dist/app.js")
 
