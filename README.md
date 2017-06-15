@@ -25,6 +25,9 @@ npm run serve
 
 To build the server (command must be ran from the project root directory)
 ```
+createuser -d schedule_buddy
+```
+```
 npm run build-server
 ```
 
